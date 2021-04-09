@@ -3,7 +3,7 @@
 war3map.w3d 物编地形装饰物资料
 war3map.w3e 地形纹理资料
 war3map.shd 地形层面资料(w3e,shd,doo是移植地形必备的)
-war3map.mmp 物件 具体不明
+war3map.mmp 记录小地图物体文件，记录预览图上的物体位置
 war3map.w3c WE中摄影机的放置情形
 war3map.w3r WE中区域的放置情形(游戏所需资料会被转成JASS放在war3map.j，因此删掉不影响游戏)
 war3map.doo WE中可破坏和地形装饰物物件的放置情形
@@ -28,9 +28,8 @@ war3map.wts 记录字符串资料。地图设置，触发编辑器、物件编�
 war3map.blp 小地图的图片。WE本身就有汇出此文件的功能
 war3map.w3i 记录游戏一开始资讯(名称、几打几、简介、作者...，镜头范围)、种族设定、玩家设定、......其中文字部分保存在wts
 war3map.w3s 记录声音编辑器的资料
-war3map.imp 记录Import Manager中的资料。加密
-通常会把它删掉使解密者不容易找到它们额外汇入的模组和图片。
-war3map.wpm 记录.mp3、.wav等多媒体文件
+war3map.imp 记录Import Manager中的资料。加密通常会把它删掉使解密者不容易找到它们额外汇入的模组和图片。
+war3map.wpm 地图路径文件，储存地图路径信息
 war3mapmap.blp 这是游戏中显示的小地图图片
 war3mapMisc.txt 记录游戏平衡性常数的资料
 war3mapSkin.txt 记录游戏界面的资料
