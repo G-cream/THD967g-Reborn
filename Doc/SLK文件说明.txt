@@ -13,7 +13,7 @@ war3map.j jass数据库，触发器代码, 这个是地图的核心，所有跟�
 war3map.wtg 事实上是触发器的j文件，地球上的加密地图都把wtg文件给删了
 war3map.wts 注悉文件，这年头基本上没有，因为大部分对w3u，w3a，w3t的注释都由那几个文件自带
 war3map.shd 地层数据
-war3map.wpm mp3,wav等媒体文件的设置
+war3map.wpm 地图路径文件，储存地图路径信息
 war3mapPreview.tga 地图缩略图
 war3mapmap.blp 图形文件的设置
 war3mapmisc.txt 游戏平衡常数
