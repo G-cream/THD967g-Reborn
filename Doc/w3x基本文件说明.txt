@@ -1,0 +1,37 @@
+地形类
+
+war3map.w3d 物编地形装饰物资料
+war3map.w3e 地形纹理资料
+war3map.shd 地形层面资料(w3e,shd,doo是移植地形必备的)
+war3map.mmp 物件 具体不明
+war3map.w3c WE中摄影机的放置情形
+war3map.w3r WE中区域的放置情形(游戏所需资料会被转成JASS放在war3map.j，因此删掉不影响游戏)
+war3map.doo WE中可破坏和地形装饰物物件的放置情形
+war3mapUnits.doo WE中单位的放置情形(游戏所需资料会被转成JASS放在war3map.j，因此删掉不影响游戏)
+
+物体类
+war3map.w3a 技能资料(物编)
+war3map.w3b 物编可破坏物资料(物编)
+war3map.w3h 记录Buff（魔法效果）资料(物编)
+war3map.w3q 记录科技资料(物编)
+war3map.w3t 记录物品资料(物编)
+war3map.w3u 记录单位资料(物编)
+
+触发类
+war3map.wtg 记录WE中触发编辑器中的内容
+war3map.wct 记录WE中已转换成JASS的触发资料
+以上二个档案是WE中的触发资料，游戏要用的触发会被转成JASS放在war3map.j，因此删掉这两个文件的地图还是可以玩。如果缺少这两个资料，用WE读地图就会出错。一般加密会把这两个删除，因此地图一但加密，就几乎没办法百分之百还原成原始的资料。
+
+其它
+war3map.j JASS文件。这是地图的核心，为游戏必需资料，包含所有地图摆放的建筑物、角色、触发事件的指令、.....等等。懂JASS的人可藉由修改这个文件改动大部分的地图内容（当然，你要有熟练的jass技术）。此文件移到Scripts\war3map.j也可以用，有些加密会把此档案移到该处而让不知道路径的人找不到它(笨蛋才找不到)。
+war3map.wts 记录字符串资料。地图设置，触发编辑器、物件编辑器等的 文字 资料都会被存放在这里。如果要中文化一张加密的地图，只须修改此文件再汇回原地图即可。
+war3map.blp 小地图的图片。WE本身就有汇出此文件的功能
+war3map.w3i 记录游戏一开始资讯(名称、几打几、简介、作者...，镜头范围)、种族设定、玩家设定、......其中文字部分保存在wts
+war3map.w3s 记录声音编辑器的资料
+war3map.imp 记录Import Manager中的资料。加密
+通常会把它删掉使解密者不容易找到它们额外汇入的模组和图片。
+war3map.wpm 记录.mp3、.wav等多媒体文件
+war3mapmap.blp 这是游戏中显示的小地图图片
+war3mapMisc.txt 记录游戏平衡性常数的资料
+war3mapSkin.txt 记录游戏界面的资料
+war3mapPreview.tga TGA格式预览图片
