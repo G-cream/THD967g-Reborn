@@ -1,330 +1,72 @@
-1. 地图基本文件说明
-参考链接基本文件说明
-war3map.w3u 单位
-war3map.w3t 物品
-war3map.w3b 可破坏的
-war3map.w3d 地形装饰物
-war3map.w3a 技能
-war3map.w3h 魔法特效
-war3map.w3q 升级
-war3map.w3i 储存地图的基本设置
-war3map.w3e 储存地图的地形信息
-war3map.j jass数据库，触发器代码, 这个是地图的核心，所有跟地图设置有关的资料如地图摆放的建筑物、角色、技能、触发事件的指令等等，只可惜是用jass语言保存的。如果你懂jass的话可以在这个文件里任意改动任何数据。包括触发指令。
-war3map.wtg 事实上是触发器的j文件，地球上的加密地图都把wtg文件给删了
-war3map.wts 注悉文件，这年头基本上没有，因为大部分对w3u，w3a，w3t的注释都由那几个文件自带
-war3map.shd 地层数据
-war3map.wpm mp3,wav等媒体文件的设置
-war3mapPreview.tga 地图缩略图
-war3mapmap.blp 图形文件的设置
-war3mapmisc.txt 游戏平衡常数
-war3mapUnits.doo 地图的物品摆放信息
-注：slk加密地图解压后会缺少一些单位、物品、技能等的文件，多一个Units文件夹，接下来介绍Units文件夹中常用slk文件。
-
-2. Units常用文件介绍
+Units常用文件介绍
 参考链接slk文件详解
 
-CampaignAbilityStrings.txt 技能文本说明，如技能描述等
-CampaignUnitStrings.txt 单位文本说明，如英雄介绍、英雄名字等
-CampaignUpgradeStrings.txt 科技文本
-CommonAbilityStrings.txt 魔法特效文本
-ItemAbilityStrings.txt 物品技能文本
-ItemStrings.txt 物品文本
-NeutralUpgradeStrings.txt 科技升级描述
+单位：
+Units\\CampaignUnitFunc.txt
+Units\\CampaignUnitStrings.txt 单位文本说明，如英雄介绍、英雄名字等
+Units\\HumanUnitFunc.txt
+Units\\HumanUnitStrings.txt
+Units\\NeutralUnitFunc.txt
+Units\\NeutralUnitStrings.txt
+Units\\NightElfUnitFunc.txt
+Units\\NightElfUnitStrings.txt
+Units\\OrcUnitFunc.txt
+Units\\OrcUnitStrings.txt
+Units\\UndeadUnitFunc.txt
+Units\\UndeadUnitStrings.txt
+Units\\UnitAbilities.slk 单位技能
+Units\\UnitBalance.slk 单位定义，例如单位初始属性等
+Units\\UnitData.slk 单位数据
+Units\\UnitWeapons.slk 单位武器
+Units\\UnitUI.slk 单位模型
 
-AbilityBuffData.slk 技能效果
-AbilityData.slk 技能属性
-AbilityMetaData.slk 技能自定义属性
-ItemData.slk 物品属性
-ItemString.txt 物品描述
-UnitAbilities.slk 单位技能
-UnitBalance.slk 单位定义，例如单位初始属性等
-UnitData.slk 单位数据
-unitUI.slk 单位模型
-UnitWeapons.slk 单位武器
-UpgradeData.slk 升级数据
+物品：
+Units\\ItemData.slk 物品属性
+Units\\ItemFunc.txt
+Units\\ItemStrings.txt 物品描述
+
+可破坏物：
+Units\\DestructableData.slk
+
+装饰物：
+Doodads\\Doodads.slk
+
+技能：
+Units\\AbilityMetaData.slk 技能自定义属性
+Units\\AbilityData.slk 技能属性
+Units\\CampaignAbilityFunc.txt
+Units\\CampaignAbilityStrings.txt 技能文本说明，如技能描述等
+Units\\CommonAbilityFunc.txt
+Units\\CommonAbilityStrings.txt
+Units\\HumanAbilityFunc.txt
+Units\\HumanAbilityStrings.txt
+Units\\ItemAbilityFunc.txt
+Units\\ItemAbilityStrings.txt 物品技能文本
+Units\\NeutralAbilityFunc.txt
+Units\\NeutralAbilityStrings.txt
+Units\\NightElfAbilityFunc.txt
+Units\\NightElfAbilityStrings.txt
+Units\\OrcAbilityFunc.txt
+Units\\OrcAbilityStrings.txt
+Units\\UndeadAbilityFunc.txt
+Units\\UndeadAbilityStrings.txt
+
+Buff效果：（文本说明在技能的txt文件中）
+Units\\AbilityBuffData.slk
+
+科技：
+Units\\CampaignUpgradeFunc.txt
+Units\\CampaignUpgradeStrings.txt 科技文本
+Units\\HumanUpgradeFunc.txt
+Units\\HumanUpgradeStrings.txt
+Units\\NeutralUpgradeFunc.txt
+Units\\NeutralUpgradeStrings.txt
+Units\\NightElfUpgradeFunc.txt
+Units\\NightElfUpgradeStrings.txt
+Units\\OrcUpgradeFunc.txt
+Units\\OrcUpgradeStrings.txt
+Units\\UndeadUpgradeFunc.txt
+Units\\UndeadUpgradeStrings.txt
+Units\\UpgradeData.slk 升级数据
 
 这里简单介绍一下上述各文本之间的关系
-
-3. SLK文件常用属性介绍
-txt文件一般直接用编辑器打开就能看见介绍，这里主要介绍SLK文件中一些常修改属性。
-
-3.1 AbilityData.slk 文件
-A alias 技能唯一编码
-B code 类型编码，技能类型
-C uberAlias Lookup时的名字
-D comments 说明
-E useInEditor 是否在编辑器中使用
-F hero 是否是英雄能力
-G item 是否是物品的能力
-H sort 类别
-I checkDep 从属检查，1玩家的能力0creep的能力
-J levels 可以升的等级
-K reqLevel 升第一级需要的等级
-L targs 目标
-M Cast1 第一级费用
-…
-M-AQ定义了1、2、3级的属性，其中Cool表示冷却时间，Area表示范围，Rng表示施法距离，DataA表示伤害
-…
-AU Data34 第3级第4个数据
-
-3.2 UnitAbilities.slk 文件
-A unitAbilID 唯一编码
-B sortAbil 能力类别
-C comment(s) 说明
-D auto 自动施放
-E abilList 能力列表
-F heroAbilList 英雄能力列表，即升级技能栏
-G InBeta Beta版中出现
-
-3.3 UnitBalance.slk 文件
-A unitBalanceID 单位ID
-B sort 类别
-C sort2 类别2
-D comment(s) 说明
-E level 等级
-F 是否召唤单位，建筑物也是召唤单位
-G goldcost 金费用
-H lumbercost 木材费用
-I goldRep 金回收
-J lumberRep 木材回收
-K fmade 生产人口数
-J fused 占用人口
-M bountydice 随机奖励点数
-N bountysides 随机次数
-O bountyplus 随意额外点数
-P stockMax 最大存储数
-Q stockRegen 存储回复时间
-R stockStart 存储开始时间
-S HP 开始HP
-T realHP 真实HP
-U regenHP HP回复率
-V regenType 回复类型
-W manaN 开始Mana
-X realM 真实Mana
-Y mana0 额外Mana
-Z regenM Mana回复率
-AA def 基础防御
-AB defUp 每升一级增加的防御
-AC realdef 真实防御
-AD defType 防御类型
-AE spd 速度
-AF bldtm
-AG sight 视野
-AH nsight 夜间视野
-AI STR 力量
-AJ INT 智力
-AK AGI 敏捷
-AL STRplus 每次升级力量的增加
-AM INTplus 每次升级智力的增加
-AN AGIplus 每次升级敏捷的增加
-AO abilTest 能力测试
-AP Primary 主要属性
-AQ upgrades 可升级的能力
-AR InBeta 是否在Beta版中出现
-
-3.4 UnitData.slk 文件
-A unitId 编号
-B sort 类别
-C comment(s) 说明
-D race 种族
-E prio 单位组中的排序
-F threat 是否是有威胁的 1是0不是
-G type 单位类型，例如巨人、不死的等等
-H valid 是否有效
-I deathType 死亡类型
-J deadth 死亡
-K canSleep 是可不可以睡眠
-L cargoSize 可以通过的宽度
-M movetp 移动类型
-N moveHeight 移动高度
-O moveFloor 移动的层次
-P launchX 开始X
-Q launchY 开始Y
-R launchZ 开始Z
-S impactZ 冲击Z
-T turnRate 转身速度
-U propWin 单位移动时面对的角度
-V orientInterp 单位面向方向的补充
-W formation 编队
-X castpt 类似于dmgpt的一个参数关于法数伤害
-Y castbsw 法术的另外一个参数
-Z targType 对象
-AA pathTex 贴图
-AB fatLOS
-AC collision 大小，2x2 small = 16,2x2 large = 31, 3x3 small = 32, 3x3 large
-= 47
-AD points 点数，和时间有关，不知道有什么用。
-AE buffType AI放置的类型
-AF buffRadius AI放置的范围
-AG namecount 名称总数
-AH InBeta 在Beta版出现
-
-3.5unitUI.slk 文件
-A unitID id
-B file 模型文件路径
-C unitSound 声音
-D tilesets 碎片设置
-E tilesetSpecific 是否使用特殊碎片
-F name 名称
-G unitClass 单位类型
-H special 是否特殊
-I inEditor 是否在编辑器中出现
-J hiddenInEditor 是否能在编辑器中编译
-K hostilePal 敌对
-L dropItems 能否掉物品
-M nbrandom 如果这个单位是自然的建筑物能否被占领
-N nbmmlcon 如果这个单位是自然的建筑物，能否在小地图中显示
-O useClickHelper 是否使用帮助
-P blend 混合模式
-Q scale 比例，设置模型大小
-R scaleBull 是否公布由这个单位继承的比例
-S preventPlace 能否被放置
-T requirePlace 放置前提，只能是一种
-U isbldg 是否是bldg
-V maxPitch 最大倾斜
-W maxRoll 最大滚动
-X elevPts 计算海拔用的点数
-Y elevRad 计算深度用的点数
-Z fogRad 雾的深度
-AA walk 移动速度
-AB run 跑动速度
-AC selZ 选择圈的高度
-AD weap1 武器1
-AE weap2 武器2
-AF teamColor 小队颜色-1玩家的颜色
-AG customTeamColor 是否可以定制小队颜色
-AH armor 护甲类型
-AI modelScale 模型比例
-AJ red 红色
-AK green 绿色
-AL blue 蓝色
-AM uberSplat 间隔
-AN unitShadow 单位阴影
-AO buildingShadow 建筑物阴影
-AP shadowW 阴影宽度
-AQ shadowH 阴影高度
-AR shadowX 阴影X
-AS shadowY 阴影Y
-AT occH
-AU InBeta 在Beta版中出现
-
-3.6 UnitWeapons.slk 文件
-A unitWeapID id
-B sortWeap 武器类别
-C sort2 类别2
-D comment(s) 说明
-E weapsOn 那种武器可用
-F-AL 是一种武器的定义
-F weapType1 武器1类型
-G targs1 目标
-H acquire 学的，不知道什么意思
-I minRange 最小平行距离
-J rangeN1 单位攻击平行距离
-K RngTst 攻击失误距离
-L RngBuff1 如果目标移动了，判断是否还能打到目标
-M atkType1 攻击类型
-N weapTp1 武器类型1
-O cool1 冰冻时间，即停顿时间
-P mincool1 最小停顿时间
-Q dice1 骰子次数
-R sides1 骰子的面数
-S dmgplus1 升级对伤害的提高
-T DmgUpg 对非目标的伤害
-U dmod1 为平衡性设置的一个字段
-V dmgUp1
-W mindmg1 最小伤害
-X avgdmg1 平均伤害
-Y DPS 持续伤害
-Z maxdmg1 最大伤害
-AA dmgpt1 只要攻击就计算在内的一个参数
-AB backSw1 活跃时间
-AC Farea1 伤害面积
-AD Harea1 伤害减半的面积
-AE Qarea1 1/4伤害面积
-AF Hfact1 1/2伤害时间
-AG Qfact1 1/4伤害时间
-AH splashTargs1 大面积伤害的对象
-AI targCount1 目标总数
-AJ damageLoss1 伤害失误率
-AK spillDist1 迸溅距离
-AL spillRadius1 迸溅范围
-AM-BN是第二种武器的属性，和第一种武器的定义一样
-BO InBeta 是否在Beta版中出现
-
-3.7 UnitAbilities.slk 文件
-A upgradeid Id
-B comments 说明
-C class 类别
-D race 种族
-E flag 标志位，必须是2的幂
-F used 是否可用
-G maxlevel 最大等级
-H inherit 可继承
-I goldbase 基础金需要
-J goldmod 每次升级增加的金
-K lumberbase 基础木头需要
-L lumbermod 每次升级增加的木头
-M timebase 基础时间需要
-N timemod 每次升级增加的时间
-O effect1 等级1的效果
-P base1 等级1的基础
-Q mod1 等级1的增量
-R-Z分别是等级2、3、4的效果，和等级1一样。
-
-4. war3mapmisc.txt游戏平衡常数
-直接用文本形式打开针对以下这个相对应的做修改
-
-MaxUnitLevel=100 单位最大等级
-UpgradeRefundRate=1.0 取消建筑升级偿还率
-ConstructionRefundRate=1.0 取消建筑建造尝坏率
-DamageBonusSiege=1.00,0.50,1.00,1.50,1.00,0.50,0.15,1.50 攻城
-DamageBonusNormal=1.00,1.50,1.00,0.70,1.00,1.00,0.15,1.00 普通
-DamageBonusPierce=2.00,0.75,1.00,0.35,1.00,0.50,0.15,1.50 穿刺 = [装甲类型排列顺序]
-DamageBonusSpells=1.00,1.00,1.00,1.00,1.00,0.75,0.15,1.00 法术 =[轻型，中形，重型，加强，普通，英雄，神圣，无装甲]
-DamageBonusMagic=1.25,0.75,2.00,0.35,1.00,0.50,0.15,1.00 魔法
-EtherealDamageBonus=0.00,0.00,0.00,1.66,0.00,1.66,0.00 虚无奖励
-DamageBonusHero=1.00,1.00,1.00,0.50,1.00,1.00,0.15,1.00 英雄
-CallForHelp=1000.0 呼叫帮助范围
-CreepCallForHelp=1000.0 呼叫帮助范围，中立
-ChanceToMiss=0.33 低对高失误几率
-DefenseArmor=0.03 装甲伤害减少参数
-PickupItemRange=250.0 拾起物品范围
-DropItemRange=150.0 掉落物品范围
-GiveItemRange=250.0 给予物品范围
-PawnItemRate=0.8 物品贩卖价格比
-PawnItemRange=1500.0 贩卖物品范围
-MaxUnitSpeed=522.0 单位速度最大
-MinUnitSpeed=1.0 单位速度最小
-MaxBldgSpeed=522.0 建筑速度最大
-MinBldgSpeed=1.0 建筑速度最小
-TradingIncLarge=10000 控制点击（CTRL+左键）增加资源量（联盟交易资源）
-TradingIncSmall=1000 普通点击（联盟交易资源）
-UpkeepGoldTax=0.00,0.00,0.30,0.60,0.60,0.60,0.60,0.60,0.60,0.60 黄金维修费
-SummonedKillFactor=1.0 英雄EXP取得——英雄-上一个值因素
-GrantHeroXPFormulaC=0.0 英雄EXP取得——英雄-固定因素
-GrantHeroXPFormulaB=9.0 英雄EXP取得——英雄-等级因素
-GrantHeroXP=40 英雄EXP取得——英雄-表格
-NeedHeroXPFormulaA=1.04 英雄EXP要求——上一个值因素
-NeedHeroXPFormulaB=200.0 英雄EXP要求——列表
-
-StrRegenBonus=0.15 每点力量生命恢复奖励
-StrHitPointBonus=75.0 每点力量生命值奖励
-StrAttackBonus=3.0 每点主要属性攻击力奖励
-AgiMoveBonus=0.1 每点敏捷移动速度奖励
-AgiDefenseBonus=0.3 每点敏捷防御奖励
-IntManaBonus=100.0 每点智力魔法值奖励
-AgiDefenseBase=0.0 防御基础值（敏捷奖励之前）
-IntRegenBonus=0.03 每点智力魔法恢复奖励
-AgiAttackSpeedBonus=0.01 每点敏捷攻击速度奖励
-HeroExpRange=100000.0 英雄EXP最大取得范围
-MaxHeroLevel=1000 英雄最大等级
-
-BuildingKillsGiveExp=1 建筑物杀死单位是否给予经验值（0是假，1是真）
-MaxLevelHeroesDrainExp=0 最高等级英雄是否消耗经验值（0是假，1是真）
-HeroFactorXP=100 中立生物经验参数
-GrantNormalXPFormulaC=0.0 英雄EXP获取——普通-固定因素
-GrantNormalXPFormulaB=4.0 英雄EXP获取——普通-等级因素
-GrantNormalXP=15 英雄EXP获取——普通-表格
-FoodCeiling=300 人口限制
-FrostAttackSpeedDecrease=0.2 冰冻 攻击速度降低
-FrostMoveSpeedDecrease=0.4 冰冻 移动速度降低

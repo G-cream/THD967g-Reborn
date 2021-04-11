@@ -34,3 +34,62 @@ war3mapmap.blp 这是游戏中显示的小地图图片
 war3mapMisc.txt 记录游戏平衡性常数的资料
 war3mapSkin.txt 记录游戏界面的资料
 war3mapPreview.tga TGA格式预览图片
+
+
+war3mapmisc.txt游戏平衡常数
+直接用文本形式打开针对以下这个相对应的做修改
+
+MaxUnitLevel=100 单位最大等级
+UpgradeRefundRate=1.0 取消建筑升级偿还率
+ConstructionRefundRate=1.0 取消建筑建造尝坏率
+DamageBonusSiege=1.00,0.50,1.00,1.50,1.00,0.50,0.15,1.50 攻城
+DamageBonusNormal=1.00,1.50,1.00,0.70,1.00,1.00,0.15,1.00 普通
+DamageBonusPierce=2.00,0.75,1.00,0.35,1.00,0.50,0.15,1.50 穿刺 = [装甲类型排列顺序]
+DamageBonusSpells=1.00,1.00,1.00,1.00,1.00,0.75,0.15,1.00 法术 =[轻型，中形，重型，加强，普通，英雄，神圣，无装甲]
+DamageBonusMagic=1.25,0.75,2.00,0.35,1.00,0.50,0.15,1.00 魔法
+EtherealDamageBonus=0.00,0.00,0.00,1.66,0.00,1.66,0.00 虚无奖励
+DamageBonusHero=1.00,1.00,1.00,0.50,1.00,1.00,0.15,1.00 英雄
+CallForHelp=1000.0 呼叫帮助范围
+CreepCallForHelp=1000.0 呼叫帮助范围，中立
+ChanceToMiss=0.33 低对高失误几率
+DefenseArmor=0.03 装甲伤害减少参数
+PickupItemRange=250.0 拾起物品范围
+DropItemRange=150.0 掉落物品范围
+GiveItemRange=250.0 给予物品范围
+PawnItemRate=0.8 物品贩卖价格比
+PawnItemRange=1500.0 贩卖物品范围
+MaxUnitSpeed=522.0 单位速度最大
+MinUnitSpeed=1.0 单位速度最小
+MaxBldgSpeed=522.0 建筑速度最大
+MinBldgSpeed=1.0 建筑速度最小
+TradingIncLarge=10000 控制点击（CTRL+左键）增加资源量（联盟交易资源）
+TradingIncSmall=1000 普通点击（联盟交易资源）
+UpkeepGoldTax=0.00,0.00,0.30,0.60,0.60,0.60,0.60,0.60,0.60,0.60 黄金维修费
+SummonedKillFactor=1.0 英雄EXP取得——英雄-上一个值因素
+GrantHeroXPFormulaC=0.0 英雄EXP取得——英雄-固定因素
+GrantHeroXPFormulaB=9.0 英雄EXP取得——英雄-等级因素
+GrantHeroXP=40 英雄EXP取得——英雄-表格
+NeedHeroXPFormulaA=1.04 英雄EXP要求——上一个值因素
+NeedHeroXPFormulaB=200.0 英雄EXP要求——列表
+
+StrRegenBonus=0.15 每点力量生命恢复奖励
+StrHitPointBonus=75.0 每点力量生命值奖励
+StrAttackBonus=3.0 每点主要属性攻击力奖励
+AgiMoveBonus=0.1 每点敏捷移动速度奖励
+AgiDefenseBonus=0.3 每点敏捷防御奖励
+IntManaBonus=100.0 每点智力魔法值奖励
+AgiDefenseBase=0.0 防御基础值（敏捷奖励之前）
+IntRegenBonus=0.03 每点智力魔法恢复奖励
+AgiAttackSpeedBonus=0.01 每点敏捷攻击速度奖励
+HeroExpRange=100000.0 英雄EXP最大取得范围
+MaxHeroLevel=1000 英雄最大等级
+
+BuildingKillsGiveExp=1 建筑物杀死单位是否给予经验值（0是假，1是真）
+MaxLevelHeroesDrainExp=0 最高等级英雄是否消耗经验值（0是假，1是真）
+HeroFactorXP=100 中立生物经验参数
+GrantNormalXPFormulaC=0.0 英雄EXP获取——普通-固定因素
+GrantNormalXPFormulaB=4.0 英雄EXP获取——普通-等级因素
+GrantNormalXP=15 英雄EXP获取——普通-表格
+FoodCeiling=300 人口限制
+FrostAttackSpeedDecrease=0.2 冰冻 攻击速度降低
+FrostMoveSpeedDecrease=0.4 冰冻 移动速度降低
