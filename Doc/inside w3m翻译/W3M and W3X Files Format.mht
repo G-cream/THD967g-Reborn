@@ -1,0 +1,1654 @@
+From: =?Windows-1252?B?08kgV2luZG93cyBJbnRlcm5ldCBFeHBsb3JlciA3ILGjtOY=?=
+Subject: W3M and W3X Files Format
+Date: Fri, 16 May 2008 19:13:45 +0800
+MIME-Version: 1.0
+Content-Type: text/html;
+	charset="Windows-1252"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.lirmm.fr/~guignon/content/projects/W3ZME/w3m-specs.html
+X-MimeOLE: Produced By Microsoft MimeOLE V6.0.6000.16545
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>W3M and W3X Files Format</TITLE>
+<META http-equiv=3DContent-Type content=3D"text/html; =
+charset=3Dwindows-1252">
+<META content=3D"MSHTML 6.00.6000.16643" name=3DGENERATOR></HEAD>
+<BODY>Last update: 19/04/2004
+<P><U><B>Introduction</B></U></P>
+<P>This documentation contains almost all the specifications of Warcraft =
+III=20
+maps files (<I>*.w3m and *.w3x</I>). This was made without any help from =
+
+Blizzard Entertainement and did not involve "reverse engineering" of the =
+
+Warcraft III engine. The specification of each kind of file depend of =
+its=20
+version. I did document here the current version used by Warcraft III =
+Retail=20
+(initial version); make sure the file you're looking at or modifying are =
+using=20
+the same version/format as describbed. I'm French so please, forgive my =
+English!=20
+Finally, use this documentation at your own risks: I take no =
+responsability if=20
+you corrupt your maps.</P>
+<P><B><U>1) Things you need to know first to mod' a map!</U></B></P>
+<P><B>1.1) Your environment</B></P>
+<P>You'll need Warcraft III Retail installed let's say in "<I>C:\Program =
+
+Files\Warcraft III\</I>". I'll talk about files of Warcraft 3 Retail =
+(initial=20
+version) here, that's why some files format can vary depending which =
+version=20
+you're using; you may have to figure out some differences in the file =
+formats.=20
+If your Warcraft III installation is clean, you should have these files =
+(of=20
+course, there are other files in there but I'll uses these for =
+exemples):<BR>in=20
+your "<I>C:\Program Files\Warcraft III\</I>":<BR>&nbsp;&nbsp; -=20
+<I>war3.mpq</I><BR>and in your "<I>C:\Program Files\Warcraft=20
+III\Maps\</I>":<BR>&nbsp;&nbsp; - <I>(4)Lost =
+Temple.w3m</I><BR>&nbsp;&nbsp; (and=20
+many other w3m of course...)<BR><BR>"W3M" map files can be opened with =
+any MPQ=20
+editor that supports Warcraft 3.<BR>You'll need one. I suggest WinMPQ=20
+(ShadowFlare), you can get it here:<BR>&nbsp;&nbsp; <A=20
+href=3D"http://shadowflare.ancillaediting.net/dwnload.html#WinMPQ"=20
+target=3D_blank>http://shadowflare.ancillaediting.net/dwnload.html#WinMPQ=
+</A><BR>&nbsp;&nbsp;=20
+Read the documentation and installation notes.<BR>You can also use =
+MPQView and=20
+do the following:<BR>&nbsp;&nbsp; - get MPQView=20
+there:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <A=20
+href=3D"http://war3pub.net/upload/index.php?action=3Ddownloadfile&amp;fil=
+ename=3Dmpqview11b.zip"=20
+target=3D_blank>http://war3pub.net/upload/index.php?action=3Ddownloadfile=
+&amp;filename=3Dmpqview11b.zip</A><BR>&nbsp;&nbsp;=20
+- then put the storm.dll that comes with Warcraft 3 Retail in your =
+MPQView=20
+directory.<BR>&nbsp;&nbsp; - then create a text file called "list.txt" =
+that=20
+contains the single line :=20
+<BLOCKQUOTE>(listfile) </BLOCKQUOTE>&nbsp;&nbsp; - run MPQView and set =
+the "data=20
+file" to your "list.txt".<BR>&nbsp;&nbsp; - open the mpq/w3m you want to =
+read.=20
+You should see only one file called (listfile).<BR>&nbsp;&nbsp; - =
+extract this=20
+file somewhere using "save" and set this new file as your "data file" =
+for=20
+MPQView.<BR>&nbsp;&nbsp; - then you're supposed to have all the files=20
+displayed.<BR>If you want to "play" with the map files, you'll also need =
+a=20
+hexadecimal editor. My favorite one is HexWorkshop (<A=20
+href=3D"http://www.bpsoft.com/">http://www.bpsoft.com/</A>).<BR>
+<P><B>1.2) Warcraft 3 Files</B></P>
+<P>1.2.1) About&nbsp; MPQ Files</P>
+<P>MPQ are like "zip" or "rar" files as they contain a directory =
+structure with=20
+compressed files.<BR>I'll not talk about the MPQ format here since =
+Quantam did=20
+it already. If you want to know more about it I suggest you go =
+there:<BR><A=20
+href=3D"http://www.campaigncreations.com/starcraft/inside_mopaq/"=20
+target=3D_blank>http://www.campaigncreations.com/starcraft/inside_mopaq/<=
+/A><BR></P>
+<P>1.2.2) Warcraft III&nbsp;File Structure</P>
+<P>When it's looking for a file, Warcraft III looks first in the "real"=20
+directories (the one you see in Windows Explorer) <U>if you set up a =
+specific=20
+registery key</U> which is:<BR>&nbsp;&nbsp; Path:=20
+<I>HKEY_CURRENT_USER\Software\Blizzard Entertainment\Warcraft=20
+III\</I><BR>&nbsp;&nbsp; Key name: "<I>Allow Local =
+Files</I>"<BR>&nbsp;&nbsp;=20
+Key type: dword<BR>&nbsp;&nbsp; Key value: 1<BR>If the registery key is =
+not set=20
+or the file was not found in the "real" directories, then it looks in =
+your map=20
+(w3m file), then in the last patch mpq (War3Patch.mpq) and finally in =
+the main=20
+mpq (War3.mpq).<BR>It means that you don't need to modify official MPQs =
+(DON'T=20
+modify your War3.mpq!), you just need to use the same directory/file =
+structure=20
+in your "<I>C:\Program Files\Warcraft III\</I>".<BR>Adding files in a =
+map=20
+(<I>.w3m</I> file) works with most of the files but not all.<BR>It Works =
+(for=20
+example) for:<BR><I>&nbsp;&nbsp; Units\unitUI.slk<BR>&nbsp;&nbsp;=20
+Units\UnitMetadata.slk<BR>&nbsp;&nbsp; =
+Units\HumanUnitFunc.txt<BR>&nbsp;&nbsp;=20
+Units\HumanUnitStrings.txt<BR>&nbsp;&nbsp;=20
+Units\HumanAbilityFunc.txt<BR>&nbsp;&nbsp;=20
+Units\HumanAbilityStrings.txt<BR>&nbsp;&nbsp;=20
+Units\HumanUpgradeFunc.txt<BR>&nbsp;&nbsp;=20
+Units\HumanUpgradeStrings.txt<BR></I><BR>But it doesn't work=20
+for:<BR><I>&nbsp;&nbsp; Units\AbilityData.slk<BR>&nbsp;&nbsp;=20
+Units\MiscData.txt<BR></I><BR>When you really need to change a file that =
+have to=20
+be loaded outside or before a map is loaded, I recommand you backup your =
+
+"<I>war3patch.mpq</I>" and create a new one, add the files of the =
+original=20
+<I>war3patch.mpq</I> and then add your modified files to that new=20
+"<I>war3patch.mpq</I>" you just created.<BR>Don't forget to make a =
+backup of=20
+your original war3patch.mpq! You may need to put it back when playing =
+with other=20
+people (to avoid <I>desync</I> problems) or when you need to update your =
+
+war3.<BR><BR><U>Example:<BR></U>You have a file called =
+"<I>UI\MiscData.txt</I>"=20
+in both "<I>War3Patch.mpq</I>" and "<I>War3.mpq</I>". Warcraft will use =
+the one=20
+in "<I>War3Patch.mpq</I>". If you want to modify it, just create in your =
+
+"<I>C:\Program Files\Warcraft III\</I>" diectory a "<I>UI\</I>" =
+directory and=20
+extract the file "<I>MiscData.txt</I>" of your "<I>War3Patch.mpq</I>" =
+there=20
+(you'll have: "<A=20
+href=3D"file:///C:/Program%20Files/Warcraft%20III/UI/MiscData.txt"><I>C:\=
+Program=20
+Files\Warcraft III\UI\MiscData.txt</I></A>"). The set the registery key=20
+described above with regedit.<BR>You can now modify it and next time =
+you'll=20
+start War3, it'll use it instead of the original=20
+ones.<BR><BR><B>Warning!<BR>&nbsp;&nbsp; </B>- In some cases, if you =
+play with=20
+others, everybody will need to have the same modified files or you'll =
+get an=20
+error (like "<I>netsync error</I>").<BR>&nbsp;&nbsp; - Some files have a =
+
+"special" format and if you modify them, you could "falsify" this =
+format. In=20
+some cases it will work, in some others it won't. Be aware of that =
+'cause War3=20
+will try to find a "standard file" instead (the ones of the MPQs instead =
+of=20
+yours and you'll think it didn't try your stuff).<BR>&nbsp;&nbsp; - Some =
+files=20
+outside both <I>War3.mpq</I> and <I>War3Patch.mpq</I> will not be used =
+by=20
+Warcraft 3. These are exceptions.<BR></P>
+<P>1.2.3) Map files (W3M Files)</P>
+<P>To edit a map, you'll have to unpack the files of the "<I>w3m</I>" =
+somewhere,=20
+then modify them and finally put them back in a "<I>w3m</I>" file =
+(usually a new=20
+one). Since retail, W3M are a little bit different from simple MPQ =
+files: they=20
+got a header and a footer. I'll talk more about the W3M format in the =
+"W3M Files=20
+Format" section and the other files inside W3Ms in the following=20
+sections.<BR></P>
+<P><B>1.3) Warcraft 3 Data Format</B></P>
+<P>Blizzard uses several way to store data in its files. However they =
+often use=20
+generic types.<BR>-Integers<BR>
+<BLOCKQUOTE>Intergers are stored using 4 bytes in "Little Endian" order. =
+It=20
+  means that the first byte read is the lowest byte.<BR>They are just =
+like the=20
+  C++ "int" (signed) type. In some other documentation of this kind you =
+may see=20
+  them named "long".<BR>Size: 4 bytes<BR>Example: 1234 decimal =3D [00 =
+00 04 D2]h=20
+  will be stored in this order: [D2 04 00 00]h<BR></BLOCKQUOTE>-Short =
+Integers<BR>
+<BLOCKQUOTE>Short Integers are stored using 2 bytes in "Little Endian"=20
+  order.<BR>They are close to the C++ signed short but their range is =
+from=20
+  -16384 to 16383. It means the 2 highest bit are free of use for a flag =
+for=20
+  example.<BR>Size: 2bytes<BR></BLOCKQUOTE>-Floats<BR>
+<BLOCKQUOTE>Floats are using the standard IEEE 32bit float format. They =
+are=20
+  stored using 4 bytes and the "Little Endian" order.<BR>They are just =
+like the=20
+  C++ "float" type.<BR>Size: 4 bytes<BR>Example: 7654.32 decimal, this =
+number=20
+  can't be stored using this format so the system will take the closest =
+value=20
+  that can be represented using binary digits. The closest one is: =
+7654.319824=20
+  decimal =3D [45 EF 32 8F]h and will be stored as [8F 32 EF=20
+45]h<BR></BLOCKQUOTE>-Chars and Array of Chars<BR>
+<BLOCKQUOTE>They are just stored like standard chars (1 char =3D 1 byte) =
+and=20
+  array of chars (no null terminating char needed).<BR>Size (chars): 1=20
+  byte<BR>Size (array of chars): usually 4 =
+bytes<BR></BLOCKQUOTE>-Trigger Strings=20
+and Strings<BR>
+<BLOCKQUOTE>Strings are just arrays of chars terminated with a null char =
+(C++=20
+  '\0'). However Blizzard sometimes use special control codes to change =
+the=20
+  displayed color for the string. These codes are like "|c00BBGGRR" =
+where "BB",=20
+  "GG" and "RR" are hexadecimal values (using 2 digits each) for the =
+blue, the=20
+  green and the red values. If a string starts with "TRIGSTR_" (case =
+sensitive),=20
+  it's considered as a trigger string. A trigger string is kept in =
+memory as is=20
+  ("TRIGSTR_***") and is only changed when Warcraft 3 needs to display =
+it.=20
+  Instead of just writing "TRIGSTR_000" on the user screen, War3 will =
+look in=20
+  its trigger string table created when the map was loaded and display =
+the=20
+  corresponding trigger string instead. Trigger strings only work for =
+files=20
+  inside a w3m (Jass, w3i, ...) except for the WTS which is used to =
+define the=20
+  trigger string table itself. If the number following "TRIGSTR_" is =
+negative=20
+  the trigger string will refer to a null (empty) string, if "TRIGSTR_" =
+is=20
+  followed by text, it'll be considered as trigger string #0 ( =3D=20
+  "TRIGSTR_000").<BR>"TRIGSTR_7", "TRIGSTR_07", "TRIGSTR_007" and =
+"TRIGSTR_7abc"=20
+  are all representing trigger string #7. "TRIGSTR_ab7", "TRIGSTR_abc" =
+and=20
+  "TRIGSTR_" refer to trigger string #0. "TRIGSTR_-7" is negative and =
+will not=20
+  refer to a trigger string; it'll be displayed as "". By convention, =
+"TRIGSTR_"=20
+  is followed by 3 digits and the null char that ends the =
+string.<BR>Example 1:=20
+  your got the string "blah |c000080FFblah", War3 will display "blah =
+blah" but=20
+  the second "blah" will be orange (blue=3D00 + green=3D80 + red=3DFF =
+=3D=3D&gt;=20
+  orange)<BR>Example 2: you got "TRIGSTR_025" and trigger string 25 is =
+defined=20
+  (in the .wts file) as "blah|c000080FFblah", it'll display the same =
+result as=20
+  the previous example.<BR>Size (string): vary. String length + 1 (null=20
+  terminating char)<BR>Size (Trigger string): 12 =
+bytes<BR></BLOCKQUOTE>-Flags<BR>
+<BLOCKQUOTE>Flags are boolean values (true or false, 1 or 0). They can =
+be=20
+  stored using 4 bytes. Each bit is a flag (4 bytes =3D 32 bit =3D 32 =
+flags).=20
+  Blizzard uses integers to store its flags.<BR>Size: usually 4=20
+bytes<BR></BLOCKQUOTE>-Custom Types<BR>
+<BLOCKQUOTE>Sometimes, an integer and one or several flags can share =
+bytes.=20
+  This is the case in the W3E file format: the water level and 2 flags =
+are using=20
+  the same group of 4 bytes. How? the 2 highest bit are used for the =
+flags, the=20
+  rest is reserved for the water level (the value range is just =
+smaller).=20
+  Sometimes a byte can contain two or more different=20
+data.<BR></BLOCKQUOTE>-Structures:<BR>
+<BLOCKQUOTE>Warcraft 3 also uses structured types of various=20
+size.<BR></BLOCKQUOTE>&nbsp;=20
+<P><B><U>2) W3M Files Format</U></B></P>
+<P>A W3M file is a Warcraft III Map file (AKA Warcraft III Scenario in =
+the World=20
+Editor). It's just a MPQ (using a "new" compression format) with a =
+512bytes=20
+header. Sometimes, for official W3M files, it uses a footer of 260 bytes =
+for=20
+authentification purposes.<BR><BR>Here is the header format (fixed size =
+=3D 512=20
+bytes):<BR>char[4]: file ID (should be "HM3W")<BR>int: =
+unknown<BR>string: map=20
+name<BR>int: map flags (these are exactly the same as the ones in the =
+W3I=20
+file)<BR>0x0001: 1=3Dhide minimap in preview screens<BR>0x0002: =
+1=3Dmodify ally=20
+priorities<BR>0x0004: 1=3Dmelee map<BR>0x0008: 1=3Dplayable map size was =
+large and=20
+has never been reduced to medium<BR>0x0010: 1=3Dmasked area are =
+partially=20
+visible<BR>0x0020: 1=3Dfixed player setting for custom forces<BR>0x0040: =
+1=3Duse=20
+custom forces<BR>0x0080: 1=3Duse custom techtree<BR>0x0100: 1=3Duse =
+custom=20
+abilities<BR>0x0200: 1=3Duse custom upgrades<BR>0x0400: 1=3Dmap =
+properties menu=20
+opened at least once since map creation<BR>0x0800: 1=3Dshow water waves =
+on cliff=20
+shores<BR>0x1000: 1=3Dshow water waves on rolling shores<BR>int: max =
+number of=20
+players<BR>followed by 00 bytes until the 512 bytes of the header are=20
+filled.<BR><BR>Here is the footer format (optionnal):<BR>char[4]: footer =
+sign ID=20
+(should be "NGIS" =3D=3D 'sign' reversed)<BR>byte[256]: 256 data bytes =
+for=20
+authentification. I don't know how they are used at the =
+moment.<BR><BR>The MPQ=20
+part can contain the following=20
+files:<BR>(listfile)<BR>(signature)<BR>(attributes)<BR>war3map.w3e<BR>war=
+3map.w3i<BR>war3map.wtg<BR>war3map.wct<BR>war3map.wts<BR>war3map.j<BR>war=
+3map.shd<BR>war3mapMap.blp<BR>war3mapMap.b00<BR>war3mapMap.tga<BR>war3map=
+Preview.tga<BR>war3map.mmp<BR>war3mapPath.tga<BR>war3map.wpm<BR>war3map.d=
+oo<BR>war3mapUnits.doo<BR>war3map.w3r<BR>war3map.w3c<BR>war3map.w3u<BR>wa=
+r3map.w3s<BR>war3map.imp<BR>war3mapImported\*.*=20
+(wave files, and other kind of files saved by the world editor)<BR>We'll =
+see now=20
+what these files stand for.<BR></P>
+<P><B><U>3) "war3map.j" The JASS2 Script</U></B></P>
+<P>This is the main map script file. It's a text file and you can open =
+it with=20
+notepad.<BR>The language used is called JASS2 and has been developped by =
+
+Blizzard. It's a case sensitive language.<BR>When you play a map, the =
+jass=20
+script is loaded and executed. To run it, Warcraft III looks for the =
+function=20
+called "main".<BR>The language uses several keywords as described =
+here:</P>
+<TABLE borderColor=3D#000000 cellPadding=3D2 width=3D"100%" =
+bgColor=3D#c0c0c0=20
+  border=3D1><TBODY>
+  <TR>
+    <TD width=3D"25%"><B>Key word</B></TD>
+    <TD width=3D"75%"><B>Meaning</B></TD></TR>
+  <TR>
+    <TD width=3D"25%">function</TD>
+    <TD width=3D"75%">used to define a new fonction</TD></TR>
+  <TR>
+    <TD width=3D"25%">takes</TD>
+    <TD width=3D"75%">used to define the number of arguments for a=20
+    fontction&nbsp;</TD></TR>
+  <TR>
+    <TD width=3D"25%">returns</TD>
+    <TD width=3D"75%">sets the type of the value returned by a =
+function</TD></TR>
+  <TR>
+    <TD width=3D"25%">return</TD>
+    <TD width=3D"75%">makes a function leaves and returns a =
+value</TD></TR>
+  <TR>
+    <TD width=3D"25%">endfunction</TD>
+    <TD width=3D"75%">ends a function definition</TD></TR>
+  <TR>
+    <TD width=3D"25%">call</TD>
+    <TD width=3D"75%">used to call a function that returns =
+nothing</TD></TR>
+  <TR>
+    <TD width=3D"25%">globals</TD>
+    <TD width=3D"75%">used to define the list of global =
+variables</TD></TR>
+  <TR>
+    <TD width=3D"25%">endglobals</TD>
+    <TD width=3D"75%">ends the list of global variables =
+definition</TD></TR>
+  <TR>
+    <TD width=3D"25%">local</TD>
+    <TD width=3D"75%">defines a local variable</TD></TR>
+  <TR>
+    <TD width=3D"25%">set</TD>
+    <TD width=3D"75%">assigns a value to a variable</TD></TR>
+  <TR>
+    <TD width=3D"25%">if, elseif, else, then, endif</TD>
+    <TD width=3D"75%">if (...) then ...<BR>elseif (...) then ...<BR>else =
+
+      ...<BR>endif=20
+      <P>Just an "if-then-else-endif" chain like in Basic.</P></TD></TR>
+  <TR>
+    <TD width=3D"25%">loop, exitwhen, endloop</TD>
+    <TD width=3D"75%">used to make loops in the script</TD></TR>
+  <TR>
+    <TD width=3D"25%">constant</TD>
+    <TD width=3D"75%">defines a constant</TD></TR>
+  <TR>
+    <TD width=3D"25%">type</TD>
+    <TD width=3D"75%">defines a new type/class</TD></TR>
+  <TR>
+    <TD width=3D"25%">extends</TD>
+    <TD width=3D"75%">says what the mother type is</TD></TR>
+  <TR>
+    <TD width=3D"25%">native</TD>
+    <TD width=3D"75%">defines a function header of an external built-in =
+function=20
+      implemented in <I>Game.DLL</I></TD></TR></TBODY></TABLE>
+<P>Only two "native types" exists: "<I>nothing</I>" and "<I>handle</I>". =
+All the=20
+other types are derived (keyword "<I>extends</I>") from "<I>handle</I>". =
+You can=20
+get the full list of types and native functions from the file called=20
+"<I>Scripts\Common.j</I>" in your <I>War3.mpq</I> file. You can assign =
+several=20
+types of constant values to the handle type:&nbsp; a generic null value =
+called=20
+"<I>null</I>", any interger, any float, any string or trigger string,=20
+"<I>true</I>" and "<I>false</I>".<BR><BR>Here is the lis of operators =
+recognized=20
+by the language:=20
+<TABLE borderColor=3D#000000 cellPadding=3D2 width=3D"100%" =
+bgColor=3D#c0c0c0=20
+  border=3D1><TBODY>
+  <TR>
+    <TD width=3D"25%"><B>Operator</B></TD>
+    <TD width=3D"75%"><B>meaning</B></TD></TR>
+  <TR>
+    <TD width=3D"25%">( )</TD>
+    <TD width=3D"75%">parenthesis for priorities</TD></TR>
+  <TR>
+    <TD width=3D"25%">+</TD>
+    <TD width=3D"75%">addition (concatenation for strings)</TD></TR>
+  <TR>
+    <TD width=3D"25%">-</TD>
+    <TD width=3D"75%">substraction</TD></TR>
+  <TR>
+    <TD width=3D"25%">*</TD>
+    <TD width=3D"75%">multiplication</TD></TR>
+  <TR>
+    <TD width=3D"25%">/</TD>
+    <TD width=3D"75%">division</TD></TR>
+  <TR>
+    <TD width=3D"25%">=3D</TD>
+    <TD width=3D"75%">assignation</TD></TR>
+  <TR>
+    <TD width=3D"25%">=3D =3D, &lt;, &lt;=3D, &gt;, &gt;=3D, !=3D</TD>
+    <TD width=3D"75%">comparison (equal, lighter, lighter or equal, =
+greater,=20
+      greater or equal, different)</TD></TR>
+  <TR>
+    <TD width=3D"25%">not</TD>
+    <TD width=3D"75%">invert a boolean =
+value&nbsp;</TD></TR></TBODY></TABLE>
+<P><BR>The functions used by the World Editor are defined in=20
+"<I>Scripts\Blizzard.j</I>".<BR>Example of a function definition:<BR>
+<BLOCKQUOTE><I><B><FONT color=3D#0000ff>function</FONT></B> myfunction =
+<FONT=20
+  color=3D#0000ff><B>takes</B></FONT> nothing <FONT=20
+  color=3D#0000ff><B>returns</B></FONT> integer<BR>&nbsp;&nbsp; <FONT=20
+  color=3D#0000ff><B>local</B></FONT> string <FONT =
+color=3D#800080>str</FONT> =3D=20
+  <FONT color=3D#800000>"blah blah blah"</FONT><BR>&nbsp;&nbsp; <FONT=20
+  color=3D#0000ff><B>local</B></FONT> integer <FONT=20
+  color=3D#800080>i</FONT><BR>&nbsp;&nbsp; <FONT color=3D#008000>// =
+comments=20
+  line<BR></FONT>&nbsp;&nbsp; <B><FONT color=3D#ff0000>set</FONT></B> i =
+=3D <FONT=20
+  color=3D#800000>0</FONT><BR>&nbsp;&nbsp; <FONT=20
+  color=3D#0000ff><B>loop</B></FONT><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =
+<FONT=20
+  color=3D#ff0000><B>set</B></FONT> <FONT color=3D#800080>i </FONT>=3D =
+<FONT=20
+  color=3D#800080>i</FONT> +<FONT color=3D#800000>=20
+  1</FONT><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <FONT=20
+  color=3D#0000ff><B>if</B></FONT> (<FONT color=3D#800080>i</FONT> =
+=3D=3D <FONT=20
+  color=3D#800000>27</FONT>) <FONT=20
+  color=3D#0000ff><B>then</B></FONT><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=20
+  &nbsp;&nbsp; <FONT color=3D#0000ff><B>call</B></FONT>=20
+  DisplayTimedTextToPlayer(GetLocalPlayer(), <FONT =
+color=3D#800000>0</FONT>, <FONT=20
+  color=3D#800000>0</FONT>, <FONT color=3D#800000>60</FONT>, <FONT=20
+  color=3D#800080>str</FONT>)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <B><FONT =
+
+  color=3D#0000ff>endif</FONT></B><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =
+<FONT=20
+  color=3D#0000ff><B>exitwhen</B></FONT> <FONT color=3D#800080>i</FONT> =
+=3D=3D <FONT=20
+  color=3D#800000>30</FONT><BR>&nbsp;&nbsp; <FONT=20
+  color=3D#0000ff><B>endloop</B></FONT><BR>&nbsp;&nbsp; <FONT=20
+  color=3D#0000ff><B>return</B></FONT> <FONT =
+color=3D#800080>i</FONT><BR><FONT=20
+  color=3D#0000ff><B>endfunction</B></FONT>&nbsp;</I> =
+</BLOCKQUOTE>&nbsp;=20
+<P><B><U>4) "war3map.w3e" The environment</U></B></P>
+<P>This is the tileset file. It contains all the data about the tilesets =
+of the=20
+map. Let's say the map is divided into squares called "tiles". Each tile =
+has 4=20
+corners. In 3D, we define surfaces using points and in this case tiles =
+are=20
+defined by their corners. I call one tile corner a "tilepoint". So if =
+you want a=20
+256x256 map, you'll have 257x257 tilepoints. That's also why a tile =
+texture is=20
+defined by each of its four tilepoints. A tile can be half dirt, one =
+quarter=20
+grass and one quarter rock for example. The first tilepoint defined in =
+the file=20
+stands for the lower left corner of the map when looking from the top, =
+then it=20
+goes line by line (horizontal). Tilesets are the group of textures used =
+for the=20
+ground.<BR>Here is the file format:<BR>Header:<BR>char[4]: file ID =3D=20
+"W3E!"<BR>int: w3e format version [0B 00 00 00]h =3D version 11<BR>char: =
+main=20
+tileset [TS]<BR></P>
+<TABLE borderColor=3D#000000 cellPadding=3D2 width=3D300 border=3D1>
+  <TBODY>
+  <TR>
+    <TD width=3D"50%"><B>Tileset</B></TD>
+    <TD width=3D"50%"><B>Meaning</B></TD></TR>
+  <TR>
+    <TD width=3D"50%">A</TD>
+    <TD width=3D"50%">Ashenvale</TD></TR>
+  <TR>
+    <TD width=3D"50%">B&nbsp;</TD>
+    <TD width=3D"50%">Barrens</TD></TR>
+  <TR>
+    <TD width=3D"50%">C</TD>
+    <TD width=3D"50%">Felwood</TD></TR>
+  <TR>
+    <TD width=3D"50%">D</TD>
+    <TD width=3D"50%">Dungeon</TD></TR>
+  <TR>
+    <TD width=3D"50%">F&nbsp;</TD>
+    <TD width=3D"50%">Lordaeron Fall</TD></TR>
+  <TR>
+    <TD width=3D"50%">G</TD>
+    <TD width=3D"50%">Underground</TD></TR>
+  <TR>
+    <TD width=3D"50%">L</TD>
+    <TD width=3D"50%">Lordaeron Summer</TD></TR>
+  <TR>
+    <TD width=3D"50%">N</TD>
+    <TD width=3D"50%">Northrend</TD></TR>
+  <TR>
+    <TD width=3D"50%">Q</TD>
+    <TD width=3D"50%">Village Fall</TD></TR>
+  <TR>
+    <TD width=3D"50%">V</TD>
+    <TD width=3D"50%">Village</TD></TR>
+  <TR>
+    <TD width=3D"50%">W</TD>
+    <TD width=3D"50%">Lordaeron Winter</TD></TR>
+  <TR>
+    <TD width=3D"50%">X</TD>
+    <TD width=3D"50%">Dalaran</TD></TR>
+  <TR>
+    <TD width=3D"50%">Y</TD>
+    <TD width=3D"50%">Cityscape</TD></TR></TBODY></TABLE>
+<P><BR>int: custom tilesets flag (1 =3D using cutom, 0 =3D not using =
+custom=20
+tilesets)<BR>int: number <I>a</I> of ground tilesets used (Little =
+Endian) (note:=20
+should not be greater than 16 because of tilesets indexing in tilepoints =
+
+definition)<BR>char[4][<I>a</I>]: ground tilesets IDs (tilesets=20
+table)<BR>&nbsp;&nbsp; Example: "Ldrt" stands for "<I>Lordaeron Summer=20
+Dirt</I>"<BR>&nbsp;&nbsp; (refer to the files =
+"<I>TerrainArt\Terrain.slk</I>"=20
+located in your <I>war3.mpq</I> for more details)<BR>int: number =
+<I>b</I> of=20
+cliff tilesets used (Little Endian) (note: should not be greater than 16 =
+because=20
+of tilesets indexing in tilepoints definition)<BR>char[4][<I>b</I>]: =
+cliff=20
+tilesets IDs (cliff tilesets table)<BR>&nbsp;&nbsp; Example: "CLdi" =
+stands for=20
+Lordaeron Cliff Dirt<BR>&nbsp;&nbsp; (refer to the files=20
+"<I>TerrainArt\CliffTypes.slk</I>" located in your <I>war3.mpq</I> for =
+more=20
+details)<BR>int: width of the map + 1 =3D Mx<BR>int: height of the map + =
+1 =3D=20
+My<BR>&nbsp;&nbsp; Example: if your map is 160x128, Mx=3DA1h and =
+My=3D81h<BR>float:=20
+center offeset of the map X<BR>float: center offeset of the map=20
+Y<BR>&nbsp;&nbsp; These 2 offsets are used in the scripts files, doodads =
+and=20
+more.<BR>&nbsp;&nbsp; The orginal (0,0) coordinate is at the bottom left =
+of the=20
+map (looking from the top) and it's easier to work with (0,0) in the =
+middle of=20
+the map so usually, these offsets are =
+:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=20
+-1*(Mx-1)*128/2 and -1*(My-1)*128/2<BR>&nbsp;&nbsp;=20
+where:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (Mx-1) and (My-1) are the width =
+and the=20
+height of the map<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 128 is supposed to =
+be the=20
+size of tile on the map<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /2 because we =
+don't=20
+want the length but the middle.<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -1* =
+because=20
+we're "translating" the center of the map, not giving it's new=20
+coordinates<BR><BR>Data:<BR>Each tilepoint is defined by a block of 7=20
+bytes.<BR>The number of blocks is equal to Mx*My.<BR>short: ground=20
+height<BR>C000h: minimum height (-16384)<BR>2000h: normal height (ground =
+level=20
+0)<BR>3FFFh: maximum height (+16383)<BR>short: water level + map edge =
+boundary=20
+flag*(see notes)<BR>4bit: flags*(see notes)<BR>4bit: ground texture type =
+(grass,=20
+dirt, rocks,...)<BR>1byte: texture details (of the tile of which the =
+tilepoint=20
+is the bottom left corner) (rocks, holes, bones,...). It appears that =
+only a=20
+part of this byte is used for details. It needs more =
+investigations<BR>4bit:=20
+cliff texture type<BR>4bit: layer height<BR><BR>*flags notes:<BR>Flags =
+values=20
+(shown as big endian):<BR>&nbsp;&nbsp; 0x4000 --&gt; boundary flag 1 =
+(shadow=20
+generated by the world editor on the edge of the map)<BR>&nbsp;&nbsp; =
+0x0010=20
+--&gt; ramp flag (used to set a ramp between two layers)<BR>&nbsp;&nbsp; =
+0x0020=20
+--&gt; blight flag (ground will look like Undead's =
+ground)<BR>&nbsp;&nbsp;=20
+0x0040 --&gt; water flag (enable water)<BR>&nbsp;&nbsp; 0x0080 --&gt; =
+boundary=20
+flag 2 (used on "camera bounds" area. Usually set by the World Editor =
+"boundary"=20
+tool.)<BR><BR>Water level:<BR>Water level is stored just like ground =
+height. The=20
+highest bit (bit 15) is used for the boundary flag 1.<BR><BR>Tilepoint =
+data=20
+example:<BR>51 21 00 62 56 84 13<BR>51 21 --(little endian)--&gt; 0x2151 =
+
+--(hex--&gt;dec)--&gt; height =3D 8529<BR>00 62 --(little endian)--&gt;=20
+0x6200<BR>&nbsp;&nbsp; (extract boundary flag)--&gt; (0x6200 &amp; =
+0xC000) =3D=20
+0x4000 boundary flag set<BR>&nbsp;&nbsp; (extract water data)--&gt; =
+(0x6200=20
+&amp; 0x3FFF) =3D 0x2200 --(hex--&gt;dec)--&gt; water level =3D =
+8704<BR>56 --&gt; 5=20
+sets both water flag and ramp flag, 6 means tilepoint is using ground =
+type #6 in=20
+the tilesets table<BR>84 --&gt; means tilepoint is using detail texture =
+#132=20
+(=3D0x084)<BR>13 --&gt; 1 means cliff type #1 (cliff tilesets table), 3 =
+means=20
+tilepoint on layer "3"<BR>The tilepoint "final height" you see on the WE =
+is=20
+given by:<BR>(ground_height - 0x2000 + (layer - 2)*0x0200)/4<BR>where =
+"0x2000"=20
+is the "ground zero" level, 2 the "layer zero" level and "0x0200" the =
+layer=20
+height<BR>&nbsp;&nbsp; =3D (0x2151 - 0x2000 + =
+1*0x0200)/4<BR>&nbsp;&nbsp; =3D (8529=20
+- 8192 + 512)/4<BR>&nbsp;&nbsp; =3D 212,25<BR><BR>The tilepoint "water =
+level" you=20
+see on the WE is given by:<BR>(water_level - 0x2000)/4 - 89.6<BR>where =
+"0x2000"=20
+is the "ground zero" level, -89.6 is the water zero level (given by the=20
+water.slk file height =3D -0,7 --&gt; water_zero_level =3D=20
+-0,7*128):<BR>&nbsp;&nbsp; =3D 8704/4 - 89,6<BR>&nbsp;&nbsp; =3D =
+38,4<BR><BR>In this=20
+case, water flag is set and water level is below the ground level so we =
+will not=20
+see the water. This is just an example and I don't think you can find =
+such a=20
+tilepoint on a map. It was just here for demonstration purpose.<BR></P>
+<P><B><U>5) "war3map.shd" The Shadow Map File</U></B></P>
+<P>This file has no header, only raw data.<BR>Size of the file =3D=20
+16*map_width*map_height<BR>1byte can have 2 values:<BR>00h =3D no =
+shadow<BR>FFh =3D=20
+shadow<BR>Each byte set the shadow status of 1/16 of a tileset.<BR>It =
+means that=20
+each tileset is divided in 16 parts (4*4).<BR></P>
+<P><B><U>6) "war3mapPath.tga" The Image Path file and/or "war3map.wpm" =
+The Path=20
+Map File</U></B></P>
+<P>Only one of these two file is used for pathing. Old War3 beta =
+versions=20
+(&lt;=3D1.21) use the "war3mapPath.tga".<BR>Since beta 1.30, Warcraft 3 =
+uses a new=20
+file format instead: "war3map.wpm".</P>
+<P><B>6.1) "war3mapPath.tga" The Image Path file</B></P>
+<P>It's an standard 32bits RGB TGA file with no compression and a black =
+alpha=20
+channel. The TGA format is really important because if Warcraft III =
+doesn't=20
+recognise the file format, it'll do weird things on the tilesets (like =
+put=20
+blight everywhere)! Don't forget the alpha channel! Each tile of the map =
+is=20
+divided in 16 pixels (4*4 like in the shadow file), so the TGA width is=20
+4*map_width and its height is 4*map_height and each pixel on the TGA =
+affects a=20
+particular part of a tileset on the map. The color of a pixel sets the =
+rules for=20
+that part. The top left corner of the image is the upper left corner on =
+the=20
+map.<BR><BR>Header format (18 bytes):<BR>byte: ID Length =3D 0<BR>byte: =
+Color Map=20
+Type =3D 0<BR>byte: Image Type =3D 2 (uncompressed RGB)<BR>-- Color Map=20
+Specification (5 bytes) --<BR>byte[2]: First Entry Index =3D =
+0<BR>byte[2]: Color=20
+Map Length =3D 0<BR>byte: Color Map Entry Size =3D 0<BR>-- Image Spec =
+(10 bytes)=20
+--<BR>byte[2]: X origin =3D 0<BR>byte[2]: Y origin =3D 0<BR>byte[2]: =
+image width=20
+(little endian)<BR>byte[2]: image height (little endian)<BR>byte: Pixel =
+depth =3D=20
+32 (=3D0x20)<BR>byte: Image Descriptor =3D 0x28 (0x20=3Dimage starts =
+from top left,=20
+0x08=3D8bit for alpha chanel)<BR>Example (where "XX XX" is a width and =
+"YY YY" a=20
+height):<BR>00 00 02 00 00 00 00 00 00 00 00 00 XX XX YY YY 20=20
+28<BR><BR>Data:<BR>One pixel is defined by 4 bytes:<BR>BB GG RR=20
+AA<BR>Where:<BR>BB is the blue value (0 or 255)<BR>GG is the green value =
+(0 or=20
+255)<BR>RR is the red value (0 or 255)<BR>AA is the alpha chanel value =
+(set to=20
+0)<BR>There are 4*4 pixels for 1 tileset.<BR>The TGA width is=20
+map_width*4.<BR>The TGA height is map_height*4.<BR><BR>Here is the color =
+
+code:<BR></P>
+<TABLE borderColor=3D#000000 cellPadding=3D2 width=3D"100%" border=3D1>
+  <TBODY>
+  <TR>
+    <TD width=3D"25%"><B>Color</B></TD>
+    <TD width=3D"25%"><B>Build state</B></TD>
+    <TD width=3D"25%"><B>Walk state</B></TD>
+    <TD width=3D"25%"><B>Fly state</B></TD></TR>
+  <TR>
+    <TD width=3D"25%">White&nbsp;</TD>
+    <TD width=3D"25%">no build</TD>
+    <TD width=3D"25%">no walk</TD>
+    <TD width=3D"25%">no fly</TD></TR>
+  <TR>
+    <TD width=3D"25%">Red&nbsp;</TD>
+    <TD width=3D"25%">build ok</TD>
+    <TD width=3D"25%">no walk</TD>
+    <TD width=3D"25%">fly ok</TD></TR>
+  <TR>
+    <TD width=3D"25%">Yellow</TD>
+    <TD width=3D"25%">build ok</TD>
+    <TD width=3D"25%">no walk</TD>
+    <TD width=3D"25%">no fly</TD></TR>
+  <TR>
+    <TD width=3D"25%">Green&nbsp;</TD>
+    <TD width=3D"25%">build ok</TD>
+    <TD width=3D"25%">walk ok</TD>
+    <TD width=3D"25%">no fly</TD></TR>
+  <TR>
+    <TD width=3D"25%">Cyan&nbsp;</TD>
+    <TD width=3D"25%">no build</TD>
+    <TD width=3D"25%">walk ok</TD>
+    <TD width=3D"25%">no fly</TD></TR>
+  <TR>
+    <TD width=3D"25%">Blue&nbsp;</TD>
+    <TD width=3D"25%">no build</TD>
+    <TD width=3D"25%">walk ok</TD>
+    <TD width=3D"25%">fly ok</TD></TR>
+  <TR>
+    <TD width=3D"25%">Magenta&nbsp;</TD>
+    <TD width=3D"25%">no build</TD>
+    <TD width=3D"25%">no walk</TD>
+    <TD width=3D"25%">fly ok</TD></TR>
+  <TR>
+    <TD width=3D"25%">Black&nbsp;</TD>
+    <TD width=3D"25%">build ok</TD>
+    <TD width=3D"25%">fly ok</TD>
+    <TD width=3D"25%">walk ok</TD></TR></TBODY></TABLE>
+<P>To sum up, when <FONT color=3D#ff0000>red</FONT> is set it means =
+"<FONT=20
+color=3D#ff0000>no walk</FONT>", when <FONT color=3D#00c000>green</FONT> =
+is set=20
+"<FONT color=3D#00c000>no fly</FONT>" and when <FONT =
+color=3D#0000ff>blue</FONT> is=20
+set "<FONT color=3D#0000ff>no build</FONT>".<BR>The <FONT =
+color=3D#808080>alpha=20
+channel</FONT> is used to set where <FONT color=3D#808080>blight</FONT> =
+is (black=20
+=3D normal, white =3D blight).<BR></P>
+<P><B>6.2) "war3map.wpm" The Path Map File</B></P>
+<P>Header:<BR>char[4]: file ID =3D 'MP3W'<BR>int: file version =3D =
+0<BR>int: path=20
+map width (=3Dmap_width*4)<BR>int: path map height=20
+(=3Dmap_height*4)<BR><BR>Data:<BR>Each byte of the data part is a part =
+of a=20
+tileset exactly like for the TGA.<BR>Data size: =
+(map_height*4)*(map_with*4)=20
+bytes<BR>Flags table:<BR>0x01: 0 (unused)<BR>0x02: 1=3Dno walk, 0=3Dwalk =
+ok<BR>0x04:=20
+1=3Dno fly, 0=3Dfly ok<BR>0x08: 1=3Dno build, 0=3Dbuild ok<BR>0x10: 0 =
+(unused)<BR>0x20:=20
+1=3Dblight, 0=3Dnormal<BR>0x40: 1=3Dno water, 0=3Dwater<BR>0x80: =
+1=3Dunknown,=20
+0=3Dnormal<BR><BR>Exmaple:<BR>value: use:<BR>00 bridge doodad<BR>08 =
+shallow=20
+water<BR>0A deep water<BR>40 normal ground<BR>48 water ramp, unbuildable =
+
+grounds, unbuildable parts of doodads<BR>CA cliff edges, solid parts of =
+doodads=20
+(no build and no walk)<BR>CE edges of the map (boundaries)<BR></P>
+<P><B><U>7) "war3map.doo" The doodad file for trees</U></B></P>
+<P>The file contains the trees definitions and positions.<BR>Here is the =
+
+Format:<BR>Header:<BR>char[4]: file ID =3D "W3do"<BR>int: file version =
+=3D 7<BR>int:=20
+unknown (usually set to [09 00 00 00]h, rarely [07 00 00 00]h)<BR>int: =
+number of=20
+trees defined<BR>Data:<BR>Each tree is defined by a block of 42 bytes =
+organized=20
+like this:<BR>char[4]: Tree ID (can be found in the file=20
+"Units\DestructableData.slk")<BR>int: Variation (little =
+endian)<BR>float: Tree X=20
+coordinate on the map<BR>float: Tree Y coordinate on the map<BR>float: =
+Tree Z=20
+coordinate on the map<BR>float: Tree angle (radian angle value)(degree =
+=3D=20
+radian*180/pi)<BR>float: Tree X scale<BR>float: Tree Y scale<BR>float: =
+Tree Z=20
+scale<BR>byte: Tree flags*<BR>byte: Tree life (integer stored in %, 100% =
+is=20
+0x64, 170% is 0xAA for example)<BR>int: Tree ID number in the World =
+Editor=20
+(little endian) (each tree has a different one)<BR><BR>*flags:<BR>0=3D =
+invisible=20
+and non-solid tree<BR>1=3D visible but non-solid tree<BR>2=3D normal =
+tree (visible=20
+and solid)<BR><BR>To sum up how it looks:<BR>tt tt tt tt vv vv vv vv xx =
+xx xx xx=20
+yy yy yy yy zz zz zz zz aa aa aa aa xs xs xs xs ys ys ys ys zs<BR>zs zs =
+zs ff ll=20
+dd dd dd dd<BR>where:<BR>tt: type<BR>vv: variation<BR>xx: x =
+coordinate<BR>yy: y=20
+coordinate<BR>zz: z coordinates<BR>aa: rotation angle<BR>xs: x =
+scale<BR>ys: y=20
+scale<BR>zs: z scale<BR>ff: flags<BR>ll: life<BR>dd: doodad number in =
+the=20
+editor<BR><BR>Example (this is the second tree of Legend):<BR>4C 54 6C =
+74 08 00=20
+00 00 00 00 74 45 00 00 70 44 00 10 24 44 E5 CB 96 40 98 85 98 3F 98 85 =
+98 3F 98=20
+85 98 3F 02 64 8D 01 00 00<BR><BR>4C 54 6C 74 --&gt; LTlt (tree =
+type)<BR>08 00=20
+00 00 --&gt; 00000008 =3D variation #8 (changes the shape of the =
+tree)<BR>00 00 74=20
+45 --&gt; X=3D3904.<BR>00 00 70 44 --&gt; Y=3D960.<BR>00 10 24 44 --&gt; =
+
+Z=3D656.25<BR>E5 CB 96 40 --&gt; Angle (float value=3D4.7123895, =
+angle=3D270=B0)<BR>98=20
+85 98 3F --&gt; X_Scale=3D1.191577<BR>98 85 98 3F --&gt; =
+Y_Scale=3D1.191577<BR>98 85=20
+98 3F --&gt; Z_Scale=3D1.191577<BR>02 --&gt; tree is solid and =
+selectable<BR>64=20
+--&gt; life=3D100% of default tree life<BR>8D 01 00 00 --&gt; =
+0000018D=3D397, tree=20
+number 397<BR><BR>After the last tree definition, there are 4 bytes set =
+to '0'=20
+(dunno if it's a version or not).<BR>int: number "s" of "special" =
+doodads=20
+("special" like cliffs,...)<BR>Then "s" times a special doodad structure =
+(16=20
+bytes each):<BR>char[4]: doodad ID<BR>byte[4]: ? (0)<BR>int: X? (w3e=20
+coordinates)<BR>int: Y? (w3e coordinates)<BR>&nbsp;</P>
+<P><FONT color=3D#800000><U><B>NEW "Frozen Throne expansion pack beta"=20
+format:<BR></B></U></FONT><U>Header:</U><BR>char[4]: file ID =3D =
+"W3do"<BR>int:=20
+file version =3D 8<BR>int: unknown ([0B 00 00 00]h)<BR>int: number of =
+trees=20
+defined<BR><U>Data</U><BR>Each tree is defined by a block of 50 bytes =
+organized=20
+like this:<BR>char[4]: Tree ID (can be found in the file=20
+"Units\DestructableData.slk")<BR>int: Variation (little =
+endian)<BR>float: Tree X=20
+coordinate on the map<BR>float: Tree Y coordinate on the map<BR>float: =
+Tree Z=20
+coordinate on the map<BR>float: Tree angle (radian angle value)(degree =
+=3D=20
+radian*180/pi)<BR>float: Tree X scale<BR>float: Tree Y scale<BR>float: =
+Tree Z=20
+scale<BR>byte: Tree flags*<BR>byte: Tree life (integer stored in %, 100% =
+is=20
+0x64, 170% is 0xAA for example)<BR>int: unknown (-1)<BR>int: unknown =
+(0)<BR>int:=20
+Tree ID number in the World Editor (little endian) (each tree has a =
+different=20
+one)<BR><BR>*flags:<BR>0=3D invisible and non-solid tree<BR>1=3D visible =
+but=20
+non-solid tree<BR>2=3D normal tree (visible and solid)<BR><BR>To sum up =
+how it=20
+looks:<BR>tt tt tt tt vv vv vv vv xx xx xx xx yy yy yy yy zz zz zz zz aa =
+aa aa=20
+aa xs xs xs xs ys ys ys ys zs <BR>zs zs zs ff ll bb bb bb bb cc cc cc cc =
+dd dd=20
+dd dd<BR>where:<BR>tt: type<BR>vv: variation<BR>xx: x coordinate<BR>yy: =
+y=20
+coordinate<BR>zz: z coordinates<BR>aa: rotation angle<BR>xs: x =
+scale<BR>ys: y=20
+scale<BR>zs: z scale<BR>ff: flags<BR>ll: life<BR>bb: unknown<BR>cc:=20
+unknown<BR>dd: doodad number in the editor<BR>&nbsp;</P>
+<P><B><U>8) "war3mapUnits.doo" The doodad file for items and =
+such</U></B></P>
+<P>The file contains the doodad units definitions and positions.<BR>Here =
+is the=20
+Format:<BR>Header:<BR>char[4]: file ID =3D "W3do"<BR>int: file version =
+=3D 7<BR>int:=20
+unknown (often set to [09 00 00 00]h)<BR>int: number of doodad units=20
+defined<BR>Data<BR>Each doodad is defined by a block of bytes (vraiable =
+length)=20
+organized like this:<BR>char[4]: type ID<BR>int: variation<BR>float: =
+coordinate=20
+X<BR>float: coordinate Y<BR>float: coordinate Z<BR>float: rotation=20
+angle<BR>float: scale X<BR>float: scale Y<BR>float: scale Z<BR>byte:=20
+flags*<BR>int: player number (owner) (player1 =3D 0, 16=3Dneutral =
+passive)<BR>byte:=20
+unknown<BR>byte: unknown<BR>int: hit points (-1 =3D use default)<BR>int: =
+unknown=20
+(usually -1)<BR>int: number "s" of dropped item sets<BR>"s" times =
+dropped item=20
+sets structures:<BR>int: number "d" of dropable items<BR>"d" times =
+dropable=20
+items structures:<BR>char[4]: item ID ([00 00 00 00]h =3D none)<BR>if =
+item ID=20
+starts with "YYI" followed by a number "num", then random item of level =
+=3D=20
+num<BR>int: % chance to be dropped<BR>int: gold amount (default =3D=20
+12500)<BR>float: unknown (often set to -1)<BR>int: unknown (often set to =
+
+1)<BR>int: unknown<BR>int: unknown<BR>int: random Unit<BR>0 =3D Any =
+neutral=20
+passive building<BR>1 =3D random unit from random group<BR>2 =3D random =
+unit from=20
+custom table<BR>int: random unit type any neutral passive building of=20
+level<BR>int: custom color (-1 =3D none, 0 =3D red, =
+1=3Dblue,...)<BR>int: Waygate:=20
+active destination number (-1 =3D none)<BR>int: creation =
+number<BR>*flags: may be=20
+similar to the war3map.doo flags<BR></P>
+<P><U><B>9) "war3map.w3i" The info file</B></U></P>
+<P>It contains some of the info displayed when you start a=20
+game.<BR><BR>Format:<BR>int: file format version =3D 18<BR>int: number =
+of saves=20
+(map version)<BR>int: editor version (little endian)<BR>String: map=20
+name<BR>String: map author<BR>String: map description<BR>String: players =
+
+recommended<BR>float[8]: "Camera Bounds" as defined in the JASS =
+file<BR>int[4]:=20
+camera bounds complements* (see note 1) (ints A, B, C and D)<BR>int: map =
+
+playable area width E* (see note 1)<BR>int: map playable area height F* =
+(see=20
+note 1)<BR>&nbsp;&nbsp; <U>*note 1</U>:<BR>&nbsp;&nbsp; map width =3D A =
++ E +=20
+B<BR>&nbsp;&nbsp; map height =3D C + F + D<BR>int: flags<BR>&nbsp;&nbsp; =
+0x0001:=20
+1=3Dhide minimap in preview screens<BR>&nbsp;&nbsp; 0x0002: 1=3Dmodify =
+ally=20
+priorities<BR>&nbsp;&nbsp; 0x0004: 1=3Dmelee map<BR>&nbsp;&nbsp; 0x0008: =
+
+1=3Dplayable map size was large and has never been reduced to medium=20
+(?)<BR>&nbsp;&nbsp; 0x0010: 1=3Dmasked area are partially =
+visible<BR>&nbsp;&nbsp;=20
+0x0020: 1=3Dfixed player setting for custom forces<BR>&nbsp;&nbsp; =
+0x0040: 1=3Duse=20
+custom forces<BR>&nbsp;&nbsp; 0x0080: 1=3Duse custom =
+techtree<BR>&nbsp;&nbsp;=20
+0x0100: 1=3Duse custom abilities<BR>&nbsp;&nbsp; 0x0200: 1=3Duse custom=20
+upgrades<BR>&nbsp;&nbsp; 0x0400: 1=3Dmap properties menu opened at least =
+once=20
+since map creation (?)<BR>&nbsp;&nbsp; 0x0800: 1=3Dshow water waves on =
+cliff=20
+shores<BR>&nbsp;&nbsp; 0x1000: 1=3Dshow water waves on rolling =
+shores<BR>char: map=20
+main ground type<BR>&nbsp;&nbsp; Example: 'A'=3D Ashenvale, 'X' =3D City =
+
+Dalaran<BR>int: Campaign background number (-1 =3D none)<BR>String: Map =
+loading=20
+screen text<BR>String: Map loading screen title<BR>String: Map loading =
+screen=20
+subtitle<BR>int: Map loading screen number (-1 =3D none)<BR>String: =
+Prologue=20
+screen text<BR>String: Prologue screen title<BR>String: Prologue screen=20
+subtitle<BR>int: max number "MAXPL" of players<BR>array of structures: =
+then,=20
+there is MAXPL times a player data like described below.<BR>int: max =
+number=20
+"MAXFC" of forces<BR>int: Foces Flags<BR>&nbsp;&nbsp; 0x00000001: allied =
+(force=20
+1)<BR>&nbsp;&nbsp; 0x00000002: allied victory<BR>&nbsp;&nbsp; =
+0x00000004: share=20
+vision<BR>&nbsp;&nbsp; 0x00000010: share unit control<BR>&nbsp;&nbsp;=20
+0x00000020: share advanced unit control<BR>int: unknown (usually =
+-1)<BR>array of=20
+structures: then, there is MAXFC times a force data like described=20
+below.<BR>int: if 0 it means that we reach the end of the =
+w3i<BR>&nbsp;&nbsp; if=20
+it's non-zero, the following bytes define special settings for the map=20
+(techtree, upgrades,...)<BR><BR><U>Players data format:<BR></U>int:=20
+unknown<BR>int: player type<BR>&nbsp;&nbsp; 1=3DHuman, 2=3DComputer, =
+3=3DNeutral,=20
+4=3DRescuable<BR>int: player race<BR>&nbsp;&nbsp; 1=3DHuman, 2=3DOrc, =
+3=3DUndead,=20
+4=3DNight Elf<BR>int: 00000001 =3D fixed start position<BR>String: =
+Player=20
+name<BR>float: Starting coordinate X<BR>float: Starting coordinate =
+Y<BR>int:=20
+ally low priorities flags (bit "x"=3D1 --&gt; set for player =
+"x")<BR>int: ally=20
+high priorities flags (bit "x"=3D1 --&gt; set for player =
+"x")<BR><BR><U>Forces=20
+data format:<BR></U>String: Force name<BR>int: unknown<BR>int: =
+unknown<BR></P>
+<P><B><U><FONT color=3D#800000>NEW "Frozen Throne expansion pack beta"=20
+format:<BR></FONT></U></B>int: file format version =3D 19 <FONT =
+color=3D#ff0000>(and=20
+25 thx PitzerMike)<BR></FONT>int: number of saves (map version)<BR>int: =
+editor=20
+version (little endian)<BR>String: map name<BR>String: map =
+author<BR>String: map=20
+description<BR>String: players recommended<BR>float[8]: "Camera Bounds" =
+as=20
+defined in the JASS file<BR>int[4]: camera bounds complements* (see note =
+1)=20
+(ints A, B, C and D)<BR>int: map playable area width E* (see note =
+1)<BR>int: map=20
+playable area height F* (see note 1)<BR>&nbsp;&nbsp; <U>*note=20
+1</U>:<BR>&nbsp;&nbsp; map width =3D A + E + B<BR>&nbsp;&nbsp; map =
+height =3D C + F=20
++ D<BR>int: flags<BR>&nbsp;&nbsp; 0x0001: 1=3Dhide minimap in preview=20
+screens<BR>&nbsp;&nbsp; 0x0002: 1=3Dmodify ally =
+priorities<BR>&nbsp;&nbsp; 0x0004:=20
+1=3Dmelee map<BR>&nbsp;&nbsp; 0x0008: 1=3Dplayable map size was large =
+and has never=20
+been reduced to medium (?)<BR>&nbsp;&nbsp; 0x0010: 1=3Dmasked area are =
+partially=20
+visible<BR>&nbsp;&nbsp; 0x0020: 1=3Dfixed player setting for custom=20
+forces<BR>&nbsp;&nbsp; 0x0040: 1=3Duse custom forces<BR>&nbsp;&nbsp; =
+0x0080: 1=3Duse=20
+custom techtree<BR>&nbsp;&nbsp; 0x0100: 1=3Duse custom =
+abilities<BR>&nbsp;&nbsp;=20
+0x0200: 1=3Duse custom upgrades<BR>&nbsp;&nbsp; 0x0400: 1=3Dmap =
+properties menu=20
+opened at least once since map creation (?)<BR>&nbsp;&nbsp; 0x0800: =
+1=3Dshow water=20
+waves on cliff shores<BR>&nbsp;&nbsp; 0x1000: 1=3Dshow water waves on =
+rolling=20
+shores<BR>&nbsp;&nbsp; 0x2000: 1=3Dunknown<BR>&nbsp;&nbsp; 0x4000:=20
+1=3Dunknown<BR>&nbsp;&nbsp; 0x8000: 1=3Dunknown<BR>char: map main ground =
+
+type<BR>&nbsp;&nbsp; Example: 'A'=3D Ashenvale, 'X' =3D City =
+Dalaran<BR>int:=20
+Campaign background number (-1 =3D none)<BR>String: Map loading screen=20
+text<BR>String: Map loading screen title<BR>String: Map loading screen=20
+subtitle<BR>String: unknown<BR>int: Map loading screen number (-1 =3D=20
+none)<BR><FONT color=3D#ff0000>(v25): String: (? need some =
+investigations, should=20
+be the path of the custom loading screen)<BR></FONT>String: Prologue =
+screen=20
+text<BR>String: Prologue screen title<BR>String: Prologue screen=20
+subtitle<BR>String: unknown<BR>float: unknown (fog z start?)<BR>float: =
+unknown=20
+(fog z end?)<BR>float: unknown (fog intensity?)<BR>byte[10]: ? (maybe =
+some=20
+strings?)<BR>int: unknown (-1)<BR>int: max number "MAXPL" of =
+players<BR>array of=20
+structures: then, there is MAXPL times a player data like described=20
+below.<BR>int: max number "MAXFC" of forces<BR>int: Foces =
+Flags<BR>&nbsp;&nbsp;=20
+0x00000001: allied (force 1)<BR>&nbsp;&nbsp; 0x00000002: allied=20
+victory<BR>&nbsp;&nbsp; 0x00000004: share vision<BR>&nbsp;&nbsp; =
+0x00000010:=20
+share unit control<BR>&nbsp;&nbsp; 0x00000020: share advanced unit=20
+control<BR>int: unknown (usually -1)<BR>array of structures: then, there =
+is=20
+MAXFC times a force data like described below.<BR>int: if 0 it means =
+that we=20
+reach the end of the w3i<BR>&nbsp;&nbsp; if it's non-zero, the following =
+bytes=20
+define special settings for the map (techtree, =
+upgrades,...)<BR><BR><U>Players=20
+data format:<BR></U>int: unknown<BR>int: player type<BR>&nbsp;&nbsp; =
+1=3DHuman,=20
+2=3DComputer, 3=3DNeutral, 4=3DRescuable<BR>int: player =
+race<BR>&nbsp;&nbsp; 1=3DHuman,=20
+2=3DOrc, 3=3DUndead, 4=3DNight Elf<BR>int: 00000001 =3D fixed start =
+position<BR>String:=20
+Player name<BR>float: Starting coordinate X<BR>float: Starting =
+coordinate=20
+Y<BR>int: ally low priorities flags (bit "x"=3D1 --&gt; set for player=20
+"x")<BR>int: ally high priorities flags (bit "x"=3D1 --&gt; set for =
+player=20
+"x")<BR><BR><U>Forces data format:<BR></U>String: Force name<BR>int:=20
+unknown<BR>int: unknown<BR>int: unknown<BR>&nbsp;</P>
+<P><U><B>10) "war3map.wts" The trigger string data file</B></U></P>
+<P>Open it with notepad and you'll figure out how it works. Each trigger =
+string=20
+is defined by a number (trigger ID) and a value for this number. When =
+Warcraft=20
+meets a "TRIGSTR_***" (where "***" is supposed to be a number), it will =
+look in=20
+the trigger string table to find the corresponding string and replace =
+the=20
+trigger string by that value. The value for a specific trigger ID is set =
+only=20
+once by the first definition encountered for this ID: if you have two =
+times the=20
+trigger string 0 defined, only the first one will count. The number =
+following=20
+"STRING " must be positive: any negative number will be ignored. If text =
+follows=20
+"STRING ", it'll be considered as number 0.<BR><BR>String =
+definition:<BR>It=20
+always start with "STRING " followed by the trigger string ID number =
+which is=20
+supposed to be different for each trigger string. Then "{" indicates the =
+
+begining of the string value followed by a string which can contain =
+several=20
+lines and "}" that indicates the end of the trigger string=20
+definition.<BR><BR>Example:<BR>in the .WTS file you have:<BR><BR>STRING=20
+0<BR>{<BR>Blah blah blah...<BR>}<BR><BR>Then either in the .J, or in the =
+.W3I,=20
+Warcraft finds a TRIGSTR_000, it'll look in the table for<BR>trigger =
+string=20
+number 0 and it'll find that the value to use is "Blah blah blah" =
+instead of=20
+"TRIGSTR_000".<BR></P>
+<P><U><B>11) "war3mapMap.blp" the minimap image (with the help of=20
+BlacKDicK)</B></U></P>
+<P>The BLP file contain the JPEG header and the JPEG raw data =
+separated.<BR>BLP=20
+stands for "Blip" file which I guess is a "BLIzzard=20
+Picture".<BR><BR>Header:<BR>char[4]: file ID ("BLP1")<BR>int: 0 for =
+JPGblp, 1=20
+for Paletted <BR>int: 0x00000008 =3D has alpha, 0x00000000 =3D no =
+alpha<BR>int:=20
+image width<BR>int: image height<BR>int: flag for team colors (usually =
+3, 4 or=20
+5). If &gt;=3D5 on 'unit' textures, it won't show the team =
+color.<BR>int: always=20
+0x00000001, if 0x00000000 the model that uses this texture will be=20
+messy.<BR>int: mipmap offset (offset from the begining of the =
+file)<BR>int[15]:=20
+unknown<BR>int: mipmap size (header size) "h" (usually =
+0x00000270)<BR>byte[h]:=20
+header<BR>followed by 0 bytes until the begining of the jpeg=20
+data.<BR>address=3Dmipmap offset: raw jpeg data till the end of the =
+file<BR></P>
+<P><U><B>12) "war3map.mmp" The menu minimap</B></U></P>
+<P>Header:<BR>int: unknown (usually 0, maybe the file format)<BR>int: =
+number of=20
+datasets<BR><BR>Data:<BR>The size of a dataset is 16 bytes.<BR>int: icon =
+
+type<BR>&nbsp;&nbsp; Icons Types:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 00: =
+gold=20
+mine<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 01:=20
+house<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 02: player start (cross)<BR>int: =
+X=20
+coordinate of the icon on the map<BR>int: Y coordinate of the icon on =
+the=20
+map<BR>&nbsp;&nbsp; Map Coordinates:<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =
+top left:=20
+10h, 10h<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; center: 80h,=20
+80h<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; bottom right: F0h, F0h<BR>byte[4]: =
+player=20
+icon color<BR>&nbsp;&nbsp; Player Colors (BB GG RR AA =3D blue, green, =
+red, alpha=20
+channel):<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 03 03 FF FF :=20
+red<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FF 42 00 FF :=20
+blue<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; B9 E6 1C FF :=20
+cyan<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 81 00 54 FF :=20
+purple<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 00 FC FF FF :=20
+yellow<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0E 8A FE FF :=20
+orange<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 00 C0 20 FF :=20
+green<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; B0 5B E5 FF :=20
+pink<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 97 96 95 FF : light=20
+gray<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; F1 BF 7E FF : light=20
+blue<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 46 62 10 FF :=20
+aqua<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 04 2A 49 FF :=20
+brow<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FF FF FF FF : none<BR></P>
+<P><U><B>13) "war3map.w3u" The custom units file</B></U></P>
+<P>Most of the W3U File specifications is from BlacKDicK.<BR>W3U files =
+have a=20
+initial long and then comes two tables. Both look the same.<BR>First =
+table is=20
+original units table (Original Blizzard Units).<BR>Second table is =
+user-created=20
+units table (Units created by the map designer).<BR><BR>Header:<BR>int: =
+W3U=20
+Version =3D 1<BR><I>x</I> bytes: Original Units table*<BR><I>y</I> =
+bytes:=20
+User-created units table*<BR><BR>Data:<BR><U>*Table =
+definition:<BR></U>int:=20
+number <I>n</I> of units on this table.<BR>If 0 on original table, then =
+skip=20
+default unit table. This is the number of following units. Even if we =
+don't have=20
+any changes on original table, this value must be there.<BR><I>n</I> =
+times a=20
+unit definition structure*.<BR><BR><U>*Unit definition=20
+structure:<BR></U>char[4]: original unit ID (get the IDs from=20
+"<I>Units\UnitData.slk</I>" of <I>war3.mpq</I>)<BR>char[4]: new unit ID. =
+If it=20
+is on original table, this is 0, since it isn't used.<BR>int: number =
+<I>m</I> of=20
+modifications for this unit<BR><I>m</I> times a modification=20
+structure*<BR><BR><U>*Modification structure:<BR></U>char[4] =
+modification ID=20
+code (get the IDs from "<I>Units\UnitMetaData.slk</I>" of=20
+<I>war3.mpq</I>)<BR>int: variable type* <I>t</I> (0=3Dint, 1=3Dreal, =
+2=3Dunreal,=20
+3=3DString,...)<BR><I>t</I> type: value (length depends on the type =
+<I>t</I>=20
+specified before)<BR>int: end of unit definition (usually =
+0)<BR><BR><U>*Variable=20
+types:<BR></U>0=3Dint<BR>1=3Dreal<BR>2=3Dunreal<BR>3=3Dstring<BR>4=3Dbool=
+<BR>5=3Dchar<BR>6=3DunitList<BR>7=3DitemList<BR>8=3DregenType<BR>9=3Datta=
+ckType<BR>10=3DweaponType<BR>11=3DtargetType<BR>12=3DmoveType<BR>13=3Ddef=
+enseType<BR>14=3DpathingTexture<BR>15=3DupgradeList<BR>16=3DstringList<BR=
+>17=3DabilityList<BR>18=3DheroAbilityList<BR>19=3DmissileArt<BR>20=3Dattr=
+ibuteType<BR>21=3DattackBits<BR></P>
+<P><U><B>14) "war3map.wtg" The triggers names file</B></U></P>
+<P>Header:<BR>char[4]: file ID (WTG!)<BR>int: wtg file format version =
+=3D=20
+4<BR>int: number "a" of triggers categories<BR>"a" times a category =
+definition=20
+structure*<BR>int: number "b" ???<BR>int: number "c" of variables<BR>"c" =
+times a=20
+variable definition structure**<BR>int: number "d" of triggers<BR>"d" =
+times a=20
+trigger definition structure***<BR><BR>*Category Definition =
+Structure:<BR>int:=20
+category index<BR>String: category name<BR><BR>**Variable Definition=20
+Structure:<BR>String: variable name<BR>String: variable type<BR>int: =
+number "e"=20
+???<BR>int: array status: 0=3Dnot an array, 1=3Darray<BR>int: =
+initialisation status:=20
+0=3Dnot initialized, 1=3Dinitialized<BR>String: initial value=20
+(string)<BR><BR>***Triggers Definiton Structure:<BR>String: trigger=20
+name<BR>String: trigger description<BR>int: enable state: 0=3Ddisabled,=20
+1=3Denabled<BR>int: custom text trigger state: 0=3Dnot a custom text =
+trigger,=20
+1=3Dcustom text trigger (use data in the WCT)<BR>int: initial state: =
+0=3Dinitially=20
+on, 1=3Dnot initially on<BR>int: ???<BR>int: index of the category the =
+trigger=20
+belongs to<BR>int: number "i" of event-condition-action (ECA) =
+function<BR>"i"=20
+times an ECA function definition structure*(4) (if it's a custom text =
+trigger i=20
+should be 0 so we don't have<BR><BR>this section)<BR><BR>*(4)ECA =
+function=20
+definition structure<BR>int: function type: 0=3Devent, 1=3Dcondition,=20
+2=3Daction<BR>String: function name<BR>int: enable state: 0=3Dfunction =
+disabled,=20
+1=3Dfunction enabled<BR>"x" times a parameter structure*(5). x depends =
+of the=20
+function and is hardcoded.<BR><BR>*(5)Parameters Structure:<BR>int: =
+0=3Dpreset,=20
+1=3Dvariable, 2=3Dfunction<BR>String: parameter value<BR>int: =
+???<BR>int:=20
+???<BR></P>
+<P><FONT color=3D#800000><U><B>NEW "Frozen Throne expansion pack beta" =
+format=20
+(thanks Ziutek):<BR></B></U></FONT>Header:<BR>char[4]: file ID =
+(WTG!)<BR>int:=20
+wtg file format version =3D 7<BR>int: number "a" of triggers =
+categories<BR>"a"=20
+times a category definition structure*<BR>int: number "b" ???<BR>int: =
+number "c"=20
+of variables<BR>"c" times a variable definition structure**<BR>int: =
+number "d"=20
+of triggers<BR>"d" times a trigger definition =
+structure***<BR><BR>*Category=20
+Definition Structure:<BR>int: category index<BR>String: category =
+name<BR>int:=20
+Category type: 0=3Dnormal, 1=3Dcomment<BR><BR>**Variable Definition=20
+Structure:<BR>String: variable name<BR>String: variable type<BR>int: =
+number "e"=20
+???<BR>int: array status: 0=3Dnot an array, 1=3Darray<BR>int: array =
+size<BR>int:=20
+initialisation status: 0=3Dnot initialized, 1=3Dinitialized<BR>String: =
+initial value=20
+(string)<BR><BR>***Triggers Definiton Structure:<BR>String: trigger=20
+name<BR>String: trigger description<BR>int: trigger type: 0=3Dnormal,=20
+1=3Dcomment<BR>int: enable state: 0=3Ddisabled, 1=3Denabled<BR>int: =
+custom text=20
+trigger state: 0=3Dnot a custom text trigger, 1=3Dcustom text trigger =
+(use data in=20
+the WCT)<BR>int: initial state: 0=3Dinitially on, 1=3Dnot initially =
+on<BR>int: run=20
+on map initialization: 0=3Dno, 1=3Dyes<BR>int: index of the category the =
+trigger=20
+belongs to<BR>int: number "i" of event-condition-action (ECA) =
+function<BR>"i"=20
+times an ECA function definition structure*(4) (if it's a custom text =
+trigger it=20
+should be 0 so we don't have this section)<BR><BR>*(4)ECA function =
+definition=20
+structure<BR>int: function type: 0=3Devent, 1=3Dcondition, =
+2=3Daction<BR>String:=20
+function name<BR>int: enable state: 0=3Dfunction disabled, 1=3Dfunction=20
+enabled<BR>"x" times a parameter structure*(5). x depends of the =
+function and is=20
+hardcoded.<BR>int: ???<BR>int: number "i" of event-condition-action =
+(ECA)=20
+function<BR>"i" times an ECA function definition structure*(4)(if this =
+trigger=20
+doesn't have multiple actions it should be set to 0 so we don't have =
+this=20
+section)<BR><BR>*(5)Parameters Structure:<BR>int: type which can be =
+0=3Dpreset,=20
+1=3Dvariable, 2=3Dfunction, 3=3Dstring<BR>String: parameter =
+value<BR>int: begin=20
+function (if it is function it should be set to 1 otherwise to=20
+0)<BR>&nbsp;&nbsp;&nbsp;&nbsp; if begin function is set to=20
+1:<BR>&nbsp;&nbsp;&nbsp;&nbsp; int: type: 3<BR>&nbsp;&nbsp;&nbsp;&nbsp; =
+String:=20
+the same as parameter value<BR>&nbsp;&nbsp;&nbsp;&nbsp; int: begin =
+function:=20
+1<BR>&nbsp;&nbsp;&nbsp;&nbsp; "x" times a parameters structure*(5). x =
+depends on=20
+the function and is hardcoded.<BR>int: end function (always set to=20
+0)<BR>&nbsp;</P>
+<P><B><U>15) "war3map.w3c" The camera file</U></B></P>
+<P>Header:<BR>int: file version =3D 0<BR>int: number "n" of camera =
+definition=20
+structures<BR><BR>Camera definition structure:<BR>float: Target =
+X<BR>float:=20
+Target Y<BR>float: Z Offset<BR>float: Rotation (angle in =
+degree)<BR>float: Angle=20
+Of Attack (AoA) (angle in degree)<BR>float: Distance<BR>float: =
+Roll<BR>float:=20
+Field of View (FoV) (angle in degree)<BR>float: Far Clipping =
+(FarZ)<BR>float:=20
+??? (usually set to 100)<BR>String: Cinematic name<BR></P>
+<P><B><U>16) "war3map.w3r" The triggers regions file</U></B></P>
+<P>Header:<BR>int: version =3D 5<BR>int: number "n" of region definition =
+
+structures*<BR><BR>Data:<BR>"n" times a region definition=20
+structure<BR><BR>*Region Definition Structures:<BR>float: left (jass=20
+coordinates)<BR>float: right (jass coordinates)<BR>float: bottom (jass=20
+coordinates)<BR>float: top (jass coordinates)<BR>String: region =
+name<BR>int:=20
+Region index number (creation number)<BR>char[4]: weather effect ID =
+(ex.: "RLlr"=20
+for "Rain Lordaeron Light Rain")<BR>If all the chars are set to 0, then =
+weather=20
+effect is disabled.<BR>String: ambient sound (a sound ID name defined in =
+the w3s=20
+file like "gg_snd_HumanGlueScreenLoop1")<BR>bytes[3]: region color (used =
+by the=20
+World Editor) (BB GG RR)<BR>byte: end of the structure<BR></P>
+<P><B><U>17) "war3map.w3s" The sounds definition file</U></B></P>
+<P>Header:<BR>int: file format version =3D 1<BR>int: number "n" of =
+sounds=20
+defined<BR><BR>Data:<BR>"n" times a sound definition =
+structure*<BR><BR>*Sound=20
+definition structure:<BR>String: sound ID name (like=20
+"gg_snd_HumanGlueScreenLoop1")<BR>String: sound file (like=20
+"Sound\Ambient\HumanGlueScreenLoop1.wav")<BR>String: EAX effects (like=20
+"DefaultEAXON")<BR>&nbsp;&nbsp; DefaultEAXON=3DDefault<BR>&nbsp;&nbsp;=20
+CombatSoundsEAX=3Dcombat<BR>&nbsp;&nbsp; =
+KotoDrumsEAX=3Ddrums<BR>&nbsp;&nbsp;=20
+SpellsEAX=3Dspells<BR>&nbsp;&nbsp; =
+MissilesEAX=3Dmissiles<BR>&nbsp;&nbsp;=20
+HeroAcksEAX=3Dhero speech<BR>&nbsp;&nbsp; DoodadsEAX=3Ddoodads<BR>int: =
+sound=20
+flags<BR>&nbsp;&nbsp; 0x00000001=3Dlooping<BR>&nbsp;&nbsp; =
+0x00000002=3D3D=20
+sound<BR>&nbsp;&nbsp; 0x00000004=3Dstop when out of =
+range<BR>&nbsp;&nbsp;=20
+0x00000008=3Dmusic<BR>&nbsp;&nbsp; 0x00000010=3D<BR>int: fade in =
+rate<BR>int: fade=20
+out rate<BR>int: volume (-1=3Duse default value)<BR>float: =
+pitch<BR>float:=20
+???<BR>int: ??? (-1 or 8)<BR>int: channel:<BR>&nbsp;&nbsp;=20
+0=3DGeneral<BR>&nbsp;&nbsp; 1=3DUnit Selection<BR>&nbsp;&nbsp; 2=3DUnit=20
+Acknowledgement<BR>&nbsp;&nbsp; 3=3DUnit Movement<BR>&nbsp;&nbsp; =
+4=3DUnit=20
+Ready<BR>&nbsp;&nbsp; 5=3DCombat<BR>&nbsp;&nbsp; =
+6=3DError<BR>&nbsp;&nbsp;=20
+7=3DMusic<BR>&nbsp;&nbsp; 8=3DUser Interface<BR>&nbsp;&nbsp; 9=3DLooping =
+
+Movement<BR>&nbsp;&nbsp; 10=3DLooping Ambient<BR>&nbsp;&nbsp;=20
+11=3DAnimations<BR>&nbsp;&nbsp; 12=3DConstructions<BR>&nbsp;&nbsp;=20
+13=3DBirth<BR>&nbsp;&nbsp; 14=3DFire<BR>float: min. distance<BR>float: =
+max.=20
+distance<BR>float: distance cutoff<BR>float: ???<BR>float: ???<BR>int: =
+??? (-1=20
+or 127)<BR>float: ???<BR>float: ???<BR>float: ???<BR><BR>Note:<BR>Floats =
+value=20
+can be set or left unset (default value will be used)<BR>When a float is =
+not=20
+set, the value [4F800000]h =3D 4.2949673e+009 is used.<BR></P>
+<P><U><B>18) "war3map.wct" The custom text trigger file</B></U></P>
+<P>(with the help of BlackDick)<BR>int: file version (0)<BR>int: number =
+"n" of=20
+triggers<BR>"n" times a custom text trigger structure*<BR>Note: Custom =
+text=20
+trigger structures are defined using the same order as triggers they =
+belong to=20
+in the WTG.<BR>Each trigger must have its custom text part, even if it =
+has not=20
+been converted to a custom text trigger; in this case, the custom text =
+size is=20
+set to 0 (only 4 bytes for the size int).<BR><BR>*Custom Text Trigger=20
+Structure:<BR>int: size "s" of the text (including the null terminating=20
+char)<BR>String: custom text trigger string (contains "s chars including =
+the=20
+null terminating char)<BR></P>
+<P><FONT color=3D#800000><U><B>NEW "Frozen Throne expansion pack beta" =
+format=20
+(thanks Ziutek):<BR></B></U></FONT>int: file version: 1<BR>String: =
+custom script=20
+code comment<BR>1 time a custom text trigger structure*<BR>int: number =
+"n" of=20
+triggers<BR>"n" times a custom text trigger structure*<BR>Note: Custom =
+text=20
+trigger structures are defined using the same order as triggers they =
+belong to=20
+in the WTG.<BR>Each trigger must have its custom text part, even if it =
+has not=20
+been converted to a custom text trigger; in this case, the custom text =
+size is=20
+set to 0 (only 4 bytes for the size int).<BR><BR>*Custom Text Trigger=20
+Structure:<BR>int: size "s" of the text (including the null terminating=20
+char)<BR>String: custom text trigger string (contains "s chars including =
+the=20
+null terminating char)<BR>&nbsp;</P>
+<P><U><B>19) "war3map.imp" The imported file list</B></U></P>
+<P>Header:<BR>int: file format version<BR>int: number "n" of imported=20
+files<BR><BR>Data:<BR>1byte: tells if the path is complete or needs=20
+"war3mapImported\" (5 or 8=3D standard path, 10 or 13: custom path) (thx =
+
+PitzerMike)<BR>String["n"]: the path inside the w3m of each imported =
+file (like=20
+"war3mapImported\mysound.wav")<BR><BR>Note: any file added in the W3M =
+file with=20
+a path name starting with "war3mapImported\" and added in the =
+.imp<BR>will NOT=20
+be removed by the World Editor each time you save your map. =
+Unfortuneately, if=20
+your file path name<BR>doesn't start with "war3mapImported\", it will =
+not be=20
+saved by the World Editor even if you add it to the<BR>import file. If =
+you add a=20
+file with a pathname starting with "war3mapImported\"<BR></P>
+<P><B><U>20) "war3map.wai" The Artificial Intelligence file</U></B></P>
+<P><FONT color=3D#800000><U><B>File for the "Frozen Throne expansion =
+pack beta"=20
+only (thanks to Ziutek)</B></U></FONT></P>
+<P>int: wai file format version: 2<BR>string: AI name<BR>int: race: =
+0=3DCustom,=20
+1=3DHuman, 2=3DOrc, 3=3DUndead, 4=3DNight Elf<BR>int: options<BR>Unless =
+otherwise noted=20
+all of the options are contained in HiWord of options integer.<BR>Check =
+for the=20
+presence of options by using a mask with following =
+values:<BR><BR>SetPlayerName:=20
+0x2000<BR>Melee: 0x0001<BR>DefendUsers: 0x8000<BR>RandomPaths:=20
+0x4000<BR>TargetHeroes: 0x0002<BR>RepairStructures: =
+0x0004<BR>HeroesFlee:=20
+0x0008<BR>UnitsFlee: 0x0010<BR>GroupsFlee: 0x0020<BR>HaveNoMercy:=20
+0x0040<BR>IgnoreInjured: 0x0080<BR>RemoveInjuries: 0x1000<BR>TakeItems:=20
+0x0100<BR>BuyItems: 0x0001 LoWord<BR>SlowHarvesting: =
+0x0200<BR>AllowHomeChanges:=20
+0x0400<BR>SmartAltillery: 0x0800<BR><BR>int: number of following workers =
+and=20
+buildings. If there are less than 4 workers and buildings specified, =
+WorldEdit=20
+will choose default values. Should be: 4.<BR>char[4]: gold =
+worker<BR>char[4]:=20
+wood worker<BR>char[4]: base building<BR>char[4]: mine building (If =
+none, use=20
+the same identifer as base building)<BR><BR>int: number "a" of=20
+conditions<BR>int: ???: 7<BR>"a" times a conditions definition=20
+structure*<BR>char[4]: First Hero Used (if none set these values to null =
+
+otherwise set it to Unit ID)<BR>char[4]: Second Hero Used (if none set =
+these=20
+values to null otherwise set it to Unit ID)<BR>char[4]: Third Hero Used =
+(if none=20
+set these values to null otherwise set it to Unit ID)<BR>int: Training =
+Order %=20
+Chance(1.FirstHero,2.SecondHero,3.ThirdHero)<BR>int: Training Order %=20
+Chance(1.FirstHero,2.ThirdHero,3.SecondHero)<BR>int: Training Order %=20
+Chance(1.SecondHero,2.FirstHero,3.ThirdHero)<BR>int: Training Order %=20
+Chance(1.SecondHero,2.ThirdHero,3.FirstHero)<BR>int: Training Order %=20
+Chance(1.ThirdHero,2.FirstHero,3.SecondHero)<BR>int: Training Order %=20
+Chance(1.ThirdHero,2.SecondHero,3.FirstHero)<BR><BR>Skill Selection=20
+Order:<BR>char[4*10]: Ten Skill IDs for First Hero(as first =
+hero)<BR>char[4*10]:=20
+Ten Skill IDs for First Hero(as second hero)<BR>char[4*10]: Ten Skill =
+IDs for=20
+First Hero(as third hero)<BR>char[4*10]: Ten Skill IDs for Second =
+Hero(as first=20
+hero)<BR>char[4*10]: Ten Skill IDs for Second Hero(as second=20
+hero)<BR>char[4*10]: Ten Skill IDs for Second Hero(as third =
+hero)<BR>char[4*10]:=20
+Ten Skill IDs for Third Hero(as first hero)<BR>char[4*10]: Ten Skill IDs =
+for=20
+Third Hero(as second hero)<BR>char[4*10]: Ten Skill IDs for Third =
+Hero(as third=20
+hero)<BR>int: number "c" of Build Priorities<BR>"c" times build =
+priorities=20
+structure***<BR>int: number "d" of Harvest Priorities<BR>"d" times =
+harvest=20
+priorities structure *(4)<BR>int: number "e" of Target Priorities<BR>"e" =
+times=20
+target priorities structure *(5)<BR>int: repeats waves<BR>int: minimum =
+forces:=20
+attack group index(for First Hero Only set this value to =
+char[4]:HAIA)<BR>int:=20
+initial delay<BR>int: number "f" of Attack Groups<BR>"f" times attack =
+groups=20
+structure *(6)<BR>int: number "g" of Attack Waves<BR>"g" times attack =
+waves=20
+structure *(8)<BR>int: ???: 1<BR>int: game options<BR>Unless otherwise =
+noted all=20
+of the options are contained in HiWord of options integer.<BR>Check for =
+the=20
+presence of options by using a mask with following =
+values:<BR><BR>Disable Fog Of=20
+War: 0x0001<BR>Disable Victory/Defeat Conditions: 0x0002<BR><BR>int: =
+regular=20
+game speed<BR>string: path to map file<BR>int: number "h" of Players=20
+(0-2)<BR>"h" times players structure *(9)<BR>int: =
+???<BR><BR><BR>*Condition=20
+Definition Structure:<BR>int: condition index<BR>String: condition =
+name<BR>int:=20
+number "b": 0=3Dnone(empty condition), 1=3Dcondition<BR>if number "b" =
+=3D 1<BR>String:=20
+operator function name<BR>int: begin function: 1<BR>"x" times a =
+Parameters=20
+Structure**. x depends on the function and is hardcoded.<BR>int: end =
+function:=20
+0<BR><BR><BR>**Parameters Structure:<BR>int: type: 0=3Dpreset, =
+1=3Doperator=20
+function, 2=3Dfunction, 3=3Dstring <BR>String: parameter value (if it is =
+function=20
+and this value is empty, begin function means '(' and end function means =
+')'=20
+)<BR>int: begin function (if it is function or operator function it =
+should be=20
+set to 1 otherwise to 0)<BR>if it is function and parameter value is not =
+
+empty:<BR>int: type: 3<BR>String: the same as parameter value<BR>int: =
+begin=20
+function: 1<BR>"x" times a Parameters Structure**. x depends on the =
+function and=20
+is hardcoded.<BR>int: end function: 0<BR>if it is operator =
+function:<BR>int:=20
+begin function: 1<BR>"x" times a Parameters Structure**. x depends on =
+the=20
+function and is hardcoded.<BR>int: end function<BR>int: end function:=20
+0<BR><BR><BR>***Build Priorities Structure:<BR>int: priorities type: =
+0<BR>int:=20
+type: 0=3Dunit, 1=3Dupgrade, 2=3Dexpansion town<BR>char[4]: Unit/Upgrade =
+ID(if it is=20
+expansion town this value should be set to: XEIA)<BR>int: town: =
+0=3Dmain,=20
+1-9=3DExpansion #1-9, 0xFFFFFFFD-0xFFFFFFF5=3Dcurrent mine #1-9,=20
+0xFFFFFFFF=3Dany<BR>int: condition index(if none set this value to =
+0xFFFFFFFF, if=20
+custom set this value to 0xFFFFFFFE)<BR>1 time condition definition=20
+structure*(without condition index!)<BR><BR><BR>*(4)Harvest Priorities=20
+Structure:<BR>int: priorities type: 1<BR>int: harvest type: 0=3Dgold,=20
+1=3Dlumber<BR>int: town: 0=3Dmain, 1-9=3DExpansion #1-9, =
+0xFFFFFFFD-0xFFFFFFF5=3Dcurrent=20
+mine #1-9, 0xFFFFFFFF=3Dany<BR>int: workers: 0-90=3Dfixed value #0-90,=20
+0xFFFFFFFF=3Dall, 0xFFFFFFFE=3Dall not attacking<BR>int: condition =
+index(if none,=20
+set this value to 0xFFFFFFFF, if custom, set this value to =
+0xFFFFFFFE)<BR>1 time=20
+condition definition structure*(without condition =
+index!)<BR><BR><BR>*(5)Target=20
+Priorities Structure<BR>int: priorities type: 2<BR>int: target: =
+0=3Dcommon=20
+alliance target, 1=3Dnew expansion location, 2=3Denemy major =
+assault,<BR>3=3Denemy=20
+expansion, 4=3Denemy any town, 5=3Dcreep camp, 6=3Dpurchase goblin =
+zeppelin<BR>int:=20
+creep min strength(if target is other than 5 set this value to=20
+0xFFFFFFFF)<BR>&nbsp;&nbsp;&nbsp;&nbsp; if target =3D=20
+5<BR>&nbsp;&nbsp;&nbsp;&nbsp; int: creep max=20
+strength<BR>&nbsp;&nbsp;&nbsp;&nbsp; int: allow flyers: 0=3Dno, =
+1=3Dyes<BR>int:=20
+condition index(if none, set this value to 0xFFFFFFFF, if custom, set =
+this value=20
+to 0xFFFFFFFE)<BR>1 time condition definition structure*(without =
+condition=20
+index!)<BR><BR><BR>*(6)Attack Groups Structure<BR>int: attack group=20
+index<BR>string: attack group name<BR>int: number "g" of Current =
+Group<BR>"g"=20
+times current group structure *(7)<BR><BR><BR>*(7)Current Group=20
+Structure<BR>char[4]: Unit ID (FirstHero: 1HIA, SecondHero: 2HIA, =
+ThirdHero:=20
+3HIA)<BR>int: quantity value: 0-90=3Dquantity #0-90, =
+0xFFFFFFFF=3DAll<BR>int:=20
+maximum quantity: 0-90=3Dquantity #0-90, 0xFFFFFFFF=3DAll(if quantity =
+value is=20
+0xFFFFFFFF, maximum quantity means all except #0-90)<BR>int: condition =
+index(if=20
+none, set this value to 0xFFFFFFFF, if custom, set this value to=20
+0xFFFFFFFE)<BR>1 time condition definition structure*(without condition=20
+index!)<BR><BR><BR>*(8)Attack Waves Structure<BR>int: attack group =
+index<BR>int:=20
+delay<BR><BR><BR>*(9)Players Structure<BR>int: player index<BR>int: team =
+
+number<BR>int: race: 1=3Dhuman, 2=3Dorc, 8=3Dundead, 4=3Dnight elf, =
+20=3Drandom<BR>int:=20
+color: 0=3Dred, 1=3Dblue, 2=3Dteal, 3=3Dpurple, 4=3Dyellow, 5=3Dorange, =
+6=3Dgreen, 7=3Dpink,=20
+8=3Dgray,<BR>9=3Dlight blue, 10=3Ddark green, 11=3Dbrown<BR>int: =
+handicap=20
+(0-100)<BR>int: ai: 0=3Dstandard, 1=3Duser, 4=3Dcustom, =
+12=3Dcurrent<BR>int: ai=20
+difficulty: 0=3Deasy, 1=3Dnormal, 2=3Dinsane<BR>string: path to custom =
+ai=20
+script<BR>&nbsp;</P>
+<P><B><U>21) The others files</U></B></P>
+<P><I>war3mapImported\*.*</I> =3D files imported and saved by the world =
+editor=20
+(they must be also defined in the .imp file)<BR><I>(signature)</I> =3D =
+signature=20
+of the w3m file<BR><I>(listfile)</I> =3D list of files stored in the w3m =
+
+file<BR><I>(attributes)</I> =3D attributes of files in the w3m =
+file<BR></P>
+<P><B><U>Credits:</U></B> </P>
+<P>Thanks to Justin Olbrantz (Quantam)(Inside MoPaQ), Andrey Lelikov =
+(LMPQ API)=20
+and ShadowFlare: they did the tools to allow me to get "inside" w3m =
+(mpq)=20
+files.<BR>Special thanks to BlackDick, DJBnJack, PitzerMike, =
+StonedStoopid,=20
+Ziutek and a few others who helped me to find some stuff and work on =
+this=20
+documentation.<BR>War3Pub Staff and WC3Campaign Staff who hosted my =
+stuff and=20
+let me meet interesting people.<BR>Thanks to Blizzard Entertainment for =
+making=20
+Warcraft III<BR><BR>-=3DZ=E9pir oo<BR></P></BODY></HTML>
