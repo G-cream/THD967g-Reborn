@@ -1,5 +1,5 @@
 Units常用文件介绍
-参考链接slk文件详解
+每个文件内的属性请参考文件：SLK详细说明
 
 单位：
 Units\\CampaignUnitFunc.txt
