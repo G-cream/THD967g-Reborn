@@ -3,7 +3,7 @@
 ## 2. How to open THD maps with Ene WE?
 
 In this Editor folder, there are two compressed files:
-* EnE WE.7z<br>
+* EnE WE.7z (Units folder is not required I think)<br>
 * THD UI.rar
 
 To Open THD maps, the only thing we need is to decompress the two files to the directory of war3. 
