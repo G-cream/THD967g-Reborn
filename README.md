@@ -3,7 +3,7 @@
 ## 2. How to open THD maps with Ene WE?
 
 In this Editor folder, there are two compressed files:
-* EnE WE.7z
+* EnE WE.7z<br>
 * THD UI.rar
 
 To Open THD maps, the only thing we need is to decompress the two files to the directory of war3. 
@@ -17,6 +17,15 @@ When you open "**EnE WE.exe**", if the loading screen is like this:<br>
 ### 4.1. Add unit and abilities.
 ### 4.2. Edit triggers.
 ## 5. Useful Tools.
+
+* EnE WE<br>
+* HkeW3mModifier<br>
+* Wc3MapMax++<br>
+* BLP Lab<br>
+* Button Manager<br>
+* War3ModelEditor<br>
+* MdxPather
+
 ## 6. At last
 
 This map is only a sbu-version. If you find it's fun and want to know more about THD, please download "**Warcraft III Battle Platform**", then open this link: https://g.126.fm/00JaetS.
