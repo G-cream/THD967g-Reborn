@@ -37,23 +37,27 @@ MPQ文件就像是"RAR"或"ZIP"文件，包含了被压缩文件的目录结构�
 
 这就意味着您不需要修改官方MPQs（不要更改您的WAR3.MPQ），您只需要使用与"C:\Program Files\Warcraft III\"相同的目录或文件结构。
 
-大多数情况下向地图(*.w3m)中添加文件都好使，但也不是什么时候都行。(个人猜测可能是w3m中不行w3x可以，没有道理AbilityData添加到地图中不识别)
+大多数情况下向地图(*.w3m)中添加文件都好使，但也不是什么时候都行。
 
 下面是可以添加的:
 
-   >Units\unitUI.slk<br>
-   >Units\UnitMetadata.slk<br>
-   >Units\HumanUnitFunc.txt<br>
-   >Units\HumanUnitStrings.txt<br>
-   >Units\HumanAbilityFunc.txt<br>
-   >Units\HumanAbilityStrings.txt<br>
-   >Units\HumanUpgradeFunc.txt<br>
-   >Units\HumanUpgradeStrings.txt
+>Units\\unitUI.slk<br>
+>Units\\AbilityData.slk<br>
+>UI\\MIDISounds.slk<br>
+>Units\\HumanUnitFunc.txt<br>
+>Units\\HumanUnitStrings.txt<br>
+>Units\\HumanAbilityFunc.txt<br>
+>Units\\HumanAbilityStrings.txt<br>
+>Units\\HumanUpgradeFunc.txt<br>
+>Units\\HumanUpgradeStrings.txt
+
+下面是可以添加但工作得不是很好的：
+>Units\\UnitMetaData.slk<br>
+>Scripts\\Blizzard.j
 
 下面是不可以添加的：
-
-   >Units\AbilityData.slk<br>
-   >Units\MiscData.txt
+>TerrainArt\\CliffTypes.slk<br>
+>Units\\MiscData.txt
  
 
 当您真的需要去改变文件，让文件在地图被加载前或在地图外加载。我的建议是先备份您的"war3patch.mpq"，然后创建个新文件，把原来的war3patch.mpq和您修改后的文件添加到您刚创建的新"war3patch.mpq"。

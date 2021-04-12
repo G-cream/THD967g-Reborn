@@ -1,9 +1,95 @@
-Units常用文件介绍
-每个文件内的属性请参考文件：SLK详细说明
+这里简单介绍一下上述各文本之间的关系：
+SLK文件中的数据与w3x文件的数据应该是一致的，因为各个SLK就是通过w3x文件转换得来，因此SLK代表了w3x中的数据结构(数据结构参见inside w3m)。
+SLK共分为单位，物品，可破坏物，装饰物，技能，魔法效果，科技，下面加以说明。
+
+---元数据
+
+单位，物品，可破坏物，装饰物，技能，魔法效果，科技中元数据用途都是一致的，这里以单位为例，UnitMetaData.slk表示单位的元数据，打开UnitMetaData.slk在slk列中可以看到Profile、UnitUI、UnitData、UnitAbilities、UnitWeapons、UnitBalance、ItemData共7类。
+下面是文件与上述种类的对应表：
+Profile: UnitFunc.txt与UnitString.txt一起表示一个Profile(例如: CampaignUnitStrings.txt与CampaignUnitFunc.txt一起表示CampaignUnit的Profile)
+UnitUI: UnitUI.slk
+UnitData: UnitData.slk
+UnitAbilitie: UnitAbilities.slk
+UnitWeapons: UnitWeapons.slk
+UnitBalance: UnitBalance.slk
+ItemData: ItemData.slk
+
+拿出UnitData.slk中的部分数据：
+ID;PWXL;N;E
+B;X25;Y568;D0
+C;X1;Y1;K"unitID"
+C;X2;K"buffRadius"
+C;X3;K"buffType"
+C;X4;K"canBuildOn"
+C;X5;K"canFlee"
+C;X6;K"canSleep"
+C;X7;K"cargoSize"
+C;X8;K"death"
+C;X9;K"deathType"
+C;X10;K"fatLOS"
+C;X11;K"formation"
+C;X12;K"isBuildOn"
+C;X13;K"moveFloor"
+C;X14;K"moveHeight"
+C;X15;K"movetp"
+C;X16;K"nameCount"
+C;X17;K"orientInterp"
+C;X18;K"pathTex"
+C;X19;K"points"
+C;X20;K"prio"
+C;X21;K"propWin"
+C;X22;K"race"
+C;X23;K"requireWaterRadius"
+C;X24;K"targType"
+C;X25;K"turnRate"
+将slk想象成Excel表格，可以看到第2行X25表示接下来共有25行数据，分别代表一张表的25列列头。25行数据的值均取自UnitMetaData中*slk列为UnitData*的filed值。
+
+C;X1;Y3;K"Edmm"
+C;X5;K1
+C;X7;K1
+C;X8;K3.0
+C;X9;K2
+C;X11;K2
+C;X15;K"foot"
+C;X16;K15
+C;X17;K4
+C;X19;K100
+C;X20;K9
+C;X21;K60.0
+C;X22;K"nightelf"
+C;X24;K"ground"
+C;X25;K0.5
+这是Excel表格中的一行数据 ，可以看到不是所有的列都被列出了，未被列出的数据将在Excel中被留空。
+这里可以看出任意一行的任意一个值都对应于w3x文件中的一个Modification structure数据结构，该数据结构的modification ID对应的是该列列头在UnitMetaData.slk中的id。
+
+并不是所有在地图编辑器中看到的单位属性都在UnitData中，它们是分散存储的，例如：Requires就存储在Profile中。值得一提的是物品的元数据在单位元数据中。
+
+---一般数据：
+
+除了元数据以外的数据这里称为一般数据。
+
+单位：
+自定义的英雄单位描述都在CampaignUnit Profile中。其他数据分散在UnitUI.slk、UnitData.slk、UnitAbilities.slk、UnitWeapons.slk、UnitBalance.slk中。
+
+物品：
+自定义的物品描述都在Item Profile中。其他数据在ItemData.slk中。
+
+技能：
+自定义的技能描述都在CampaignAbility Profile中。其他数据在AbilityData.slk中。
+
+Buff效果：
+自定义Buff效果的描述都在技能对应的CampaignAbility Profile中。其他数据在AbilityBuffData.slk中。
+
+科技：
+自定义的科技描述都在CampaignUpgrade Profile中。其他数据在UpgradeData.slk中。这里特别说明UpgradeEffectMetaData.slk中存储的是科技中effect(效果)的元数据。而这些effect是无法通过自定义来实现的。
+
+---Units常用文件介绍
+
+每个文件内的属性请参考文件：SLK详细说明.md
 
 单位：
 Units\\CampaignUnitFunc.txt
-Units\\CampaignUnitStrings.txt 单位文本说明，如英雄介绍、英雄名字等
+Units\\CampaignUnitStrings.txt 战役单位文本说明，如英雄介绍、英雄名字等
 Units\\HumanUnitFunc.txt
 Units\\HumanUnitStrings.txt
 Units\\NeutralUnitFunc.txt
@@ -19,6 +105,7 @@ Units\\UnitBalance.slk 单位定义，例如单位初始属性等
 Units\\UnitData.slk 单位数据
 Units\\UnitWeapons.slk 单位武器
 Units\\UnitUI.slk 单位模型
+Units\\UnitMetaData.slk
 
 物品：
 Units\\ItemData.slk 物品属性
@@ -32,8 +119,6 @@ Units\\DestructableData.slk
 Doodads\\Doodads.slk
 
 技能：
-Units\\AbilityMetaData.slk 技能自定义属性
-Units\\AbilityData.slk 技能属性
 Units\\CampaignAbilityFunc.txt
 Units\\CampaignAbilityStrings.txt 技能文本说明，如技能描述等
 Units\\CommonAbilityFunc.txt
@@ -50,9 +135,12 @@ Units\\OrcAbilityFunc.txt
 Units\\OrcAbilityStrings.txt
 Units\\UndeadAbilityFunc.txt
 Units\\UndeadAbilityStrings.txt
+Units\\AbilityData.slk 技能属性
+Units\\AbilityMetaData.slk 技能属性元数据
 
 Buff效果：（文本说明在技能的txt文件中）
 Units\\AbilityBuffData.slk
+Units\\AbilityBuffMetaData.slk
 
 科技：
 Units\\CampaignUpgradeFunc.txt
@@ -68,5 +156,5 @@ Units\\OrcUpgradeStrings.txt
 Units\\UndeadUpgradeFunc.txt
 Units\\UndeadUpgradeStrings.txt
 Units\\UpgradeData.slk 升级数据
-
-这里简单介绍一下上述各文本之间的关系
+Units\\UpgradeMetaData.slk
+Units\\UpgradeEffectMetaData.slk

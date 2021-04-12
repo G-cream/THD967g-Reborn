@@ -340,15 +340,12 @@ Units/AbilityData.slk 能力属性:
 >F hero 是否是英雄能力<br>
 >G item 是否是物品的能力<br>
 >H sort 类别<br>
->I checkDep 从属检查，1玩家的能力0creep的能力<br>
+>I checkDep 从属性检查<br>
 >J levels 可以升的等级<br>
 >K reqLevel 升第一级需要的等级<br>
->L targs 目标<br>
+>L targs1 第一级目标<br>
 >M Cast1 第一级费用<br>
->...<br>
->M-AQ定义了1、2、3级的属性<br>
->...<br>
->AU Data34 第3级第4个数据
+>... 定义了1、2、3、4级技能的相关属性<br>
 
 Units/DestructableData.slk 地面附属建筑物的数据。
 
