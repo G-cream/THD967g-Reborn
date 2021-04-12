@@ -13,6 +13,8 @@ When you open "**EnE WE.exe**", if the loading screen is like this:<br>
 
 ## 3. How to edit SLK optimized maps?
 
+Please refer to the documents [here](https://github.com/G-cream/THD967g-Reborn/tree/main/Doc).
+
 ## 4. How to edit THD maps?
 ### 4.1. Add unit and abilities.
 ### 4.2. Edit triggers.
