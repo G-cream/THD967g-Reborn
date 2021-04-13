@@ -22,7 +22,7 @@ Please refer to the documents [here](https://github.com/G-cream/THD967g-Reborn/t
 
 Fortunately, THD967g didn't use SLK optimization, which means we could modify it with some regular ways. (But the later THD versions use that)
 
-### 4.1. Add unit and abilities.
+### 4.1. Add units and abilities.
 
 * Extract w3a and w3u from the map.<br>
 * Open world editor and create a new map.<br>
