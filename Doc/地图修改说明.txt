@@ -102,4 +102,7 @@ SLK优化会合并一些文件，例如：会将campaignabilitystrings.txt与cam
 答：如果你设置的文件地址完全正确的话，那么这是因为那个玩家的魔兽注册表错误或本地mpq里带一些不必要的数据。修正这个的方法是下载魔兽注册表修复工具修复或不优化可破坏物和地形装饰物。
 
 
+有用的网站：
+https://wc3.rivsoft.net/ 可以查看各个slk以及txt文件，同时还可以在线查看编辑器中各技能和单位的状态。
+
 部分转载自https://www.bilibili.com/read/cv241913/
