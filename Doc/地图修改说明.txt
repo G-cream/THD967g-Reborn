@@ -103,6 +103,6 @@ SLK优化会合并一些文件，例如：会将campaignabilitystrings.txt与cam
 
 
 有用的网站：
-https://wc3.rivsoft.net/ 可以查看各个slk以及txt文件，同时还可以在线查看编辑器中各技能和单位的状态。
+https://wc3.rivsoft.net/ 可以查看各个slk以及txt文件，同时还可以在线查看编辑器中各单位和技能的状态。
 
 部分转载自https://www.bilibili.com/read/cv241913/
