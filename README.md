@@ -27,7 +27,7 @@ Fortunately, THD967g didn't use SLK optimization, which means we could modify it
 * Extract w3a and w3u from the map.<br>
 * Open world editor and create a new map.<br>
 * Import w3a and w3u files.<br>
-* Add unit and abilities.<br>
+* Add units and abilities.<br>
 * Export w3a and w3u.<br>
 * Replace these files in the map.
 
