@@ -37,7 +37,7 @@ Fortunately, THD967g didn't use SLK optimization, which means we could modify it
 * Change it.<br>
 * Replace it in the map.
 
-## 5. Useful Tools.
+## 5. Useful tools.
 
 * EnE WE<br>
 * HkeW3mModifier<br>
