@@ -75,7 +75,7 @@ C;X25;K0.5
 自定义的物品描述都在Item Profile中。其他数据在ItemData.slk中。
 
 技能：
-自定义的技能描述都在CampaignAbility Profile中。其他数据在AbilityData.slk中。并不是所有数据都是按照种族分别存放的，比如：人族的Repair技能描述，就在NeutralUnitStrings.txt里，而不在HumanUnitStrings.txt。
+自定义的技能描述都在CampaignAbility Profile中。其他数据在AbilityData.slk中。并不是所有数据都是按照种族分别存放的，比如: 人族的Repair技能描述，就在NeutralUnitStrings.txt里，而不在HumanUnitStrings.txt。
 
 Buff效果：
 自定义Buff效果的描述都在技能对应的CampaignAbility Profile中。其他数据在AbilityBuffData.slk中。
