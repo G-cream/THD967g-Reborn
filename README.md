@@ -41,6 +41,7 @@ Fortunately, THD967g didn't use SLK optimization, which means we could modify it
 
 * EnE WE<br>
 * HkeW3mModifier<br>
+* MPQEditor<br>
 * Wc3MapMax++<br>
 * BLP Lab<br>
 * Button Manager<br>
