@@ -1,0 +1,112 @@
+1. ability changes
+
+开始位置：FC 04
+
+修改对象：
+
+marisa04
+pad01
+aya01
+aya02
+aya04
+a05q
+youmu02
+Flandre04
+pad02
+marisa04
+captain03
+kogasa04
+remilia04
+aya03
+NeetEX
+mystia02
+koishi04
+kanako01
+kanako04
+suwako03
+suika04
+nazrin02 ----冷却增加 暗改
+yukari04
+A0io ----调整aher的位置
+satori04
+satori01
+nitori01
+kogasa02
+nue01
+keine04
+Twei04
+sunny01
+FlandreEX
+mystiaEX
+a0qg
+reisen02
+hatate02 ----也许是文字错误，这是967g的bug海棠技能描述前后不一致
+A0U4 ----不显示为默认
+satori03
+a0wg
+lilyEX
+mugetsu01
+mugetsu02
+a0x9
+a0xa
+remiliaEX
+
+新增的技能，及技能在w3a中的顺序(不一致的顺序在w3a中已经进行了调整，保证文件字节顺序上一致)：
+
+967g
+AspbA0Z5
+ANegA0Z6
+AIcbA0ZA
+AIcbA0ZB
+AIobA0ZC
+AIobA0Z9
+AIcbA0Z8
+AIcbA0Z7
+
+d2g
+ANegA0Z6
+AspbA0Z5
+AIcbA0Z7
+AIcbA0Z8
+AIobA0Z9
+AIcbA0ZA
+AIcbA0ZB
+AIobA0ZC
+
+2. unit changes
+
+开始位置：80 01
+
+修改对象：
+
+守矢门 
+博丽神社
+博丽门
+19
+铃仙
+uuz
+毒人偶
+守矢基地
+黑兔子
+莉莉白
+莉莉黑
+n04f
+
+3. item changes
+
+修改对象：
+
+核棒
+核棒卷轴
+寂寞
+寂寞卷轴
+相机卷轴
+相机
+八卦炉
+八卦炉卷轴
+
+4. j文件
+
+config函数中
+原版967为：东方幻想乡DOTS v0.967f
+还原版为：东方幻想乡DOTS v0.967G
