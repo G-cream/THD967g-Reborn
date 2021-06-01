@@ -1,0 +1,84 @@
+---------------Icon---------------
+
+1. Hero
+更换图标:
+hatate avatar disavatar
+mokou ex
+mugetsu avatar disavatar
+parsee avatar disavatar
+reisen 01 02 03 04 -- use thd2 icon
+remilia disavatar 01 04 -- use thd2 icon
+EXRumia avatar disavatar
+satori 01 02 03 04 -- use thd2 icon
+tenshi 01 02 03 04 -- use thd2 icon
+iku disavatar
+kisume disavatar
+tewi disavatar
+toramaru disavatar
+marisa disavatar
+keine disavatar
+
+2. Item
+移除:
+btnkuangcao disbtnkuangcao
+disbtnitemdisyyy
+disbtnyoumu03
+
+新增:
+disbtn_itemsocialharmony
+disbtn_itemscarletdevillauncher
+
+Remake:
+船钩
+坏人卡
+阳伞
+犀利
+毒裙 -- change to another icon
+神便当 -- change to another icon
+龙星 -- use thd2 icon
+羽翼 -- use thd2 icon
+神之右手
+好人卡
+相机
+hjbug
+兔炮
+电疗
+叫兽面具
+金坷垃
+镰刀
+补刀枪 -- use thd2 icon
+蓝马
+绿马
+马王 关闭状态
+马王 开启状态
+红马
+寂寞
+爱人卡
+月弓 -- use thd2 icon
+骨笛 -- use thd2 icon
+核棒 -- use thd2 icon
+火翼 -- use thd2 icon
+衰人卡
+火箭
+绿刀
+小银刀
+和谐
+被盗魔法书
+纳税阴阳玉
+羽扇
+触手
+秒表
+西瓜 -- change to another icon
+油库里
+百合
+
+---------------Model---------------
+
+1. Model
+替换：
+UUZ.mdx -> neutral_10.mdx
+you.mdx -> neutral_11.mdx
+
+移除:
+UUZ.mdx
+you.mdx

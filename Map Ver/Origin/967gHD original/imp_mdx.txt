@@ -1,0 +1,187 @@
+alice.mdx,thdots\hero\alice.mdx
+alice.blp,thdots\textures\alice.blp
+aya.mdx,thdots\hero\aya.mdx
+aya.blp,thdots\textures\aya.blp
+chen.mdx,thdots\hero\chen.mdx
+chen.blp,thdots\textures\chen.blp
+cirno.mdx,thdots\hero\cirno.mdx
+cirno.blp,thdots\textures\cirno.blp
+eirin.mdx,thdots\hero\eirin.mdx
+eirin.blp,thdots\textures\eirin.blp
+flandre.mdx,thdots\hero\flandre.mdx
+flandre.blp,thdots\textures\flandre.blp
+hakurei reimu.mdx,thdots\hero\reimu.mdx
+hakurei reimu.blp,thdots\textures\reimu.blp
+himekaidou hatate.mdx,thdots\hero\hatate.mdx
+himekaidou hatate.blp,thdots\textures\hatate.blp
+hina.mdx,thdots\hero\hina.mdx
+hina.blp,thdots\textures\hina.blp
+hiziri byakuren.mdx,thdots\hero\byakuren.mdx
+hiziri byakuren.blp,thdots\textures\byakuren.blp
+hiziri byakuren_gz.blp,thdots\textures\byakuren_scroll.blp
+houjuu nue.mdx,thdots\hero\nue.mdx
+houjuu nue.blp,thdots\textures\nue.blp
+iku.mdx,thdots\hero\iku.mdx
+iku.blp,thdots\textures\iku.blp
+kaguya.mdx,thdots\hero\kaguya.mdx
+kaguya.blp,thdots\textures\kaguya.blp
+kanako.mdx,thdots\hero\kanako.mdx
+kanako.blp,thdots\textures\kanako.blp
+keine.mdx,thdots\hero\keine.mdx
+keine.blp,thdots\textures\keine.blp
+keine_2.mdx,thdots\hero\keine01.mdx
+keine_2.blp,thdots\textures\keine01.blp
+kisume.mdx,thdots\hero\kisume.mdx
+kisume.blp,thdots\textures\kisume.blp
+koakuma.mdx,thdots\hero\koakuma.mdx
+koakuma.blp,thdots\textures\koakuma.blp
+kogasa.mdx,thdots\hero\kogasa.mdx
+kogasa.blp,thdots\textures\kogasa.blp
+komachi.mdx,thdots\hero\komachi.mdx
+komachi.blp,thdots\textures\komachi.blp
+komeiji koishi.mdx,thdots\hero\koishi.mdx
+komeiji koishi.blp,thdots\textures\koishi.blp
+kumoi.mdx,thdots\hero\kumoi.mdx
+kumoi.blp,thdots\textures\kumoi.blp
+letty.mdx,thdots\hero\letty.mdx
+letty.blp,thdots\textures\letty.blp
+lily black.mdx,thdots\hero\lily_black.mdx
+lily black.blp,thdots\textures\lily_black.blp
+lily white.mdx,thdots\hero\lily_white.mdx
+lily white.blp,thdots\textures\lily_white.blp
+lunasa prismriver.mdx,thdots\hero\lunasa.mdx
+textures\saoling.blp,thdots\textures\prismriver.blp
+textures\musicnote.blp,thdots\textures\musicnote.blp
+lyrica prismriver.mdx,thdots\hero\lyrica.mdx
+textures\saoling.blp,thdots\textures\prismriver.blp
+textures\musicnote.blp,thdots\textures\musicnote.blp
+marisa1.mdx,thdots\hero\marisa.mdx
+marisa.blp,thdots\textures\marisa.blp
+medicine.mdx,thdots\hero\medicine.mdx
+medicine.blp,thdots\textures\medicine.blp
+meirin4.mdx,thdots\hero\meiling.mdx
+meirin.blp,thdots\textures\meiling.blp
+merlin prismriver.mdx,thdots\hero\merlin.mdx
+textures\saoling.blp,thdots\textures\prismriver.blp
+textures\musicnote.blp,thdots\textures\musicnote.blp
+minamitsu.mdx,thdots\hero\minamitsu.mdx
+minamitsu.blp,thdots\textures\minamitsu.blp
+minoriko.mdx,thdots\hero\minoriko.mdx
+minoriko.blp,thdots\textures\minoriko.blp
+mizuhasi parsee.mdx,thdots\hero\parsee.mdx
+mizuhasi parsee.blp,thdots\textures\parsee.blp
+mokou.mdx,thdots\hero\mokou.mdx
+mokou.blp,thdots\textures\mokou.blp
+momizi.mdx,thdots\hero\momiji.mdx
+momizi.blp,thdots\textures\momiji.blp
+mop sakuya.mdx,thdots\hero\sakuya01.mdx
+sakuya.blp,thdots\textures\sakuya.blp
+mugetsu.mdx,thdots\hero\mugetsu.mdx
+mugetsu.blp,thdots\textures\mugetsu.blp
+mystia apron.mdx,thdots\hero\mystia01.mdx
+mystia apron.blp,thdots\textures\mystia01.blp
+mystia.mdx,thdots\hero\mystia.mdx
+mystia.blp,thdots\textures\mystia.blp
+nazrin.mdx,thdots\hero\nazrin.mdx
+nazrin.blp,thdots\textures\nazrin.blp
+neutral_0.mdx,thdots\hero\neutral_0.mdx
+neutral_0.blp,thdots\textures\neutral_0.blp
+neutral_1.mdx,thdots\hero\neutral_1.mdx
+neutral_1.blp,thdots\textures\neutral_1.blp
+neutral_10.mdx,thdots\hero\neutral_10.mdx
+yukkuri.blp,thdots\textures\yukkuri.blp
+yukkuri_face.blp,thdots\textures\yukkuri_face.blp
+yuyuko_head.blp,thdots\textures\yuyuko.blp
+neutral_11.mdx,thdots\hero\neutral_11.mdx
+yukkuri.blp,thdots\textures\yukkuri.blp
+yukkuri_face.blp,thdots\textures\yukkuri_face.blp
+youmu_head_512.blp,thdots\textures\youmu.blp
+neutral_12.mdx,thdots\hero\neutral_12.mdx
+neutral_12.blp,thdots\textures\neutral_12.blp
+neutral_13.mdx,thdots\hero\neutral_13.mdx
+neutral_13.blp,thdots\textures\neutral_13.blp
+neutral_14.mdx,thdots\hero\neutral_14.mdx
+neutral_14.blp,thdots\textures\neutral_14.blp
+neutral_15.mdx,thdots\hero\neutral_15.mdx
+neutral_15.blp,thdots\textures\neutral_15.blp
+neutral_16.mdx,thdots\hero\neutral_16.mdx
+neutral_16.blp,thdots\textures\neutral_16.blp
+neutral_17.mdx,thdots\hero\neutral_17.mdx
+neutral_17.blp,thdots\textures\neutral_17.blp
+neutral_2.mdx,thdots\hero\neutral_2.mdx
+neutral_2.blp,thdots\textures\neutral_2.blp
+neutral_3.mdx,thdots\hero\neutral_3.mdx
+neutral_3.blp,thdots\textures\neutral_3.blp
+neutral_41.mdx,thdots\hero\neutral_4.mdx
+neutral_4.blp,thdots\textures\neutral_4.blp
+neutral_5.mdx,thdots\hero\neutral_5.mdx
+neutral_5.blp,thdots\textures\neutral_5.blp
+neutral_6.mdx,thdots\hero\neutral_6.mdx
+neutral_6.blp,thdots\textures\neutral_6.blp
+neutral_7.mdx,thdots\hero\neutral_7.mdx
+neutral_7.blp,thdots\textures\neutral_7.blp
+neutral_8.mdx,thdots\hero\neutral_8.mdx
+neutral_8.blp,thdots\textures\neutral_8.blp
+neutral_9.mdx,thdots\hero\neutral_9.mdx
+neutral_9.blp,thdots\textures\neutral_9.blp
+nitori.mdx,thdots\hero\nitori.mdx
+nitori.blp,thdots\textures\nitori_n_body.blp
+thdots\textures\nitori_n_body.blp,thdots\textures\nitori_body.blp
++thdots\textures\nitori_n_head.blp
+thdots\textures\nitori_n_head.blp,thdots\textures\nitori_head.blp
+patchouli.mdx,thdots\hero\patchouli.mdx
+patchouli.blp,thdots\textures\patchouli.blp
+ran.mdx,thdots\hero\ran.mdx
+ran.blp,thdots\textures\ran.blp
+reisen.mdx,thdots\hero\reisen.mdx
+reisen.blp,thdots\textures\reisen.blp
+remilia.mdx,thdots\hero\remilia.mdx
+remilia.blp,thdots\textures\remilia.blp
+rin.mdx,thdots\hero\rin.mdx
+rin.blp,thdots\textures\rin.blp
+rumia.mdx,thdots\hero\rumia.mdx
+rumia.blp,thdots\textures\rumia.blp
+sakuya.mdx,thdots\hero\sakuya.mdx
+sakuya.blp,thdots\textures\sakuya.blp
+sanae1.mdx,thdots\hero\sanae.mdx
+sanae.blp,thdots\textures\sanae.blp
+satori.mdx,thdots\hero\satori.mdx
+satori.blp,thdots\textures\satori.blp
+shizuha.mdx,thdots\hero\shizuha.mdx
+sizuha.blp,thdots\textures\shizuha.blp
+siki eiki.mdx,thdots\hero\sikieiki.mdx
+siki eiki.blp,thdots\textures\sikieiki.blp
+suika.mdx,thdots\hero\suika.mdx
+suika.blp,thdots\textures\suika.blp
+sunny milk.mdx,thdots\hero\sunny.mdx
+sunny milk.blp,thdots\textures\sunny.blp
+suwako.mdx,thdots\hero\suwako.mdx
+suwako.blp,thdots\textures\suwako.blp
+tensi.mdx,thdots\hero\tenshi.mdx
+tensi.blp,thdots\textures\tenshi.blp
+toramaru_syou.mdx,thdots\hero\toramaru.mdx
+toramaru_syou.blp,thdots\textures\toramaru.blp
+twei.mdx,thdots\hero\tewi.mdx
+gr001.blp,thdots\textures\gr001.blp
+gr002.blp,thdots\textures\gr002.blp
+gr003.blp,thdots\textures\gr003.blp
+gr004.blp,thdots\textures\gr004.blp
+gr005.blp,thdots\textures\gr005.blp
+gr006.blp,thdots\textures\gr006.blp
+inaba tei.blp,thdots\textures\tewi.blp
+utsuho.mdx,thdots\hero\utsuho.mdx
+utsuho.blp,thdots\textures\utsuho.blp
+wriggle.mdx,thdots\hero\wriggle.mdx
+wriggle.blp,thdots\textures\wriggle.blp
+yamame.mdx,thdots\hero\yamame.mdx
+yamame.blp,thdots\textures\yamame.blp
+youmu.mdx,thdots\hero\youmu.mdx
+youmu.blp,thdots\textures\youmu.blp
+yuka.mdx,thdots\hero\yuka.mdx
+kazami yuka.blp,thdots\textures\yuka.blp
+yukari.mdx,thdots\hero\yukari.mdx
+yukari.blp,thdots\textures\yukari.blp
+yuugi.mdx,thdots\hero\yuugi.mdx
+yuugi.blp,thdots\textures\yuugi.blp
+yuyuko1.mdx,thdots\hero\yuyuko.mdx
+yuyuko.blp,thdots\textures\yuyuko.blp
