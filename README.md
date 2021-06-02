@@ -52,4 +52,4 @@ Fortunately, THD967g didn't use SLK optimization, which means we could modify it
 
 I have some ideas about next versions: rubick-さとり, THD OMG, blademail and イース-先代の巫女. Maybe they will be finished in 2 or 3 years.
 
-This map is only a sbu-version. If you feel it's fun and want to know more about THD, please download "**Warcraft III Battle Platform**", then open this link: https://g.126.fm/00JaetS.
+This map is only a sbu-version. If you feel it's fun and want to know more about THD, please download "**Warcraft III Battle Platform**", then open this link: https://g.126.fm/03ah7pG.
