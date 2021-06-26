@@ -13,4 +13,5 @@
     c. we的导入文件中添加yukkuri.blp, yukkuri_face.blp, 修改路径为"yukkuri.blp", "yukkuri_face.blp"
     d. 单位中替换UUZ.mdx为neutral_10.mdx, 替换you.mdx为neutral_11.mdx
     e. 移除UUZ.mdx, you.mdx
-    f. 修改天子要石tensi_stone.mdx为kanameishi.mdx，同时修改其引用的贴图路径
+    f. 修改btn_skilltoramaru0200-06为btn_skilltoramaruex00-06
+    g. 修改天子要石tensi_stone.mdx为kanameishi.mdx，同时修改其引用的贴图路径
