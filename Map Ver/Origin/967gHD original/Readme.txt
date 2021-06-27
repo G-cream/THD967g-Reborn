@@ -15,3 +15,4 @@
     e. 移除UUZ.mdx, you.mdx
     f. 修改btn_skilltoramaru0200-06为btn_skilltoramaruex00-06
     g. 修改天子要石tensi_stone.mdx为kanameishi.mdx，同时修改其引用的贴图路径
+    h. 删除导入文件war3map.imp中重复的btn_itemllamadolllimitedon.blp与disbtn_itemllamadolllimitedon.blp
