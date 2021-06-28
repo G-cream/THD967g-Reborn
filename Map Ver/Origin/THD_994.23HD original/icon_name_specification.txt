@@ -1,0 +1,64 @@
+命名规范
+
+LOALPHA = <any US-ASCII lowercase letter "a".."z">
+DIGIT = <any US-ASCII digit "0".."9">
+CHAR = LOALPHA | DIGIT
+
+--------------------------------------------------
+ICONNAME = TYPE HERO SUFFIX "." "blp"
+
+TYPE = "btn_" //单位
+    | "btn_skill" //技能
+    | "btn_item" //物品
+HERO = 1*CHAR
+SUFFIX = [CARDGROUP] SKILLGROUP [SKILLGROUPINDEX] [TOGGLE] [AVAILABILITY]
+
+CARDGROUP = "_" LOALPHA
+SKILLGROUP = COMGROUP | EXGROUP
+SKILLGROUPINDEX = 2DIGIT
+TOGGLE = "on" | "off"
+AVAILABILITY = "-" "obsolete"
+
+COMGROUP = 2DIGIT
+EXGROUP = "ex" [EXOPT]
+EXOPT = "_" 2DIGIT
+
+简述
+
+1. 通用方法
+ICONNAME = TYPE HERO SUFFIX "." "blp"
+图标名称由 类型 英雄名 后缀 .blp共四部分组成。
+一个可能的最大长度的命名：
+btn_skillkoishi_cex_0102off-obsolete.blp
+2. 可选技能
+可选技能的命名是与实际使用的技能的顺序无关。命名为01的技能未必就是D技能。
+除ex技能外的技能都是可选技能，都是顺序无关的。
+例1：
+btn_skillkoishi01.blp
+btn_skillkoishi02.blp
+btn_skillkoishi03.blp
+btn_skillkoishi04.blp
+例2(游戏中不存在):
+btn_skillkoishiex.blp
+btn_skillkoishiex_01.blp
+btn_skillkoishiex_02.blp
+3. 技能组
+SKILLGROUP与SKILLGROUPINDEX共同组成技能组。
+例1：
+btn_skillkanako04.blp
+btn_skillkanako0401.blp
+例2(游戏中不存在)：
+btn_skillkoishiex_01.blp
+btn_skillkoishiex_0101.blp
+btn_skillkoishiex_0102.blp
+4. 卡组
+卡组是技能之间可互相替换的范围。虽然通常一个模型对应一套卡组，但对于卡组的命名来书是模型无关的。
+例1：
+btn_skillkaguya_a01.blp
+btn_skillkaguya_a02.blp
+5. 开关
+表示开关技能与自动释放技能。
+6. 废弃
+不被任何物品、技能、单位引用的图标为保留性质的废弃图标(无关乎该物品、技能、单位本身是否被废弃)，标记为obsolete
+例1：
+btn_skillmokou01-obsolete.blp

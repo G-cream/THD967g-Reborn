@@ -1,0 +1,20 @@
+perl -pi -e 's/(?<!\\)ReplaceableTextures\\PassiveButtons\\pasbtntewi-e.blp(?!\\)/ReplaceableTextures\\CommandButtons\\btn_skilltewiex.blp/ig' war3map.w3a war3map.w3b war3map.w3u war3map.w3t war3map.w3q war3map.w3h war3map.wtg war3map.wct war3map.imp
+perl -pi -e 's/(?<!\\)ReplaceableTextures\\PassiveButtons\\pasbtntewi-e.blp(?!\\)/ReplaceableTextures\\CommandButtons\\btn_skilltewiex.blp/ig' war3map.j
+perl -pi -e 's/(?<!\\)ReplaceableTextures\\PassiveButtons\\pasbtntewi-w.blp(?!\\)/ReplaceableTextures\\CommandButtons\\btn_skilltewi04.blp/ig' war3map.w3a war3map.w3b war3map.w3u war3map.w3t war3map.w3q war3map.w3h war3map.wtg war3map.wct war3map.imp
+perl -pi -e 's/(?<!\\)ReplaceableTextures\\PassiveButtons\\pasbtntewi-w.blp(?!\\)/ReplaceableTextures\\CommandButtons\\btn_skilltewi04.blp/ig' war3map.j
+perl -pi -e 's/(?<!\\)ReplaceableTextures\\PassiveButtons\\pasbtnkulumi-r.blp(?!\\)/ReplaceableTextures\\CommandButtons\\btn_skillkurumi03.blp/ig' war3map.w3a war3map.w3b war3map.w3u war3map.w3t war3map.w3q war3map.w3h war3map.wtg war3map.wct war3map.imp
+perl -pi -e 's/(?<!\\)ReplaceableTextures\\PassiveButtons\\pasbtnkulumi-r.blp(?!\\)/ReplaceableTextures\\CommandButtons\\btn_skillkurumi03.blp/ig' war3map.j
+perl -pi -e 's/(?<!\\)ReplaceableTextures\\PassiveButtons\\pasbtnkulumi-w.blp(?!\\)/ReplaceableTextures\\CommandButtons\\btn_skillkurumi04.blp/ig' war3map.w3a war3map.w3b war3map.w3u war3map.w3t war3map.w3q war3map.w3h war3map.wtg war3map.wct war3map.imp
+perl -pi -e 's/(?<!\\)ReplaceableTextures\\PassiveButtons\\pasbtnkulumi-w.blp(?!\\)/ReplaceableTextures\\CommandButtons\\btn_skillkurumi04.blp/ig' war3map.j
+perl -pi -e 's/(?<!\\)ReplaceableTextures\\PassiveButtons\\pasbtnkulumi-e.blp(?!\\)/ReplaceableTextures\\CommandButtons\\btn_skillkurumiex.blp/ig' war3map.w3a war3map.w3b war3map.w3u war3map.w3t war3map.w3q war3map.w3h war3map.wtg war3map.wct war3map.imp
+perl -pi -e 's/(?<!\\)ReplaceableTextures\\PassiveButtons\\pasbtnkulumi-e.blp(?!\\)/ReplaceableTextures\\CommandButtons\\btn_skillkurumiex.blp/ig' war3map.j
+perl -pi -e 's/(?<!\\)ReplaceableTextures\\PassiveButtons\\pasbtnnazilin-r.blp(?!\\)/ReplaceableTextures\\CommandButtons\\btn_skillnazrin03.blp/ig' war3map.w3a war3map.w3b war3map.w3u war3map.w3t war3map.w3q war3map.w3h war3map.wtg war3map.wct war3map.imp
+perl -pi -e 's/(?<!\\)ReplaceableTextures\\PassiveButtons\\pasbtnnazilin-r.blp(?!\\)/ReplaceableTextures\\CommandButtons\\btn_skillnazrin03.blp/ig' war3map.j
+perl -pi -e 's/(?<!\\)ReplaceableTextures\\PassiveButtons\\pasbtnreisen-r2.blp(?!\\)/ReplaceableTextures\\CommandButtons\\btn_skillreisen05.blp/ig' war3map.w3a war3map.w3b war3map.w3u war3map.w3t war3map.w3q war3map.w3h war3map.wtg war3map.wct war3map.imp
+perl -pi -e 's/(?<!\\)ReplaceableTextures\\PassiveButtons\\pasbtnreisen-r2.blp(?!\\)/ReplaceableTextures\\CommandButtons\\btn_skillreisen05.blp/ig' war3map.j
+perl -pi -e 's/(?<!\\)ReplaceableTextures\\PassiveButtons\\pasbtnreisen-e.blp(?!\\)/ReplaceableTextures\\CommandButtons\\btn_skillreisenex.blp/ig' war3map.w3a war3map.w3b war3map.w3u war3map.w3t war3map.w3q war3map.w3h war3map.wtg war3map.wct war3map.imp
+perl -pi -e 's/(?<!\\)ReplaceableTextures\\PassiveButtons\\pasbtnreisen-e.blp(?!\\)/ReplaceableTextures\\CommandButtons\\btn_skillreisenex.blp/ig' war3map.j
+perl -pi -e 's/(?<!\\)ReplaceableTextures\\PassiveButtons\\pasbtnskillreisen-e.blp(?!\\)/ReplaceableTextures\\CommandButtons\\btn_skillreisenno2ex.blp/ig' war3map.w3a war3map.w3b war3map.w3u war3map.w3t war3map.w3q war3map.w3h war3map.wtg war3map.wct war3map.imp
+perl -pi -e 's/(?<!\\)ReplaceableTextures\\PassiveButtons\\pasbtnskillreisen-e.blp(?!\\)/ReplaceableTextures\\CommandButtons\\btn_skillreisenno2ex.blp/ig' war3map.j
+perl -pi -e 's/(?<!\\)ReplaceableTextures\\PassiveButtons\\pasbtnskillreisen-r.blp(?!\\)/ReplaceableTextures\\CommandButtons\\btn_skillreisenno203.blp/ig' war3map.w3a war3map.w3b war3map.w3u war3map.w3t war3map.w3q war3map.w3h war3map.wtg war3map.wct war3map.imp
+perl -pi -e 's/(?<!\\)ReplaceableTextures\\PassiveButtons\\pasbtnskillreisen-r.blp(?!\\)/ReplaceableTextures\\CommandButtons\\btn_skillreisenno203.blp/ig' war3map.j
