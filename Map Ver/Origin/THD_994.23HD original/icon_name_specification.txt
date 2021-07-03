@@ -52,7 +52,7 @@ btn_skillkoishiex_01.blp
 btn_skillkoishiex_0101.blp
 btn_skillkoishiex_0102.blp
 4. 卡组
-卡组是技能之间可互相替换的范围。虽然通常一个模型对应一套卡组，但对于卡组的命名来书是模型无关的。
+卡组是技能之间可互相替换的范围。虽然通常一个模型对应一套卡组，但对于卡组的命名来说是模型无关的。
 例1：
 btn_skillkaguya_a01.blp
 btn_skillkaguya_a02.blp
