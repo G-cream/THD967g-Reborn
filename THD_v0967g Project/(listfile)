@@ -263,7 +263,6 @@ ReplaceableTextures\CommandButtonsDisabled\disbtn_skillpatchouli04.blp
 ReplaceableTextures\CommandButtons\btn_skillflandre01.blp
 ReplaceableTextures\CommandButtonsDisabled\disbtn_skillflandre01.blp
 AirWave.mdx
-U9Logo.blp
 lmfzw.blp
 ReplaceableTextures\CommandButtons\btn_itemhjbug.blp
 ReplaceableTextures\CommandButtonsDisabled\disbtn_itemhjbug.blp
@@ -363,7 +362,6 @@ ReplaceableTextures\CommandButtonsDisabled\disbtn_alice.blp
 ReplaceableTextures\CommandButtons\btn_shanghai.blp
 ReplaceableTextures\CommandButtonsDisabled\disbtn_shanghai.blp
 magicb.mdx
-HFLogo.blp
 meizi.MDX
 meizi.blp
 ReplaceableTextures\CommandButtons\btn_itemminihakkero.blp
@@ -1080,3 +1078,5 @@ ui\minimap\minimap-hero.blp
 thdots\hero\reisenno2.mdx
 thdots\textures\reisenno2.blp
 kanameishi.mdx
+logo-topright.blp
+logo-topleft.blp

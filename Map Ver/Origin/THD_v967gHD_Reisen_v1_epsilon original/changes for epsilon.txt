@@ -1,0 +1,4 @@
+游戏
+1.载入界面删除原路人游戏logo，并替换为魔兽官方平台logo
+2.修改loading screen,mdx，将它的2个贴图文件名称由HFLogo.blp、U9Logo.blp修改为logo-topleft、logo-topright
+3.将HFLogo.blp、U9Logo.blp文件替换为logo-topleft、logo-topright
