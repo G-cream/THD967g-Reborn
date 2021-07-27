@@ -2,5 +2,7 @@
 original在当前版本有改动，要先删除tag，再分别上传original,release,Project，再重新打版。
 release在当前版本有改动，要先删除tag，再上传release，再重新打版。
 
+修改的顺序是originla, Project, release, tag, 发布
+
 删除tag语句：git tag -d [tag]; git push origin :[tag];
 恢复文件夹：先删除所有文件，再git checkout --[path]或者直接用git进到该文件夹中git checkout .
