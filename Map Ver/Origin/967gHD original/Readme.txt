@@ -16,3 +16,6 @@
     f. 修改btn_skilltoramaru0200-06为btn_skilltoramaruex00-06
     g. 修改天子要石tensi_stone.mdx为kanameishi.mdx，同时修改其引用的贴图路径
     h. 删除导入文件war3map.imp中重复的btn_itemllamadolllimitedon.blp与disbtn_itemllamadolllimitedon.blp
+    i. 老虎模型Overhead附加点缺失，将toramaru.mdx骨骼中的Over Head Ref重命名为Overhead Ref
+    j. 修改秋姐弹道，将模型shizuha_a.mdx中的贴图路径sizuha.blp更正为shizuha.blp
+    k. 修改蕾蒂模型大小，将模型缩放比例从2.4调整至1.15
