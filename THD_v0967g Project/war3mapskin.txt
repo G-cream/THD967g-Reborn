@@ -11,6 +11,7 @@ Nolumber=TRIGSTR_3031
 SupplyIcon=Power.blp
 GoldIcon=Point.blp
 LumberIcon=Spirit.blp
+MinimapHeroTexture=ui\minimap\minimap-hero.blp
 
 [FrameDef]
 GOLD=TRIGSTR_2563
