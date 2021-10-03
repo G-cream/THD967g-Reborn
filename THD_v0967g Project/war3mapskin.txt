@@ -12,6 +12,7 @@ SupplyIcon=Power.blp
 GoldIcon=Point.blp
 LumberIcon=Spirit.blp
 MinimapHeroTexture=ui\minimap\minimap-hero.blp
+CommandButtonCooldown=war3mapImported\cooldown ui.mdx
 
 [FrameDef]
 GOLD=TRIGSTR_2563
