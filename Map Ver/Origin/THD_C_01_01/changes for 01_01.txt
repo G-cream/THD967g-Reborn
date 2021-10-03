@@ -1,0 +1,24 @@
+游戏
+1.一部分T转为J，现在可以兼容YDWE了，同时不再依赖UI
+为使THD地图编辑不再依赖UI，同时兼容官方对战平台提供的ydwe，将一部分T转J:
+Mode Select Step1
+Mode Select Step2
+Victory
+Initialization AI
+Master Initialization
+Setting Item System Table 1
+Setting Item System Table 2
+Setting Item System Table 3
+2.删除月饼
+角色
+1.二兔
+添加了二兔
+2.海棠
+重制了头像
+3.秋静叶
+W技能狂风扫落叶：
+每秒叶子数量3*15/20/25→3*12/16/20
+4.梦月
+回去温暖的小黑屋
+修BUG
+1.游戏计分板显示头像为绿色（计分时不再重新设置头像）

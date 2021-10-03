@@ -1,1 +1,0 @@
-trigger gg_trg_Initialing_ReisenNo2 = null
