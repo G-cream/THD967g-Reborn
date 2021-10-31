@@ -22,8 +22,30 @@ AVAILABILITY = "-" "obsolete"
 COMGROUP = 2DIGIT
 EXGROUP = "ex" [EXOPT]
 EXOPT = "_" 2DIGIT
+--------------------------------------------------
+MODELNAME = NAME [REMARK] [AVAILABILITY] "." "mdx"
 
-简述
+NAME = GROUPNAME [SEQ]
+
+GROUPNAME = 1*CHAR
+SEQ = 2DIGIT
+REMARK = "_" 1*CHAR
+AVAILABILITY = "-" "obsolete"
+--------------------------------------------------
+MISCNAME = NAME [REMARK] [AVAILABILITY] "." FILEEXT
+
+NAME = GROUPNAME [SEQ]
+
+GROUPNAME = 1*CHAR
+SEQ = 2DIGIT
+REMARK = "_" 1*CHAR
+AVAILABILITY = "-" "obsolete"
+FILEEXT = 1*CHAR
+--------------------------------------------------
+
+
+--------------------------------------------------
+ICONNAME简述
 
 1. 使用方法
 ICONNAME = TYPE HERO SUFFIX "." "blp"
@@ -85,3 +107,44 @@ btn_skillkoishiex_0102.blp
 不被任何物品、技能、单位引用的图标为保留性质的废弃图标(无关乎该物品、技能、单位本身是否被废弃)，标记为obsolete
 例1：
 btn_skillmokou01-obsolete.blp
+--------------------------------------------------
+MODELNAME简述
+
+1. 使用方法
+MODELNAME = NAME [REMARK] [AVAILABILITY] "." "mdx"
+模型名称由 名称 备注 废弃.mdx共三部分组成。
+可能的最大长度的命名：
+butterfly01_blue-obsolete.mdx
+lily01_black-obsolete.mdx
+
+对于所有命名，如果是第一个序号，则序号部分命名可以省略。
+
+2. 序号
+*序号命名从00开始。
+--------------------------------------------------
+MISCNAME简述
+
+1. 使用方法
+MISCNAME = NAME [REMARK] [AVAILABILITY] "." FILEEXT
+模型名称由 名称 备注 废弃.mdx共三部分组成。
+可能的最大长度的命名：
+butterfly01_blue-obsolete.blp
+
+鉴于非模型的杂项通常与模型有着一对一，一对多的关系，总结不同用法如下：
+一对一：
+保证NAME与模型NAME一致。
+例1：
+mystia01.blp唯一地对应了模型mystia01.mdx
+一对多：
+对于一个杂项对应同组模型，保证NAME与模型GROUPNAME一致。
+例2(游戏中不存在)：
+NeutralCreep.blp同时对应NeutralCreep.mdx, NeutralCreep01.mdx, NeutralCreep02.mdx
+对于一个杂项对应不同组模型，保证NAME有恰当的语义即可。
+例3：
+yukkuri_face.blp同时对应NeutralCreep.mdx, NeutralCreep01.mdx, NeutralCreep02.mdx
+prismriver.blp同时对应lunasa.mdx, merlin.mdx, lyrica.mdx
+
+对于所有命名，如果是第一个序号，则序号部分命名可以省略。
+
+2. 序号
+*序号命名从00开始。
