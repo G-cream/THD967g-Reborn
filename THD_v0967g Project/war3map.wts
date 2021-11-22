@@ -3488,7 +3488,7 @@ STRING 501
 }
 
 STRING 502
-// 技能: A03Z (Marisa03 - 天仪「天球仪中的太阳系」), Researchhotkey (热键 - 学习)
+// 物品: I06Q (异变蘑菇), Hotkey (热键)
 {
 R
 }
@@ -3578,7 +3578,7 @@ STRING 516
 }
 
 STRING 517
-// 技能: A03Z (Marisa03 - 天仪「天球仪中的太阳系」), Hotkey (热键 - 普通)
+// 技能: A03Z (Marisa03 - 天仪「天球仪中的太阳系」), Researchhotkey (热键 - 学习)
 {
 R
 }
@@ -4004,7 +4004,7 @@ STRING 577
 }
 
 STRING 578
-// 技能: A04A (Reimu03 - 梦符「二重结界」), Researchhotkey (热键 - 学习)
+// 技能: A03Z (Marisa03 - 天仪「天球仪中的太阳系」), Hotkey (热键 - 普通)
 {
 R
 }
@@ -4104,7 +4104,7 @@ W
 }
 
 STRING 591
-// 技能: A04A (Reimu03 - 梦符「二重结界」), Hotkey (热键 - 普通)
+// 技能: A04A (Reimu03 - 梦符「二重结界」), Researchhotkey (热键 - 学习)
 {
 R
 }
@@ -4267,7 +4267,7 @@ Dots 常用论坛及发布点：
 如遇到BUG，
 请於论坛建议及回报区回报。
 东方幻想乡DOTS制作组
-版本：THD_C01.01
+版本：THD_C01.02
 }
 
 STRING 612
@@ -4602,7 +4602,7 @@ STRING 659
 }
 
 STRING 660
-// 技能: A04N (Yukari03 - 魍魉「栖息于禅寺的妖蝶」), Researchhotkey (热键 - 学习)
+// 技能: A04A (Reimu03 - 梦符「二重结界」), Hotkey (热键 - 普通)
 {
 R
 }
@@ -5867,7 +5867,7 @@ Reimu03 - 二重结界
 }
 
 STRING 844
-// 技能: A04N (Yukari03 - 魍魉「栖息于禅寺的妖蝶」), Hotkey (热键 - 普通)
+// 技能: A04N (Yukari03 - 魍魉「栖息于禅寺的妖蝶」), Researchhotkey (热键 - 学习)
 {
 R
 }
@@ -6105,7 +6105,7 @@ STRING 875
 }
 
 STRING 876
-// 技能: A052 (Mokou03 - 不灭「最初的不死鸟」), Researchhotkey (热键 - 学习)
+// 技能: A04N (Yukari03 - 魍魉「栖息于禅寺的妖蝶」), Hotkey (热键 - 普通)
 {
 R
 }
@@ -6955,7 +6955,7 @@ STRING 1003
 }
 
 STRING 1004
-// 技能: A052 (Mokou03 - 不灭「最初的不死鸟」), Hotkey (热键 - 普通)
+// 技能: A052 (Mokou03 - 不灭「最初的不死鸟」), Researchhotkey (热键 - 学习)
 {
 R
 }
@@ -7943,7 +7943,7 @@ STRING 1137
 }
 
 STRING 1138
-// 技能: A069 (Reisen03 - 月眼「幻想视差」), Researchhotkey (热键 - 学习)
+// 技能: A052 (Mokou03 - 不灭「最初的不死鸟」), Hotkey (热键 - 普通)
 {
 R
 }
@@ -8477,13 +8477,13 @@ STRING 1219
 }
 
 STRING 1220
-// 技能: A06H (Cirno03 - 冻符「急冻大气」), Researchhotkey (热键 - 学习)
+// 技能: A069 (Reisen03 - 月眼「幻想视差」), Researchhotkey (热键 - 学习)
 {
 R
 }
 
 STRING 1221
-// 技能: A06K (Flandre03 - QED「495年の波纹」), Researchhotkey (热键 - 学习)
+// 技能: A06H (Cirno03 - 冻符「急冻大气」), Researchhotkey (热键 - 学习)
 {
 R
 }
@@ -8961,9 +8961,9 @@ STRING 1279
 }
 
 STRING 1280
-// 技能: A0JC (Shizuha02 - 秋符「乾爽的气候最适合睡觉了!」), Name (名字)
+// 单位: E01E (图书馆管理员), Propernames (称谓)
 {
-Shizuha02 - 秋符「乾爽的气候最适合睡觉了!」
+小恶魔
 }
 
 STRING 1281
@@ -9321,7 +9321,7 @@ STRING 1330
 }
 
 STRING 1331
-// 技能: A073 (Tensi03 - 地震「先忧后乐之剑」), Researchhotkey (热键 - 学习)
+// 技能: A06K (Flandre03 - QED「495年の波纹」), Researchhotkey (热键 - 学习)
 {
 R
 }
@@ -9370,7 +9370,7 @@ STRING 1337
 }
 
 STRING 1338
-// 技能: A079 (Utsuho03 - 「Abyss nova」), Researchhotkey (热键 - 学习)
+// 技能: A073 (Tensi03 - 地震「先忧后乐之剑」), Researchhotkey (热键 - 学习)
 {
 R
 }
@@ -10266,19 +10266,9 @@ STRING 1433
 }
 
 STRING 1434
-// 技能: A0CD (Remilia01 - 神枪「Spear The Gungnir」), Researchubertip (提示工具 - 学习 - 扩展)
+// 单位: o015 (烤番薯的跑车), Name (名字)
 {
-向前投出神枪冈格尼尔，伤害所有穿越的普通单位。
-投中敌人少女时则停止并造成巨大的法术伤害。
-
-|cff00ffff最大距离|r：2000
-|cff00ffff魔法消耗|r：75/100/125/150
-|cff00ffff冷却时间|r：6秒
-
-|cffffcc00等级 1|r - 对普通单位造成65法术伤害，对少女造成210法术伤害
-|cffffcc00等级 2|r - 对普通单位造成110法术伤害，对少女造成340法术伤害
-|cffffcc00等级 3|r - 对普通单位造成155法术伤害，对少女造成470法术伤害
-|cffffcc00等级 4|r - 对普通单位造成200法术伤害，对少女造成600法术伤害
+烤番薯的跑车
 }
 
 STRING 1435
@@ -10374,19 +10364,19 @@ STRING 1444
 }
 
 STRING 1445
-// 技能: A079 (Utsuho03 - 「Abyss nova」), Hotkey (热键 - 普通)
+// 技能: A079 (Utsuho03 - 「Abyss nova」), Researchhotkey (热键 - 学习)
 {
 R
 }
 
 STRING 1446
-// 技能: A07Q (Yuka03 - 花田「太阳丶灌溉」), Hotkey (热键 - 普通)
+// 技能: A079 (Utsuho03 - 「Abyss nova」), Hotkey (热键 - 普通)
 {
 R
 }
 
 STRING 1447
-// 技能: A07Q (Yuka03 - 花田「太阳丶灌溉」), Researchhotkey (热键 - 学习)
+// 技能: A07Q (Yuka03 - 花田「太阳丶灌溉」), Hotkey (热键 - 普通)
 {
 R
 }
@@ -11121,7 +11111,7 @@ B|cffffcc00e|rrserker's Call - [|cffffcc00Level 2|r]
 }
 
 STRING 1555
-// 技能: A07U ((MFD)), Researchhotkey (热键 - 学习)
+// 技能: A07Q (Yuka03 - 花田「太阳丶灌溉」), Researchhotkey (热键 - 学习)
 {
 R
 }
@@ -11723,7 +11713,7 @@ Ran03 - 式辉「狐狸妖怪雷射」红色激光
 }
 
 STRING 1636
-// 技能: A0A6 (Captain03 - 船長「菠菜」), Researchtip (提示工具 - 学习)
+// 技能: A0A6 (Captain03 - 船长「菠菜」), Researchtip (提示工具 - 学习)
 {
 学习船長「菠菜」(|cffffcc00R|r) - [|cffffcc00等级 %d|r]
 }
@@ -11735,7 +11725,7 @@ Ran03 - 式辉「狐狸妖怪雷射」蓝色激光
 }
 
 STRING 1638
-// 技能: A07U ((MFD)), Hotkey (热键 - 普通)
+// 技能: A07U ((MFD)), Researchhotkey (热键 - 学习)
 {
 R
 }
@@ -11764,7 +11754,7 @@ STRING 1640
 }
 
 STRING 1641
-// 技能: A07Y (Medi03 - 毒符「甜蜜之毒」), Researchhotkey (热键 - 学习)
+// 技能: A07U ((MFD)), Hotkey (热键 - 普通)
 {
 R
 }
@@ -12799,7 +12789,7 @@ STRING 1783
 }
 
 STRING 1784
-// 技能: A086 (Eirin03 - 「永夜归隐」), Hotkey (热键 - 普通)
+// 技能: A07Y (Medi03 - 毒符「甜蜜之毒」), Researchhotkey (热键 - 学习)
 {
 R
 }
@@ -13398,7 +13388,7 @@ STRING 1867
 }
 
 STRING 1868
-// 技能: A086 (Eirin03 - 「永夜归隐」), Researchhotkey (热键 - 学习)
+// 技能: A086 (Eirin03 - 「永夜归隐」), Hotkey (热键 - 普通)
 {
 R
 }
@@ -14092,7 +14082,7 @@ STRING 1958
 }
 
 STRING 1959
-// 技能: A087 (Eirin03 - 永夜归隐), Hotkey (热键 - 普通)
+// 技能: A086 (Eirin03 - 「永夜归隐」), Researchhotkey (热键 - 学习)
 {
 R
 }
@@ -14110,7 +14100,7 @@ STRING 1961
 }
 
 STRING 1962
-// 技能: A0AA (Captain02 - 溺符「幽深漩渦」), Researchubertip (提示工具 - 学习 - 扩展)
+// 技能: A0AA (Captain02 - 溺符「幽深旋涡」), Researchubertip (提示工具 - 学习 - 扩展)
 {
 船长在地面插一根锚，以此来召唤水流，形成漩涡，将人卷入一定时间后喷出。对被卷入漩涡深处的单位造成持续伤害。
 
@@ -14174,7 +14164,7 @@ STRING 1970
 }
 
 STRING 1971
-// 技能: A087 (Eirin03 - 永夜归隐), Researchhotkey (热键 - 学习)
+// 技能: A087 (Eirin03 - 永夜归隐), Hotkey (热键 - 普通)
 {
 R
 }
@@ -14319,7 +14309,7 @@ STRING 1992
 }
 
 STRING 1993
-// 技能: A08C (Yuugi03 - 力业「大江山岚」), Researchhotkey (热键 - 学习)
+// 技能: A087 (Eirin03 - 永夜归隐), Researchhotkey (热键 - 学习)
 {
 R
 }
@@ -14748,7 +14738,7 @@ Yuka01 - 花符「月影丶环花」
 }
 
 STRING 2046
-// 技能: A08J (Yamame03 - 瘴气「原因不明之热病」), Researchhotkey (热键 - 学习)
+// 技能: A08C (Yuugi03 - 力业「大江山岚」), Researchhotkey (热键 - 学习)
 {
 R
 }
@@ -14829,7 +14819,7 @@ STRING 2057
 }
 
 STRING 2058
-// 技能: A08J (Yamame03 - 瘴气「原因不明之热病」), Hotkey (热键 - 普通)
+// 技能: A08J (Yamame03 - 瘴气「原因不明之热病」), Researchhotkey (热键 - 学习)
 {
 R
 }
@@ -15111,7 +15101,7 @@ STRING 2098
 }
 
 STRING 2099
-// 技能: A08Q (Letty03 - 寒符「延长的冬日」), Researchhotkey (热键 - 学习)
+// 技能: A08J (Yamame03 - 瘴气「原因不明之热病」), Hotkey (热键 - 普通)
 {
 R
 }
@@ -15520,7 +15510,7 @@ STRING 2156
 }
 
 STRING 2157
-// 技能: A08Q (Letty03 - 寒符「延长的冬日」), Hotkey (热键 - 普通)
+// 技能: A08Q (Letty03 - 寒符「延长的冬日」), Researchhotkey (热键 - 学习)
 {
 R
 }
@@ -15881,7 +15871,7 @@ STRING 2201
 }
 
 STRING 2202
-// 技能: A09A (Pad03 - 奇术「Misdirection」), Hotkey (热键 - 普通)
+// 技能: A08Q (Letty03 - 寒符「延长的冬日」), Hotkey (热键 - 普通)
 {
 R
 }
@@ -16125,7 +16115,7 @@ STRING 2231
 }
 
 STRING 2232
-// 技能: A09A (Pad03 - 奇术「Misdirection」), Researchhotkey (热键 - 学习)
+// 技能: A09A (Pad03 - 奇术「Misdirection」), Hotkey (热键 - 普通)
 {
 R
 }
@@ -16842,7 +16832,7 @@ STRING 2324
 }
 
 STRING 2325
-// 技能: A0AA (Captain02 - 溺符「幽深漩渦」), Researchhotkey (热键 - 学习)
+// 技能: A0AA (Captain02 - 溺符「幽深旋涡」), Researchhotkey (热键 - 学习)
 {
 F
 }
@@ -16996,7 +16986,7 @@ STRING 2348
 }
 
 STRING 2349
-// 技能: A09M (Wriggle03 - 「小虫风暴」), Researchhotkey (热键 - 学习)
+// 技能: A09A (Pad03 - 奇术「Misdirection」), Researchhotkey (热键 - 学习)
 {
 R
 }
@@ -17050,13 +17040,13 @@ STRING 2357
 }
 
 STRING 2358
-// 技能: A09M (Wriggle03 - 「小虫风暴」), Hotkey (热键 - 普通)
+// 技能: A09M (Wriggle03 - 「小虫风暴」), Researchhotkey (热键 - 学习)
 {
 R
 }
 
 STRING 2359
-// 技能: A0AA (Captain02 - 溺符「幽深漩渦」), Hotkey (热键 - 普通)
+// 技能: A0AA (Captain02 - 溺符「幽深旋涡」), Hotkey (热键 - 普通)
 {
 F
 }
@@ -17212,7 +17202,7 @@ STRING 2381
 }
 
 STRING 2382
-// 技能: A09T (Momizi03 - 天狗「守护之盾」Stun), Researchhotkey (热键 - 学习)
+// 技能: A09M (Wriggle03 - 「小虫风暴」), Hotkey (热键 - 普通)
 {
 R
 }
@@ -17572,13 +17562,13 @@ STRING 2428
 }
 
 STRING 2429
-// 技能: A09T (Momizi03 - 天狗「守护之盾」Stun), Hotkey (热键 - 普通)
+// 技能: A09T (Momizi03 - 天狗「守护之盾」Stun), Researchhotkey (热键 - 学习)
 {
 R
 }
 
 STRING 2430
-// 技能: A0B9 ((MFD)), Hotkey (热键 - 普通)
+// 技能: A09T (Momizi03 - 天狗「守护之盾」Stun), Hotkey (热键 - 普通)
 {
 R
 }
@@ -17711,9 +17701,9 @@ STRING 2447
 }
 
 STRING 2448
-// 技能: A0A6 (Captain03 - 船長「菠菜」), Name (名字)
+// 技能: A0ZW (AyaMR - 「无双风神」), Name (名字)
 {
-Captain03 - 船長「菠菜」
+AyaMR - 「无双风神」
 }
 
 STRING 2449
@@ -17729,9 +17719,9 @@ W
 }
 
 STRING 2451
-// 技能: A0AA (Captain02 - 溺符「幽深漩渦」), Name (名字)
+// 技能: A0ZW (AyaMR - 「无双风神」), Tip (提示工具 - 普通)
 {
-Captain02 - 溺符「幽深漩渦」
+「无双风神」(|cffffcc00T|r)
 }
 
 STRING 2452
@@ -18304,7 +18294,7 @@ STRING 2524
 }
 
 STRING 2525
-// 技能: A0B9 ((MFD)), Researchhotkey (热键 - 学习)
+// 技能: A0B9 ((MFD)), Hotkey (热键 - 普通)
 {
 R
 }
@@ -18359,7 +18349,7 @@ STRING 2531
 }
 
 STRING 2532
-// 技能: A0BO (Rin03 - 咒精「丧尸妖精」), Researchhotkey (热键 - 学习)
+// 技能: A0B9 ((MFD)), Researchhotkey (热键 - 学习)
 {
 R
 }
@@ -18568,7 +18558,7 @@ STRING 2561
 }
 
 STRING 2562
-// 单位: E01E (图书馆管理员), Propernames (称谓)
+// 单位: E01E (图书馆管理员), Revivetip (提示工具 -重生)
 {
 小恶魔
 }
@@ -18897,7 +18887,7 @@ STRING 2605
 }
 
 STRING 2606
-// 技能: A0BO (Rin03 - 咒精「丧尸妖精」), Hotkey (热键 - 普通)
+// 技能: A0BO (Rin03 - 咒精「丧尸妖精」), Researchhotkey (热键 - 学习)
 {
 R
 }
@@ -18972,7 +18962,7 @@ STRING 2616
 }
 
 STRING 2617
-// 技能: A0C8 (Kogasa03 - 雨伞「超防水干燥妖怪」), Researchhotkey (热键 - 学习)
+// 技能: A0BO (Rin03 - 咒精「丧尸妖精」), Hotkey (热键 - 普通)
 {
 R
 }
@@ -18984,7 +18974,7 @@ STRING 2618
 }
 
 STRING 2619
-// 技能: A0C8 (Kogasa03 - 雨伞「超防水干燥妖怪」), Hotkey (热键 - 普通)
+// 技能: A0C8 (Kogasa03 - 雨伞「超防水干燥妖怪」), Researchhotkey (热键 - 学习)
 {
 R
 }
@@ -19301,7 +19291,7 @@ STRING 2661
 }
 
 STRING 2662
-// 技能: A0GF (Nitori02 - 电子「阳电子炮 Cucumber.II」), Ubertip (提示工具 - 普通 - 扩展)
+// 技能: A0ZV (Nitori02 - 电子「阳电子炮 Cucumber.II」), Ubertip (提示工具 - 普通 - 扩展)
 {
 「阳电子炮 Cucumber.II」能够将「妖怪黄瓜能量电池(E)」中的小黄瓜转化为威力巨大的阳电子能量，「阳电子炮 Cucumber.II」具有2000码的射程，射击后会造成巨大的
 冲击力，伤害随穿透的目标数目递减10%，并震晕敌人，减少敌人30%攻击力和30%移动速度。对建筑造成50%的伤害。
@@ -19382,7 +19372,7 @@ W
 }
 
 STRING 2674
-// 技能: A0C8 (Kogasa03 - 雨伞「超防水干燥妖怪」), Unhotkey (热键 -关闭)
+// 技能: A0C8 (Kogasa03 - 雨伞「超防水干燥妖怪」), Hotkey (热键 - 普通)
 {
 R
 }
@@ -19854,13 +19844,13 @@ STRING 2738
 }
 
 STRING 2739
-// 技能: A0CH (Remilia03 - 红符「Bloody Magic Square」), Researchhotkey (热键 - 学习)
+// 技能: A0C8 (Kogasa03 - 雨伞「超防水干燥妖怪」), Unhotkey (热键 -关闭)
 {
 R
 }
 
 STRING 2740
-// 技能: A07G (Rumia03 - 夜符「午夜」), Researchhotkey (热键 - 学习)
+// 技能: A0CH (Remilia03 - 红符「Bloody Magic Square」), Researchhotkey (热键 - 学习)
 {
 R
 }
@@ -19954,7 +19944,7 @@ STRING 2751
 }
 
 STRING 2752
-// 技能: A0GF (Nitori02 - 电子「阳电子炮 Cucumber.II」), Ubertip (提示工具 - 普通 - 扩展)
+// 技能: A0ZV (Nitori02 - 电子「阳电子炮 Cucumber.II」), Ubertip (提示工具 - 普通 - 扩展)
 {
 「阳电子炮 Cucumber.II」能够将「妖怪黄瓜能量电池(E)」中的小黄瓜转化为威力巨大的阳电子能量，「阳电子炮 Cucumber.II」具有2000码的射程，射击后会造成巨大的
 冲击力，伤害随穿透的目标数目递减10%，并震晕敌人，减少敌人30%攻击力和30%移动速度。对建筑造成50%的伤害。
@@ -19969,13 +19959,13 @@ STRING 2752
 }
 
 STRING 2753
-// 技能: A0CL (Komachi03 - 魂符「生魂流离之镰」), Researchhotkey (热键 - 学习)
+// 技能: A07G (Rumia03 - 夜符「午夜」), Researchhotkey (热键 - 学习)
 {
 R
 }
 
 STRING 2754
-// 技能: A0CO (Komachi03 - 爆炸), Hotkey (热键 - 普通)
+// 技能: A0CL (Komachi03 - 魂符「生魂流离之镰」), Researchhotkey (热键 - 学习)
 {
 R
 }
@@ -20567,18 +20557,14 @@ W
 }
 
 STRING 2833
-// 技能: A0GF (Nitori02 - 电子「阳电子炮 Cucumber.II」), Ubertip (提示工具 - 普通 - 扩展)
+// 技能: A0ZW (AyaMR - 「无双风神」), Ubertip (提示工具 - 普通 - 扩展)
 {
-「阳电子炮 Cucumber.II」能够将「妖怪黄瓜能量电池(E)」中的小黄瓜转化为威力巨大的阳电子能量，「阳电子炮 Cucumber.II」具有2000码的射程，射击后会造成巨大的
-冲击力，伤害随穿透的目标数目递减10%，并震晕敌人，减少敌人30%攻击力和30%移动速度。对建筑造成50%的伤害。
+使用后，
+文获得77%的物理闪避，持续一段时间。
 
-|cff00ffff释放距离|r：2000
-|c0000ffff魔法消耗|r：50
-|c0000ffff冷却时间|r：0秒
-
-|cffffcc00等级 4|r - 最大伤害390
-
-|cffffcc00将消耗能量槽中的小黄瓜一条，没有小黄瓜无法射击|r
+|c0000ffff魔法消耗|r：75点
+|c0000ffff持续时间|r：4.5秒
+|c0000ffff冷却时间|r：40秒
 }
 
 STRING 2834
@@ -21038,13 +21024,13 @@ STRING 2898
 }
 
 STRING 2899
-// 技能: A0CN (KomachiEX - 死歌「八重雾的引渡」), Hotkey (热键 - 普通)
+// 技能: A0CO (Komachi03 - 爆炸), Hotkey (热键 - 普通)
 {
 R
 }
 
 STRING 2900
-// 技能: A05S (Aya03 - 风符「风神一扇」), Researchhotkey (热键 - 学习)
+// 技能: A0CN (KomachiEX - 死歌「八重雾的引渡」), Hotkey (热键 - 普通)
 {
 R
 }
@@ -21239,13 +21225,13 @@ STRING 2924
 }
 
 STRING 2925
-// 技能: A05M (Iku03 - 光星「光龙的吐息」), Researchhotkey (热键 - 学习)
+// 技能: A05S (Aya03 - 风符「风神一扇」), Researchhotkey (热键 - 学习)
 {
 R
 }
 
 STRING 2926
-// 技能: A0D2 (Neet03 - 「HELP ME! EIRIN!!!」), Hotkey (热键 - 普通)
+// 技能: A05M (Iku03 - 光星「光龙的吐息」), Researchhotkey (热键 - 学习)
 {
 R
 }
@@ -22497,13 +22483,13 @@ STRING 3105
 }
 
 STRING 3106
-// 技能: A0D2 (Neet03 - 「HELP ME! EIRIN!!!」), Researchhotkey (热键 - 学习)
+// 技能: A0D2 (Neet03 - 「HELP ME! EIRIN!!!」), Hotkey (热键 - 普通)
 {
 R
 }
 
 STRING 3107
-// 技能: A064 (Youmu03 - 魂魄「幽明求闻持聪明之法」), Researchhotkey (热键 - 学习)
+// 技能: A0D2 (Neet03 - 「HELP ME! EIRIN!!!」), Researchhotkey (热键 - 学习)
 {
 R
 }
@@ -22928,13 +22914,13 @@ STRING 3163
 }
 
 STRING 3164
-// 技能: A064 (Youmu03 - 魂魄「幽明求闻持聪明之法」), Hotkey (热键 - 普通)
+// 技能: A064 (Youmu03 - 魂魄「幽明求闻持聪明之法」), Researchhotkey (热键 - 学习)
 {
 R
 }
 
 STRING 3165
-// 技能: A0DH (Mystia03 - 声符「领唱者」), Researchhotkey (热键 - 学习)
+// 技能: A064 (Youmu03 - 魂魄「幽明求闻持聪明之法」), Hotkey (热键 - 普通)
 {
 R
 }
@@ -23520,13 +23506,13 @@ STRING 3231
 }
 
 STRING 3232
-// 技能: A0E8 (Hina03 - 疵符「破裂的护符」), Hotkey (热键 - 普通)
+// 技能: A0DH (Mystia03 - 声符「领唱者」), Researchhotkey (热键 - 学习)
 {
 R
 }
 
 STRING 3233
-// 技能: A0E8 (Hina03 - 疵符「破裂的护符」), Researchhotkey (热键 - 学习)
+// 技能: A0E8 (Hina03 - 疵符「破裂的护符」), Hotkey (热键 - 普通)
 {
 R
 }
@@ -23636,7 +23622,7 @@ STRING 3248
 }
 
 STRING 3249
-// 技能: A0EG (Ran03 - 式辉「狐狸妖怪雷射」), Hotkey (热键 - 普通)
+// 技能: A0E8 (Hina03 - 疵符「破裂的护符」), Researchhotkey (热键 - 学习)
 {
 R
 }
@@ -23691,7 +23677,7 @@ F
 }
 
 STRING 3257
-// 技能: A0JC (Shizuha02 - 秋符「乾爽的气候最适合睡觉了!」), Researchhotkey (热键 - 学习)
+// 技能: A0JC (Shizuha02 - 秋符「干爽的气候最适合睡觉了!」), Researchhotkey (热键 - 学习)
 {
 F
 }
@@ -23751,7 +23737,7 @@ STRING 3266
 }
 
 STRING 3267
-// 技能: A0JC (Shizuha02 - 秋符「乾爽的气候最适合睡觉了!」), Hotkey (热键 - 普通)
+// 技能: A0JC (Shizuha02 - 秋符「干爽的气候最适合睡觉了!」), Hotkey (热键 - 普通)
 {
 F
 }
@@ -23845,7 +23831,7 @@ STRING 3281
 }
 
 STRING 3282
-// 技能: A0EG (Ran03 - 式辉「狐狸妖怪雷射」), Researchhotkey (热键 - 学习)
+// 技能: A0EG (Ran03 - 式辉「狐狸妖怪雷射」), Hotkey (热键 - 普通)
 {
 R
 }
@@ -24101,13 +24087,13 @@ D
 }
 
 STRING 3321
-// 技能: A0EQ ((MFD)), Hotkey (热键 - 普通)
+// 技能: A0EG (Ran03 - 式辉「狐狸妖怪雷射」), Researchhotkey (热键 - 学习)
 {
 R
 }
 
 STRING 3322
-// 技能: A0ET (Ran03 - 式辉「狐狸妖怪雷射」红色激光), Researchhotkey (热键 - 学习)
+// 技能: A0EQ ((MFD)), Hotkey (热键 - 普通)
 {
 R
 }
@@ -24537,7 +24523,7 @@ STRING 3389
 }
 
 STRING 3390
-// 技能: A0AA (Captain02 - 溺符「幽深漩渦」), Ubertip (提示工具 - 普通 - 扩展)
+// 技能: A0AA (Captain02 - 溺符「幽深旋涡」), Ubertip (提示工具 - 普通 - 扩展)
 {
 船长在地面插一根锚，以此来召唤水流，形成漩涡，将人卷入一定时间后喷出。对被卷入漩涡深处的单位造成持续伤害。
 
@@ -24562,7 +24548,7 @@ STRING 3392
 }
 
 STRING 3393
-// 技能: A0AA (Captain02 - 溺符「幽深漩渦」), Ubertip (提示工具 - 普通 - 扩展)
+// 技能: A0AA (Captain02 - 溺符「幽深旋涡」), Ubertip (提示工具 - 普通 - 扩展)
 {
 船长在地面插一根锚，以此来召唤水流，形成漩涡，将人卷入一定时间后喷出。对被卷入漩涡深处的单位造成持续伤害。
 
@@ -24602,13 +24588,15 @@ STRING 3396
 }
 
 STRING 3397
-// 技能: A03T (NitoriEX - 能源「妖怪黄瓜能量电池」), Ubertip (提示工具 - 普通 - 扩展)
+// 技能: A05O (AyaEX - 「风神少女」), Ubertip (提示工具 - 普通 - 扩展)
 {
-河童战斗装甲身后的那个传说中的大背包中装备了河童能源公司最新的"妖怪黄瓜能量电池(R)"，只要在其中塞入小黄瓜就能为阳电子炮充能。
+使用时，
+所有指令都会带有闪烁效果。
 
-消耗的黄瓜会返回25%的资源。
+|c0000ffff魔法消耗|r：150点
+|c0000ffff冷却时间|r：80秒
 
-|cffffcc00(使用打开能量槽装填，再次使用则关闭能量槽，装填过程中无法使用其他物品)|r
+|cffffcc00等级 2|r - 持续4秒。
 }
 
 STRING 3398
@@ -24642,25 +24630,25 @@ STRING 3402
 }
 
 STRING 3403
-// 技能: A0A6 (Captain03 - 船長「菠菜」), Tip (提示工具 - 普通)
+// 技能: A0A6 (Captain03 - 船长「菠菜」), Tip (提示工具 - 普通)
 {
 船長「菠菜」(|cffffcc00R|r) - [|cffffcc00等级 1|r]
 }
 
 STRING 3404
-// 技能: A0A6 (Captain03 - 船長「菠菜」), Tip (提示工具 - 普通)
+// 技能: A0A6 (Captain03 - 船长「菠菜」), Tip (提示工具 - 普通)
 {
 船長「菠菜」(|cffffcc00R|r) - [|cffffcc00等级 3|r]
 }
 
 STRING 3405
-// 技能: A0A6 (Captain03 - 船長「菠菜」), Tip (提示工具 - 普通)
+// 技能: A0A6 (Captain03 - 船长「菠菜」), Tip (提示工具 - 普通)
 {
 船長「菠菜」(|cffffcc00R|r) - [|cffffcc00等级 2|r]
 }
 
 STRING 3406
-// 技能: A0A6 (Captain03 - 船長「菠菜」), Tip (提示工具 - 普通)
+// 技能: A0A6 (Captain03 - 船长「菠菜」), Tip (提示工具 - 普通)
 {
 船長「菠菜」(|cffffcc00R|r) - [|cffffcc00等级 4|r]
 }
@@ -24760,7 +24748,7 @@ STRING 3413
 }
 
 STRING 3414
-// 技能: A0AA (Captain02 - 溺符「幽深漩渦」), Ubertip (提示工具 - 普通 - 扩展)
+// 技能: A0AA (Captain02 - 溺符「幽深旋涡」), Ubertip (提示工具 - 普通 - 扩展)
 {
 船长在地面插一根锚，以此来召唤水流，形成漩涡，将人卷入一定时间后喷出。对被卷入漩涡深处的单位造成持续伤害。
 
@@ -24902,7 +24890,7 @@ STRING 3428
 }
 
 STRING 3429
-// 技能: A0AA (Captain02 - 溺符「幽深漩渦」), Ubertip (提示工具 - 普通 - 扩展)
+// 技能: A0AA (Captain02 - 溺符「幽深旋涡」), Ubertip (提示工具 - 普通 - 扩展)
 {
 船长在地面插一根锚，以此来召唤水流，形成漩涡，将人卷入一定时间后喷出。对被卷入漩涡深处的单位造成持续伤害。
 
@@ -25361,7 +25349,7 @@ STRING 3485
 }
 
 STRING 3486
-// 技能: A0AA (Captain02 - 溺符「幽深漩渦」), Researchtip (提示工具 - 学习)
+// 技能: A0AA (Captain02 - 溺符「幽深旋涡」), Researchtip (提示工具 - 学习)
 {
 学习溺符「幽深漩渦」(|cffffcc00F|r) - [|cffffcc00等级 %d|r]
 }
@@ -25385,19 +25373,19 @@ STRING 3489
 }
 
 STRING 3490
-// 技能: A0AA (Captain02 - 溺符「幽深漩渦」), Tip (提示工具 - 普通)
+// 技能: A0AA (Captain02 - 溺符「幽深旋涡」), Tip (提示工具 - 普通)
 {
 溺符「幽深漩渦」(|cffffcc00F|r) - [|cffffcc00等级 1|r]
 }
 
 STRING 3491
-// 技能: A0AA (Captain02 - 溺符「幽深漩渦」), Tip (提示工具 - 普通)
+// 技能: A0AA (Captain02 - 溺符「幽深旋涡」), Tip (提示工具 - 普通)
 {
 溺符「幽深漩渦」(|cffffcc00F|r) - [|cffffcc00等级 2|r]
 }
 
 STRING 3492
-// 技能: A0AA (Captain02 - 溺符「幽深漩渦」), Tip (提示工具 - 普通)
+// 技能: A0AA (Captain02 - 溺符「幽深旋涡」), Tip (提示工具 - 普通)
 {
 溺符「幽深漩渦」(|cffffcc00F|r) - [|cffffcc00等级 3|r]
 }
@@ -25475,7 +25463,7 @@ STRING 3504
 }
 
 STRING 3505
-// 技能: A0AA (Captain02 - 溺符「幽深漩渦」), Tip (提示工具 - 普通)
+// 技能: A0AA (Captain02 - 溺符「幽深旋涡」), Tip (提示工具 - 普通)
 {
 溺符「幽深漩渦」(|cffffcc00F|r) - [|cffffcc00等级 4|r]
 }
@@ -26858,13 +26846,13 @@ STRING 3703
 }
 
 STRING 3704
-// 技能: A0ET (Ran03 - 式辉「狐狸妖怪雷射」红色激光), Hotkey (热键 - 普通)
+// 技能: A0ET (Ran03 - 式辉「狐狸妖怪雷射」红色激光), Researchhotkey (热键 - 学习)
 {
 R
 }
 
 STRING 3705
-// 技能: A0EU (Ran03 - 式辉「狐狸妖怪雷射」蓝色激光), Researchhotkey (热键 - 学习)
+// 技能: A0ET (Ran03 - 式辉「狐狸妖怪雷射」红色激光), Hotkey (热键 - 普通)
 {
 R
 }
@@ -27148,19 +27136,19 @@ Suika03 - 物理伤害免疫(04)
 }
 
 STRING 3736
-// 技能: A0EU (Ran03 - 式辉「狐狸妖怪雷射」蓝色激光), Hotkey (热键 - 普通)
+// 技能: A0EU (Ran03 - 式辉「狐狸妖怪雷射」蓝色激光), Researchhotkey (热键 - 学习)
 {
 R
 }
 
 STRING 3737
-// 技能: A0F6 (Kanako03 - 筒粥「神之粥」), Researchhotkey (热键 - 学习)
+// 技能: A0EU (Ran03 - 式辉「狐狸妖怪雷射」蓝色激光), Hotkey (热键 - 普通)
 {
 R
 }
 
 STRING 3738
-// 技能: A0F6 (Kanako03 - 筒粥「神之粥」), Hotkey (热键 - 普通)
+// 技能: A0F6 (Kanako03 - 筒粥「神之粥」), Researchhotkey (热键 - 学习)
 {
 R
 }
@@ -27622,13 +27610,13 @@ W
 }
 
 STRING 3808
-// 技能: A0FC (Kanako04-03 - 神壳「神灵之谷」), Researchhotkey (热键 - 学习)
+// 技能: A0F6 (Kanako03 - 筒粥「神之粥」), Hotkey (热键 - 普通)
 {
 R
 }
 
 STRING 3809
-// 技能: A0FC (Kanako04-03 - 神壳「神灵之谷」), Hotkey (热键 - 普通)
+// 技能: A0FC (Kanako04-03 - 神壳「神灵之谷」), Researchhotkey (热键 - 学习)
 {
 R
 }
@@ -27783,16 +27771,9 @@ STRING 3830
 }
 
 STRING 3831
-// 物品: I032 (叫兽的面具), Ubertip (提示工具 - 扩展)
+// 技能: A0ZS (异变蘑菇食用), Name (名字)
 {
-|cffffcc00属性：|r
-攻击 +5
-力量 +18
-敏捷 +3
-智力 +3
- 
-|cff00ccff教授的风骚：|r
-降低300范围内的敌方单位40%的移动速度。持续3秒，冷却时间25秒。 
+异变蘑菇食用
 }
 
 STRING 3832
@@ -27903,7 +27884,7 @@ STRING 3847
 }
 
 STRING 3848
-// 技能: A0GF (Nitori02 - 电子「阳电子炮 Cucumber.II」), Ubertip (提示工具 - 普通 - 扩展)
+// 技能: A0ZV (Nitori02 - 电子「阳电子炮 Cucumber.II」), Ubertip (提示工具 - 普通 - 扩展)
 {
 「阳电子炮 Cucumber.II」能够将「妖怪黄瓜能量电池(E)」中的小黄瓜转化为威力巨大的阳电子能量，「阳电子炮 Cucumber.II」具有2000码的射程，射击后会造成巨大的
 冲击力，伤害随穿透的目标数目递减10%，并震晕敌人，减少敌人30%攻击力和30%移动速度。对建筑造成50%的伤害。
@@ -28109,13 +28090,13 @@ STRING 3879
 }
 
 STRING 3880
-// 技能: A0FK (Suwako03 - 「小小青蛙不畏风雨」), Researchhotkey (热键 - 学习)
+// 技能: A0FC (Kanako04-03 - 神壳「神灵之谷」), Hotkey (热键 - 普通)
 {
 R
 }
 
 STRING 3881
-// 技能: A0FK (Suwako03 - 「小小青蛙不畏风雨」), Hotkey (热键 - 普通)
+// 技能: A0FK (Suwako03 - 「小小青蛙不畏风雨」), Researchhotkey (热键 - 学习)
 {
 R
 }
@@ -28626,7 +28607,7 @@ STRING 3957
 }
 
 STRING 3958
-// 技能: A0FK (Suwako03 - 「小小青蛙不畏风雨」), Unhotkey (热键 -关闭)
+// 技能: A0FK (Suwako03 - 「小小青蛙不畏风雨」), Hotkey (热键 - 普通)
 {
 R
 }
@@ -28832,7 +28813,7 @@ System - 神石弹幕
 }
 
 STRING 3988
-// 技能: A0FX ((MFD)), Hotkey (热键 - 普通)
+// 技能: A0FK (Suwako03 - 「小小青蛙不畏风雨」), Unhotkey (热键 -关闭)
 {
 R
 }
@@ -28886,7 +28867,7 @@ STRING 3996
 }
 
 STRING 3997
-// 技能: A0FX ((MFD)), Researchhotkey (热键 - 学习)
+// 技能: A0FX ((MFD)), Hotkey (热键 - 普通)
 {
 R
 }
@@ -29233,7 +29214,7 @@ STRING 4050
 }
 
 STRING 4051
-// 技能: A0GA (Meirin03 - 极彩「彩光乱舞」), Researchhotkey (热键 - 学习)
+// 技能: A0FX ((MFD)), Researchhotkey (热键 - 学习)
 {
 R
 }
@@ -29573,22 +29554,9 @@ STRING 4101
 }
 
 STRING 4102
-// 物品: I024 (|cffffcc00合成卷轴|r - 叫兽的面具), Ubertip (提示工具 - 扩展)
+// 技能: A05O (AyaEX - 「风神少女」), Tip (提示工具 - 普通)
 {
-|cffff3300其它材料：|r
-西行妖枝条 - 150
-墨染的樱花 - 450
-纸面罩 - 1000
-|cffc0c0c0总价 - 2400|r
- 
-|cffffcc00属性：|r
-攻击 +5
-力量 +18
-敏捷 +3
-智力 +3
- 
-|cff00ccff教授的风骚：|r
-降低300范围内的敌方单位40%的移动速度。持续3秒，冷却时间25秒。 
+「风神少女」(|cffffcc00C|r) - [|cffffcc00等级 2|r]
 }
 
 STRING 4103
@@ -30569,7 +30537,7 @@ Aya04 - 「风神少女」
 }
 
 STRING 4251
-// 技能: A0JC (Shizuha02 - 秋符「乾爽的气候最适合睡觉了!」), Researchtip (提示工具 - 学习)
+// 技能: A0JC (Shizuha02 - 秋符「干爽的气候最适合睡觉了!」), Researchtip (提示工具 - 学习)
 {
 学习秋符「乾爽的气候最适合睡觉了!」(|cffffcc00F|r) - [|cffffcc00等级 %d|r]
 }
@@ -30631,13 +30599,13 @@ STRING 4259
 }
 
 STRING 4260
-// 技能: A0GX (Alice03 - 「蓬莱人偶」), Hotkey (热键 - 普通)
+// 技能: A0GA (Meirin03 - 极彩「彩光乱舞」), Researchhotkey (热键 - 学习)
 {
 R
 }
 
 STRING 4261
-// 技能: A0GX (Alice03 - 「蓬莱人偶」), Researchhotkey (热键 - 学习)
+// 技能: A0GX (Alice03 - 「蓬莱人偶」), Hotkey (热键 - 普通)
 {
 R
 }
@@ -30726,7 +30694,7 @@ STRING 4274
 }
 
 STRING 4275
-// 技能: A05O (AyaEX - 「风神少女」), Tip (提示工具 - 普通)
+// 技能: A0ZW (AyaMR - 「无双风神」), Tip (提示工具 - 普通)
 {
 「风神少女」(|cffffcc00C|r) - [|cffffcc00等级 2|r]
 }
@@ -30976,13 +30944,13 @@ STRING 4309
 }
 
 STRING 4310
-// 技能: A0HE (Alice03-3 人偶医疗), Hotkey (热键 - 普通)
+// 技能: A0GX (Alice03 - 「蓬莱人偶」), Researchhotkey (热键 - 学习)
 {
 R
 }
 
 STRING 4311
-// 技能: A0HE (Alice03-3 人偶医疗), Unhotkey (热键 -关闭)
+// 技能: A0HE (Alice03-3 人偶医疗), Hotkey (热键 - 普通)
 {
 R
 }
@@ -31508,6 +31476,12 @@ STRING 4377
 |c0000ffff冷却时间|r：70秒
 }
 
+STRING 4378
+// 技能: A0ZI (ReisenNo202 - 思议「月之羽衣」), Researchubertip (提示工具 - 学习 - 扩展)
+{
+一段时间内所有伤害皆会被羽衣转移出地球外。|n|n|c0000ffff魔法消耗|r：80/90/100/110|n|c0000ffff冷却时间|r：24/22/20/18|n|n|cffffcc00等级 1|r - 持续1.5秒内不受任何伤害。|n|cffffcc00等级 2|r - 持续2.0秒内不受任何伤害。|n|cffffcc00等级 3|r - 持续2.5秒内不受任何伤害。|n|cffffcc00等级 4|r - 持续3.0秒内不受任何伤害。
+}
+
 STRING 4379
 // 技能: A0RO (Captain04 - 凑符「魅影船港」), Name (名字)
 {
@@ -31817,7 +31791,7 @@ STRING 4425
 }
 
 STRING 4426
-// 技能: A0HN (Alice01-3 人偶突击模式), Hotkey (热键 - 普通)
+// 技能: A0HE (Alice03-3 人偶医疗), Unhotkey (热键 -关闭)
 {
 R
 }
@@ -32119,6 +32093,12 @@ STRING 4462
 |cffffcc00等级 1|r - 冷却时间14秒
 }
 
+STRING 4463
+// 技能: A0ZI (ReisenNo202 - 思议「月之羽衣」), Ubertip (提示工具 - 普通 - 扩展)
+{
+一段时间内所有伤害皆会被羽衣转移出地球外。|n|n|c0000ffff魔法消耗|r：80|n|c0000ffff冷却时间|r：24秒|n|n|cffffcc00等级 1|r - 持续1.5秒内不受任何伤害。
+}
+
 STRING 4464
 // 单位: n023 (温泉), Name (名字)
 {
@@ -32126,7 +32106,7 @@ STRING 4464
 }
 
 STRING 4465
-// 技能: A05V (Suika03 - 鬼气「蒙々迷雾」), Researchhotkey (热键 - 学习)
+// 技能: A0HN (Alice01-3 人偶突击模式), Hotkey (热键 - 普通)
 {
 R
 }
@@ -32416,6 +32396,12 @@ STRING 4502
 晕锤
 }
 
+STRING 4503
+// 技能: A0ZI (ReisenNo202 - 思议「月之羽衣」), Ubertip (提示工具 - 普通 - 扩展)
+{
+一段时间内所有伤害皆会被羽衣转移出地球外。|n|n|c0000ffff魔法消耗|r：90|n|c0000ffff冷却时间|r：22秒|n|n|cffffcc00等级 2|r - 持续2.0秒内不受任何伤害。
+}
+
 STRING 4504
 // 技能: A0XI (PatchouliCE - 水土符「艾尼维亚之霜」), Tip (提示工具 - 普通)
 {
@@ -32622,7 +32608,7 @@ STRING 4534
 }
 
 STRING 4535
-// 技能: A05V (Suika03 - 鬼气「蒙々迷雾」), Hotkey (热键 - 普通)
+// 技能: A05V (Suika03 - 鬼气「蒙々迷雾」), Researchhotkey (热键 - 学习)
 {
 R
 }
@@ -32923,7 +32909,7 @@ STRING 4574
 }
 
 STRING 4575
-// 单位: E01E (图书馆管理员), Revivetip (提示工具 -重生)
+// 单位: E00Z (夜雀), Tip (提示工具 - 基础)
 {
 蜜斯缇雅 萝蕾拉
 }
@@ -32986,13 +32972,13 @@ STRING 4583
 }
 
 STRING 4584
-// 技能: A0D7 (Nazrin03 - 棒符「忙碌的寻龙尺」), Researchhotkey (热键 - 学习)
+// 技能: A05V (Suika03 - 鬼气「蒙々迷雾」), Hotkey (热键 - 普通)
 {
 R
 }
 
 STRING 4585
-// 技能: A0IY (Satori03 - 心花「Camera Shy Rose」), Researchhotkey (热键 - 学习)
+// 技能: A0D7 (Nazrin03 - 棒符「忙碌的寻龙尺」), Researchhotkey (热键 - 学习)
 {
 R
 }
@@ -33361,13 +33347,13 @@ STRING 4630
 }
 
 STRING 4631
-// 技能: A0DQ (Koishi03 - 「被厌恶者的哲学」), Researchhotkey (热键 - 学习)
+// 技能: A0IY (Satori03 - 心花「Camera Shy Rose」), Researchhotkey (热键 - 学习)
 {
 R
 }
 
 STRING 4632
-// 技能: A0J7 (Shizuha03 - 神符「八百万的红叶神威」), Researchhotkey (热键 - 学习)
+// 技能: A0DQ (Koishi03 - 「被厌恶者的哲学」), Researchhotkey (热键 - 学习)
 {
 R
 }
@@ -33634,7 +33620,7 @@ Cirno01 - 俺！最强！
 }
 
 STRING 4667
-// 技能: A0JK (Mino03 - 秋符「秋之天空与少女之心」), Researchhotkey (热键 - 学习)
+// 技能: A0J7 (Shizuha03 - 神符「八百万的红叶神威」), Researchhotkey (热键 - 学习)
 {
 R
 }
@@ -33939,13 +33925,13 @@ STRING 4711
 }
 
 STRING 4712
-// 技能: A095 (Nitori03 - 化学「光束剑充能反应」), Researchhotkey (热键 - 学习)
+// 技能: A0JK (Mino03 - 秋符「秋之天空与少女之心」), Researchhotkey (热键 - 学习)
 {
 R
 }
 
 STRING 4713
-// 技能: A0LT (Kogasa03 - 增加敏捷), Researchhotkey (热键 - 学习)
+// 技能: A095 (Nitori03 - 化学「光束剑充能反应」), Researchhotkey (热键 - 学习)
 {
 R
 }
@@ -34514,7 +34500,7 @@ STRING 4772
 }
 
 STRING 4773
-// 技能: A0M3 (Nue03 - 「游星○□△×的bug」), Researchhotkey (热键 - 学习)
+// 技能: A0LT (Kogasa03 - 增加敏捷), Researchhotkey (热键 - 学习)
 {
 R
 }
@@ -34573,13 +34559,13 @@ CD8秒。
 }
 
 STRING 4782
-// 技能: A0M7 (Keine03 - 国符「隐藏的神器 头锤」), Hotkey (热键 - 普通)
+// 技能: A0M3 (Nue03 - 「游星○□△×的bug」), Researchhotkey (热键 - 学习)
 {
 R
 }
 
 STRING 4783
-// 技能: A0MA (KeineLE03 - 国符「隐藏的神器 头锤」), Researchhotkey (热键 - 学习)
+// 技能: A0M7 (Keine03 - 国符「隐藏的神器 头锤」), Hotkey (热键 - 普通)
 {
 R
 }
@@ -34614,13 +34600,13 @@ CD8秒。
 }
 
 STRING 4788
-// 技能: A0MN (Yuyuko03 - 亡舞「生者必灭の理」), Researchhotkey (热键 - 学习)
+// 技能: A0MA (KeineLE03 - 国符「隐藏的神器 头锤」), Researchhotkey (热键 - 学习)
 {
 R
 }
 
 STRING 4789
-// 技能: A0N4 (Twei03 - 脱兔「以退为攻」), Researchhotkey (热键 - 学习)
+// 技能: A0MN (Yuyuko03 - 亡舞「生者必灭の理」), Researchhotkey (热键 - 学习)
 {
 R
 }
@@ -35742,7 +35728,7 @@ STRING 4926
 }
 
 STRING 4927
-// 技能: A0NJ (Koakuma03 - 禁符「Taboo Grimoire Index」), Researchhotkey (热键 - 学习)
+// 技能: A0N4 (Twei03 - 脱兔「以退为攻」), Researchhotkey (热键 - 学习)
 {
 R
 }
@@ -35766,7 +35752,7 @@ STRING 4930
 }
 
 STRING 4931
-// 技能: A0O0 (Byakuren03 - 飞钵「传说的飞空雅盘」), Hotkey (热键 - 普通)
+// 技能: A0NJ (Koakuma03 - 禁符「Taboo Grimoire Index」), Researchhotkey (热键 - 学习)
 {
 R
 }
@@ -35863,13 +35849,13 @@ Kogasa03 - 雨伞「超防水干燥妖怪」
 }
 
 STRING 4944
-// 技能: A0O0 (Byakuren03 - 飞钵「传说的飞空雅盘」), Researchhotkey (热键 - 学习)
+// 技能: A0O0 (Byakuren03 - 飞钵「传说的飞空雅盘」), Hotkey (热键 - 普通)
 {
 R
 }
 
 STRING 4945
-// 技能: A0OG (Lunasa03 - 「忧郁的幻想乐章」), Researchhotkey (热键 - 学习)
+// 技能: A0O0 (Byakuren03 - 飞钵「传说的飞空雅盘」), Researchhotkey (热键 - 学习)
 {
 R
 }
@@ -36190,13 +36176,13 @@ STRING 4989
 }
 
 STRING 4990
-// 技能: A0OU (EirinEX - 「月之头脑」), Researchhotkey (热键 - 学习)
+// 技能: A0OG (Lunasa03 - 「忧郁的幻想乐章」), Researchhotkey (热键 - 学习)
 {
 R
 }
 
 STRING 4991
-// 技能: A03O (KoakumaEX - 「Devil Librarian」), Researchhotkey (热键 - 学习)
+// 技能: A0OU (EirinEX - 「月之头脑」), Researchhotkey (热键 - 学习)
 {
 R
 }
@@ -36545,7 +36531,7 @@ Byakuren01 - 吉兆「极乐之紫之云路」
 }
 
 STRING 5036
-// 技能: A0OZ (MokouEX - 灭罪「正直者之死」), Researchhotkey (热键 - 学习)
+// 技能: A03O (KoakumaEX - 「Devil Librarian」), Researchhotkey (热键 - 学习)
 {
 R
 }
@@ -36992,6 +36978,12 @@ STRING 5093
 学习野符「武烈的危机 残虐」(|cffffcc00F|r) － [|cffffcc00等级 %d|r]
 }
 
+STRING 5094
+// 技能: A0ZI (ReisenNo202 - 思议「月之羽衣」), Ubertip (提示工具 - 普通 - 扩展)
+{
+一段时间内所有伤害皆会被羽衣转移出地球外。|n|n|c0000ffff魔法消耗|r：100|n|c0000ffff冷却时间|r：20秒|n|n|cffffcc00等级 3|r - 持续2.5秒内不受任何伤害。
+}
+
 STRING 5095
 // 技能: A0R3 (Toramaru02 - 光符「净化之魔」), Hotkey (热键 - 普通)
 {
@@ -37076,7 +37068,7 @@ STRING 5106
 }
 
 STRING 5107
-// 技能: A0OV (MeirinEX - 星气「气脉流动」), Researchhotkey (热键 - 学习)
+// 技能: A0OZ (MokouEX - 灭罪「正直者之死」), Researchhotkey (热键 - 学习)
 {
 R
 }
@@ -37427,7 +37419,7 @@ STRING 5161
 }
 
 STRING 5162
-// 技能: A0OW (IkuEX - 「羽衣若时」), Researchhotkey (热键 - 学习)
+// 技能: A0OV (MeirinEX - 星气「气脉流动」), Researchhotkey (热键 - 学习)
 {
 R
 }
@@ -38269,7 +38261,7 @@ STRING 5270
 }
 
 STRING 5271
-// 技能: A0P3 (Toramaru03 - 宝符「黄金之震眩」), Researchhotkey (热键 - 学习)
+// 技能: A0OW (IkuEX - 「羽衣若时」), Researchhotkey (热键 - 学习)
 {
 R
 }
@@ -38775,7 +38767,7 @@ STRING 5341
 }
 
 STRING 5342
-// 技能: A0PC (FlandreEX - 破坏「中点握碎」 ), Researchhotkey (热键 - 学习)
+// 技能: A0P3 (Toramaru03 - 宝符「黄金之震眩」), Researchhotkey (热键 - 学习)
 {
 R
 }
@@ -39444,7 +39436,7 @@ STRING 5425
 }
 
 STRING 5426
-// 技能: A0QO (Momizi03 - 天狗「守护之盾」), Researchhotkey (热键 - 学习)
+// 技能: A0PC (FlandreEX - 破坏「中点握碎」 ), Researchhotkey (热键 - 学习)
 {
 R
 }
@@ -39515,6 +39507,12 @@ STRING 5436
 // 技能: A0O2 (Byakuren02 - 光魔「星光之削击」), Researchtip (提示工具 - 学习)
 {
 学习光魔「星光之削击」(|cffffcc00F|r) - [|cffffcc00等级 %d|r]
+}
+
+STRING 5437
+// 技能: A0ZI (ReisenNo202 - 思议「月之羽衣」), Ubertip (提示工具 - 普通 - 扩展)
+{
+一段时间内所有伤害皆会被羽衣转移出地球外。|n|n|c0000ffff魔法消耗|r：110|n|c0000ffff冷却时间|r：18秒|n|n|cffffcc00等级 4|r - 持续3.0秒内不受任何伤害。
 }
 
 STRING 5438
@@ -41587,7 +41585,7 @@ SunnyEX - 瞬光「致命闪光」
 }
 
 STRING 5732
-// 技能: A0QO (Momizi03 - 天狗「守护之盾」), Hotkey (热键 - 普通)
+// 技能: A0QO (Momizi03 - 天狗「守护之盾」), Researchhotkey (热键 - 学习)
 {
 R
 }
@@ -41605,7 +41603,7 @@ W
 }
 
 STRING 5735
-// 技能: A0RA (Kisume03 - 桶符「强力防护之桶」), Researchhotkey (热键 - 学习)
+// 技能: A0QO (Momizi03 - 天狗「守护之盾」), Hotkey (热键 - 普通)
 {
 R
 }
@@ -41724,19 +41722,19 @@ STRING 5753
 }
 
 STRING 5754
-// 技能: A0JC (Shizuha02 - 秋符「乾爽的气候最适合睡觉了!」), Tip (提示工具 - 普通)
+// 技能: A0JC (Shizuha02 - 秋符「干爽的气候最适合睡觉了!」), Tip (提示工具 - 普通)
 {
 秋符「乾爽的气候最适合睡觉了!」(|cffffcc00F|r) - [|cffffcc00等级 1|r]
 }
 
 STRING 5755
-// 技能: A0JC (Shizuha02 - 秋符「乾爽的气候最适合睡觉了!」), Tip (提示工具 - 普通)
+// 技能: A0JC (Shizuha02 - 秋符「干爽的气候最适合睡觉了!」), Tip (提示工具 - 普通)
 {
 秋符「乾爽的气候最适合睡觉了!」(|cffffcc00F|r) - [|cffffcc00等级 2|r]
 }
 
 STRING 5756
-// 技能: A0JC (Shizuha02 - 秋符「乾爽的气候最适合睡觉了!」), Tip (提示工具 - 普通)
+// 技能: A0JC (Shizuha02 - 秋符「干爽的气候最适合睡觉了!」), Tip (提示工具 - 普通)
 {
 秋符「乾爽的气候最适合睡觉了!」(|cffffcc00F|r) - [|cffffcc00等级 3|r]
 }
@@ -41760,7 +41758,7 @@ STRING 5759
 }
 
 STRING 5760
-// 技能: A0JC (Shizuha02 - 秋符「乾爽的气候最适合睡觉了!」), Tip (提示工具 - 普通)
+// 技能: A0JC (Shizuha02 - 秋符「干爽的气候最适合睡觉了!」), Tip (提示工具 - 普通)
 {
 秋符「乾爽的气候最适合睡觉了!」(|cffffcc00F|r) - [|cffffcc00等级 4|r]
 }
@@ -45513,7 +45511,7 @@ Reisen
 }
 
 STRING 6375
-// 单位: h01X (思议「月之羽衣」), Name (名字)
+// 魔法效果: B06D (ReisenNo202 - 思议「月之羽衣」), Bufftip (工具提示)
 {
 思议「月之羽衣」
 }
@@ -46051,7 +46049,7 @@ STRING 6451
 }
 
 STRING 6452
-// 技能: A0RA (Kisume03 - 桶符「强力防护之桶」), Hotkey (热键 - 普通)
+// 技能: A0RA (Kisume03 - 桶符「强力防护之桶」), Researchhotkey (热键 - 学习)
 {
 R
 }
@@ -47174,7 +47172,7 @@ STRING 6564
 }
 
 STRING 6565
-// 技能: A0RP (Captain04 - 「沉没的幽灵」), Hotkey (热键 - 普通)
+// 技能: A0RA (Kisume03 - 桶符「强力防护之桶」), Hotkey (热键 - 普通)
 {
 R
 }
@@ -47396,7 +47394,7 @@ STRING 6601
 }
 
 STRING 6602
-// 技能: A0D9 (Hatate03 - 连拍「Rapid Shot」), Researchhotkey (热键 - 学习)
+// 技能: A0RP (Captain04 - 「沉没的幽灵」), Hotkey (热键 - 普通)
 {
 R
 }
@@ -48571,7 +48569,7 @@ Utsuho04 - 「地狱の人工太阳」
 }
 
 STRING 6774
-// 技能: A0D9 (Hatate03 - 连拍「Rapid Shot」), Hotkey (热键 - 普通)
+// 技能: A0D9 (Hatate03 - 连拍「Rapid Shot」), Researchhotkey (热键 - 学习)
 {
 R
 }
@@ -48645,7 +48643,7 @@ STRING 6782
 }
 
 STRING 6783
-// 技能: A0RX (Merlin03 - 「狂躁的幻想乐章」), Researchhotkey (热键 - 学习)
+// 技能: A0D9 (Hatate03 - 连拍「Rapid Shot」), Hotkey (热键 - 普通)
 {
 R
 }
@@ -48777,7 +48775,7 @@ STRING 6795
 }
 
 STRING 6796
-// 技能: A0SH (KogasaEx - 增加敏捷), Researchhotkey (热键 - 学习)
+// 技能: A0RX (Merlin03 - 「狂躁的幻想乐章」), Researchhotkey (热键 - 学习)
 {
 R
 }
@@ -48978,7 +48976,7 @@ STRING 6817
 }
 
 STRING 6818
-// 技能: A0SJ (Meirin02 - 蓄力提示), Researchhotkey (热键 - 学习)
+// 技能: A0SH (KogasaEx - 增加敏捷), Researchhotkey (热键 - 学习)
 {
 R
 }
@@ -49008,22 +49006,9 @@ D
 }
 
 STRING 6823
-// 技能: A0GF (Nitori02 - 电子「阳电子炮 Cucumber.II」), Researchubertip (提示工具 - 学习 - 扩展)
+// 技能: A05O (AyaEX - 「风神少女」), Tip (提示工具 - 普通)
 {
-「阳电子炮 Cucumber.II(R)」能够将「妖怪黄瓜能量电池(R)」中的小黄瓜转化为威力巨大
-的阳电子能量，「阳电子炮 Cucumber.II(R)」具有2000码的射程，射击后会造成巨大的
-冲击力，伤害随穿透的目标数目递减10%，并震晕敌人，减少敌人30%攻击力和30%移动速度。对建筑造成50%的伤害。
-
-|cff00ffff释放距离|r：2000
-|c0000ffff魔法消耗|r：50
-|c0000ffff冷却时间|r：9/7/5/0秒
-
-|cffffcc00等级 1|r - 最大伤害150
-|cffffcc00等级 2|r - 最大伤害230
-|cffffcc00等级 3|r - 最大伤害310
-|cffffcc00等级 4|r - 最大伤害390
-
-|cffffcc00将消耗能量槽中的小黄瓜一条，没有小黄瓜无法射击|r
+「风神少女」(|cffffcc00C|r) - [|cffffcc00等级 3|r]
 }
 
 STRING 6824
@@ -49804,13 +49789,13 @@ STRING 6912
 }
 
 STRING 6913
-// 单位: E01T (夜雀), Propernames (称谓)
+// 单位: E00Z (夜雀), Awakentip (提示工具 -唤醒)
 {
 蜜斯缇雅 萝蕾拉
 }
 
 STRING 6914
-// 单位: E01T (夜雀), Revivetip (提示工具 -重生)
+// 单位: E01T (夜雀), Propernames (称谓)
 {
 蜜斯缇雅 萝蕾拉
 }
@@ -49864,7 +49849,7 @@ STRING 6922
 }
 
 STRING 6923
-// 单位: E02B (夜雀), Propernames (称谓)
+// 单位: E01T (夜雀), Revivetip (提示工具 -重生)
 {
 蜜斯缇雅 萝蕾拉
 }
@@ -50059,13 +50044,13 @@ STRING 6949
 }
 
 STRING 6950
-// 单位: E02B (夜雀), Revivetip (提示工具 -重生)
+// 单位: E02B (夜雀), Propernames (称谓)
 {
 蜜斯缇雅 萝蕾拉
 }
 
 STRING 6951
-// 单位: E02C (夜雀), Propernames (称谓)
+// 单位: E02B (夜雀), Revivetip (提示工具 -重生)
 {
 蜜斯缇雅 萝蕾拉
 }
@@ -50328,7 +50313,7 @@ STRING 6992
 }
 
 STRING 6993
-// 技能: A0SY (Eiki03 - 审判「十王裁判」), Researchhotkey (热键 - 学习)
+// 技能: A0SJ (Meirin02 - 蓄力提示), Researchhotkey (热键 - 学习)
 {
 R
 }
@@ -51109,21 +51094,9 @@ STRING 7064
 }
 
 STRING 7065
-// 技能: A0JI (Mino02 - 烤芋「Sweet Potato Room」), Researchubertip (提示工具 - 学习 - 扩展)
+// 单位: E01E (图书馆管理员), Tip (提示工具 - 基础)
 {
- 
-放置一个烤红薯的小车，持续20秒。
-靠近小车的友方单位会恢复一定生命值和魔法值。
-
-|cff00ffff施放距离|r：500
-|cff00ffff影响范围|r：500
-|c0000ffff魔法消耗|r：75
-|cff00ffff冷却时间|r：36秒
-
-|cffffcc00等级 1|r - 可以为每个单位恢复最多100点生命值和110魔法值
-|cffffcc00等级 2|r - 可以为每个单位恢复最多150点生命值和130魔法值
-|cffffcc00等级 3|r - 可以为每个单位恢复最多200点生命值和150魔法值
-|cffffcc00等级 4|r - 可以为每个单位恢复最多250点生命值和170魔法值
+小恶魔
 }
 
 STRING 7066
@@ -51757,7 +51730,7 @@ STRING 7134
 }
 
 STRING 7135
-// 单位: E02C (夜雀), Revivetip (提示工具 -重生)
+// 单位: E02B (夜雀), Tip (提示工具 - 基础)
 {
 蜜斯缇雅 萝蕾拉
 }
@@ -51906,17 +51879,9 @@ STRING 7149
 }
 
 STRING 7150
-// 技能: A0ZI (ReisenNo202 - 思议「月之羽衣」), Researchubertip (提示工具 - 学习 - 扩展)
+// 技能: A0ZL (ReisenNo2Ex - 捣符「愚者的反抗」), Ubertip (提示工具 - 普通 - 扩展)
 {
-一段时间内所有伤害皆会被羽衣转移出地球外。
-
-|c0000ffff魔法消耗|r：80/90/100/110
-|c0000ffff冷却时间|r：15/13/11/9
-
-|cffffcc00等级 1|r - 持续1.5秒内不受任何伤害。
-|cffffcc00等级 2|r - 持续2.0秒内不受任何伤害。
-|cffffcc00等级 3|r - 持续2.5秒内不受任何伤害。
-|cffffcc00等级 4|r - 持续3.0秒内不受任何伤害。
+每10.0秒的下一次攻击造成额外40+[少女等级x4]点神圣伤害，并回复自身等量的生命值。
 }
 
 STRING 7151
@@ -52182,7 +52147,7 @@ STRING 7182
 }
 
 STRING 7183
-// 技能: A0TN ((MFD)), Researchhotkey (热键 - 学习)
+// 技能: A0SY (Eiki03 - 审判「十王裁判」), Researchhotkey (热键 - 学习)
 {
 R
 }
@@ -52380,7 +52345,7 @@ STRING 7208
 }
 
 STRING 7209
-// 技能: A0TT (Lyrica03 - 「幻想乡绮想音波」), Researchhotkey (热键 - 学习)
+// 技能: A0TN ((MFD)), Researchhotkey (热键 - 学习)
 {
 R
 }
@@ -52508,7 +52473,7 @@ STRING 7225
 }
 
 STRING 7226
-// 技能: A0UC ((MFD)), Researchhotkey (热键 - 学习)
+// 技能: A0TT (Lyrica03 - 「幻想乡绮想音波」), Researchhotkey (热键 - 学习)
 {
 R
 }
@@ -52645,7 +52610,7 @@ STRING 7243
 }
 
 STRING 7244
-// 技能: A0UG (Mugetsu03 - 梦符「梦游」), Researchhotkey (热键 - 学习)
+// 技能: A0UC ((MFD)), Researchhotkey (热键 - 学习)
 {
 R
 }
@@ -52742,7 +52707,7 @@ STRING 7252
 }
 
 STRING 7253
-// 技能: A0UW (TensiEx - 「緋想緋緋想天之娘」), Researchhotkey (热键 - 学习)
+// 技能: A0UG (Mugetsu03 - 梦符「梦游」), Researchhotkey (热键 - 学习)
 {
 R
 }
@@ -52834,7 +52799,7 @@ STRING 7261
 }
 
 STRING 7262
-// 技能: A0VX (Satori03 - 心花「Camera Shy Rose」), Hotkey (热键 - 普通)
+// 技能: A0UW (TensiEx - 「緋想緋緋想天之娘」), Researchhotkey (热键 - 学习)
 {
 R
 }
@@ -52920,7 +52885,7 @@ STRING 7270
 }
 
 STRING 7271
-// 技能: A0VX (Satori03 - 心花「Camera Shy Rose」), Researchhotkey (热键 - 学习)
+// 技能: A0VX (Satori03 - 心花「Camera Shy Rose」), Hotkey (热键 - 普通)
 {
 R
 }
@@ -52976,25 +52941,21 @@ STRING 7275
 }
 
 STRING 7276
-// 技能: A0ZI (ReisenNo202 - 思议「月之羽衣」), Ubertip (提示工具 - 普通 - 扩展)
+// 技能: A05O (AyaEX - 「风神少女」), Ubertip (提示工具 - 普通 - 扩展)
 {
-一段时间内所有伤害皆会被羽衣转移出地球外。
+使用时，
+所有指令都会带有闪烁效果。
 
-|c0000ffff魔法消耗|r：80
-|c0000ffff冷却时间|r：15秒
+|c0000ffff魔法消耗|r：175点
+|c0000ffff冷却时间|r：80秒
 
-|cffffcc00等级 1|r - 持续1.5秒内不受任何伤害。
+|cffffcc00等级 3|r - 持续5秒。
 }
 
 STRING 7277
-// 技能: A0ZI (ReisenNo202 - 思议「月之羽衣」), Ubertip (提示工具 - 普通 - 扩展)
+// 技能: A0ZR (红魔馆的红茶), Name (名字)
 {
-一段时间内所有伤害皆会被羽衣转移出地球外。
-
-|c0000ffff魔法消耗|r：90
-|c0000ffff冷却时间|r：13秒
-
-|cffffcc00等级 2|r - 持续2.0秒内不受任何伤害。
+红魔馆的红茶
 }
 
 STRING 7278
@@ -54232,14 +54193,9 @@ STRING 7435
 }
 
 STRING 7436
-// 技能: A0ZI (ReisenNo202 - 思议「月之羽衣」), Ubertip (提示工具 - 普通 - 扩展)
+// 技能: A0ZR (红魔馆的红茶), EditorSuffix (编辑器后缀)
 {
-一段时间内所有伤害皆会被羽衣转移出地球外。
-
-|c0000ffff魔法消耗|r：100
-|c0000ffff冷却时间|r：11秒
-
-|cffffcc00等级 3|r - 持续2.5秒内不受任何伤害。
+(130mp,16sec，指)
 }
 
 STRING 7437
@@ -54260,7 +54216,7 @@ STRING 7437
 }
 
 STRING 7438
-// 技能: A0VY (Sunny03 - 光符「蓝光反射」), Researchhotkey (热键 - 学习)
+// 技能: A0VX (Satori03 - 心花「Camera Shy Rose」), Researchhotkey (热键 - 学习)
 {
 R
 }
@@ -54699,7 +54655,7 @@ STRING 7484
 }
 
 STRING 7485
-// 技能: A0VY (Sunny03 - 光符「蓝光反射」), Hotkey (热键 - 普通)
+// 技能: A0VY (Sunny03 - 光符「蓝光反射」), Researchhotkey (热键 - 学习)
 {
 R
 }
@@ -54780,14 +54736,16 @@ STRING 7492
 }
 
 STRING 7493
-// 技能: A0ZI (ReisenNo202 - 思议「月之羽衣」), Ubertip (提示工具 - 普通 - 扩展)
+// 物品: I032 (叫兽的面具), Ubertip (提示工具 - 扩展)
 {
-一段时间内所有伤害皆会被羽衣转移出地球外。
-
-|c0000ffff魔法消耗|r：110
-|c0000ffff冷却时间|r：9秒
-
-|cffffcc00等级 4|r - 持续3.0秒内不受任何伤害。
+|cffffcc00属性：|r
+攻击 +5
+力量 +18
+敏捷 +3
+智力 +3
+ 
+|cff00ccff教授的风骚：|r
+降低400范围内的敌方单位40%的移动速度。持续4.5秒，冷却时间25秒。 
 }
 
 STRING 7494
@@ -55050,7 +55008,7 @@ STRING 7523
 }
 
 STRING 7524
-// 技能: A0W1 (Parsee03 - 嫉妒「看不见的绿眼怪兽」), Researchhotkey (热键 - 学习)
+// 技能: A0VY (Sunny03 - 光符「蓝光反射」), Hotkey (热键 - 普通)
 {
 R
 }
@@ -55759,7 +55717,7 @@ STRING 7620
 }
 
 STRING 7621
-// 技能: A0W1 (Parsee03 - 嫉妒「看不见的绿眼怪兽」), Hotkey (热键 - 普通)
+// 技能: A0W1 (Parsee03 - 嫉妒「看不见的绿眼怪兽」), Researchhotkey (热键 - 学习)
 {
 R
 }
@@ -55942,16 +55900,22 @@ STRING 7643
 }
 
 STRING 7644
-// 技能: A0ZK (ReisenNo204 - 赎罪「荣华之孽」), Researchubertip (提示工具 - 学习 - 扩展)
+// 物品: I024 (|cffffcc00合成卷轴|r - 叫兽的面具), Ubertip (提示工具 - 扩展)
 {
-持续8秒内大幅提升攻击速度与移动速度，当剩余持续时间小于5秒时，每次普通攻击命中敌方少女都会将剩余持续时间恢复到5秒。
-
-|c0000ffff魔法消耗|r：150
-|c0000ffff冷却时间|r：90/85/80
-
-|cffffcc00等级 1|r - 提升80%攻击速度及40%移动速度。
-|cffffcc00等级 2|r - 提升120%攻击速度及40%移动速度。
-|cffffcc00等级 3|r - 提升160%攻击速度及40%移动速度。
+|cffff3300其它材料：|r
+西行妖枝条 - 150
+墨染的樱花 - 450
+纸面罩 - 1000
+|cffc0c0c0总价 - 2250|r
+ 
+|cffffcc00属性：|r
+攻击 +5
+力量 +18
+敏捷 +3
+智力 +3
+ 
+|cff00ccff教授的风骚：|r
+降低400范围内的敌方单位40%的移动速度。持续4.5秒，冷却时间25秒。 
 }
 
 STRING 7645
@@ -56007,20 +55971,15 @@ STRING 7651
 }
 
 STRING 7652
-// 技能: A05O (AyaEX - 「风神少女」), Tip (提示工具 - 普通)
+// 技能: A0ZW (AyaMR - 「无双风神」), Tip (提示工具 - 普通)
 {
 「风神少女」(|cffffcc00C|r) - [|cffffcc00等级 3|r]
 }
 
 STRING 7653
-// 技能: A0ZK (ReisenNo204 - 赎罪「荣华之孽」), Ubertip (提示工具 - 普通 - 扩展)
+// 物品: I06Q (异变蘑菇), Name (名字)
 {
-持续8秒内大幅提升攻击速度与移动速度，当剩余持续时间小于5秒时，每次普通攻击命中敌方少女都会将剩余持续时间恢复到5秒。
-
-|c0000ffff魔法消耗|r：150
-|c0000ffff冷却时间|r：90
-
-|cffffcc00等级 1|r - 提升80%攻击速度及40%移动速度。
+异变蘑菇
 }
 
 STRING 7654
@@ -56047,14 +56006,9 @@ STRING 7655
 }
 
 STRING 7656
-// 技能: A0ZK (ReisenNo204 - 赎罪「荣华之孽」), Ubertip (提示工具 - 普通 - 扩展)
+// 物品: I06Q (异变蘑菇), Tip (提示工具 - 基础)
 {
-持续8秒内大幅提升攻击速度与移动速度，当剩余持续时间小于5秒时，每次普通攻击命中敌方少女都会将剩余持续时间恢复到5秒。
-
-|c0000ffff魔法消耗|r：150
-|c0000ffff冷却时间|r：85
-
-|cffffcc00等级 2|r - 提升120%攻击速度及40%移动速度。
+异变蘑菇
 }
 
 STRING 7657
@@ -56093,14 +56047,9 @@ STRING 7661
 }
 
 STRING 7662
-// 技能: A0ZK (ReisenNo204 - 赎罪「荣华之孽」), Ubertip (提示工具 - 普通 - 扩展)
+// 技能: A0VF (急救), Hotkey (热键 - 普通)
 {
-持续8秒内大幅提升攻击速度与移动速度，当剩余持续时间小于5秒时，每次普通攻击命中敌方少女都会将剩余持续时间恢复到5秒。
-
-|c0000ffff魔法消耗|r：150
-|c0000ffff冷却时间|r：80
-
-|cffffcc00等级 3|r - 提升160%攻击速度及40%移动速度。
+T
 }
 
 STRING 7663
@@ -58472,10 +58421,9 @@ STRING 7929
 }
 
 STRING 7930
-// 技能: A0ZL (ReisenNo2Ex - 捣符「愚者的反抗」), Ubertip (提示工具 - 普通 - 扩展)
+// 技能: A0A6 (Captain03 - 船长「菠菜」), Name (名字)
 {
-每8.0秒的下一次攻击造成额外35+[少女等级x5]点神圣伤害，并回复自身等量的生命值。
-每被伤害一次技能所需时间将降低1.0秒。
+Captain03 - 船长「菠菜」
 }
 
 STRING 7931
@@ -59132,7 +59080,7 @@ STRING 7998
 }
 
 STRING 7999
-// 技能: A05O (AyaEX - 「风神少女」), Ubertip (提示工具 - 普通 - 扩展)
+// 技能: A0ZW (AyaMR - 「无双风神」), Ubertip (提示工具 - 普通 - 扩展)
 {
 使用时，
 所有指令都会带有闪烁效果。
@@ -59612,16 +59560,9 @@ STRING 8048
 }
 
 STRING 8049
-// 技能: A0TI (SuwakoEx - 神具「泄矢之小铁轮」), Ubertip (提示工具 - 普通 - 扩展)
+// 技能: A0ZX (AyaMR - 文MR), Name (名字)
 {
-向前投出一个小铁轮，
-对被击中的单位，造成物理伤害。
-
-|cff00ffff影响范围|r：700x60
-|cff00ffff魔法消耗|r：2.00
-|cff00ffff冷却时间|r：4.00秒
-
-|cffffcc00效果|r - 造成[30+智力x1.20]的物理伤害。
+AyaMR - 文MR
 }
 
 STRING 8050
@@ -59967,7 +59908,7 @@ STRING 8090
 }
 
 STRING 8091
-// 技能: A05O (AyaEX - 「风神少女」), Ubertip (提示工具 - 普通 - 扩展)
+// 技能: A0ZW (AyaMR - 「无双风神」), Ubertip (提示工具 - 普通 - 扩展)
 {
 使用时，
 所有指令都会带有闪烁效果。
@@ -60209,7 +60150,7 @@ Chen01 - 滚符「滚球」
 }
 
 STRING 8115
-// 技能: A0WE (PatchouliAD - 金火符「圣艾尔摩之柱」), Researchhotkey (热键 - 学习)
+// 技能: A0W1 (Parsee03 - 嫉妒「看不见的绿眼怪兽」), Hotkey (热键 - 普通)
 {
 R
 }
@@ -60257,9 +60198,9 @@ ReisenNo204 - 赎罪「荣华之孽」增加移动、攻击速度
 }
 
 STRING 8123
-// 魔法效果: B06D (ReisenNo202 - 思议「月之羽衣」), Bufftip (工具提示)
+// 技能: A0AA (Captain02 - 溺符「幽深旋涡」), Name (名字)
 {
-思议「月之羽衣」
+Captain02 - 溺符「幽深旋涡」
 }
 
 STRING 8124
@@ -60701,7 +60642,7 @@ STRING 8170
 }
 
 STRING 8171
-// 技能: A0WE (PatchouliAD - 金火符「圣艾尔摩之柱」), Hotkey (热键 - 普通)
+// 技能: A0WE (PatchouliAD - 金火符「圣艾尔摩之柱」), Researchhotkey (热键 - 学习)
 {
 R
 }
@@ -62672,9 +62613,9 @@ ReisenNo204 - 赎罪「荣华之孽」
 }
 
 STRING 8411
-// 单位: h01X (思议「月之羽衣」), EditorSuffix (名字 - 编辑器后缀)
+// 技能: A0WE (PatchouliAD - 金火符「圣艾尔摩之柱」), Hotkey (热键 - 普通)
 {
-(ReisenNo202)
+R
 }
 
 STRING 8412
@@ -63340,7 +63281,7 @@ STRING 8496
 }
 
 STRING 8497
-// 技能: A0VF (急救), Hotkey (热键 - 普通)
+// 技能: A0WH (PatchouliBC - 木水符「水之妖精」), Researchhotkey (热键 - 学习)
 {
 T
 }
@@ -66414,6 +66355,12 @@ STRING 8882
 (+30 敏捷)
 }
 
+STRING 8883
+// 技能: A0YD (PatchouliZejACE - 金水土), EditorSuffix (编辑器后缀)
+{
+(隐藏图标)
+}
+
 STRING 8884
 // 技能: A0OG (Lunasa03 - 「忧郁的幻想乐章」), Researchubertip (提示工具 - 学习 - 扩展)
 {
@@ -66733,6 +66680,18 @@ STRING 8918
 |cffffcc00● |r|cff0033ff智力|r - 27 + 3.00
 }
 
+STRING 8919
+// 技能: A0ZK (ReisenNo204 - 赎罪「荣华之孽」), Researchubertip (提示工具 - 学习 - 扩展)
+{
+持续8秒内大幅提升攻击速度与移动速度，当剩余持续时间小于5秒时，每次普通攻击命中敌方少女都会将剩余持续时间恢复到5秒。|n|n|c0000ffff魔法消耗|r：150|n|c0000ffff冷却时间|r：90/85/80|n|n|cffffcc00等级 1|r - 提升80%攻击速度及25%移动速度。|n|cffffcc00等级 2|r - 提升100%攻击速度及30%移动速度。|n|cffffcc00等级 3|r - 提升120%攻击速度及35%移动速度。
+}
+
+STRING 8920
+// 技能: A0ZK (ReisenNo204 - 赎罪「荣华之孽」), Ubertip (提示工具 - 普通 - 扩展)
+{
+持续8秒内大幅提升攻击速度与移动速度，当剩余持续时间小于5秒时，每次普通攻击命中敌方少女都会将剩余持续时间恢复到5秒。|n|n|c0000ffff魔法消耗|r：150|n|c0000ffff冷却时间|r：90|n|n|cffffcc00等级 1|r - 提升80%攻击速度及25%移动速度。
+}
+
 STRING 8921
 // 技能: A0V7 (Teleport - 车票), Tip (提示工具 - 普通)
 {
@@ -66789,6 +66748,18 @@ STRING 8928
 W
 }
 
+STRING 8929
+// 技能: A0ZK (ReisenNo204 - 赎罪「荣华之孽」), Ubertip (提示工具 - 普通 - 扩展)
+{
+持续8秒内大幅提升攻击速度与移动速度，当剩余持续时间小于5秒时，每次普通攻击命中敌方少女都会将剩余持续时间恢复到5秒。|n|n|c0000ffff魔法消耗|r：150|n|c0000ffff冷却时间|r：85|n|n|cffffcc00等级 2|r - 提升100%攻击速度及30%移动速度。
+}
+
+STRING 8930
+// 技能: A0ZK (ReisenNo204 - 赎罪「荣华之孽」), Ubertip (提示工具 - 普通 - 扩展)
+{
+持续8秒内大幅提升攻击速度与移动速度，当剩余持续时间小于5秒时，每次普通攻击命中敌方少女都会将剩余持续时间恢复到5秒。|n|n|c0000ffff魔法消耗|r：150|n|c0000ffff冷却时间|r：80|n|n|cffffcc00等级 3|r - 提升120%攻击速度及35%移动速度。
+}
+
 STRING 8931
 // 技能: A0V8 (Teleport - 间隙), Name (名字)
 {
@@ -66799,6 +66770,12 @@ STRING 8932
 // 技能: A0V8 (Teleport - 间隙), Researchtip (提示工具 - 学习)
 {
 学习「深弹幕结界 - 梦幻泡影 - 」(|cffffcc00W|r) - [|cffffcc00等级 %d|r]
+}
+
+STRING 8933
+// 技能: A0ZY (AyaMR - 闪避), Name (名字)
+{
+AyaMR - 闪避
 }
 
 STRING 8934
@@ -66817,6 +66794,35 @@ STRING 8936
 // 技能: A0X6 (Lily04 - 「白色的春天/黑色的春天」), Hotkey (热键 - 普通)
 {
 W
+}
+
+STRING 8937
+// 技能: A03T (NitoriEX - 能源「妖怪黄瓜能量电池」), Ubertip (提示工具 - 普通 - 扩展)
+{
+河童战斗装甲身后的那个传说中的大背包中装备了河童能源公司最新的"妖怪黄瓜能量电池(R)"，只要在其中塞入小黄瓜就能为阳电子炮充能。
+
+消耗的黄瓜会返回25%的资源。
+
+|cffffcc00(使用打开能量槽装填，再次使用则关闭能量槽，装填过程中无法使用其他物品)|r
+
+|cffdc143c蘑菇异变后|r
+返回的资源提升到75%
+}
+
+STRING 8938
+// 技能: A0TI (SuwakoEx - 神具「泄矢之小铁轮」), Ubertip (提示工具 - 普通 - 扩展)
+{
+向前投出一个小铁轮，
+对被击中的单位，造成物理伤害。
+
+|cff00ffff影响范围|r：700x60
+|cff00ffff魔法消耗|r：2.00
+|cff00ffff冷却时间|r：4.00秒
+
+|cffffcc00效果|r - 造成[30+智力x1.20]的物理伤害。
+
+|cffdc143c蘑菇异变后|r
+冷却时间降低到0.45s，最远距离提升到1000
 }
 
 STRING 8939
@@ -66887,6 +66893,37 @@ STRING 8945
 |cffffcc00○ |r|cffff0033力量|r - 22 + 2.00     基础伤害 52~58
 |cffffcc00● |r|cff00ff99敏捷|r - 20 + 2.20     基础护甲 3.80
 |cffffcc00○ |r|cff0033ff智力|r - 18 + 1.80     |cffff00ff「高阶向角色」|r
+}
+
+STRING 8946
+// 技能: A0GF (Nitori02 - 电子「阳电子炮 Cucumber.II」), Ubertip (提示工具 - 普通 - 扩展)
+{
+「阳电子炮 Cucumber.II」能够将「妖怪黄瓜能量电池(E)」中的小黄瓜转化为威力巨大的阳电子能量，「阳电子炮 Cucumber.II」具有2000码的射程，射击后会造成巨大的
+冲击力，伤害随穿透的目标数目递减10%，并震晕敌人，减少敌人30%攻击力和30%移动速度。对建筑造成50%的伤害。
+
+|cff00ffff释放距离|r：2000
+|c0000ffff魔法消耗|r：50
+|c0000ffff冷却时间|r：7秒
+
+|cffffcc00等级 2|r - 最大伤害230
+
+|cffffcc00将消耗能量槽中的小黄瓜一条，没有小黄瓜无法射击|r
+
+|cffdc143c蘑菇变异后|r
+金钱回收率提升到75%，一路黄瓜炮分裂为三路
+}
+
+STRING 8947
+// 技能: A0ZT (SuwakoEx - 神具「泄矢之小铁炮」), Ubertip (提示工具 - 普通 - 扩展)
+{
+向前投出一个小铁轮，
+对被击中的单位，造成物理伤害。
+
+|cff00ffff影响范围|r：1000x60
+|cff00ffff魔法消耗|r：2.00
+|cff00ffff冷却时间|r：0.45秒
+
+|cffffcc00效果|r - 造成[30+智力x1.20]的物理伤害。
 }
 
 STRING 8948
@@ -66973,6 +67010,50 @@ STRING 8958
 |cffffcc00○ |r|cffff0033力量|r - 22 + 1.75     基础伤害 54~58
 |cffffcc00● |r|cff00ff99敏捷|r - 25 + 2.75     基础护甲 3.50
 |cffffcc00○ |r|cff0033ff智力|r - 13 + 1.50     |cff00ff00「初心向角色」|r
+}
+
+STRING 8959
+// 技能: A0WG (PatchouliBD - 木火符「施勒特尔之柴」), Hotkey (热键 - 普通)
+{
+E
+}
+
+STRING 8960
+// 技能: A0WQ (LilyEx - 莉符「逆样迷宫」), Hotkey (热键 - 普通)
+{
+E
+}
+
+STRING 8961
+// 技能: A0GF (Nitori02 - 电子「阳电子炮 Cucumber.II」), Ubertip (提示工具 - 普通 - 扩展)
+{
+「阳电子炮 Cucumber.II」能够将「妖怪黄瓜能量电池(E)」中的小黄瓜转化为威力巨大的阳电子能量，「阳电子炮 Cucumber.II」具有2000码的射程，射击后会造成巨大的
+冲击力，伤害随穿透的目标数目递减10%，并震晕敌人，减少敌人30%攻击力和30%移动速度。对建筑造成50%的伤害。
+
+|cff00ffff释放距离|r：2000
+|c0000ffff魔法消耗|r：50
+|c0000ffff冷却时间|r：5秒
+
+|cffffcc00等级 3|r - 最大伤害310
+
+|cffffcc00将消耗能量槽中的小黄瓜一条，没有小黄瓜无法射击|r
+
+|cffdc143c蘑菇变异后|r
+金钱回收率提升到75%，一路黄瓜炮分裂为三路
+}
+
+STRING 8962
+// 技能: A0ZT (SuwakoEx - 神具「泄矢之小铁炮」), Tip (提示工具 - 普通)
+{
+「平安京之恶梦」(|cffffcc00D|r) － [|cffffcc00等级2|r]
+
+}
+
+STRING 8963
+// 技能: A0ZT (SuwakoEx - 神具「泄矢之小铁炮」), Tip (提示工具 - 普通)
+{
+「平安京之恶梦」(|cffffcc00D|r) － [|cffffcc00等级3|r]
+
 }
 
 STRING 8964
@@ -67105,6 +67186,13 @@ STRING 8977
 「幻想推进器」
 }
 
+STRING 8978
+// 技能: A0ZT (SuwakoEx - 神具「泄矢之小铁炮」), Tip (提示工具 - 普通)
+{
+「平安京之恶梦」(|cffffcc00D|r) － [|cffffcc00等级4|r]
+
+}
+
 STRING 8979
 // 技能: A08C (Yuugi03 - 力业「大江山岚」), Ubertip (提示工具 - 普通 - 扩展)
 {
@@ -67215,6 +67303,85 @@ STRING 8989
 |c0000ffff影响范围|r：400
 
 |cffffcc00等级 4|r - 造成125法术伤害。
+}
+
+STRING 8990
+// 技能: A0ZT (SuwakoEx - 神具「泄矢之小铁炮」), Ubertip (提示工具 - 普通 - 扩展)
+{
+封兽能对任何人施加恶梦伤害，
+每一次封兽所造成的伤害皆会附加额外法术伤害。
+附加比例视该伤害所造成的原由而定。
+主动施展时，效果会提升一倍，持续12秒。
+
+|cffccccff普通攻击|r：100%
+|cffccccff正体判定|r：200%
+|cffccccff赖政之弓|r：300%
+|cffccccff正体不明|r：400%
+|cffccccff其他伤害|r：无效
+
+|c0000ffff魔法消耗|r：30
+|c0000ffff冷却时间|r：12
+
+|cffffcc00等级2|r - 增加25.0点法术伤害。
+}
+
+STRING 8991
+// 技能: A0ZT (SuwakoEx - 神具「泄矢之小铁炮」), Ubertip (提示工具 - 普通 - 扩展)
+{
+封兽能对任何人施加恶梦伤害，
+每一次封兽所造成的伤害皆会附加额外法术伤害。
+附加比例视该伤害所造成的原由而定。
+主动施展时，效果会提升一倍，持续12秒。
+
+|cffccccff普通攻击|r：100%
+|cffccccff正体判定|r：200%
+|cffccccff赖政之弓|r：300%
+|cffccccff正体不明|r：400%
+|cffccccff其他伤害|r：无效
+
+|c0000ffff魔法消耗|r：40
+|c0000ffff冷却时间|r：12
+
+|cffffcc00等级3|r - 增加37.5点法术伤害。
+}
+
+STRING 8992
+// 技能: A0ZT (SuwakoEx - 神具「泄矢之小铁炮」), Ubertip (提示工具 - 普通 - 扩展)
+{
+封兽能对任何人施加恶梦伤害，
+每一次封兽所造成的伤害皆会附加额外法术伤害。
+附加比例视该伤害所造成的原由而定。
+主动施展时，效果会提升一倍，持续12秒。
+
+|cffccccff普通攻击|r：100%
+|cffccccff正体判定|r：200%
+|cffccccff赖政之弓|r：300%
+|cffccccff正体不明|r：400%
+|cffccccff其他伤害|r：无效
+
+|c0000ffff魔法消耗|r：50
+|c0000ffff冷却时间|r：12
+
+|cffffcc00等级4|r - 增加50点法术伤害。
+}
+
+STRING 8993
+// 技能: A0CD (Remilia01 - 神枪「Spear The Gungnir」), Researchubertip (提示工具 - 学习 - 扩展)
+{
+向前投出神枪冈格尼尔，伤害所有穿越的普通单位。
+投中敌人少女时则停止并造成巨大的法术伤害。
+
+|cff00ffff最大距离|r：2000
+|cff00ffff魔法消耗|r：75/100/125/150
+|cff00ffff冷却时间|r：6秒
+
+|cffffcc00等级 1|r - 对普通单位造成65法术伤害，对少女造成210法术伤害
+|cffffcc00等级 2|r - 对普通单位造成110法术伤害，对少女造成340法术伤害
+|cffffcc00等级 3|r - 对普通单位造成155法术伤害，对少女造成470法术伤害
+|cffffcc00等级 4|r - 对普通单位造成200法术伤害，对少女造成600法术伤害
+
+|cffdc143c蘑菇变异后|r
+穿越少女，取消最远距离限制
 }
 
 STRING 8994
@@ -67515,7 +67682,7 @@ STRING 9028
 }
 
 STRING 9029
-// 技能: A0WG (PatchouliBD - 木火符「施勒特尔之柴」), Hotkey (热键 - 普通)
+// 技能: A0WQ (LilyEx - 莉符「逆样迷宫」), Unhotkey (热键 -关闭)
 {
 E
 }
@@ -67593,6 +67760,47 @@ STRING 9039
 日热「冰质分解」(|cffffcc00F|r) - [|cffffcc00等级 4|r]
 }
 
+STRING 9040
+// 技能: A0ZT (SuwakoEx - 神具「泄矢之小铁炮」), Tip (提示工具 - 普通)
+{
+神具「泄矢之小铁炮」(|cffffcc00E|r)
+}
+
+STRING 9041
+// 技能: A0ZT (SuwakoEx - 神具「泄矢之小铁炮」), Name (名字)
+{
+SuwakoEx - 神具「泄矢之小铁炮」
+}
+
+STRING 9042
+// 物品: I06Q (异变蘑菇), Ubertip (提示工具 - 扩展)
+{
+魔法之森生长的大蘑菇，
+长着奇怪的颜色。
+
+|c00ff0000食用完物品消失。|r
+
+|c00808080新鲜的蘑菇，由魔理沙亲手采摘！据说只有被选中和少女和足够强大的少女吃下才会有用。|r
+}
+
+STRING 9043
+// 技能: A0GF (Nitori02 - 电子「阳电子炮 Cucumber.II」), Ubertip (提示工具 - 普通 - 扩展)
+{
+「阳电子炮 Cucumber.II」能够将「妖怪黄瓜能量电池(E)」中的小黄瓜转化为威力巨大的阳电子能量，「阳电子炮 Cucumber.II」具有2000码的射程，射击后会造成巨大的
+冲击力，伤害随穿透的目标数目递减10%，并震晕敌人，减少敌人30%攻击力和30%移动速度。对建筑造成50%的伤害。
+
+|cff00ffff释放距离|r：2000
+|c0000ffff魔法消耗|r：50
+|c0000ffff冷却时间|r：0秒
+
+|cffffcc00等级 4|r - 最大伤害390
+
+|cffffcc00将消耗能量槽中的小黄瓜一条，没有小黄瓜无法射击|r
+
+|cffdc143c蘑菇变异后|r
+金钱回收率提升到75%，一路黄瓜炮分裂为三路
+}
+
 STRING 9044
 // 技能: A0GF (Nitori02 - 电子「阳电子炮 Cucumber.II」), Researchtip (提示工具 - 学习)
 {
@@ -67617,6 +67825,28 @@ STRING 9047
 // 单位: n049 ((天气)日常), EditorSuffix (名字 - 编辑器后缀)
 {
 (1.0倍)(2秒)
+}
+
+STRING 9048
+// 技能: A0GF (Nitori02 - 电子「阳电子炮 Cucumber.II」), Researchubertip (提示工具 - 学习 - 扩展)
+{
+「阳电子炮 Cucumber.II」能够将「妖怪黄瓜能量电池」中的小黄瓜转化为威力巨大
+的阳电子能量，「阳电子炮 Cucumber.II」具有2000码的射程，射击后会造成巨大的
+冲击力，伤害随穿透的目标数目递减10%，并震晕敌人，减少敌人30%攻击力和30%移动速度。对建筑造成50%的伤害。
+
+|cff00ffff释放距离|r：2000
+|c0000ffff魔法消耗|r：50
+|c0000ffff冷却时间|r：9/7/5/0秒
+
+|cffffcc00等级 1|r - 最大伤害150
+|cffffcc00等级 2|r - 最大伤害230
+|cffffcc00等级 3|r - 最大伤害310
+|cffffcc00等级 4|r - 最大伤害390
+
+|cffffcc00将消耗能量槽中的小黄瓜一条，没有小黄瓜无法射击|r
+
+|cffdc143c蘑菇变异后|r
+金钱回收率提升到75%，一路黄瓜炮分裂为三路
 }
 
 STRING 9049
@@ -68243,6 +68473,42 @@ STRING 9108
 鬼符「大江山悉皆杀」 - [|cffffcc00等级 4|r]
 }
 
+STRING 9109
+// 技能: A0GF (Nitori02 - 电子「阳电子炮 Cucumber.II」), Ubertip (提示工具 - 普通 - 扩展)
+{
+「阳电子炮 Cucumber.II」能够将「妖怪黄瓜能量电池(E)」中的小黄瓜转化为威力巨大的阳电子能量，「阳电子炮 Cucumber.II」具有2000码的射程，射击后会造成巨大的
+冲击力，伤害随穿透的目标数目递减10%，并震晕敌人，减少敌人30%攻击力和30%移动速度。对建筑造成50%的伤害。
+
+|cff00ffff释放距离|r：2000
+|c0000ffff魔法消耗|r：50
+|c0000ffff冷却时间|r：9秒
+
+|cffffcc00等级 1|r - 最大伤害150
+
+|cffffcc00将消耗能量槽中的小黄瓜一条，没有小黄瓜无法射击|r
+
+|cffdc143c蘑菇变异后|r
+金钱回收率提升到75%，一路黄瓜炮分裂为三路
+}
+
+STRING 9110
+// 技能: A0ZT (SuwakoEx - 神具「泄矢之小铁炮」), EditorSuffix (编辑器后缀)
+{
+(Mr.)
+}
+
+STRING 9111
+// 技能: A0ZU (NitoriEX - 能源「妖怪黄瓜能量电池」), Name (名字)
+{
+NitoriEX - 能源「妖怪黄瓜能量电池」
+}
+
+STRING 9112
+// 技能: A0XQ (PatchouliSelectE - 「土」), Hotkey (热键 - 普通)
+{
+E
+}
+
 STRING 9113
 // 技能: A076 (Utsuho02 - 「地狱极乐熔毁」), Researchubertip (提示工具 - 学习 - 扩展)
 {
@@ -68567,7 +68833,7 @@ STRING 9140
 }
 
 STRING 9141
-// 技能: A0JC (Shizuha02 - 秋符「乾爽的气候最适合睡觉了!」), Researchubertip (提示工具 - 学习 - 扩展)
+// 技能: A100 (Shizuha02 - 秋符「干爽的气候最适合睡觉了!」), Researchubertip (提示工具 - 学习 - 扩展)
 {
  
 立即原地睡觉，回复自己大量生命值和魔法值。完全睡醒后，在短时间内攻击力会提升。
@@ -68583,7 +68849,7 @@ STRING 9141
 }
 
 STRING 9142
-// 技能: A0JC (Shizuha02 - 秋符「乾爽的气候最适合睡觉了!」), Ubertip (提示工具 - 普通 - 扩展)
+// 技能: A0JC (Shizuha02 - 秋符「干爽的气候最适合睡觉了!」), Ubertip (提示工具 - 普通 - 扩展)
 {
  
 立即原地睡觉，回复自己大量生命值和魔法值。完全睡醒后，在短时间内攻击力会提升。
@@ -68595,7 +68861,7 @@ STRING 9142
 }
 
 STRING 9143
-// 技能: A0JC (Shizuha02 - 秋符「乾爽的气候最适合睡觉了!」), Ubertip (提示工具 - 普通 - 扩展)
+// 技能: A0JC (Shizuha02 - 秋符「干爽的气候最适合睡觉了!」), Ubertip (提示工具 - 普通 - 扩展)
 {
  
 立即原地睡觉，回复自己大量生命值和魔法值。完全睡醒后，在短时间内攻击力会提升。
@@ -68607,7 +68873,7 @@ STRING 9143
 }
 
 STRING 9144
-// 技能: A0JC (Shizuha02 - 秋符「乾爽的气候最适合睡觉了!」), Ubertip (提示工具 - 普通 - 扩展)
+// 技能: A0JC (Shizuha02 - 秋符「干爽的气候最适合睡觉了!」), Ubertip (提示工具 - 普通 - 扩展)
 {
  
 立即原地睡觉，回复自己大量生命值和魔法值。完全睡醒后，在短时间内攻击力会提升。
@@ -68619,7 +68885,7 @@ STRING 9144
 }
 
 STRING 9145
-// 技能: A0JC (Shizuha02 - 秋符「乾爽的气候最适合睡觉了!」), Ubertip (提示工具 - 普通 - 扩展)
+// 技能: A0JC (Shizuha02 - 秋符「干爽的气候最适合睡觉了!」), Ubertip (提示工具 - 普通 - 扩展)
 {
  
 立即原地睡觉，回复自己大量生命值和魔法值。完全睡醒后，在短时间内攻击力会提升。
@@ -68925,15 +69191,27 @@ PachiAE - EffectUnit
 }
 
 STRING 9176
-// 技能: A0WQ (LilyEx - 莉符「逆样迷宫」), Hotkey (热键 - 普通)
+// 技能: A0Z2 (MystiaEX - 鸟符「飞行」), Researchhotkey (热键 - 学习)
 {
 E
 }
 
 STRING 9177
-// 技能: A0WQ (LilyEx - 莉符「逆样迷宫」), Unhotkey (热键 -关闭)
+// 技能: A0Z2 (MystiaEX - 鸟符「飞行」), Hotkey (热键 - 普通)
 {
 E
+}
+
+STRING 9178
+// 技能: A0ZT (SuwakoEx - 神具「泄矢之小铁炮」), Researchhotkey (热键 - 学习)
+{
+E
+}
+
+STRING 9179
+// 技能: A0ZU (NitoriEX - 能源「妖怪黄瓜能量电池」), Researchtip (提示工具 - 学习)
+{
+能源「妖怪黄瓜能量电池」(|cffffcc00F|r)
 }
 
 STRING 9180
@@ -69239,7 +69517,7 @@ STRING 9211
 }
 
 STRING 9212
-// 技能: A0WH (PatchouliBC - 木水符「水之妖精」), Researchhotkey (热键 - 学习)
+// 技能: A0WH (PatchouliBC - 木水符「水之妖精」), Hotkey (热键 - 普通)
 {
 T
 }
@@ -69251,7 +69529,7 @@ STRING 9213
 }
 
 STRING 9214
-// 技能: A0WH (PatchouliBC - 木水符「水之妖精」), Hotkey (热键 - 普通)
+// 技能: A0XJ (PatchouliDE - 火土符「阿奇蒙德之石」), Researchhotkey (热键 - 学习)
 {
 T
 }
@@ -69538,7 +69816,7 @@ STRING 9241
 }
 
 STRING 9242
-// 技能: A0A6 (Captain03 - 船長「菠菜」), Ubertip (提示工具 - 普通 - 扩展)
+// 技能: A0A6 (Captain03 - 船长「菠菜」), Ubertip (提示工具 - 普通 - 扩展)
 {
  
 村纱船长开启了她秘藏的菠菜，在7秒内得到额外力量以及溅射攻击,这下村纱船长牛B了...
@@ -69566,7 +69844,7 @@ STRING 9243
 }
 
 STRING 9244
-// 技能: A0A6 (Captain03 - 船長「菠菜」), Ubertip (提示工具 - 普通 - 扩展)
+// 技能: A0A6 (Captain03 - 船长「菠菜」), Ubertip (提示工具 - 普通 - 扩展)
 {
  
 村纱船长开启了她秘藏的菠菜，在7秒内得到额外力量以及溅射攻击,这下村纱船长牛B了...
@@ -69578,7 +69856,7 @@ STRING 9244
 }
 
 STRING 9245
-// 技能: A0A6 (Captain03 - 船長「菠菜」), Ubertip (提示工具 - 普通 - 扩展)
+// 技能: A0A6 (Captain03 - 船长「菠菜」), Ubertip (提示工具 - 普通 - 扩展)
 {
  
 村纱船长开启了她秘藏的菠菜，在7秒内得到额外力量以及溅射攻击,这下村纱船长牛B了...
@@ -69590,7 +69868,7 @@ STRING 9245
 }
 
 STRING 9246
-// 技能: A0A6 (Captain03 - 船長「菠菜」), Ubertip (提示工具 - 普通 - 扩展)
+// 技能: A0A6 (Captain03 - 船长「菠菜」), Ubertip (提示工具 - 普通 - 扩展)
 {
  
 村纱船长开启了她秘藏的菠菜，在7秒内得到额外力量以及溅射攻击,这下村纱船长牛B了...
@@ -69608,7 +69886,7 @@ Youmu02 - 防御降低
 }
 
 STRING 9248
-// 技能: A0A6 (Captain03 - 船長「菠菜」), Researchubertip (提示工具 - 学习 - 扩展)
+// 技能: A0A6 (Captain03 - 船长「菠菜」), Researchubertip (提示工具 - 学习 - 扩展)
 {
  
 村纱船长开启了她秘藏的菠菜，在7秒内得到额外力量以及溅射攻击,这下村纱船长牛B了...
@@ -69732,6 +70010,22 @@ STRING 9257
 (等级 3)(MFD)
 }
 
+STRING 9258
+// 技能: A0ZU (NitoriEX - 能源「妖怪黄瓜能量电池」), Tip (提示工具 - 普通)
+{
+能源「妖怪黄瓜能量电池」(|cffffcc00E|r)
+}
+
+STRING 9259
+// 技能: A0ZU (NitoriEX - 能源「妖怪黄瓜能量电池」), Ubertip (提示工具 - 普通 - 扩展)
+{
+河童战斗装甲身后的那个传说中的大背包中装备了河童能源公司最新的"妖怪黄瓜能量电池(R)"，只要在其中塞入小黄瓜就能为阳电子炮充能。
+
+消耗的黄瓜会返回75%的资源。
+
+|cffffcc00(使用打开能量槽装填，再次使用则关闭能量槽，装填过程中无法使用其他物品)|r
+}
+
 STRING 9260
 // 技能: A0RC ((MFD)), Name (名字)
 {
@@ -69842,13 +70136,13 @@ STRING 9271
 }
 
 STRING 9272
-// 技能: A0XQ (PatchouliSelectE - 「土」), Hotkey (热键 - 普通)
+// 技能: A0ZT (SuwakoEx - 神具「泄矢之小铁炮」), Hotkey (热键 - 普通)
 {
 E
 }
 
 STRING 9273
-// 技能: A0Z2 (MystiaEX - 鸟符「飞行」), Researchhotkey (热键 - 学习)
+// 技能: A0ZU (NitoriEX - 能源「妖怪黄瓜能量电池」), Hotkey (热键 - 普通)
 {
 E
 }
@@ -70175,6 +70469,18 @@ STRING 9300
 Rumia01 - 暗符「月的暗面」
 }
 
+STRING 9301
+// 技能: A0ZU (NitoriEX - 能源「妖怪黄瓜能量电池」), EditorSuffix (编辑器后缀)
+{
+(Mr.)
+}
+
+STRING 9302
+// 技能: A0ZV (Nitori02 - 电子「阳电子炮 Cucumber.II」), Name (名字)
+{
+Nitori02 - 电子「阳电子炮 Cucumber.II」
+}
+
 STRING 9303
 // 技能: A0N4 (Twei03 - 脱兔「以退为攻」), Ubertip (提示工具 - 普通 - 扩展)
 {
@@ -70274,6 +70580,12 @@ STRING 9310
 // 技能: A0XE (RemiliaEX - 夜王「绯色摇蓝」), Tip (提示工具 - 普通)
 {
 亡舞「生者必灭の理」 - [|cffffcc00等级 4|r]
+}
+
+STRING 9311
+// 技能: A0XN (PatchouliSelectB - 「木」), Hotkey (热键 - 普通)
+{
+F
 }
 
 STRING 9312
@@ -70722,30 +71034,37 @@ STRING 9347
 (Lv1)
 }
 
+STRING 9348
+// 技能: A0XZ (PatchouliSelectG - 「月」), Hotkey (热键 - 普通)
+{
+F
+}
+
+STRING 9349
+// 技能: A0ZV (Nitori02 - 电子「阳电子炮 Cucumber.II」), Ubertip (提示工具 - 普通 - 扩展)
+{
+「阳电子炮 Cucumber.II」能够将「妖怪黄瓜能量电池(E)」中的小黄瓜转化为威力巨大的阳电子能量，「阳电子炮 Cucumber.II」具有2000码的射程，并且朝三个方向射击，射击后会造成巨大的
+冲击力，伤害随穿透的目标数目递减10%，并震晕敌人，减少敌人30%攻击力和30%移动速度。对建筑造成50%的伤害。
+
+|cff00ffff释放距离|r：2000
+|c0000ffff魔法消耗|r：50
+|c0000ffff冷却时间|r：0秒
+
+|cffffcc00等级 4|r - 最大伤害390
+
+|cffffcc00将消耗能量槽中的小黄瓜一条，没有小黄瓜无法射击|r
+}
+
 STRING 9350
-// 技能: A0Z2 (MystiaEX - 鸟符「飞行」), Hotkey (热键 - 普通)
+// 技能: A0ZU (NitoriEX - 能源「妖怪黄瓜能量电池」), Researchhotkey (热键 - 学习)
 {
 E
 }
 
 STRING 9351
-// 物品: I06M (|cffffcc00合成卷轴|r - 碎骨之笛), Ubertip (提示工具 - 扩展)
+// 单位: E01E (图书馆管理员), Awakentip (提示工具 -唤醒)
 {
-|cffff3300其它材料：|r
-冰块 - 2200
-被盗的魔法书 - 2100
-水果刀 - 400
-|cffc0c0c0总价 - 5150
-
-|cffffcc00属性：|r
-力量 +9
-敏捷 +9
-智力 +27
-攻击力 +8
-
-|cff00ff33夜鸣之鸟的消失：|r
-提升600范围友方单位55%移动速度，
-持续6秒，冷却时间60秒。
+小恶魔
 }
 
 STRING 9352
@@ -70937,17 +71256,9 @@ STRING 9380
 }
 
 STRING 9381
-// 物品: I06N (碎骨之笛), Ubertip (提示工具 - 扩展)
+// 单位: E02B (夜雀), Awakentip (提示工具 -唤醒)
 {
-|cffffcc00属性：|r
-力量 +9
-敏捷 +9
-智力 +27
-攻击力 +8
-
-|cff00ff33夜鸣之鸟的消失：|r
-提升600范围友方单位55%移动速度，
-持续6秒，冷却时间60秒。
+蜜斯缇雅 萝蕾拉
 }
 
 STRING 9382
@@ -71690,6 +72001,25 @@ STRING 9466
 W
 }
 
+STRING 9467
+// 技能: A0ZV (Nitori02 - 电子「阳电子炮 Cucumber.II」), Researchubertip (提示工具 - 学习 - 扩展)
+{
+「阳电子炮 Cucumber.II」能够将「妖怪黄瓜能量电池」中的小黄瓜转化为威力巨大
+的阳电子能量，「阳电子炮 Cucumber.II」具有2000码的射程，射击后会造成巨大的
+冲击力，伤害随穿透的目标数目递减10%，并震晕敌人，减少敌人30%攻击力和30%移动速度。对建筑造成50%的伤害。
+
+|cff00ffff释放距离|r：2000
+|c0000ffff魔法消耗|r：50
+|c0000ffff冷却时间|r：9/7/5/0秒
+
+|cffffcc00等级 1|r - 最大伤害150
+|cffffcc00等级 2|r - 最大伤害230
+|cffffcc00等级 3|r - 最大伤害310
+|cffffcc00等级 4|r - 最大伤害390
+
+|cffffcc00将消耗能量槽中的小黄瓜一条，没有小黄瓜无法射击|r
+}
+
 STRING 9468
 // 魔法效果: B01X ((MFD)光学迷彩), EditorName (名字(编辑器))
 {
@@ -71747,6 +72077,24 @@ STRING 9475
 
 }
 
+STRING 9476
+// 技能: A0ZV (Nitori02 - 电子「阳电子炮 Cucumber.II」), Tip (提示工具 - 普通)
+{
+电子「阳电子炮 Cucumber.II」(|cffffcc00F|r) - [|cffffcc00等级 1|r]
+}
+
+STRING 9477
+// 技能: A0ZV (Nitori02 - 电子「阳电子炮 Cucumber.II」), Tip (提示工具 - 普通)
+{
+电子「阳电子炮 Cucumber.II」(|cffffcc00F|r) - [|cffffcc00等级 2|r]
+}
+
+STRING 9478
+// 技能: A0ZV (Nitori02 - 电子「阳电子炮 Cucumber.II」), Tip (提示工具 - 普通)
+{
+电子「阳电子炮 Cucumber.II」(|cffffcc00F|r) - [|cffffcc00等级 3|r]
+}
+
 STRING 9479
 // 技能: A0PP (TweiEX - 运符「幸运注视」), Name (名字)
 {
@@ -71754,19 +72102,19 @@ TweiEX - 运符「幸运注视」
 }
 
 STRING 9480
-// 技能: A0XN (PatchouliSelectB - 「木」), Hotkey (热键 - 普通)
+// 技能: A0Z4 (Toramaru02 - 光符「净化之魔」), Researchhotkey (热键 - 学习)
 {
 F
 }
 
 STRING 9481
-// 技能: A0XZ (PatchouliSelectG - 「月」), Hotkey (热键 - 普通)
+// 技能: A0ZG (馒头回家), Hotkey (热键 - 普通)
 {
 F
 }
 
 STRING 9482
-// 技能: A0Z4 (Toramaru02 - 光符「净化之魔」), Researchhotkey (热键 - 学习)
+// 技能: A0ZI (ReisenNo202 - 思议「月之羽衣」), Researchhotkey (热键 - 学习)
 {
 F
 }
@@ -71784,6 +72132,12 @@ STRING 9484
 
 当自己及队友获取神符时，
 提昇一倍取得正面神符的机率。
+}
+
+STRING 9485
+// 技能: A0ZV (Nitori02 - 电子「阳电子炮 Cucumber.II」), Tip (提示工具 - 普通)
+{
+电子「阳电子炮 Cucumber.II」(|cffffcc00F|r) - [|cffffcc00等级 4|r]
 }
 
 STRING 9486
@@ -71812,6 +72166,18 @@ STRING 9489
 提升梦月的敏捷值。
 
 |cffffcc00等级1|r - 增加10点敏捷。每81秒提升1点。
+}
+
+STRING 9490
+// 技能: A0ZV (Nitori02 - 电子「阳电子炮 Cucumber.II」), Researchtip (提示工具 - 学习)
+{
+学习电子「阳电子炮 Cucumber.II」(|cffffcc00F|r) - [|cffffcc00等级 %d|r]
+}
+
+STRING 9491
+// 技能: A0ZV (Nitori02 - 电子「阳电子炮 Cucumber.II」), EditorSuffix (编辑器后缀)
+{
+(Mr.)
 }
 
 STRING 9492
@@ -72249,6 +72615,32 @@ STRING 9552
 |cffffcc00等级3|r - 持续3.0秒，合计造成600法术伤害
 }
 
+STRING 9553
+{
+你感到一阵恶心，把蘑菇吐出来了！
+}
+
+STRING 9554
+{
+你感到一阵恶心，把蘑菇吐出来了！
+}
+
+STRING 9555
+{
+你感到一阵恶心，把蘑菇吐出来了！
+}
+
+STRING 9556
+{
+你感到一阵恶心，把蘑菇吐出来了！
+}
+
+STRING 9557
+// 技能: A0XP (PatchouliSelectD - 「火」), Researchhotkey (热键 - 学习)
+{
+D
+}
+
 STRING 9558
 // 技能: A0F1 (Kanako01 - 神祭「神赐御柱」), Researchubertip (提示工具 - 学习 - 扩展)
 {
@@ -72290,7 +72682,7 @@ PatchouliAC - 金水符「水银之毒」
 }
 
 STRING 9563
-// 技能: A0XP (PatchouliSelectD - 「火」), Researchhotkey (热键 - 学习)
+// 技能: A0XQ (PatchouliSelectE - 「土」), Researchhotkey (热键 - 学习)
 {
 D
 }
@@ -72315,7 +72707,7 @@ STRING 9565
 }
 
 STRING 9566
-// 技能: A0XQ (PatchouliSelectE - 「土」), Researchhotkey (热键 - 学习)
+// 技能: A0XY (PatchouliSelectF - 「日」), Researchhotkey (热键 - 学习)
 {
 D
 }
@@ -72973,6 +73365,12 @@ STRING 9625
 |cffffcc00造成的伤害是神圣伤害|r
 }
 
+STRING 9626
+// 技能: A0XY (PatchouliSelectF - 「日」), Hotkey (热键 - 普通)
+{
+D
+}
+
 STRING 9627
 // 技能: A07V (Medi01 - 毒符「毒性呼吸」), Ubertip (提示工具 - 普通 - 扩展)
 {
@@ -72983,10 +73381,64 @@ STRING 9627
 |cffffcc00等级 4|r - 减速45%，每秒受到16点伤害
 }
 
+STRING 9628
+// 技能: A0ZZ (Remilia01 - 神枪「Spear The Gungnir」), Name (名字)
+{
+Remilia01 - 神枪「Spear The Gungnir」
+}
+
 STRING 9629
 // 技能: A0ZK (ReisenNo204 - 赎罪「荣华之孽」), Researchhotkey (热键 - 学习)
 {
 W
+}
+
+STRING 9630
+// 技能: A0ZZ (Remilia01 - 神枪「Spear The Gungnir」), Researchtip (提示工具 - 学习)
+{
+学习神枪「Spear The Gungnir」(|cffffcc00D|r) - [|cffffcc00等级 %d|r]
+}
+
+STRING 9631
+// 技能: A0ZZ (Remilia01 - 神枪「Spear The Gungnir」), Researchubertip (提示工具 - 学习 - 扩展)
+{
+向前投出神枪冈格尼尔，伤害所有穿越的单位。
+穿越敌人少女时则造成巨大的法术伤害。
+
+|cff00ffff最大距离|r：全地图
+|cff00ffff魔法消耗|r：75/100/125/150
+|cff00ffff冷却时间|r：6秒
+
+|cffffcc00等级 1|r - 对普通单位造成65法术伤害，对少女造成210法术伤害
+|cffffcc00等级 2|r - 对普通单位造成110法术伤害，对少女造成340法术伤害
+|cffffcc00等级 3|r - 对普通单位造成155法术伤害，对少女造成470法术伤害
+|cffffcc00等级 4|r - 对普通单位造成200法术伤害，对少女造成600法术伤害
+}
+
+STRING 9632
+// 技能: A0ZZ (Remilia01 - 神枪「Spear The Gungnir」), Ubertip (提示工具 - 普通 - 扩展)
+{
+向前投出神枪冈格尼尔，伤害所有穿越的普通单位。
+投中敌人少女时则停止并造成巨大的法术伤害。
+
+|cff00ffff最大距离|r：2000
+|cff00ffff魔法消耗|r：75
+|cff00ffff冷却时间|r：6秒
+
+|cffffcc00等级 1|r - 对普通单位造成65法术伤害，对少女造成210法术伤害
+}
+
+STRING 9633
+// 技能: A0ZZ (Remilia01 - 神枪「Spear The Gungnir」), Ubertip (提示工具 - 普通 - 扩展)
+{
+向前投出神枪冈格尼尔，伤害所有穿越的普通单位。
+投中敌人少女时则停止并造成巨大的法术伤害。
+
+|cff00ffff最大距离|r：2000
+|cff00ffff魔法消耗|r：100
+|cff00ffff冷却时间|r：6秒
+
+|cffffcc00等级 2|r - 对普通单位造成110法术伤害，对少女造成340法术伤害
 }
 
 STRING 9634
@@ -73113,13 +73565,13 @@ STRING 9651
 }
 
 STRING 9652
-// 技能: A0XY (PatchouliSelectF - 「日」), Researchhotkey (热键 - 学习)
+// 技能: A0XZ (PatchouliSelectG - 「月」), Researchhotkey (热键 - 学习)
 {
 D
 }
 
 STRING 9653
-// 技能: A0XY (PatchouliSelectF - 「日」), Hotkey (热键 - 普通)
+// 技能: A0ZF (馒头运送), Hotkey (热键 - 普通)
 {
 D
 }
@@ -73218,13 +73670,13 @@ Yuka03 - 太阳花田生命恢复
 }
 
 STRING 9664
-// 技能: A0XZ (PatchouliSelectG - 「月」), Researchhotkey (热键 - 学习)
+// 技能: A0ZH (ReisenNo201 - 月枪「月兔一击」), Hotkey (热键 - 普通)
 {
 D
 }
 
 STRING 9665
-// 技能: A0ZG (馒头回家), Hotkey (热键 - 普通)
+// 技能: A0ZI (ReisenNo202 - 思议「月之羽衣」), Hotkey (热键 - 普通)
 {
 F
 }
@@ -73341,9 +73793,22 @@ Medi02 - 毒气花园
 }
 
 STRING 9679
-// 技能: A0ZF (馒头运送), Hotkey (热键 - 普通)
+// 技能: A0ZH (ReisenNo201 - 月枪「月兔一击」), Researchhotkey (热键 - 学习)
 {
 D
+}
+
+STRING 9680
+// 技能: A0ZZ (Remilia01 - 神枪「Spear The Gungnir」), Ubertip (提示工具 - 普通 - 扩展)
+{
+向前投出神枪冈格尼尔，伤害所有穿越的普通单位。
+投中敌人少女时则停止并造成巨大的法术伤害。
+
+|cff00ffff最大距离|r：2000
+|cff00ffff魔法消耗|r：125
+|cff00ffff冷却时间|r：6秒
+
+|cffffcc00等级 3|r - 对普通单位造成155法术伤害，对少女造成470法术伤害
 }
 
 STRING 9681
@@ -73434,7 +73899,7 @@ Medi03 - 甜蜜之毒沉默
 }
 
 STRING 9690
-// 技能: A0ZH (ReisenNo201 - 月枪「月兔一击」), Hotkey (热键 - 普通)
+// 技能: A0ZZ (Remilia01 - 神枪「Spear The Gungnir」), Researchhotkey (热键 - 学习)
 {
 D
 }
@@ -73533,9 +73998,22 @@ Eirin03 - 永夜归隐
 }
 
 STRING 9701
-// 技能: A0ZH (ReisenNo201 - 月枪「月兔一击」), Researchhotkey (热键 - 学习)
+// 技能: A0ZZ (Remilia01 - 神枪「Spear The Gungnir」), Hotkey (热键 - 普通)
 {
 D
+}
+
+STRING 9702
+// 技能: A0ZZ (Remilia01 - 神枪「Spear The Gungnir」), Ubertip (提示工具 - 普通 - 扩展)
+{
+向前投出神枪冈格尼尔，伤害所有穿越的单位。
+穿越敌人少女时则造成巨大的法术伤害。
+
+|cff00ffff最大距离|r：全地图
+|cff00ffff魔法消耗|r：150
+|cff00ffff冷却时间|r：6秒
+
+|cffffcc00等级 4|r - 对普通单位造成200法术伤害，对少女造成600法术伤害
 }
 
 STRING 9703
@@ -73674,7 +74152,7 @@ STRING 9719
 }
 
 STRING 9720
-// 技能: A0XJ (PatchouliDE - 火土符「阿奇蒙德之石」), Researchhotkey (热键 - 学习)
+// 技能: A0XJ (PatchouliDE - 火土符「阿奇蒙德之石」), Hotkey (热键 - 普通)
 {
 T
 }
@@ -73692,7 +74170,7 @@ STRING 9722
 }
 
 STRING 9723
-// 技能: A0XJ (PatchouliDE - 火土符「阿奇蒙德之石」), Hotkey (热键 - 普通)
+// 技能: A0ZW (AyaMR - 「无双风神」), Hotkey (热键 - 普通)
 {
 T
 }
@@ -73758,7 +74236,7 @@ STRING 9733
 }
 
 STRING 9734
-// 技能: A0YD (PatchouliZejACE - 金水土), EditorSuffix (编辑器后缀)
+// 技能: A0YE (PatchouliZejADE - 金火土), EditorSuffix (编辑器后缀)
 {
 (隐藏图标)
 }
@@ -73786,6 +74264,12 @@ STRING 9737
 // 魔法效果: B01Z (Captain03 - 菠菜), EditorName (名字(编辑器))
 {
 Captain03 - 菠菜
+}
+
+STRING 9738
+// 技能: A0ZZ (Remilia01 - 神枪「Spear The Gungnir」), Tip (提示工具 - 普通)
+{
+神枪「Spear The Gungnir」(|cffffcc00D|r) - [|cffffcc00等级 1|r]
 }
 
 STRING 9739
@@ -73936,8 +74420,14 @@ STRING 9752
 |cffff0000变身技能无法受核棒效果增益|r
 }
 
+STRING 9753
+// 技能: A0ZZ (Remilia01 - 神枪「Spear The Gungnir」), Tip (提示工具 - 普通)
+{
+神枪「Spear The Gungnir」(|cffffcc00D|r) - [|cffffcc00等级 2|r]
+}
+
 STRING 9754
-// 技能: A0ZI (ReisenNo202 - 思议「月之羽衣」), Researchhotkey (热键 - 学习)
+// 技能: A0ZV (Nitori02 - 电子「阳电子炮 Cucumber.II」), Hotkey (热键 - 普通)
 {
 F
 }
@@ -74212,7 +74702,7 @@ PatchouliZejABD - 金木火
 }
 
 STRING 9793
-// 技能: A0YE (PatchouliZejADE - 金火土), EditorSuffix (编辑器后缀)
+// 技能: A0YF (PatchouliZejBCD - 木水火), EditorSuffix (编辑器后缀)
 {
 (隐藏图标)
 }
@@ -74230,7 +74720,7 @@ STRING 9795
 }
 
 STRING 9796
-// 技能: A0YF (PatchouliZejBCD - 木水火), EditorSuffix (编辑器后缀)
+// 技能: A0YG (PatchouliZejBCE - 木水土), EditorSuffix (编辑器后缀)
 {
 (隐藏图标)
 }
@@ -74248,7 +74738,7 @@ PatchouliZejACD - 金水火
 }
 
 STRING 9799
-// 技能: A0YG (PatchouliZejBCE - 木水土), EditorSuffix (编辑器后缀)
+// 技能: A0YH (PatchouliZejBDE - 木火土), EditorSuffix (编辑器后缀)
 {
 (隐藏图标)
 }
@@ -74260,7 +74750,7 @@ PatchouliZejACE - 金水土
 }
 
 STRING 9801
-// 技能: A0YH (PatchouliZejBDE - 木火土), EditorSuffix (编辑器后缀)
+// 技能: A0YI (PatchouliZejCDE - 水火土), EditorSuffix (编辑器后缀)
 {
 (隐藏图标)
 }
@@ -74272,7 +74762,7 @@ PatchouliZejADE - 金火土
 }
 
 STRING 9803
-// 技能: A0YI (PatchouliZejCDE - 水火土), EditorSuffix (编辑器后缀)
+// 技能: A0YK (PatchouliZfjF - 日), EditorSuffix (编辑器后缀)
 {
 (隐藏图标)
 }
@@ -74284,7 +74774,7 @@ PatchouliZejBCD - 木水火
 }
 
 STRING 9805
-// 技能: A0YK (PatchouliZfjF - 日), EditorSuffix (编辑器后缀)
+// 技能: A0YL (PatchouliZfjG - 日), EditorSuffix (编辑器后缀)
 {
 (隐藏图标)
 }
@@ -74296,7 +74786,7 @@ PatchouliZejBCE - 木水土
 }
 
 STRING 9807
-// 技能: A0YL (PatchouliZfjG - 日), EditorSuffix (编辑器后缀)
+// 技能: A0YO (Critical), EditorSuffix (编辑器后缀)
 {
 (隐藏图标)
 }
@@ -74308,7 +74798,7 @@ PatchouliZejBDE - 木火土
 }
 
 STRING 9809
-// 技能: A0YO (Critical), EditorSuffix (编辑器后缀)
+// 技能: A0Z1 (Merlin01 - Buff), EditorSuffix (编辑器后缀)
 {
 (隐藏图标)
 }
@@ -74320,7 +74810,7 @@ PatchouliZejCDE - 水火土
 }
 
 STRING 9811
-// 技能: A0Z1 (Merlin01 - Buff), EditorSuffix (编辑器后缀)
+// 技能: A0Z5 (法球可使用性替换), EditorSuffix (编辑器后缀)
 {
 (隐藏图标)
 }
@@ -74414,7 +74904,7 @@ PatchouliZfjF - 日
 }
 
 STRING 9821
-// 技能: A0Z5 (法球可使用性替换), EditorSuffix (编辑器后缀)
+// 技能: A0ZE (Reimu03 - 二重结界敌), EditorSuffix (编辑器后缀)
 {
 (隐藏图标)
 }
@@ -74426,7 +74916,7 @@ PatchouliZfjG - 日
 }
 
 STRING 9823
-// 技能: A0ZE (Reimu03 - 二重结界敌), EditorSuffix (编辑器后缀)
+// 技能: A0ZX (AyaMR - 文MR), EditorSuffix (编辑器后缀)
 {
 (隐藏图标)
 }
@@ -76926,6 +77416,51 @@ STRING 10034
 |cffffcc00等级4|r - 回復200生命，弹开400距离，造成175伤害。。
 }
 
+STRING 10035
+// 技能: A0ZZ (Remilia01 - 神枪「Spear The Gungnir」), Tip (提示工具 - 普通)
+{
+神枪「Spear The Gungnir」(|cffffcc00D|r) - [|cffffcc00等级 3|r]
+}
+
+STRING 10036
+// 技能: A0ZZ (Remilia01 - 神枪「Spear The Gungnir」), Tip (提示工具 - 普通)
+{
+神枪「Spear The Gungnir」(|cffffcc00D|r) - [|cffffcc00等级 4|r]
+}
+
+STRING 10037
+// 技能: A0ZZ (Remilia01 - 神枪「Spear The Gungnir」), EditorSuffix (编辑器后缀)
+{
+(Mr.)
+}
+
+STRING 10038
+// 技能: A0JI (Mino02 - 烤芋「Sweet Potato Room」), Researchubertip (提示工具 - 学习 - 扩展)
+{
+ 
+放置一个烤红薯的小车，持续20秒。
+靠近小车的友方单位会恢复一定生命值和魔法值。
+
+|cff00ffff施放距离|r：500
+|cff00ffff影响范围|r：500
+|c0000ffff魔法消耗|r：75
+|cff00ffff冷却时间|r：36秒
+
+|cffffcc00等级 1|r - 可以为每个单位恢复最多100点生命值和110魔法值
+|cffffcc00等级 2|r - 可以为每个单位恢复最多150点生命值和130魔法值
+|cffffcc00等级 3|r - 可以为每个单位恢复最多200点生命值和150魔法值
+|cffffcc00等级 4|r - 可以为每个单位恢复最多250点生命值和170魔法值
+
+|cffdc143c蘑菇变异后|r
+小车可以移动并且能自爆
+}
+
+STRING 10039
+// 技能: A0JC (Shizuha02 - 秋符「干爽的气候最适合睡觉了!」), Name (名字)
+{
+Shizuha02 - 秋符「干爽的气候最适合睡觉了!」
+}
+
 STRING 10040
 // 技能: A0XG (PatchouliBE - 木土符「薜荔之芽」), Researchubertip (提示工具 - 学习 - 扩展)
 {
@@ -77412,7 +77947,7 @@ STRING 10071
 }
 
 STRING 10072
-// 技能: A0ZI (ReisenNo202 - 思议「月之羽衣」), Hotkey (热键 - 普通)
+// 技能: A0ZV (Nitori02 - 电子「阳电子炮 Cucumber.II」), Researchhotkey (热键 - 学习)
 {
 F
 }
@@ -78311,6 +78846,48 @@ STRING 10124
 |cffffcc00等级 4|r - 44点神圣伤害
 }
 
+STRING 10125
+// 技能: A0JC (Shizuha02 - 秋符「干爽的气候最适合睡觉了!」), Researchubertip (提示工具 - 学习 - 扩展)
+{
+ 
+立即原地睡觉，回复自己大量生命值和魔法值。完全睡醒后，在短时间内攻击力会提升。
+睡眠中如果被攻击则会中断。
+ 
+|cff00ffff冷却时间|r：60/55/50/45秒
+ 
+|cffffcc00等级 1|r - 睡眠持续9秒，共回复<A0JC,DataA1>点生命值和<A0JC,DataB1>点魔法值；在20秒内提升20点攻击力
+|cffffcc00等级 2|r - 睡眠持续8秒，共回复<A0JC,DataA2>点生命值和<A0JC,DataB2>点魔法值；在20秒内提升30点攻击力
+|cffffcc00等级 3|r - 睡眠持续7秒，共回复<A0JC,DataA3>点生命值和<A0JC,DataB3>点魔法值；在20秒内提升40点攻击力
+|cffffcc00等级 4|r - 睡眠持续6秒，共回复<A0JC,DataA4>点生命值和<A0JC,DataB4>点魔法值；在20秒内提升50点攻击力
+
+|cffdc143c蘑菇变异后|r
+996神明：睡眠时间压缩到1秒
+}
+
+STRING 10126
+// 技能: A100 (Shizuha02 - 秋符「干爽的气候最适合睡觉了!」), Name (名字)
+{
+Shizuha02 - 秋符「干爽的气候最适合睡觉了!」
+}
+
+STRING 10127
+// 技能: A100 (Shizuha02 - 秋符「干爽的气候最适合睡觉了!」), Researchhotkey (热键 - 学习)
+{
+F
+}
+
+STRING 10128
+// 技能: A100 (Shizuha02 - 秋符「干爽的气候最适合睡觉了!」), Researchtip (提示工具 - 学习)
+{
+学习秋符「乾爽的气候最适合睡觉了!」(|cffffcc00F|r) - [|cffffcc00等级 %d|r]
+}
+
+STRING 10129
+// 技能: A100 (Shizuha02 - 秋符「干爽的气候最适合睡觉了!」), Tip (提示工具 - 普通)
+{
+秋符「乾爽的气候最适合睡觉了!」(|cffffcc00F|r) - [|cffffcc00等级 1|r]
+}
+
 STRING 10130
 // 技能: A0WG (PatchouliBD - 木火符「施勒特尔之柴」), Researchubertip (提示工具 - 学习 - 扩展)
 {
@@ -78382,6 +78959,18 @@ STRING 10134
 |cff00ffff冷却时间|r：7
 
 |cffffcc00等级 4|r - 造成400法术伤害
+}
+
+STRING 10135
+// 技能: A100 (Shizuha02 - 秋符「干爽的气候最适合睡觉了!」), Tip (提示工具 - 普通)
+{
+秋符「乾爽的气候最适合睡觉了!」(|cffffcc00F|r) - [|cffffcc00等级 2|r]
+}
+
+STRING 10136
+// 技能: A100 (Shizuha02 - 秋符「干爽的气候最适合睡觉了!」), Tip (提示工具 - 普通)
+{
+秋符「乾爽的气候最适合睡觉了!」(|cffffcc00F|r) - [|cffffcc00等级 3|r]
 }
 
 STRING 10137
@@ -78516,5 +79105,281 @@ STRING 10147
 精用体质抵挡伤害。
 降低受到来自单位的伤害12.0%，
 降低受到来自少女的伤害16.0%。
+}
+
+STRING 10148
+// 技能: A100 (Shizuha02 - 秋符「干爽的气候最适合睡觉了!」), Tip (提示工具 - 普通)
+{
+秋符「乾爽的气候最适合睡觉了!」(|cffffcc00F|r) - [|cffffcc00等级 4|r]
+}
+
+STRING 10149
+// 技能: A100 (Shizuha02 - 秋符「干爽的气候最适合睡觉了!」), Ubertip (提示工具 - 普通 - 扩展)
+{
+ 
+立即原地睡觉，回复自己大量生命值和魔法值。完全睡醒后，在短时间内攻击力会提升。
+睡眠中如果被攻击则会中断。
+ 
+|cff00ffff冷却时间|r：60秒
+ 
+|cffffcc00等级 1|r - 睡眠持续9秒，共回复<A0JC,DataA1>点生命值和<A0JC,DataB1>点魔法值；在20秒内提升20点攻击力
+}
+
+STRING 10150
+// 技能: A100 (Shizuha02 - 秋符「干爽的气候最适合睡觉了!」), Ubertip (提示工具 - 普通 - 扩展)
+{
+ 
+立即原地睡觉，回复自己大量生命值和魔法值。完全睡醒后，在短时间内攻击力会提升。
+睡眠中如果被攻击则会中断。
+ 
+|cff00ffff冷却时间|r：55秒
+ 
+|cffffcc00等级 2|r - 睡眠持续8秒，共回复<A0JC,DataA2>点生命值和<A0JC,DataB2>点魔法值；在20秒内提升30点攻击力
+}
+
+STRING 10151
+// 技能: A100 (Shizuha02 - 秋符「干爽的气候最适合睡觉了!」), Ubertip (提示工具 - 普通 - 扩展)
+{
+ 
+立即原地睡觉，回复自己大量生命值和魔法值。完全睡醒后，在短时间内攻击力会提升。
+睡眠中如果被攻击则会中断。
+ 
+|cff00ffff冷却时间|r：50秒
+ 
+|cffffcc00等级 3|r - 睡眠持续7秒，共回复<A0JC,DataA3>点生命值和<A0JC,DataB3>点魔法值；在20秒内提升40点攻击力
+}
+
+STRING 10152
+// 技能: A100 (Shizuha02 - 秋符「干爽的气候最适合睡觉了!」), Ubertip (提示工具 - 普通 - 扩展)
+{
+ 
+立即原地睡觉，回复自己大量生命值和魔法值。完全睡醒后，在短时间内攻击力会提升。
+睡眠中如果被攻击则会中断。
+ 
+|cff00ffff冷却时间|r：45秒
+ 
+|cffffcc00等级 4|r - 睡眠持续1秒，共回复800点生命值和300点魔法值；在20秒内提升50点攻击力
+}
+
+STRING 10153
+// 技能: A100 (Shizuha02 - 秋符「干爽的气候最适合睡觉了!」), Hotkey (热键 - 普通)
+{
+F
+}
+
+STRING 10154
+// 技能: A100 (Shizuha02 - 秋符「干爽的气候最适合睡觉了!」), EditorSuffix (编辑器后缀)
+{
+(Mr.)
+}
+
+STRING 10155
+// 技能: A101 (Mino02 - 烤芋「Sweet Potato Room」), Name (名字)
+{
+Mino02 - 烤芋「Sweet Potato Room」
+}
+
+STRING 10156
+// 技能: A101 (Mino02 - 烤芋「Sweet Potato Room」), EditorSuffix (编辑器后缀)
+{
+(Mr.)
+}
+
+STRING 10157
+// 技能: A101 (Mino02 - 烤芋「Sweet Potato Room」), Researchtip (提示工具 - 学习)
+{
+学习烤芋「Sweet Potato Room」(|cffffcc00F|r) - [|cffffcc00等级 %d|r]
+}
+
+STRING 10158
+// 技能: A101 (Mino02 - 烤芋「Sweet Potato Room」), Tip (提示工具 - 普通)
+{
+烤芋「Sweet Potato Room」(|cffffcc00F|r) - [|cffffcc00等级 1|r]
+}
+
+STRING 10159
+// 技能: A101 (Mino02 - 烤芋「Sweet Potato Room」), Tip (提示工具 - 普通)
+{
+烤芋「Sweet Potato Room」(|cffffcc00F|r) - [|cffffcc00等级 2|r]
+}
+
+STRING 10160
+// 技能: A101 (Mino02 - 烤芋「Sweet Potato Room」), Tip (提示工具 - 普通)
+{
+烤芋「Sweet Potato Room」(|cffffcc00F|r) - [|cffffcc00等级 3|r]
+}
+
+STRING 10161
+// 技能: A101 (Mino02 - 烤芋「Sweet Potato Room」), Tip (提示工具 - 普通)
+{
+烤芋「Sweet Potato Room」(|cffffcc00F|r) - [|cffffcc00等级 4|r]
+}
+
+STRING 10162
+// 技能: A101 (Mino02 - 烤芋「Sweet Potato Room」), Ubertip (提示工具 - 普通 - 扩展)
+{
+ 
+放置一个烤红薯的小车，持续20秒。
+靠近小车的友方单位会恢复一定生命值和魔法值。
+
+|cff00ffff施放距离|r：500
+|cff00ffff影响范围|r：500
+|c0000ffff魔法消耗|r：75
+|cff00ffff冷却时间|r：36秒
+
+|cffffcc00等级 1|r - 可以为每个单位恢复最多100点生命值和110魔法值
+}
+
+STRING 10163
+// 技能: A101 (Mino02 - 烤芋「Sweet Potato Room」), Hotkey (热键 - 普通)
+{
+F
+}
+
+STRING 10164
+// 技能: A101 (Mino02 - 烤芋「Sweet Potato Room」), Researchhotkey (热键 - 学习)
+{
+F
+}
+
+STRING 10165
+// 技能: A101 (Mino02 - 烤芋「Sweet Potato Room」), Researchubertip (提示工具 - 学习 - 扩展)
+{
+ 
+放置一个烤红薯的可动小车，持续20秒。
+靠近小车的友方单位会恢复一定生命值和魔法值。
+小车能自爆。
+
+|cff00ffff施放距离|r：500
+|cff00ffff影响范围|r：500
+|c0000ffff魔法消耗|r：75
+|cff00ffff冷却时间|r：36秒
+
+|cffffcc00等级 1|r - 可以为每个单位恢复最多100点生命值和110魔法值
+|cffffcc00等级 2|r - 可以为每个单位恢复最多150点生命值和130魔法值
+|cffffcc00等级 3|r - 可以为每个单位恢复最多200点生命值和150魔法值
+|cffffcc00等级 4|r - 可以为每个单位恢复最多250点生命值和170魔法值
+}
+
+STRING 10166
+// 技能: A101 (Mino02 - 烤芋「Sweet Potato Room」), Ubertip (提示工具 - 普通 - 扩展)
+{
+ 
+放置一个烤红薯的小车，持续20秒。
+靠近小车的友方单位会恢复一定生命值和魔法值。
+
+|cff00ffff施放距离|r：500
+|cff00ffff影响范围|r：500
+|c0000ffff魔法消耗|r：75
+|cff00ffff冷却时间|r：36秒
+
+|cffffcc00等级 2|r - 可以为每个单位恢复最多150点生命值和130魔法值
+}
+
+STRING 10167
+// 技能: A101 (Mino02 - 烤芋「Sweet Potato Room」), Ubertip (提示工具 - 普通 - 扩展)
+{
+ 
+放置一个烤红薯的小车，持续20秒。
+靠近小车的友方单位会恢复一定生命值和魔法值。
+
+|cff00ffff施放距离|r：500
+|cff00ffff影响范围|r：500
+|c0000ffff魔法消耗|r：75
+|cff00ffff冷却时间|r：36秒
+
+|cffffcc00等级 3|r - 可以为每个单位恢复最多200点生命值和150魔法值
+}
+
+STRING 10168
+// 技能: A101 (Mino02 - 烤芋「Sweet Potato Room」), Ubertip (提示工具 - 普通 - 扩展)
+{
+ 
+放置一个烤红薯的可动小车，持续20秒。
+靠近小车的友方单位会恢复一定生命值和魔法值。
+小车能自爆，对周围敌人造成240点伤害和1.5秒眩晕
+
+|cff00ffff施放距离|r：500
+|cff00ffff影响范围|r：500
+|c0000ffff魔法消耗|r：75
+|cff00ffff冷却时间|r：36秒
+
+|cffffcc00等级 4|r - 可以为每个单位恢复最多250点生命值和170魔法值
+}
+
+STRING 10169
+// 技能: A102 (Mino02 - 自爆), Name (名字)
+{
+Mino02 - 自爆
+}
+
+STRING 10170
+// 技能: A102 (Mino02 - 自爆), EditorSuffix (编辑器后缀)
+{
+(Mr.)
+}
+
+STRING 10171
+// 技能: A102 (Mino02 - 自爆), Tip (提示工具 - 普通)
+{
+炸摊(|cffffcc00D|r)
+}
+
+STRING 10172
+// 技能: A102 (Mino02 - 自爆), Ubertip (提示工具 - 普通 - 扩展)
+{
+令红薯车爆炸造成240点魔法伤害，四散的红薯将击晕周围敌人1.5秒。
+}
+
+STRING 10173
+// 技能: A102 (Mino02 - 自爆), Hotkey (热键 - 普通)
+{
+D
+}
+
+STRING 10174
+// 物品: I06M (|cffffcc00合成卷轴|r - 碎骨之笛), Ubertip (提示工具 - 扩展)
+{
+|cffff3300其它材料：|r
+冰块 - 2200
+被盗的魔法书 - 2100
+水果刀 - 400
+|cffc0c0c0总价 - 5150
+
+|cffffcc00属性：|r
+力量 +9
+敏捷 +9
+智力 +27
+攻击力 +8
+
+|cff00ff33夜鸣之鸟的消失：|r
+提升600范围友方单位55%移动速度，
+持续6秒，冷却时间30秒。
+}
+
+STRING 10175
+// 物品: I06N (碎骨之笛), Ubertip (提示工具 - 扩展)
+{
+|cffffcc00属性：|r
+力量 +9
+敏捷 +9
+智力 +27
+攻击力 +8
+
+|cff00ff33夜鸣之鸟的消失：|r
+提升600范围友方单位55%移动速度，
+持续6秒，冷却时间30秒。
+}
+
+STRING 10176
+// 单位: E02C (夜雀), Propernames (称谓)
+{
+蜜斯缇雅 萝蕾拉
+}
+
+STRING 10177
+// 单位: E02C (夜雀), Revivetip (提示工具 -重生)
+{
+蜜斯缇雅 萝蕾拉
 }
 

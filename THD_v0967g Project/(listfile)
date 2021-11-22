@@ -48,6 +48,12 @@ Drill.blp
 Drill.mdx
 ElunesBlessing.mdx
 EnergyHands.mdx
+fightingflame.mdx
+fightingflame01.mdx
+fightingflame02.mdx
+fightingflame03.mdx
+fightingspirit.blp
+fightingspirit.mdx
 FinalSpark_Short.mdx
 FireWing.mdx
 Flare.blp
@@ -310,6 +316,7 @@ ReplaceableTextures\CommandButtons\btn_mokou.blp
 ReplaceableTextures\CommandButtons\btn_momiji.blp
 ReplaceableTextures\CommandButtons\btn_mouse.blp
 ReplaceableTextures\CommandButtons\btn_mugetsu.blp
+ReplaceableTextures\CommandButtons\btn_mushroom.blp
 ReplaceableTextures\CommandButtons\btn_mystia.blp
 ReplaceableTextures\CommandButtons\btn_nazrin.blp
 ReplaceableTextures\CommandButtons\btn_nitori.blp
@@ -814,6 +821,8 @@ smileys_sweat.blp
 smileys_sweat.mdx
 spbs.blp
 spbs.mdx
+spearglow.blp
+spearglow.mdx
 Spirit.blp
 Splats\LightningData.slk
 sq.blp
@@ -944,7 +953,8 @@ thdots\textures\lily_black.blp
 thdots\textures\lily_white.blp
 thdots\textures\marisa.blp
 thdots\textures\medicine.blp
-thdots\textures\meiling.blp
+thdots\textures\meiling_body.blp
+thdots\textures\meiling_head.blp
 thdots\textures\minamitsu.blp
 thdots\textures\minoriko.blp
 thdots\textures\mokou.blp
@@ -1086,6 +1096,7 @@ war3mapImported\WaterfallFX.mdx
 war3mapImported\willowtree2.mdx
 war3mapImported\willowtree2b.mdx
 war3mapImported\xuezhichaoxi.mdx
+war3mapImported\xuezhichaoxi2.mdx
 war3mapImported\Yuugi.mp3
 war3mapMap.blp
 war3mapMisc.txt

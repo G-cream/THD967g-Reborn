@@ -1,4 +1,9 @@
 globals
+//globals from YDTriggerSaveLoadSystem:
+constant boolean LIBRARY_YDTriggerSaveLoadSystem=true
+hashtable YDHT
+hashtable YDLOC
+//endglobals from YDTriggerSaveLoadSystem
 //globals from YDWEEnumDestructablesInCircleBJFilterNull:
 constant boolean LIBRARY_YDWEEnumDestructablesInCircleBJFilterNull=true
 //endglobals from YDWEEnumDestructablesInCircleBJFilterNull
@@ -16,10 +21,10 @@ item yd_NullTempItem
 //endglobals from YDWEGetItemOfTypeFromUnitBJNull
 //globals from YDWEGetUnitsInRangeOfLocMatchingNull:
 constant boolean LIBRARY_YDWEGetUnitsInRangeOfLocMatchingNull=true
+group yd_NullTempGroup
 //endglobals from YDWEGetUnitsInRangeOfLocMatchingNull
 //globals from YDWEGetUnitsInRectMatchingNull:
 constant boolean LIBRARY_YDWEGetUnitsInRectMatchingNull=true
-group yd_NullTempGroup
 //endglobals from YDWEGetUnitsInRectMatchingNull
 //globals from YDWEGetUnitsOfPlayerMatchingNull:
 constant boolean LIBRARY_YDWEGetUnitsOfPlayerMatchingNull=true
@@ -46,6 +51,27 @@ constant boolean LIBRARY_YDWEGetUnitsInRectAllNull=true
 //globals from YDWEGetUnitsOfPlayerAllNull:
 constant boolean LIBRARY_YDWEGetUnitsOfPlayerAllNull=true
 //endglobals from YDWEGetUnitsOfPlayerAllNull
+//globals from YDWETimerSystem:
+constant boolean LIBRARY_YDWETimerSystem=true
+integer YDWETimerSystem___CurrentTime
+integer YDWETimerSystem___CurrentIndex
+integer YDWETimerSystem___TaskListHead
+integer YDWETimerSystem___TaskListIdleHead
+integer YDWETimerSystem___TaskListIdleMax
+integer array YDWETimerSystem___TaskListIdle
+integer array YDWETimerSystem___TaskListNext
+integer array YDWETimerSystem___TaskListTime
+trigger array YDWETimerSystem___TaskListProc
+trigger YDWETimerSystem___fnRemoveUnit
+trigger YDWETimerSystem___fnDestroyTimer
+trigger YDWETimerSystem___fnRemoveItem
+trigger YDWETimerSystem___fnDestroyEffect
+trigger YDWETimerSystem___fnDestroyLightning
+trigger YDWETimerSystem___fnRunTrigger
+timer YDWETimerSystem___Timer
+integer YDWETimerSystem___TimerHandle
+integer YDWETimerSystem___TimerSystem_RunIndex= 0
+//endglobals from YDWETimerSystem
     // User-defined
 boolean udg_FlagFirst= false
 player array udg_PlayerA
@@ -380,6 +406,7 @@ integer array udg_PlayerKill
 real array udg_PlayerDamage
 real array udg_PlayerDamageAnother
 boolean udg_GameOver= false
+boolean array udg_PlayerMushroom
     // Generated
 rect gg_rct_AI_Waypoint_00= null
 rect gg_rct_AI_Waypoint_01= null
@@ -678,6 +705,7 @@ trigger gg_trg_FeetManFix= null
 trigger gg_trg_Neutral_System= null
 trigger gg_trg_Neutral_Die= null
 trigger gg_trg_ItemClear= null
+trigger gg_trg_ShoppingHint= null
 trigger gg_trg_Reisen02MoonCake= null
 trigger gg_trg_AllBuffClear= null
 trigger gg_trg_Init_Abilities= null
@@ -737,6 +765,7 @@ trigger gg_trg_Yuyuko04= null
 trigger gg_trg_Yuyuko04_Learn= null
 trigger gg_trg_Init_Yuyuko= null
 trigger gg_trg_AyaDS= null
+trigger gg_trg_AyaMR= null
 trigger gg_trg_Aya01= null
 trigger gg_trg_Aya02= null
 trigger gg_trg_Aya02_Use= null
@@ -1013,6 +1042,7 @@ trigger gg_trg_Init_Shizuha= null
 trigger gg_trg_Minoriko_Harvest= null
 trigger gg_trg_Minoriko01= null
 trigger gg_trg_Minoriko02= null
+trigger gg_trg_Minoriko02MR= null
 trigger gg_trg_Minoriko03= null
 trigger gg_trg_Minoriko04= null
 trigger gg_trg_Init_Minoriko= null
@@ -1147,6 +1177,8 @@ trigger gg_trg_PachiliUltG= null
 trigger gg_trg_PachiliInitSpell= null
 trigger gg_trg_Initialing_Pachili= null
 trigger gg_trg_Initialization_ItemAbilities= null
+trigger gg_trg_DoubleClick= null
+trigger gg_trg_OddMushroom= null
 trigger gg_trg_Teleport= null
 trigger gg_trg_TeleportCancel= null
 trigger gg_trg_Star= null
@@ -1165,6 +1197,7 @@ trigger gg_trg_Cirno_Ball= null
 trigger gg_trg_XinHua= null
 trigger gg_trg_BaGuaLu= null
 trigger gg_trg_TeleportScroll= null
+trigger gg_trg_Tea= null
 trigger gg_trg_YukkuriUpgrade= null
 trigger gg_trg_YukkuriTransport= null
 trigger gg_trg_YukkuriBackHome= null
@@ -1281,12 +1314,20 @@ destructable gg_dest_LT06_0189= null
 destructable gg_dest_DTfp_3351= null
 destructable gg_dest_DTfx_3352= null
 
+trigger l__library_init
 
 //JASSHelper struct globals:
 
 endglobals
 
 
+//library YDTriggerSaveLoadSystem:
+    function YDTriggerSaveLoadSystem__Init takes nothing returns nothing
+            set YDHT=InitHashtable()
+        set YDLOC=InitHashtable()
+    endfunction
+
+//library YDTriggerSaveLoadSystem ends
 //library YDWEEnumDestructablesInCircleBJFilterNull:
 function YDWEEnumDestructablesInCircleBJFilterNull takes nothing returns boolean
     local real dx= GetDestructableX(GetFilterDestructable()) - GetLocationX(bj_enumDestructableCenter)
@@ -1459,13 +1500,231 @@ function YDWEGetUnitsOfPlayerAllNull takes player whichPlayer returns group
 endfunction
 
 //library YDWEGetUnitsOfPlayerAllNull ends
+//library YDWETimerSystem:
+function YDWETimerSystem___NewTaskIndex takes nothing returns integer
+ local integer h= YDWETimerSystem___TaskListIdleHead
+	if YDWETimerSystem___TaskListIdleHead < 0 then
+		if YDWETimerSystem___TaskListIdleMax >= 8000 then
+			return 8100
+		else
+			set YDWETimerSystem___TaskListIdleMax=YDWETimerSystem___TaskListIdleMax + 1
+			return YDWETimerSystem___TaskListIdleMax
+		endif
+	endif
+	set YDWETimerSystem___TaskListIdleHead=YDWETimerSystem___TaskListIdle[h]
+	return h
+endfunction
+function YDWETimerSystem___DeleteTaskIndex takes integer index returns nothing
+	set YDWETimerSystem___TaskListIdle[index]=YDWETimerSystem___TaskListIdleHead
+	set YDWETimerSystem___TaskListIdleHead=index
+endfunction
+//�ú������д���
+function YDWETimerSystem___NewTask takes real time,trigger proc returns integer
+ local integer index= YDWETimerSystem___NewTaskIndex()
+ local integer h= YDWETimerSystem___TaskListHead
+ local integer t= R2I(100. * time) + YDWETimerSystem___CurrentTime
+ local integer p
+	set YDWETimerSystem___TaskListProc[index]=proc
+	set YDWETimerSystem___TaskListTime[index]=t
+	loop
+		set p=YDWETimerSystem___TaskListNext[h]
+		if p < 0 or YDWETimerSystem___TaskListTime[p] >= t then
+		//	call BJDebugMsg("NewTask:"+I2S(index))
+			set YDWETimerSystem___TaskListNext[h]=index
+			set YDWETimerSystem___TaskListNext[index]=p
+			return index
+		endif
+		set h=p
+	endloop
+	return index
+endfunction
+function YDWETimerSystemNewTask takes real time,trigger proc returns integer
+	return YDWETimerSystem___NewTask(time , proc)
+endfunction
+function YDWETimerSystemGetCurrentTask takes nothing returns integer
+	return YDWETimerSystem___CurrentIndex
+endfunction
+//ɾ����λ
+function YDWETimerSystem___RemoveUnit_CallBack takes nothing returns nothing
+    call RemoveUnit(LoadUnitHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex))
+    call RemoveSavedHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex)
+endfunction
+function YDWETimerRemoveUnit takes real time,unit u returns nothing
+    call SaveUnitHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___NewTask(time , YDWETimerSystem___fnRemoveUnit), u)
+endfunction
+//�ݻټ�ʱ��
+function YDWETimerSystem___DestroyTimer_CallBack takes nothing returns nothing
+    call DestroyTimer(LoadTimerHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex))
+    call RemoveSavedHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex)
+endfunction
+function YDWETimerDestroyTimer takes real time,timer t returns nothing
+    call SaveTimerHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___NewTask(time , YDWETimerSystem___fnDestroyTimer), t)
+endfunction
+//ɾ����Ʒ
+function YDWETimerSystem___RemoveItem_CallBack takes nothing returns nothing
+    call RemoveItem(LoadItemHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex))
+    call RemoveSavedHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex)
+endfunction
+function YDWETimerRemoveItem takes real time,item it returns nothing
+    call SaveItemHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___NewTask(time , YDWETimerSystem___fnRemoveItem), it)
+endfunction
+//ɾ����Ч
+function YDWETimerSystem___DestroyEffect_CallBack takes nothing returns nothing
+    call DestroyEffect(LoadEffectHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex))
+    call RemoveSavedHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex)
+endfunction
+function YDWETimerDestroyEffect takes real time,effect e returns nothing
+    call SaveEffectHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___NewTask(time , YDWETimerSystem___fnDestroyEffect), e)
+endfunction
+//ɾ��������Ч
+function YDWETimerSystem___DestroyLightning_CallBack takes nothing returns nothing
+    call DestroyLightning(LoadLightningHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex))
+    call RemoveSavedHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex)
+endfunction
+function YDWETimerDestroyLightning takes real time,lightning lt returns nothing
+ local integer i= YDWETimerSystem___NewTask(time , YDWETimerSystem___fnDestroyLightning)
+    call SaveLightningHandle(YDHT, YDWETimerSystem___TimerHandle, i, lt)
+endfunction
+//���д�����
+function YDWETimerSystem___RunTrigger_CallBack takes nothing returns nothing
+    call TriggerExecute(LoadTriggerHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex))
+    call RemoveSavedHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex)
+endfunction
+function YDWETimerRunTrigger takes real time,trigger trg returns nothing
+    call SaveTriggerHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___NewTask(time , YDWETimerSystem___fnRunTrigger), trg)
+endfunction
+//ɾ��Ư������
+function YDWETimerDestroyTextTag takes real time,texttag tt returns nothing
+    local integer N=0
+    local integer i=0
+    if time <= 0 then
+        set time=0.01
+    endif
+    call SetTextTagPermanent(tt, false)
+    call SetTextTagLifespan(tt, time)
+    call SetTextTagFadepoint(tt, time)
+endfunction
+//���ļ�ʱ��������
+function YDWETimerSystem___Main takes nothing returns nothing
+ local integer h= YDWETimerSystem___TaskListHead
+ local integer p
+	loop
+		set YDWETimerSystem___CurrentIndex=YDWETimerSystem___TaskListNext[h]
+		exitwhen YDWETimerSystem___CurrentIndex < 0 or YDWETimerSystem___CurrentTime < YDWETimerSystem___TaskListTime[YDWETimerSystem___CurrentIndex]
+		//call BJDebugMsg("Task:"+I2S(CurrentIndex))
+		call TriggerEvaluate(YDWETimerSystem___TaskListProc[YDWETimerSystem___CurrentIndex])
+		call YDWETimerSystem___DeleteTaskIndex(YDWETimerSystem___CurrentIndex)
+		set YDWETimerSystem___TaskListNext[h]=YDWETimerSystem___TaskListNext[YDWETimerSystem___CurrentIndex]
+	endloop
+	set YDWETimerSystem___CurrentTime=YDWETimerSystem___CurrentTime + 1
+endfunction
+//��ʼ������
+function YDWETimerSystem___Init takes nothing returns nothing
+    set YDWETimerSystem___Timer=CreateTimer()
+	set YDWETimerSystem___TimerHandle=GetHandleId(YDWETimerSystem___Timer)
+	set YDWETimerSystem___CurrentTime=0
+	set YDWETimerSystem___TaskListHead=0
+	set YDWETimerSystem___TaskListNext[0]=- 1
+	set YDWETimerSystem___TaskListIdleHead=1
+	set YDWETimerSystem___TaskListIdleMax=1
+	set YDWETimerSystem___TaskListIdle[1]=- 1
+	
+	set YDWETimerSystem___fnRemoveUnit=CreateTrigger()
+	set YDWETimerSystem___fnDestroyTimer=CreateTrigger()
+	set YDWETimerSystem___fnRemoveItem=CreateTrigger()
+	set YDWETimerSystem___fnDestroyEffect=CreateTrigger()
+	set YDWETimerSystem___fnDestroyLightning=CreateTrigger()
+	set YDWETimerSystem___fnRunTrigger=CreateTrigger()
+	call TriggerAddCondition(YDWETimerSystem___fnRemoveUnit, Condition(function YDWETimerSystem___RemoveUnit_CallBack))
+	call TriggerAddCondition(YDWETimerSystem___fnDestroyTimer, Condition(function YDWETimerSystem___DestroyTimer_CallBack))
+	call TriggerAddCondition(YDWETimerSystem___fnRemoveItem, Condition(function YDWETimerSystem___RemoveItem_CallBack))
+	call TriggerAddCondition(YDWETimerSystem___fnDestroyEffect, Condition(function YDWETimerSystem___DestroyEffect_CallBack))
+	call TriggerAddCondition(YDWETimerSystem___fnDestroyLightning, Condition(function YDWETimerSystem___DestroyLightning_CallBack))
+	call TriggerAddCondition(YDWETimerSystem___fnRunTrigger, Condition(function YDWETimerSystem___RunTrigger_CallBack))
+	
+    call TimerStart(YDWETimerSystem___Timer, 0.01, true, function YDWETimerSystem___Main)
+endfunction
+//ѭ�������ö�����ʱ��
+function YDWETimerSystemGetRunIndex takes nothing returns integer
+    return YDWETimerSystem___TimerSystem_RunIndex
+endfunction
+function YDWETimerSystem___RunPeriodicTriggerFunction takes nothing returns nothing
+    local integer tid= GetHandleId(GetExpiredTimer())
+    local trigger trg= LoadTriggerHandle(YDHT, tid, $D0001)
+	call SaveInteger(YDHT, StringHash(I2S(GetHandleId(trg))), StringHash("RunIndex"), LoadInteger(YDHT, tid, $D0002))
+    if TriggerEvaluate(trg) then
+        call TriggerExecute(trg)
+    endif
+    set trg=null
+endfunction
+function YDWETimerSystem___RunPeriodicTriggerFunctionByTimes takes nothing returns nothing
+    local integer tid= GetHandleId(GetExpiredTimer())
+    local trigger trg= LoadTriggerHandle(YDHT, tid, $D0001)
+    local integer times= LoadInteger(YDHT, tid, $D0003)
+	call SaveInteger(YDHT, StringHash(I2S(GetHandleId(trg))), StringHash("RunIndex"), LoadInteger(YDHT, tid, $D0002))
+    if TriggerEvaluate(trg) then
+        call TriggerExecute(trg)
+    endif
+    set times=times - 1
+    if times > 0 then
+		call SaveInteger(YDHT, tid, $D0003, times)
+      else
+        call DestroyTimer(GetExpiredTimer())
+        call FlushChildHashtable(YDHT, tid)
+    endif
+    set trg=null
+endfunction
+function YDWETimerRunPeriodicTrigger takes real timeout,trigger trg,boolean b,integer times,integer data returns nothing
+    local timer t
+    local integer tid
+    local integer index= 0
+    if timeout < 0 then
+        return
+      else
+        set t=CreateTimer()
+		set tid=GetHandleId(t)
+    endif
+    set YDWETimerSystem___TimerSystem_RunIndex=YDWETimerSystem___TimerSystem_RunIndex + 1
+	call SaveTriggerHandle(YDHT, tid, $D0001, trg)
+	call SaveInteger(YDHT, tid, $D0002, YDWETimerSystem___TimerSystem_RunIndex)
+	set index=LoadInteger(YDHT, GetHandleId(trg), 'YDTS' + data)
+    set index=index + 1
+	call SaveInteger(YDHT, GetHandleId(trg), 'YDTS' + data, index)
+	call SaveTimerHandle(YDHT, GetHandleId(trg), ( 'YDTS' + data ) * index, t)
+	
+    if b == false then
+		call SaveInteger(YDHT, tid, $D0003, times)
+        call TimerStart(t, timeout, true, function YDWETimerSystem___RunPeriodicTriggerFunctionByTimes)
+      else
+        call TimerStart(t, timeout, true, function YDWETimerSystem___RunPeriodicTriggerFunction)
+    endif
+    set t=null
+endfunction
+function YDWETimerRunPeriodicTriggerOver takes trigger trg,integer data returns nothing
+ local integer trgid= GetHandleId(trg)
+    local integer index= LoadInteger(YDHT, trgid, 'YDTS' + data)
+    local timer t
+    loop
+        exitwhen index <= 0
+        set t=LoadTimerHandle(YDHT, trgid, ( 'YDTS' + data ) * index)
+        call DestroyTimer(t)
+        call FlushChildHashtable(YDHT, GetHandleId(t))
+		call RemoveSavedHandle(YDHT, trgid, ( 'YDTS' + data ) * index)
+        set index=index - 1
+    endloop
+	
+    call RemoveSavedInteger(YDHT, trgid, 'YDTS' + data)
+    set t=null
+endfunction
+
+//library YDWETimerSystem ends
 //===========================================================================
 // 
 // 东方幻想乡DOTS经典版
 // 
 //   Warcraft III map script
 //   Generated by the Warcraft III World Editor
-//   Date: Sun Oct 03 17:19:36 2021
+//   Date: Mon Nov 22 22:51:24 2021
 //   Map Author: 东方幻想乡DOTS制作组
 // 
 //===========================================================================
@@ -2093,6 +2352,12 @@ function InitGlobals takes nothing returns nothing
         set i=i + 1
     endloop
     set udg_GameOver=false
+    set i=0
+    loop
+        exitwhen ( i > 16 )
+        set udg_PlayerMushroom[i]=false
+        set i=i + 1
+    endloop
 endfunction
 //***************************************************************************
 //*
@@ -3529,7 +3794,7 @@ endfunction
 //===========================================================================
 // Trigger: Systems
 //===========================================================================
-//TESH.scrollpos=108
+//TESH.scrollpos=0
 //TESH.alwaysfold=0
 //数据库
 function DB_SetHeroTypeData takes integer ID,integer field,integer value returns nothing
@@ -5938,6 +6203,7 @@ endfunction
 // 游戏设定--博丽神社英雄设定
 // AI学习技能设定通魔技能建议排最后
 // 多重攻击的技能，要填魔法书的编号，技能本体（分裂、弹幕等）的编号必须是 = ( 其魔法书编号 - 1 )
+// 蘑菇+0是类型，0无，1添加技能，2替换小技能，3替换天生技能，4替换大招
 //===========================================================================
 function Trig_Setting_Character_AActions takes nothing returns nothing
     local integer i= 0
@@ -5953,6 +6219,7 @@ function Trig_Setting_Character_AActions takes nothing returns nothing
     call AI_HeroSkill(i , 'A049' , 'A048' , 'A04B' , 'A03Y' , 'A04A')
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('PRIM') ), ( (3))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('XMAA') ), ( 'A0JV')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 0 ), ( 0)) // INLINED!!
     set udg_HeroInit[( i )]=gg_trg_Initial_Reimu
     // ========================
     set i=i + 1
@@ -5963,6 +6230,7 @@ function Trig_Setting_Character_AActions takes nothing returns nothing
     call AI_HeroSkill(i , 'A042' , 'A041' , 'A03Z' , 'A03Y' , 'A040')
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('PRIM') ), ( (3))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('XMAA') ), ( 'A0JT')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 0 ), ( 0)) // INLINED!!
     set udg_HeroInit[( i )]=gg_trg_Initial_Marisa
     // ========================
     set i=i + 1
@@ -5973,6 +6241,7 @@ function Trig_Setting_Character_AActions takes nothing returns nothing
     call AI_HeroSkill(i , 'A04J' , 'A04L' , 'A04N' , 'A03Y' , 'A04M')
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('PRIM') ), ( (3))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('XMAA') ), ( 'A0JX')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 0 ), ( 0)) // INLINED!!
     set udg_HeroInit[( i )]=gg_trg_Initial_Yukari
     // ========================
     set i=i + 1
@@ -5983,6 +6252,7 @@ function Trig_Setting_Character_AActions takes nothing returns nothing
     call AI_HeroSkill(i , 'A0EG' , 'A0EF' , 'A0EH' , 'A03Y' , 'A0EE')
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('PRIM') ), ( (3))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('XMAA') ), ( 'A0JZ')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 0 ), ( 0)) // INLINED!!
     set udg_HeroInit[( i )]=gg_trg_Initial_Ran
     // ========================
     set i=i + 1
@@ -5993,6 +6263,7 @@ function Trig_Setting_Character_AActions takes nothing returns nothing
     call AI_HeroSkill(i , 'A0LP' , 'A0TM' , 'A0TN' , 'A0TO' , 'A03Y')
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('PRIM') ), ( (2))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('XMAA') ), ( 'A0KI')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 0 ), ( 0)) // INLINED!!
     set udg_HeroInit[( i )]=gg_trg_Init_Orange
     // ========================
     set i=i + 1
@@ -6003,6 +6274,7 @@ function Trig_Setting_Character_AActions takes nothing returns nothing
     call AI_HeroSkill(i , 'A05W' , 'A05V' , 'A02I' , 'A03Y' , 'A05R')
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('PRIM') ), ( (1))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('XMAA') ), ( 'A0K1')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 0 ), ( 0)) // INLINED!!
     // 变身单位数据库补充定义
     call SaveInteger(udg_HeroDatabase, ('H00Q' ), ( ('PRIM') ), ( (1))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, ('H00Q' ), ( ('XMAA') ), ( 'A0K1')) // INLINED!!
@@ -6016,6 +6288,7 @@ function Trig_Setting_Character_AActions takes nothing returns nothing
     call AI_HeroSkill(i , 'A0GY' , 'A0GV' , 'A0GW' , 'A0GX' , 'A03Y')
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('PRIM') ), ( (3))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('XMAA') ), ( 'A0KR')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 0 ), ( 0)) // INLINED!!
     set udg_HeroInit[( i )]=gg_trg_Init_Alice
     // ========================
     set i=i + 1
@@ -6026,6 +6299,7 @@ function Trig_Setting_Character_AActions takes nothing returns nothing
     call AI_HeroSkill(i , 'A059' , 'A04W' , 'A052' , 'A03Y' , 'A04U')
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('PRIM') ), ( (1))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('XMAA') ), ( 'A0K1')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 0 ), ( 0)) // INLINED!!
     set udg_HeroInit[( i )]=gg_trg_Initial_Mokou
     // ========================
     set i=i + 1
@@ -6036,6 +6310,7 @@ function Trig_Setting_Character_AActions takes nothing returns nothing
     call AI_HeroSkill(i , 'A0M8' , 'A0M9' , 'A0MA' , 'A0MB' , 'A03Y')
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('PRIM') ), ( (3))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('XMAA') ), ( 'A0K1')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 0 ), ( 0)) // INLINED!!
     // 变身单位数据库补充定义
     call SaveInteger(udg_HeroDatabase, ('E01B' ), ( ('PRIM') ), ( (3))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, ('E01B' ), ( ('XMAA') ), ( 'A0K1')) // INLINED!!
@@ -6049,6 +6324,7 @@ function Trig_Setting_Character_AActions takes nothing returns nothing
     call AI_HeroSkill(i , 'A0CJ' , 'A0CL' , 'A0CM' , 'A03Y' , 'A0CK')
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('PRIM') ), ( (1))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('XMAA') ), ( 'A0RU')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 0 ), ( 0)) // INLINED!!
     set udg_HeroInit[( i )]=gg_trg_Initial_Komachi
     // ========================
     set i=i + 1
@@ -6059,6 +6335,7 @@ function Trig_Setting_Character_AActions takes nothing returns nothing
     call AI_HeroSkill(i , 'A0B7' , 'A0B9' , 'A03Y' , 'A0BF' , 0) //'A0BA'
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('PRIM') ), ( (3))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('XMAA') ), ( 'A0KZ')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 0 ), ( 0)) // INLINED!!
     set udg_HeroInit[( i )]=gg_trg_Initial_Shikieiki
     // ========================
     set i=i + 1
@@ -6069,6 +6346,7 @@ function Trig_Setting_Character_AActions takes nothing returns nothing
     call AI_HeroSkill(i , 'A08D' , 'A08B' , 'A08A' , 'A08C' , 'A03Y')
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('PRIM') ), ( (1))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('XMAA') ), ( 'A0K1')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 0 ), ( 0)) // INLINED!!
     set udg_HeroInit[( i )]=gg_trg_Initial_Yuugi
     // =========================
     set i=i + 1
@@ -6079,6 +6357,9 @@ function Trig_Setting_Character_AActions takes nothing returns nothing
     call AI_HeroSkill(i , 'A0CI' , 'A0CD' , 'A0CH' , 'A0CG' , 'A03Y')
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('PRIM') ), ( (3))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('XMAA') ), ( 'A0K5')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 0 ), ( 2)) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 1 ), ( 'A0CD')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 2 ), ( 'A0ZZ')) // INLINED!!
     set udg_HeroInit[( i )]=gg_trg_Initial_Remilia
     // ========================
     set i=i + 1
@@ -6089,6 +6370,7 @@ function Trig_Setting_Character_AActions takes nothing returns nothing
     call AI_HeroSkill(i , 'A09C' , 'A04H' , 'A099' , 'A03Y' , 'A09A')
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('PRIM') ), ( (2))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('XMAA') ), ( 'A0K9')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 0 ), ( 0)) // INLINED!!
     set udg_HeroInit[( i )]=gg_trg_Initial_Sakuya
     // ========================
     set i=i + 1
@@ -6099,6 +6381,7 @@ function Trig_Setting_Character_AActions takes nothing returns nothing
     call AI_HeroSkill(i , 'A06J' , 'A06L' , 'A06K' , 'A03Y' , 'A06M')
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('PRIM') ), ( (2))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('XMAA') ), ( 'A0K1')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 0 ), ( 0)) // INLINED!!
     set udg_HeroInit[( i )]=gg_trg_Initial_Flandre
     // ========================
     set i=i + 1
@@ -6109,6 +6392,7 @@ function Trig_Setting_Character_AActions takes nothing returns nothing
     call AI_HeroSkill(i , 'A0FV' , 'A0FZ' , 'A0FY' , 'A03Y' , 'A0FX')
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('PRIM') ), ( (3))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('XMAA') ), ( 'A0KF')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 0 ), ( 0)) // INLINED!!
     set udg_HeroInit[( i )]=gg_trg_Initialing_Pachili
     // ========================
     set i=i + 1
@@ -6119,6 +6403,7 @@ function Trig_Setting_Character_AActions takes nothing returns nothing
     call AI_HeroSkill(i , 0 , 0 , 0 , 0 , 'A03Y')
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('PRIM') ), ( (1))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('XMAA') ), ( 'A0K1')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 0 ), ( 0)) // INLINED!!
     set udg_HeroInit[( i )]=gg_trg_Init_Meirin
     // ========================
     set i=i + 1
@@ -6129,6 +6414,7 @@ function Trig_Setting_Character_AActions takes nothing returns nothing
     call AI_HeroSkill(i , 'A0MT' , 'A0NH' , 'A0NI' , 'A0NJ' , 'A03Y')
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('PRIM') ), ( (3))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('XMAA') ), ( 'A0NN')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 0 ), ( 0)) // INLINED!!
     set udg_HeroInit[( i )]=gg_trg_Init_Koakuma
     // ========================
     set i=i + 1
@@ -6139,6 +6425,7 @@ function Trig_Setting_Character_AActions takes nothing returns nothing
     call AI_HeroSkill(i , 'A05D' , 'A05B' , 'A05E' , 'A03Y' , 'A05C')
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('PRIM') ), ( (3))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('XMAA') ), ( 'A0K7')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 0 ), ( 0)) // INLINED!!
     set udg_HeroInit[( i )]=gg_trg_Init_Yuyuko
     // ========================
     set i=i + 1
@@ -6149,6 +6436,7 @@ function Trig_Setting_Character_AActions takes nothing returns nothing
     call AI_HeroSkill(i , 'A05Y' , 'A064' , 'A065' , 'A03Y' , 'A05X')
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('PRIM') ), ( (2))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('XMAA') ), ( 'A0K1')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 0 ), ( 0)) // INLINED!!
     set udg_HeroInit[( i )]=gg_trg_Initial_Youmu
     // ========================
     set i=i + 1
@@ -6159,6 +6447,7 @@ function Trig_Setting_Character_AActions takes nothing returns nothing
     call AI_HeroSkill(i , 'A0LM' , 'A0OI' , 'A0OG' , 'A0OH' , 'A03Y')
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('PRIM') ), ( (3))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('XMAA') ), ( 'A0OJ')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 0 ), ( 0)) // INLINED!!
     set udg_HeroInit[( i )]=gg_trg_Init_Lunasa
     // ========================
     set i=i + 1
@@ -6169,6 +6458,7 @@ function Trig_Setting_Character_AActions takes nothing returns nothing
     call AI_HeroSkill(i , 'A0O3' , 'A0RS' , 'A0RX' , 'A03Y' , 'A0RZ')
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('PRIM') ), ( (1))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('XMAA') ), ( 'A0S6')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 0 ), ( 0)) // INLINED!!
     set udg_HeroInit[( i )]=gg_trg_Init_Merlin
     // ========================
     set i=i + 1
@@ -6179,6 +6469,7 @@ function Trig_Setting_Character_AActions takes nothing returns nothing
     call AI_HeroSkill(i , 'A0O3' , 'A0RS' , 'A0RX' , 'A03Y' , 'A0RZ')
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('PRIM') ), ( (2))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('XMAA') ), ( 'A0TW')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 0 ), ( 0)) // INLINED!!
     set udg_HeroInit[( i )]=gg_trg_Init_Lyrica
     // ========================
     set i=i + 1
@@ -6189,6 +6480,7 @@ function Trig_Setting_Character_AActions takes nothing returns nothing
     call AI_HeroSkill(i , 'A0WK' , 'A0WL' , 'A0X3' , 'A0X6' , 'A03Y')
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('PRIM') ), ( (3))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('XMAA') ), ( 'A0WJ')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 0 ), ( 0)) // INLINED!!
     // 变身单位数据库补充定义
     call SaveInteger(udg_HeroDatabase, ('E024' ), ( ('PRIM') ), ( (3))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, ('E024' ), ( ('XMAA') ), ( 'A0WJ')) // INLINED!!
@@ -6202,6 +6494,7 @@ function Trig_Setting_Character_AActions takes nothing returns nothing
     call AI_HeroSkill(i , 'A074' , 'A079' , 'A03Y' , 'A076' , 'A07B')
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('PRIM') ), ( (1))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('XMAA') ), ( 'A0UY')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 0 ), ( 0)) // INLINED!!
     set udg_HeroInit[( i )]=gg_trg_Initial_Utsuho
     // ========================
     set i=i + 1
@@ -6212,6 +6505,7 @@ function Trig_Setting_Character_AActions takes nothing returns nothing
     call AI_HeroSkill(i , 'A0BO' , 'A0BH' , 'A0BM' , 'A03Y' , 'A0BP')
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('PRIM') ), ( (1))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('XMAA') ), ( 'A0K1')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 0 ), ( 0)) // INLINED!!
     set udg_HeroInit[( i )]=gg_trg_Initial_Cat
     // ========================
     set i=i + 1
@@ -6222,6 +6516,7 @@ function Trig_Setting_Character_AActions takes nothing returns nothing
     call AI_HeroSkill(i , 'A0IZ' , 'A0IW' , 'A0IY' , 'A0IX' , 'A03Y')
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('PRIM') ), ( (3))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('XMAA') ), ( 'A0L1')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 0 ), ( 0)) // INLINED!!
     set udg_HeroInit[( i )]=gg_trg_Init_Satori
     // ========================
     set i=i + 1
@@ -6232,6 +6527,7 @@ function Trig_Setting_Character_AActions takes nothing returns nothing
     call AI_HeroSkill(i , 'A0DR' , 'A0DQ' , 'A0MI' , 'A0DY' , 'A03Y')
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('PRIM') ), ( (2))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('XMAA') ), ( 'A0KD')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 0 ), ( 0)) // INLINED!!
     // 变身单位数据库补充定义
     call SaveInteger(udg_HeroDatabase, ('E011' ), ( ('PRIM') ), ( (2))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, ('E011' ), ( ('XMAA') ), ( 'A0KD')) // INLINED!!
@@ -6245,6 +6541,7 @@ function Trig_Setting_Character_AActions takes nothing returns nothing
     call AI_HeroSkill(i , 'A08F' , 'A08I' , 'A08J' , 'A08E' , 'A03Y')
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('PRIM') ), ( (1))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('XMAA') ), ( 'A0K1')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 0 ), ( 0)) // INLINED!!
     set udg_HeroInit[( i )]=gg_trg_Initial_Spider
     // ========================
     set i=i + 1
@@ -6255,6 +6552,7 @@ function Trig_Setting_Character_AActions takes nothing returns nothing
     call AI_HeroSkill(i , 'A0R8' , 'A0R9' , 'A0RA' , 'A0RB' , 'A03Y')
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('PRIM') ), ( (2))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('XMAA') ), ( 'A0K1')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 0 ), ( 0)) // INLINED!!
     set udg_HeroInit[( i )]=gg_trg_Initialing_Kisume
     // ========================
     set udg_HeroType[0]=i
@@ -6284,6 +6582,7 @@ function Trig_Setting_Character_BActions takes nothing returns nothing
     call AI_HeroSkill(i , 'A06U' , 'A06V' , 'A06W' , 'A03Y' , 'A06Y')
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('PRIM') ), ( (3))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('XMAA') ), ( 'A0K3')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 0 ), ( 0)) // INLINED!!
     set udg_HeroInit[( i )]=gg_trg_Initial_Sanae
     // ========================
     set i=i + 1
@@ -6294,6 +6593,7 @@ function Trig_Setting_Character_BActions takes nothing returns nothing
     call AI_HeroSkill(i , 'A0F6' , 'A0F1' , 'A0F4' , 'A03Y' , 0)
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('PRIM') ), ( (3))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('XMAA') ), ( 'A0LB')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 0 ), ( 0)) // INLINED!!
     // 变身单位数据库补充定义
     call SaveInteger(udg_HeroDatabase, ('U00M' ), ( ('PRIM') ), ( (3))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, ('U00M' ), ( ('XMAA') ), ( 'A0LB')) // INLINED!!
@@ -6307,6 +6607,9 @@ function Trig_Setting_Character_BActions takes nothing returns nothing
     call AI_HeroSkill(i , 'A0FI' , 'A0FJ' , 'A0FK' , 'A03Y' , 0)
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('PRIM') ), ( (3))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('XMAA') ), ( 'A0K1')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 0 ), ( 3)) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 1 ), ( 'A0TI')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 2 ), ( 'A0ZT')) // INLINED!!
     set udg_HeroInit[( i )]=gg_trg_Init_Suwako
     // ========================
     set i=i + 1
@@ -6317,6 +6620,7 @@ function Trig_Setting_Character_BActions takes nothing returns nothing
     call AI_HeroSkill(i , 'A0E9' , 'A0E4' , 'A0DZ' , 'A03Y' , 'A0E8')
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('PRIM') ), ( (3))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('XMAA') ), ( 'A0KX')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 0 ), ( 0)) // INLINED!!
     set udg_HeroInit[( i )]=gg_trg_Initial_Hina
     // ========================
     set i=i + 1
@@ -6327,6 +6631,9 @@ function Trig_Setting_Character_BActions takes nothing returns nothing
     call AI_HeroSkill(i , 'A0J6' , 'A0J7' , 'A0JC' , 'A0J8' , 'A03Y')
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('PRIM') ), ( (2))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('XMAA') ), ( 'A0L3')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 0 ), ( 2)) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 1 ), ( 'A0JC')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 2 ), ( 'A100')) // INLINED!!
     set udg_HeroInit[( i )]=gg_trg_Init_Shizuha
     // ========================
     set i=i + 1
@@ -6337,6 +6644,9 @@ function Trig_Setting_Character_BActions takes nothing returns nothing
     call AI_HeroSkill(i , 'A0JJ' , 'A0JI' , 'A0JF' , 'A0JK' , 'A03Y')
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('PRIM') ), ( (1))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('XMAA') ), ( 'A0L5')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 0 ), ( 2)) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 1 ), ( 'A0JI')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 2 ), ( 'A101')) // INLINED!!
     set udg_HeroInit[( i )]=gg_trg_Init_Minoriko
     // ========================
     set i=i + 1
@@ -6347,6 +6657,8 @@ function Trig_Setting_Character_BActions takes nothing returns nothing
     call AI_HeroSkill(i , 'A05P' , 'A05L' , 'A05S' , 'A03Y' , 'A05K')
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('PRIM') ), ( (2))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('XMAA') ), ( 'A0K1')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 0 ), ( 1)) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 2 ), ( 'A0ZW')) // INLINED!!
     set udg_HeroInit[( i )]=gg_trg_Initial_Aya
     // ========================
     set i=i + 1
@@ -6357,6 +6669,7 @@ function Trig_Setting_Character_BActions takes nothing returns nothing
     call AI_HeroSkill(i , 'A08N' , 'A0D9' , 'A09B' , 'A0E6' , 'A03Y')
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('PRIM') ), ( (2))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('XMAA') ), ( 'A08M')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 0 ), ( 0)) // INLINED!!
     set udg_HeroInit[( i )]=gg_trg_Initialing_Hatate
     // ========================
     set i=i + 1
@@ -6367,6 +6680,7 @@ function Trig_Setting_Character_BActions takes nothing returns nothing
     call AI_HeroSkill(i , 'A09W' , 'A09U' , 'A09V' , 'A09T' , 'A03Y')
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('PRIM') ), ( (2))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('XMAA') ), ( 'A0K1')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 0 ), ( 0)) // INLINED!!
     set udg_HeroInit[( i )]=gg_trg_Init_Momizi
     // ========================
     set i=i + 1
@@ -6377,6 +6691,9 @@ function Trig_Setting_Character_BActions takes nothing returns nothing
     call AI_HeroSkill(i , 'A094' , 'A095' , 'A03Y' , 'A0GF' , 'A0LK')
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('PRIM') ), ( (2))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('XMAA') ), ( 'A0K1')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 0 ), ( 2)) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 1 ), ( 'A0GF')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 2 ), ( 'A0ZV')) // INLINED!!
     // 变身单位数据库补充定义
     call SaveInteger(udg_HeroDatabase, ('H00S' ), ( ('PRIM') ), ( (2))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, ('H00S' ), ( ('XMAA') ), ( 'A0K1')) // INLINED!!
@@ -6390,6 +6707,7 @@ function Trig_Setting_Character_BActions takes nothing returns nothing
     call AI_HeroSkill(i , 'A0AJ' , 'A070' , 'A071' , 'A073' , 'A03Y')
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('PRIM') ), ( (1))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('XMAA') ), ( 'A0K1')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 0 ), ( 0)) // INLINED!!
     set udg_HeroInit[( i )]=gg_trg_Init_Tensi
     // ========================
     set i=i + 1
@@ -6400,6 +6718,7 @@ function Trig_Setting_Character_BActions takes nothing returns nothing
     call AI_HeroSkill(i , 'A04S' , 'A05M' , 'A04O' , 'A03Y' , 'A0A4')
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('PRIM') ), ( (2))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('XMAA') ), ( 'A0KL')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 0 ), ( 0)) // INLINED!!
     set udg_HeroInit[( i )]=gg_trg_Initial_Iku
     // ========================
     set i=i + 1
@@ -6410,6 +6729,7 @@ function Trig_Setting_Character_BActions takes nothing returns nothing
     call AI_HeroSkill(i , 'A06E' , 'A06G' , 'A06H' , 'A03Y' , 'A0MV')
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('PRIM') ), ( (1))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('XMAA') ), ( 'A0K1')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 0 ), ( 0)) // INLINED!!
     set udg_HeroInit[( i )]=gg_trg_Initial_Cirno
     // ========================
     set i=i + 1
@@ -6420,6 +6740,7 @@ function Trig_Setting_Character_BActions takes nothing returns nothing
     call AI_HeroSkill(i , 'A07C' , 'A07E' , 'A07G' , 'A03Y' , 'A07J')
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('PRIM') ), ( (1))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('XMAA') ), ( 'A0K1')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 0 ), ( 0)) // INLINED!!
     // 变身单位数据库补充定义
     call SaveInteger(udg_HeroDatabase, ('E00J' ), ( ('PRIM') ), ( (1))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, ('E00J' ), ( ('XMAA') ), ( 'A0K1')) // INLINED!!
@@ -6433,6 +6754,7 @@ function Trig_Setting_Character_BActions takes nothing returns nothing
     call AI_HeroSkill(i , 'A09R' , 'A09K' , 'A03Y' , 'A09N' , 'A09M')
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('PRIM') ), ( (2))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('XMAA') ), ( 'A0KT')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 0 ), ( 0)) // INLINED!!
     set udg_HeroInit[( i )]=gg_trg_Initial_Wriggle
     // ========================
     set i=i + 1
@@ -6443,6 +6765,7 @@ function Trig_Setting_Character_BActions takes nothing returns nothing
     call AI_HeroSkill(i , 'A0DE' , 'A0DI' , 'A0DH' , 'A0DN' , 'A03Y')
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('PRIM') ), ( (2))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('XMAA') ), ( 'A0K1')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 0 ), ( 0)) // INLINED!!
     // 变身单位数据库补充定义
     call SaveInteger(udg_HeroDatabase, ('E01T' ), ( ('PRIM') ), ( (2))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, ('E01T' ), ( ('XMAA') ), ( 'A0K1')) // INLINED!!
@@ -6456,6 +6779,7 @@ function Trig_Setting_Character_BActions takes nothing returns nothing
     call AI_HeroSkill(i , 'A08W' , 'A092' , 'A08Q' , 'A08P' , 'A03Y')
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('PRIM') ), ( (3))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('XMAA') ), ( 'A0KV')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 0 ), ( 0)) // INLINED!!
     set udg_HeroInit[( i )]=gg_trg_Initial_Letty
     // ========================
     set i=i + 1
@@ -6466,6 +6790,7 @@ function Trig_Setting_Character_BActions takes nothing returns nothing
     call AI_HeroSkill(i , 'A06I' , 'A068' , 'A07Q' , 'A0DA' , 'A03Y')
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('PRIM') ), ( (1))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('XMAA') ), ( 'A0K1')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 0 ), ( 0)) // INLINED!!
     set udg_HeroInit[( i )]=gg_trg_Initial_Yuka
     // ========================
     set i=i + 1
@@ -6476,6 +6801,7 @@ function Trig_Setting_Character_BActions takes nothing returns nothing
     call AI_HeroSkill(i , 'A088' , 'A083' , 'A082' , 'A03Y' , 'A086')
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('PRIM') ), ( (3))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('XMAA') ), ( 'A0KN')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 0 ), ( 0)) // INLINED!!
     set udg_HeroInit[( i )]=gg_trg_Initial_Eirin
     // ========================
     set i=i + 1
@@ -6486,6 +6812,7 @@ function Trig_Setting_Character_BActions takes nothing returns nothing
     call AI_HeroSkill(i , 'A0D0' , 'A0SP' , 'A0D2' , 'A0SQ' , 'A03Y')
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('PRIM') ), ( (3))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('XMAA') ), ( 'A0KP')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 0 ), ( 0)) // INLINED!!
     set udg_HeroInit[( i )]=gg_trg_Init_Kaguya
     // ========================
     set i=i + 1
@@ -6496,6 +6823,7 @@ function Trig_Setting_Character_BActions takes nothing returns nothing
     call AI_HeroSkill(i , 'A069' , 'A0GT' , 'A066' , 'A06D' , 'A03Y')
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('PRIM') ), ( (2))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('XMAA') ), ( 'A0JR')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 0 ), ( 0)) // INLINED!!
     set udg_HeroInit[( i )]=gg_trg_Init_Reisen
     // ========================
     set i=i + 1
@@ -6506,6 +6834,7 @@ function Trig_Setting_Character_BActions takes nothing returns nothing
     call AI_HeroSkill(i , 'A0N2' , 'A0N3' , 'A0N5' , 'A0N4' , 'A03Y')
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('PRIM') ), ( (2))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('XMAA') ), ( 'A0N6')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 0 ), ( 0)) // INLINED!!
     set udg_HeroInit[( i )]=gg_trg_Init_Twei
     // ========================
     set i=i + 1
@@ -6516,6 +6845,7 @@ function Trig_Setting_Character_BActions takes nothing returns nothing
     call AI_HeroSkill(i , 'A0ZH' , 'A0ZI' , 'A0ZJ' , 'A0ZK' , 'A03Y')
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('PRIM') ), ( (2))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('XMAA') ), ( 'A0K1')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 0 ), ( 0)) // INLINED!!
     set udg_HeroInit[( i )]=gg_trg_Initial_ReisenNo2
     // ========================
     set i=i + 1
@@ -6526,6 +6856,7 @@ function Trig_Setting_Character_BActions takes nothing returns nothing
     call AI_HeroSkill(i , 'A0N2' , 'A0N3' , 'A0N4' , 'A03Y' , 'A0N5')
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('PRIM') ), ( (1))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('XMAA') ), ( 'A0K1')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 0 ), ( 0)) // INLINED!!
     set udg_HeroInit[( i )]=gg_trg_Init_Sunny
     // ========================
     set i=i + 1
@@ -6536,6 +6867,7 @@ function Trig_Setting_Character_BActions takes nothing returns nothing
     call AI_HeroSkill(i , 'A07W' , 'A07Y' , 'A07V' , 'A03Y' , 0)
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('PRIM') ), ( (1))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('XMAA') ), ( 'A0KH')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 0 ), ( 0)) // INLINED!!
     set udg_HeroInit[( i )]=gg_trg_Initial_Medi
     // ========================
     set i=i + 1
@@ -6546,6 +6878,7 @@ function Trig_Setting_Character_BActions takes nothing returns nothing
     call AI_HeroSkill(i , 'A0C7' , 'A0LS' , 'A0C3' , 'A0C8' , 'A03Y')
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('PRIM') ), ( (2))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('XMAA') ), ( 'A0K1')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 0 ), ( 0)) // INLINED!!
     set udg_HeroInit[( i )]=gg_trg_Initial_Umbrella
     // ========================
     set i=i + 1
@@ -6556,6 +6889,7 @@ function Trig_Setting_Character_BActions takes nothing returns nothing
     call AI_HeroSkill(i , 'A0D7' , 'A0D8' , 'A03Y' , 'A0ED' , 'A0D4')
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('PRIM') ), ( (2))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('XMAA') ), ( 'A0K1')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 0 ), ( 0)) // INLINED!!
     // 变身单位数据库补充定义
     call SaveInteger(udg_HeroDatabase, ('U00R' ), ( ('PRIM') ), ( (2))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, ('U00R' ), ( ('XMAA') ), ( 'A0K1')) // INLINED!!
@@ -6569,6 +6903,7 @@ function Trig_Setting_Character_BActions takes nothing returns nothing
     call AI_HeroSkill(i , 'A0AA' , 'A0A6' , 'A03Y' , 'A0AB' , 'A0AC')
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('PRIM') ), ( (1))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('XMAA') ), ( 'A0K1')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 0 ), ( 0)) // INLINED!!
     set udg_HeroInit[( i )]=gg_trg_Initial_Captain
     // ========================
     set i=i + 1
@@ -6579,6 +6914,7 @@ function Trig_Setting_Character_BActions takes nothing returns nothing
     call AI_HeroSkill(i , 'A0P2' , 'A0P1' , 'A0P3' , 'A0P4' , 'A03Y')
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('PRIM') ), ( (1))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('XMAA') ), ( 'A0K1')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 0 ), ( 0)) // INLINED!!
     set udg_HeroInit[( i )]=gg_trg_Initial_Toramaru
     // ========================
     set i=i + 1
@@ -6589,6 +6925,7 @@ function Trig_Setting_Character_BActions takes nothing returns nothing
     call AI_HeroSkill(i , 'A0NZ' , 'A0O0' , 'A0O1' , 'A0O2' , 'A03Y')
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('PRIM') ), ( (3))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('XMAA') ), ( 'A0K1')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 0 ), ( 0)) // INLINED!!
     set udg_HeroInit[( i )]=gg_trg_Initial_Byakuren
     // ========================
     set i=i + 1
@@ -6599,6 +6936,7 @@ function Trig_Setting_Character_BActions takes nothing returns nothing
     call AI_HeroSkill(i , 'A0M1' , 'A0M2' , 'A0M3' , 'A0M4' , 'A03Y')
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('PRIM') ), ( (2))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('XMAA') ), ( 'A0K1')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 0 ), ( 0)) // INLINED!!
     set udg_HeroInit[( i )]=gg_trg_Initial_Nue
     // ========================
     set udg_HeroType[100]=i - 100
@@ -6628,6 +6966,7 @@ function Trig_Setting_Character_CActions takes nothing returns nothing
     call AI_HeroSkill(i , 'A0UC' , 'A0UB' , 'A0UG' , 'A03Y' , 'A0UH')
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('PRIM') ), ( (2))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('XMAA') ), ( 'A0JX')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 0 ), ( 0)) // INLINED!!
     set udg_HeroInit[( i )]=gg_trg_Initialing_Mugetsu
     // ========================
     set i=i + 1
@@ -6638,6 +6977,7 @@ function Trig_Setting_Character_CActions takes nothing returns nothing
     call AI_HeroSkill(i , 'A0DE' , 'A0DI' , 'A0DH' , 'A0DN' , 'A03Y')
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('PRIM') ), ( (2))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('XMAA') ), ( 'A0K1')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 0 ), ( 0)) // INLINED!!
     // 变身单位数据库补充定义
     call SaveInteger(udg_HeroDatabase, ('E02C' ), ( ('PRIM') ), ( (2))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, ('E02C' ), ( ('XMAA') ), ( 'A0K1')) // INLINED!!
@@ -6651,6 +6991,7 @@ function Trig_Setting_Character_CActions takes nothing returns nothing
     call AI_HeroSkill(i , 'A09C' , 'A04H' , 'A099' , 'A03Y' , 'A09A')
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('PRIM') ), ( (2))) // INLINED!!
     call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( ('XMAA') ), ( 'A0K9')) // INLINED!!
+    call SaveInteger(udg_HeroDatabase, (udg_HeroType[i] ), ( 'MUSH' + 0 ), ( 0)) // INLINED!!
     set udg_HeroInit[( i )]=gg_trg_Initial_Sakuya2
     // ========================
     set udg_HeroType[200]=i - 200
@@ -14573,7 +14914,7 @@ endfunction
 // 经济总量在这里
 // StatisMessage不要了，改用计分板的StatisMessage2
 //===========================================================================
-//TESH.scrollpos=416
+//TESH.scrollpos=628
 //TESH.alwaysfold=0
 function OnlyMantou takes nothing returns boolean
     if GetFilterUnit() == null then
@@ -14628,7 +14969,7 @@ function Trash takes nothing returns nothing
     endif
     
     if ( THD_GetItemOwner(trash) == Player(id) ) then
-        set plus=10 * GetItemLevel(trash)
+        set plus=plus + 10 * GetItemLevel(trash)
     endif
     call SaveInteger(udg_Hashtable, StringHash("whocares"), 3, plus)
     
@@ -14648,7 +14989,6 @@ function GetPlayerNetWorth takes player ply returns integer
     
     set amount=GetPlayerState(ply, PLAYER_STATE_RESOURCE_GOLD)
     
-    //需要测试英雄死亡时能否统计到
     loop
         if ( UnitItemInSlot(millionaire, i) != null ) then
             set amount=amount + 10 * GetItemLevel(UnitItemInSlot(millionaire, i))
@@ -14665,7 +15005,7 @@ function GetPlayerNetWorth takes player ply returns integer
     
     call SaveInteger(udg_Hashtable, StringHash("whocares"), 3, 0)
     call EnumItemsInRect(bj_mapInitialPlayableArea, Filter(function bin), function Trash)
-    set amount=amount + LoadInteger(udg_Hashtable, StringHash("Whocares"), 3)
+    set amount=amount + LoadInteger(udg_Hashtable, StringHash("whocares"), 3)
     call FlushChildHashtable(udg_Hashtable, StringHash("whocares"))
     
     set millionaire=null
@@ -15217,7 +15557,7 @@ endfunction
 // PlayerKill0-11按id储存正补，+16储存反补，再+16储存野怪
 // 多面板函数在GIB中
 //===========================================================================
-//TESH.scrollpos=33
+//TESH.scrollpos=14
 //TESH.alwaysfold=0
 function Trig_Statis_Kill_Conditions takes nothing returns boolean
     if IsUnitType(GetTriggerUnit(), UNIT_TYPE_TAUREN) then
@@ -15308,7 +15648,7 @@ endfunction
 //===========================================================================
 // Trigger: Statis GPMRevise
 //===========================================================================
-//TESH.scrollpos=10
+//TESH.scrollpos=12
 //TESH.alwaysfold=0
 function Trig_Statis_GPMRevise_Conditions takes nothing returns boolean
     return ( GetPlayerSlotState(GetOwningPlayer(GetTriggerUnit())) == PLAYER_SLOT_STATE_PLAYING )
@@ -15351,7 +15691,7 @@ endfunction
 // id1对id2玩家的伤害储存在PlayerDamage[id1*16+id2]中
 // id1的总伤害在[id1*16+14],接受在[id1*16+15]
 //===========================================================================
-//TESH.scrollpos=48
+//TESH.scrollpos=4
 //TESH.alwaysfold=0
 function Trig_Statis_Damage_Conditions takes nothing returns boolean
     if GetEventDamage() <= 1.00 then
@@ -15910,6 +16250,8 @@ endfunction
 //===========================================================================
 // Trigger: Victory
 //===========================================================================
+//TESH.scrollpos=44
+//TESH.alwaysfold=0
 function Trig_Victory_Func021C takes nothing returns boolean
     if ( not ( GetTriggerUnit() == udg_BaseB[0] ) ) then
         return false
@@ -15964,10 +16306,10 @@ function Trig_Victory_Actions takes nothing returns nothing
     call StatisMessage2()
     if ( Trig_Victory_Func027C() ) then
         set field=MultiboardGetItem(udg_GIB, 7, 0)
-        call MultiboardSetItemValue(field, "|cffffff33===|r |cffff0000满身疮痍|r |cffffff33===|r")
+        call MultiboardSetItemValue(field, "|cffffff33==|r |cffff0000满身疮痍|r |cffffff33==|r")
     else
         set field=MultiboardGetItem(udg_GIB, 2, 0)
-        call MultiboardSetItemValue(field, "|cffffff33===|r |cffff0000满身疮痍|r |cffffff33===|r")
+        call MultiboardSetItemValue(field, "|cffffff33==|r |cffff0000满身疮痍|r |cffffff33==|r")
     endif
     call PauseGameOn()
     set u=null
@@ -16241,6 +16583,37 @@ function InitTrig_ItemClear takes nothing returns nothing
     call TriggerAddAction(gg_trg_ItemClear, function Trig_ItemClear_Actions)
 endfunction
 //===========================================================================
+// Trigger: ShoppingHint
+//===========================================================================
+function Trig_ShoppingHintFunc001Func001A takes nothing returns nothing
+    if ( ( IsPlayerAlly(GetEnumPlayer(), GetOwningPlayer(GetBuyingUnit())) == true ) ) then
+        call DisplayTextToPlayer(GetEnumPlayer(), 0, 0, ( ( udg_PN[GetPlayerId(GetTriggerPlayer())] ) + ( " 购买了 " ) + ( "|c008b0000鸦天狗宝宝|r" ) ))
+    else
+    endif
+endfunction
+function Trig_ShoppingHintFunc002Func001A takes nothing returns nothing
+    if ( ( IsPlayerAlly(GetEnumPlayer(), GetOwningPlayer(GetBuyingUnit())) == true ) ) then
+        call DisplayTextToPlayer(GetEnumPlayer(), 0, 0, ( ( udg_PN[GetPlayerId(GetTriggerPlayer())] ) + ( " 购买了 " ) + ( "|c00ffd700和谐|r" ) ))
+    else
+    endif
+endfunction
+function Trig_ShoppingHintActions takes nothing returns nothing
+    if ( ( GetItemTypeId(GetSoldItem()) == 'I016' ) ) then
+        call ForForce(GetPlayersAll(), function Trig_ShoppingHintFunc001Func001A)
+    else
+    endif
+    if ( ( GetItemTypeId(GetSoldItem()) == 'I056' ) ) then
+        call ForForce(GetPlayersAll(), function Trig_ShoppingHintFunc002Func001A)
+    else
+    endif
+endfunction
+//===========================================================================
+function InitTrig_ShoppingHint takes nothing returns nothing
+    set gg_trg_ShoppingHint=CreateTrigger()
+    call TriggerRegisterAnyUnitEventBJ(gg_trg_ShoppingHint, EVENT_PLAYER_UNIT_SELL_ITEM)
+    call TriggerAddAction(gg_trg_ShoppingHint, function Trig_ShoppingHintActions)
+endfunction
+//===========================================================================
 // Trigger: AllBuffClear
 //===========================================================================
 function ClearAllNegativeBuff takes unit u,boolean ult returns nothing
@@ -16356,7 +16729,7 @@ endfunction
 //===========================================================================
 // Trigger: IceAndDeArmItem
 //===========================================================================
-//TESH.scrollpos=11
+//TESH.scrollpos=0
 //TESH.alwaysfold=0
 function Attack_IceItem takes unit caster,unit target returns nothing
     local unit u
@@ -21592,7 +21965,7 @@ endfunction
 //===========================================================================
 // Trigger: AyaDS
 //===========================================================================
-//TESH.scrollpos=3
+//TESH.scrollpos=0
 //TESH.alwaysfold=0
 function Trig_AyaDS_Conditions takes nothing returns boolean
     return (not IsUnitDead((GetPlayerCharacter(GetTriggerPlayer())))) // INLINED!!
@@ -21610,6 +21983,41 @@ function Trig_AyaDS_Actions takes nothing returns nothing
 endfunction
 //===========================================================================
 function InitTrig_AyaDS takes nothing returns nothing
+endfunction
+//===========================================================================
+// Trigger: AyaMR
+//===========================================================================
+function Trig_AyaMRConditions takes nothing returns boolean
+    return ( ( GetSpellAbilityId() == 'A0ZW' ) )
+endfunction
+function Trig_AyaMRFunc006T takes nothing returns nothing
+    call UnitRemoveAbility(LoadUnitHandle(YDLOC, GetHandleId(GetExpiredTimer()), 0x3C0A0801), 'A0ZX')
+    call FlushChildHashtable(YDLOC, GetHandleId(GetExpiredTimer()))
+    call DestroyTimer(GetExpiredTimer())
+endfunction
+function Trig_AyaMRActions takes nothing returns nothing
+    local timer ydl_timer
+    local integer ydl_localvar_step= LoadInteger(YDLOC, GetHandleId(GetTriggeringTrigger()), 0xCFDE6C76)
+ set ydl_localvar_step=ydl_localvar_step + 3
+ call SaveInteger(YDLOC, GetHandleId(GetTriggeringTrigger()), 0xCFDE6C76, ydl_localvar_step)
+ call SaveInteger(YDLOC, GetHandleId(GetTriggeringTrigger()), 0xECE825E7, ydl_localvar_step)
+    call UnitAddAbility(GetSpellAbilityUnit(), 'A0ZX')
+    call UnitMakeAbilityPermanent(GetSpellAbilityUnit(), true, 'A0ZX')
+    call UnitMakeAbilityPermanent(GetSpellAbilityUnit(), true, 'A0ZY')
+    call SetPlayerAbilityAvailable(GetOwningPlayer(GetSpellAbilityUnit()), 'A0ZX', false)
+    call YDWETimerDestroyEffect(4.50 , AddSpecialEffectTarget("Abilities\\Spells\\Other\\Tornado\\TornadoElemental.mdl", GetSpellAbilityUnit(), "origin"))
+    set ydl_timer=CreateTimer()
+    call SaveUnitHandle(YDLOC, GetHandleId(ydl_timer), 0x3C0A0801, GetSpellAbilityUnit())
+    call TimerStart(ydl_timer, 4.50, false, function Trig_AyaMRFunc006T)
+    call FlushChildHashtable(YDLOC, GetHandleId(GetTriggeringTrigger()) * ydl_localvar_step)
+    set ydl_timer=null
+endfunction
+//===========================================================================
+function InitTrig_AyaMR takes nothing returns nothing
+    set gg_trg_AyaMR=CreateTrigger()
+    call TriggerRegisterAnyUnitEventBJ(gg_trg_AyaMR, EVENT_PLAYER_UNIT_SPELL_EFFECT)
+    call TriggerAddCondition(gg_trg_AyaMR, Condition(function Trig_AyaMRConditions))
+    call TriggerAddAction(gg_trg_AyaMR, function Trig_AyaMRActions)
 endfunction
 //===========================================================================
 // Trigger: Aya01
@@ -21994,7 +22402,7 @@ endfunction
 //===========================================================================
 // Trigger: Aya04
 //===========================================================================
-//TESH.scrollpos=65
+//TESH.scrollpos=40
 //TESH.alwaysfold=0
 function Trig_Aya04_Lv3_Use_Conditions takes nothing returns boolean
     return GetSpellAbilityId() == 'A05O'
@@ -22179,7 +22587,7 @@ endfunction
 // 03->连接到魔法伤害系统（但是可能会在伤害时再次释放文文03）
 // 04->不谈
 //===========================================================================
-//TESH.scrollpos=16
+//TESH.scrollpos=29
 //TESH.alwaysfold=0
 function Trig_Initial_Aya_Actions takes nothing returns nothing
     local unit h= GetCharacterHandle('E008')
@@ -22210,6 +22618,11 @@ function Trig_Initial_Aya_Actions takes nothing returns nothing
     call TriggerRegisterAnyUnitEventBJ(gg_trg_Aya04, EVENT_PLAYER_HERO_SKILL)
     call TriggerAddCondition(gg_trg_Aya04, Condition(function Trig_Aya04_Learn_Conditions))
     call TriggerAddAction(gg_trg_Aya04, function Trig_Aya04_Learn_Actions)
+    
+//    set gg_trg_AyaMR = CreateTrigger()
+//    call TriggerRegisterAnyUnitEventBJ( gg_trg_AyaMR, EVENT_PLAYER_UNIT_SPELL_EFFECT)
+//    call TriggerAddCondition( gg_trg_AyaMR, Condition( function Trig_AyaMR_Conditions ) )
+//    call TriggerAddAction( gg_trg_AyaMR, function Trig_AyaMR_Actions )
 endfunction
 //===========================================================================
 function InitTrig_Initial_Aya takes nothing returns nothing
@@ -23924,7 +24337,7 @@ endfunction
 //===========================================================================
 // Trigger: ReisenNo2Ex
 //===========================================================================
-//TESH.scrollpos=42
+//TESH.scrollpos=111
 //TESH.alwaysfold=0
 function ReisenNo2ExEffectTimerProc takes nothing returns nothing
  local timer t= GetExpiredTimer()
@@ -23957,22 +24370,47 @@ function CreateReisenNo2ExEffect takes real x,real y,real a returns nothing
 	set t=null
 endfunction
 function GetReisenNo2ExDuration takes nothing returns real
-	return LoadReal(udg_ht, StringHash("ReisenNo2ExDurationAccumulator"), StringHash("ReisenNo2ExDuration"))
+	return LoadReal(udg_ht, StringHash("ReisenNo2ExDurationAccumulator"), StringHash("Duration"))
 endfunction
 function SetReisenNo2ExDuration takes real duration returns real
-	call SaveReal(udg_ht, StringHash("ReisenNo2ExDurationAccumulator"), StringHash("ReisenNo2ExDuration"), duration)
+	call SaveReal(udg_ht, StringHash("ReisenNo2ExDurationAccumulator"), StringHash("Duration"), duration)
 	return duration
 endfunction
+function IsReisenNo2ExEAvailable takes nothing returns boolean
+ local real boundary= LoadReal(udg_ht, StringHash("ReisenNo2ExDurationAccumulator"), StringHash("Boundary"))
+	if (LoadReal(udg_ht, StringHash("ReisenNo2ExDurationAccumulator"), StringHash("Duration"))) >= boundary then // INLINED!!
+		return true
+	endif
+	return false
+endfunction
+function CreateReisenNo2ExAvailabilityEffect takes nothing returns nothing
+    local unit target= LoadUnitHandle(udg_ht, StringHash("InitialingReisenNo2Trigger"), StringHash("CharacterHandle"))
+ local effect e= AddSpecialEffectTarget("spearglow.mdx", target, "weapon")
+	call SaveEffectHandle(udg_ht, StringHash("ReisenNo2ExDurationAccumulator"), StringHash("AvailabilityEffect"), e)
+	set e=null
+    set target=null
+endfunction
+function DestroyReisenNo2ExAvailabilityEffect takes nothing returns nothing
+	call DestroyEffect(LoadEffectHandle(udg_ht, StringHash("ReisenNo2ExDurationAccumulator"), StringHash("AvailabilityEffect")))
+endfunction
+function ResetReisenNo2ExDuration takes nothing returns nothing
+	call SaveReal(udg_ht, StringHash("ReisenNo2ExDurationAccumulator"), StringHash("Duration"), 0.00)
+	call DestroyEffect(LoadEffectHandle(udg_ht, StringHash("ReisenNo2ExDurationAccumulator"), StringHash("AvailabilityEffect"))) // INLINED!!
+endfunction
 function AccumulateReisenNo2ExDurationTimerProc takes nothing returns nothing
- local unit target= LoadUnitHandle(udg_ht, StringHash("InitialingReisenNo2Trigger"), StringHash("CharacterHandle"))
- local real reisenNo2ExDuration= LoadReal(udg_ht, StringHash("ReisenNo2ExDurationAccumulator"), StringHash("ReisenNo2ExDuration"))
-	call SaveReal(udg_ht, StringHash("ReisenNo2ExDurationAccumulator"), StringHash("ReisenNo2ExDuration"), reisenNo2ExDuration + 0.02)
-	set target=null
+ local real duration= LoadReal(udg_ht, StringHash("ReisenNo2ExDurationAccumulator"), StringHash("Duration"))
+ local effect e= LoadEffectHandle(udg_ht, StringHash("ReisenNo2ExDurationAccumulator"), StringHash("AvailabilityEffect"))
+	call SaveReal(udg_ht, StringHash("ReisenNo2ExDurationAccumulator"), StringHash("Duration"), duration + 0.01)
+	if e == null and IsReisenNo2ExEAvailable() then
+		call CreateReisenNo2ExAvailabilityEffect()
+	endif
+	set e=null
 endfunction
 function AccumulateReisenNo2ExDuration takes nothing returns nothing
  local timer t= CreateTimer()
-	call SaveReal(udg_ht, StringHash("ReisenNo2ExDurationAccumulator"), StringHash("ReisenNo2ExDuration"), 0.00)
-	call TimerStart(t, 0.02, true, function AccumulateReisenNo2ExDurationTimerProc)
+	call SaveReal(udg_ht, StringHash("ReisenNo2ExDurationAccumulator"), StringHash("Duration"), 0.00)
+    call SaveReal(udg_ht, StringHash("ReisenNo2ExDurationAccumulator"), StringHash("Boundary"), 10.00)
+	call TimerStart(t, 0.01, true, function AccumulateReisenNo2ExDurationTimerProc)
 	set t=null
 endfunction
 function Trig_ReisenNo2ExAttacked_Conditions takes nothing returns boolean
@@ -23988,24 +24426,23 @@ function Trig_ReisenNo2ExAttacked_Conditions takes nothing returns boolean
 	return true
 endfunction
 function Trig_ReisenNo2ExAttacked_Actions takes nothing returns nothing
-	call SetReisenNo2ExDuration((LoadReal(udg_ht, StringHash("ReisenNo2ExDurationAccumulator"), StringHash("ReisenNo2ExDuration"))) + 1.00) // INLINED!!
+	call SetReisenNo2ExDuration((LoadReal(udg_ht, StringHash("ReisenNo2ExDurationAccumulator"), StringHash("Duration"))) + 1.00) // INLINED!!
 endfunction
 function Trig_ReisenNo2ExDamage_Actions takes nothing returns nothing
  local unit caster= LoadUnitHandle(udg_ht, StringHash("ReisenNo2ExDamageTrigger"), StringHash("Attacker"))
  local unit target= GetTriggerUnit()
  local trigger reisenNo2ExDamageTrigger= GetTriggeringTrigger()
  local triggeraction reisenNo2ExDamageTriggerAction= LoadTriggerActionHandle(udg_ht, StringHash("ReisenNo2ExDamageTrigger"), StringHash("Action"))
- local real extraDamage= GetHeroLevel(caster) * 5 + 35
- local real lifeGained= GetHeroLevel(caster) * 5 + 35
- local real reisenNo2ExBoundary= 8.00
+ local real extraDamage= GetHeroLevel(caster) * 4 + 40
+ local real lifeGained= GetHeroLevel(caster) * 4 + 40
 	if GetTriggerEventId() == EVENT_UNIT_DAMAGED and GetEventDamageSource() == caster then
-		if (LoadReal(udg_ht, StringHash("ReisenNo2ExDurationAccumulator"), StringHash("ReisenNo2ExDuration"))) >= reisenNo2ExBoundary then // INLINED!!
+		if IsReisenNo2ExEAvailable() then
 			if GetWidgetLife(target) > 0.405 then
 				call UnitDamageTargetHJ(caster , target , extraDamage , 3)
 			endif
 			call CreateReisenNo2ExEffect(GetUnitX(target) , GetUnitY(target) , GetRandomInt(0, 90))
 			call UnitGainLife(caster , lifeGained)
-			call SetReisenNo2ExDuration(0.00)
+			call ResetReisenNo2ExDuration()
 		endif
 	endif
 	if GetTriggerEventId() != EVENT_UNIT_DAMAGED or GetEventDamageSource() == caster then
@@ -24185,41 +24622,19 @@ endfunction
 //===========================================================================
 // Trigger: ReisenNo202
 //===========================================================================
-//TESH.scrollpos=6
+//TESH.scrollpos=80
 //TESH.alwaysfold=0
-function ReisenNo202EffectTimerProc takes nothing returns nothing
- local unit target= LoadUnitHandle(udg_ht, StringHash("ReisenNo202SpellEffectEffect"), StringHash("Target"))
- local unit effectUnit= LoadUnitHandle(udg_ht, StringHash("ReisenNo202SpellEffectEffect"), StringHash("EffectUnit"))
-	call SetUnitXY(effectUnit , GetUnitX(target) , GetUnitY(target))
-	set target=null
-	set effectUnit=null
-endfunction
-function CreateReisenNo202Effect takes unit target returns nothing
- local player currentPlayer= GetOwningPlayer(target)
- local unit effectUnit= CreateUnit(currentPlayer, 'h01X', GetUnitX(target), GetUnitY(target), 0.0)
- local timer t= CreateTimer()
-	call SaveUnitHandle(udg_ht, StringHash("ReisenNo202SpellEffectEffect"), StringHash("EffectUnit"), effectUnit)
-	call SaveUnitHandle(udg_ht, StringHash("ReisenNo202SpellEffectEffect"), StringHash("Target"), target)
-	call SaveTimerHandle(udg_ht, StringHash("ReisenNo202SpellEffectEffect"), StringHash("Timer"), t)
-	call TimerStart(t, 0.02, true, function ReisenNo202EffectTimerProc)
+function CreateReisenNo202Effect takes nothing returns nothing
+ local unit target= LoadUnitHandle(udg_ht, StringHash("ReisenNo202SpellEffectTrigger"), StringHash("Caster"))
     call UnitAddAbility(target, 'A0ZQ')
     call SetPlayerAbilityAvailable(GetOwningPlayer(target), 'A0ZQ', false)
-	set currentPlayer=null
-	set effectUnit=null
-	set t=null
+	set target=null
 endfunction
-function DestroyReisenNo202Effect takes unit target returns nothing
- local unit effectUnit= LoadUnitHandle(udg_ht, StringHash("ReisenNo202SpellEffectEffect"), StringHash("EffectUnit"))
- local timer t= LoadTimerHandle(udg_ht, StringHash("ReisenNo202SpellEffectEffect"), StringHash("Timer"))
+function DestroyReisenNo202Effect takes nothing returns nothing
+ local unit target= LoadUnitHandle(udg_ht, StringHash("ReisenNo202SpellEffectTrigger"), StringHash("Caster"))
 	call UnitRemoveAbility(target, 'A0ZQ')
     call UnitRemoveAbility(target, 'B06D')
-    call ShowUnit(effectUnit, false)
-	call KillUnit(effectUnit)
-	call PauseTimer(t)
-	call DestroyTimer(t)
-	call FlushChildHashtable(udg_ht, StringHash("ReisenNo202SpellEffectEffect"))
-	set effectUnit=null
-	set t=null
+	set target=null
 endfunction
 function IsReisenNo202SpellEffectTriggering takes nothing returns boolean
 	if LoadBoolean(udg_ht, StringHash("ReisenNo202SpellEffectTrigger"), StringHash("TriggeringFlag")) then
@@ -24230,12 +24645,12 @@ endfunction
 function ReisenNo202SpellEffectTimerProc takes nothing returns nothing
  local unit target= LoadUnitHandle(udg_ht, StringHash("ReisenNo202SpellEffectTrigger"), StringHash("Caster"))
  local timer t= GetExpiredTimer()
+	call DestroyReisenNo202Effect()
 	call SaveBoolean(udg_ht, StringHash("ReisenNo202SpellEffectTrigger"), StringHash("TriggeringFlag"), false)
 	call PauseTimer(t)
 	call DestroyTimer(t)
-	call DestroyReisenNo202Effect(target)
-	set target=null
 	set t=null
+	set target=null
 endfunction
 function Trig_ReisenNo202SpellEffect_Conditions takes nothing returns boolean
 	return GetSpellAbilityId() == 'A0ZI'
@@ -24243,7 +24658,7 @@ endfunction
 function Trig_ReisenNo202SpellEffect_Actions takes nothing returns nothing
  local unit caster= GetTriggerUnit()
  local integer level= GetUnitAbilityLevel(caster, GetSpellAbilityId())
- local real abilityCoolDown= 15.00
+ local real abilityCoolDown= 26.00 - level * 2
  local real abilityDuration= 1.0 + level * 0.5
  local timer t= CreateTimer()
 	call SaveUnitHandle(udg_ht, StringHash("ReisenNo202SpellEffectTrigger"), StringHash("Caster"), caster)
@@ -24251,7 +24666,7 @@ function Trig_ReisenNo202SpellEffect_Actions takes nothing returns nothing
 	if YDWEUnitHasItemOfTypeBJNull(caster , 'I00B') then
 		call Item_HeroAbilityCoolDownReset(caster , GetSpellAbilityId() , abilityCoolDown)
 	endif
-    call CreateReisenNo202Effect(caster)
+    call CreateReisenNo202Effect()
 	call TimerStart(t, abilityDuration, false, function ReisenNo202SpellEffectTimerProc)
 	set caster=null
 endfunction
@@ -24287,13 +24702,13 @@ function TargetReceiveDamage takes nothing returns nothing
 	call TimerStart(t, 0.00, false, function TargetReceiveDamageTimerProc)
 	set t=null
 endfunction
-function Trig_ReisenNo202Attacked_Conditions takes nothing returns boolean
+function Trig_ReisenNo202Damaged_Conditions takes nothing returns boolean
 	if IsReisenNo202SpellEffectTriggering() then
 		return true
 	endif
 	return false
 endfunction
-function Trig_ReisenNo202Attacked_Actions takes nothing returns nothing
+function Trig_ReisenNo202Damaged_Actions takes nothing returns nothing
  local unit target= GetTriggerUnit()
 	call SaveUnitHandle(udg_ht, StringHash("ReisenNo202AttackedTrigger"), StringHash("Target"), target)
 	call RemoveTargetDamage()
@@ -24307,7 +24722,7 @@ endfunction
 //===========================================================================
 // Trigger: ReisenNo203
 //===========================================================================
-//TESH.scrollpos=63
+//TESH.scrollpos=0
 //TESH.alwaysfold=0
 function UnitPhysicalDamageArea takes unit caster,real x,real y,real range,real damage returns nothing
  local unit v
@@ -24368,6 +24783,26 @@ function CreateReisenNo203Effect takes real x,real y,real a,integer p returns no
 	call TimerStart(t, 0.05, true, function GenerateThiefMissile)
 	set t=null
 endfunction
+function CreateReisenNo203KillEffect takes nothing returns nothing
+ local unit target= LoadUnitHandle(udg_ht, StringHash("ReisenNo203KillTrigger"), StringHash("Killer"))
+ local real equivalentNeutralHealth= LoadReal(udg_ht, StringHash("ReisenNo203KillTrigger"), StringHash("EquivalentNeutralHealth"))
+ local effect e= null
+	if equivalentNeutralHealth < 1200 then
+		set e=AddSpecialEffectTarget("fightingflame.mdx", target, "weapon")
+	elseif equivalentNeutralHealth < 2000 then
+		set e=AddSpecialEffectTarget("fightingflame01.mdx", target, "weapon")
+	elseif equivalentNeutralHealth < 4000 then
+		set e=AddSpecialEffectTarget("fightingflame02.mdx", target, "weapon")
+	else
+		set e=AddSpecialEffectTarget("fightingflame03.mdx", target, "weapon")
+	endif
+	call SaveEffectHandle(udg_ht, StringHash("ReisenNo203KillTrigger"), StringHash("KillEffect"), e)
+	set e=null
+	set target=null
+endfunction
+function DestroyReisenNo203KillEffect takes nothing returns nothing
+	call DestroyEffect(LoadEffectHandle(udg_ht, StringHash("ReisenNo203KillTrigger"), StringHash("KillEffect")))
+endfunction
 function Trig_ReisenNo203Kill_Conditions takes nothing returns boolean
 	if GetUnitAbilityLevel(GetPlayerCharacter(GetOwningPlayer(GetKillingUnit())), 'A0ZJ') == 0 then
 		return false
@@ -24382,18 +24817,25 @@ function Trig_ReisenNo203Kill_Actions takes nothing returns nothing
  local unit caster= GetPlayerCharacter(GetOwningPlayer(GetKillingUnit()))
  local unit target= GetTriggerUnit()
  local integer level= GetUnitAbilityLevel(caster, 'A0ZJ')
+ local real equivalentNeutralHealth= 0.0
  local real newDamage= 0.0
  local real currentDamage= 0.0
+	call SaveUnitHandle(udg_ht, StringHash("ReisenNo203KillTrigger"), StringHash("Killer"), caster)
 	if HaveSavedReal(udg_ht, StringHash("ReisenNo203KillTrigger"), StringHash("ExtraDamage")) then
 		set currentDamage=LoadReal(udg_ht, StringHash("ReisenNo203KillTrigger"), StringHash("ExtraDamage"))
 	endif
 	if IsUnitType(target, UNIT_TYPE_HERO) then
 		set newDamage=GetUnitState(target, UNIT_STATE_MAX_LIFE) * ( 0.04 + 0.04 * level )
+		set equivalentNeutralHealth=GetUnitState(target, UNIT_STATE_MAX_LIFE) * 2
 	else
 		set newDamage=GetUnitState(target, UNIT_STATE_MAX_LIFE) * ( 0.04 + 0.04 * level ) * 0.5
+		set equivalentNeutralHealth=GetUnitState(target, UNIT_STATE_MAX_LIFE)
 	endif
 	if currentDamage < newDamage then
+		call SaveReal(udg_ht, StringHash("ReisenNo203KillTrigger"), StringHash("EquivalentNeutralHealth"), equivalentNeutralHealth)
 		call SaveReal(udg_ht, StringHash("ReisenNo203KillTrigger"), StringHash("ExtraDamage"), newDamage)
+		call DestroyEffect(LoadEffectHandle(udg_ht, StringHash("ReisenNo203KillTrigger"), StringHash("KillEffect"))) // INLINED!!
+		call CreateReisenNo203KillEffect()
 	endif
 	set caster=null
 	set target=null
@@ -24416,6 +24858,7 @@ function Trig_ReisenNo203Damage_Actions takes nothing returns nothing
 				if GetWidgetLife(target) > 0.405 then
 					call UnitDamageTargetHJ(caster , target , extraDamage , 1)
 				endif
+				call DestroyEffect(LoadEffectHandle(udg_ht, StringHash("ReisenNo203KillTrigger"), StringHash("KillEffect"))) // INLINED!!
 				set effectSize=R2I(RMaxBJ(extraDamage * 0.1, 1))
 				call CreateReisenNo203Effect(GetUnitX(target) , GetUnitY(target) , GetRandomInt(0, 72) , effectSize)
 			endif
@@ -24588,14 +25031,14 @@ endfunction
 //===========================================================================
 // Trigger: Initial ReisenNo2
 //===========================================================================
-//TESH.scrollpos=23
+//TESH.scrollpos=0
 //TESH.alwaysfold=0
 function Trig_Initial_ReisenNo2_Actions takes nothing returns nothing
  local unit h= GetCharacterHandle('E02E')
  local trigger reisenNo2ExAttackTrigger
  local trigger reisenNo2ExAttackedTrigger
  local trigger reisenNo201SpellEffectTrigger
- local trigger reisenNo202AttackedTrigger
+ local trigger reisenNo202DamagedTrigger
  local trigger reisenNo202SpellEffectTrigger
  local trigger reisenNo203AttackTrigger
  local trigger reisenNo203KillTrigger
@@ -24620,10 +25063,10 @@ function Trig_Initial_ReisenNo2_Actions takes nothing returns nothing
 	call TriggerRegisterUnitEvent(reisenNo201SpellEffectTrigger, h, EVENT_UNIT_SPELL_EFFECT)
 	call TriggerAddCondition(reisenNo201SpellEffectTrigger, Condition(function Trig_ReisenNo201SpellEffect_Conditions))
 	call TriggerAddAction(reisenNo201SpellEffectTrigger, function Trig_ReisenNo201SpellEffect_Actions)
-	set reisenNo202AttackedTrigger=CreateTrigger()
-	call TriggerRegisterUnitEvent(reisenNo202AttackedTrigger, h, EVENT_UNIT_DAMAGED)
-	call TriggerAddCondition(reisenNo202AttackedTrigger, Condition(function Trig_ReisenNo202Attacked_Conditions))
-	call TriggerAddAction(reisenNo202AttackedTrigger, function Trig_ReisenNo202Attacked_Actions)
+	set reisenNo202DamagedTrigger=CreateTrigger()
+	call TriggerRegisterUnitEvent(reisenNo202DamagedTrigger, h, EVENT_UNIT_DAMAGED)
+	call TriggerAddCondition(reisenNo202DamagedTrigger, Condition(function Trig_ReisenNo202Damaged_Conditions))
+	call TriggerAddAction(reisenNo202DamagedTrigger, function Trig_ReisenNo202Damaged_Actions)
 	set reisenNo202SpellEffectTrigger=CreateTrigger()
 	call TriggerRegisterUnitEvent(reisenNo202SpellEffectTrigger, h, EVENT_UNIT_SPELL_EFFECT)
 	call TriggerAddCondition(reisenNo202SpellEffectTrigger, Condition(function Trig_ReisenNo202SpellEffect_Conditions))
@@ -24647,7 +25090,7 @@ function Trig_Initial_ReisenNo2_Actions takes nothing returns nothing
 	set h=null
 	set reisenNo2ExAttackTrigger=null
 	set reisenNo2ExAttackedTrigger=null
-	set reisenNo202AttackedTrigger=null
+	set reisenNo202DamagedTrigger=null
 	set reisenNo202SpellEffectTrigger=null
 	set reisenNo203AttackTrigger=null
 	set reisenNo203KillTrigger=null
@@ -25175,7 +25618,7 @@ endfunction
 //===========================================================================
 // Trigger: Flandre02
 //===========================================================================
-//TESH.scrollpos=36
+//TESH.scrollpos=0
 //TESH.alwaysfold=0
 function Trig_Flandre02_Conditions takes nothing returns boolean
     if GetUnitAbilityLevel(GetAttacker(), 'A06L') == 0 then
@@ -29512,6 +29955,8 @@ endfunction
 //===========================================================================
 // Trigger: LettyEx
 //===========================================================================
+//TESH.scrollpos=9
+//TESH.alwaysfold=0
 function Trig_LettyEx_Actions takes nothing returns nothing
     local timer t= GetExpiredTimer()
     local integer task= GetHandleId(t)
@@ -29557,7 +30002,7 @@ endfunction
 //
 // 减速？？
 //===========================================================================
-//TESH.scrollpos=48
+//TESH.scrollpos=52
 //TESH.alwaysfold=0
 function Trig_Letty01_Conditions takes nothing returns boolean
     if GetSpellAbilityId() == 'A08W' then
@@ -29637,6 +30082,8 @@ function InitTrig_Letty01 takes nothing returns nothing
 endfunction//===========================================================================
 // Trigger: Letty02
 //===========================================================================
+//TESH.scrollpos=0
+//TESH.alwaysfold=0
 function Trig_Letty02_Conditions takes nothing returns boolean
     return GetSpellAbilityId() == 'A0UL'
 endfunction
@@ -29759,7 +30206,7 @@ endfunction
 //===========================================================================
 // Trigger: Letty04
 //===========================================================================
-//TESH.scrollpos=18
+//TESH.scrollpos=32
 //TESH.alwaysfold=0
 function Trig_Letty04_Conditions takes nothing returns boolean
     if ( not ( GetSpellAbilityId() == 'A08P' ) ) then
@@ -29868,7 +30315,7 @@ endfunction
 //TESH.scrollpos=-1
 //TESH.alwaysfold=0
 function Trig_Nitori_Bag_Conditions takes nothing returns boolean
-    return GetSpellAbilityId() == 'A03T'
+    return GetSpellAbilityId() == 'A03T' or GetSpellAbilityId() == 'A0ZU'
 endfunction
 function Trig_Nitori_Bag_Actions takes nothing returns nothing
     local unit caster= GetTriggerUnit()
@@ -29934,7 +30381,7 @@ endfunction
 //===========================================================================
 // Trigger: Nitori01
 //===========================================================================
-//TESH.scrollpos=18
+//TESH.scrollpos=8
 //TESH.alwaysfold=0
 function Trig_Nitori01_Conditions takes nothing returns boolean
     return GetSpellAbilityId() == 'A094' and GetUnitTypeId(GetTriggerUnit()) == 'H00M'
@@ -29961,7 +30408,11 @@ function Trig_Nitori01_Main takes nothing returns nothing
         call PauseTimer(t)
         call DestroyTimer(t)
         call FlushChildHashtable(udg_Hashtable, task)
-        call SetPlayerAbilityAvailable(GetOwningPlayer(caster), 'A0GF', true)
+        if udg_PlayerMushroom[GetPlayerId(GetOwningPlayer(caster))] == true then
+            call SetPlayerAbilityAvailable(GetOwningPlayer(caster), 'A0ZV', true)
+        else
+            call SetPlayerAbilityAvailable(GetOwningPlayer(caster), 'A0GF', true)
+        endif
         call UnitRemoveAbility(caster, 'A0LL')
     endif
     set t=null
@@ -29975,6 +30426,7 @@ function Trig_Nitori01_Actions takes nothing returns nothing
     call SaveUnitHandle(udg_Hashtable, task, 1, caster)
     call TimerStart(t, 0.02, true, function Trig_Nitori01_Main)
     call SetPlayerAbilityAvailable(GetOwningPlayer(caster), 'A0GF', false)
+    call SetPlayerAbilityAvailable(GetOwningPlayer(caster), 'A0ZV', false)
     call UnitAddAbility(caster, 'A0LL')
     call UnitMakeAbilityPermanent(caster, true, 'A0LL')
     call PlayUnitAnimeNoLoop(caster , "Stand Alternate")
@@ -29987,10 +30439,10 @@ endfunction
 //===========================================================================
 // Trigger: Nitori02
 //===========================================================================
-//TESH.scrollpos=0
+//TESH.scrollpos=85
 //TESH.alwaysfold=0
 function Trig_Nitori02_Conditions takes nothing returns boolean
-    return GetSpellAbilityId() == 'A0GF'
+    return GetSpellAbilityId() == 'A0GF' or GetSpellAbilityId() == 'A0ZV'
 endfunction
 function Trig_Nitori02_Bullet takes nothing returns nothing
     local timer t2= GetExpiredTimer()
@@ -30058,6 +30510,7 @@ function Trig_Nitori02_Frame takes nothing returns nothing
     local integer level= LoadInteger(udg_ht, task, 2)
     local real a= LoadReal(udg_ht, task, 3)
     local integer i= LoadInteger(udg_ht, task, 4)
+    local real d= LoadReal(udg_ht, task, 5)
     local timer t2
     local integer task2
     local unit u
@@ -30073,8 +30526,18 @@ function Trig_Nitori02_Frame takes nothing returns nothing
     local item itm= null
     local integer j
     local real damage= 70 + level * 80
-//========
-if i < 10 and GetUnitCurrentOrder(caster) == OrderId("clusterrockets") then
+local boolean Mushroom= udg_PlayerMushroom[GetPlayerId(GetOwningPlayer(caster))]
+    local real d_max= 1500
+    local real d_min= 200
+    local real a_origin= 12
+    local real a_range= 24
+    local integer gold_add= 13
+    //蘑菇
+    if Mushroom == true then
+        set gold_add=40
+    endif
+    //========
+    if i < 10 and ( GetUnitCurrentOrder(caster) == OrderId("clusterrockets") or GetUnitCurrentOrder(caster) == OrderId("coldarrows") ) then
         if i == 0 then
             call SetUnitFacing(caster, a)
             call DestroyEffect(AddSpecialEffectTarget("GreenShotExplod.mdx", caster, "sprite first"))
@@ -30101,7 +30564,7 @@ if i < 10 and GetUnitCurrentOrder(caster) == OrderId("clusterrockets") then
                 call DisplayTextToPlayer(GetOwningPlayer(caster), 0.0, 0.0, "|cffff0000能量不足！需在能量槽放入小黄瓜以提供能源|r")
             else
                 call RemoveItem(itm)
-                call AdjustPlayerStateBJ(13, GetOwningPlayer(caster), PLAYER_STATE_RESOURCE_GOLD)
+                call AdjustPlayerStateBJ(gold_add, GetOwningPlayer(caster), PLAYER_STATE_RESOURCE_GOLD)
                 set ox=GetUnitX(caster) + 80 * Cos(bj_DEGTORAD * a)
                 set oy=GetUnitY(caster) + 80 * Sin(bj_DEGTORAD * a)
                 set oz=GetPositionZ(ox , oy) + 60
@@ -30128,6 +30591,81 @@ if i < 10 and GetUnitCurrentOrder(caster) == OrderId("clusterrockets") then
                 call SaveReal(udg_ht, task2, 7, damage)
                 //==
                 call TimerStart(t2, 0.02, true, function Trig_Nitori02_Bullet)
+                //若蘑菇
+                if Mushroom == true then
+                    //第二管
+                    set a=a + a_origin
+                    if ( d < d_min ) then
+                        call DoNothing()
+                    elseif ( d < d_max ) then
+                        set a=a + a_range * ( ( d - d_min ) / ( d_max - d_min ) )
+                    else
+                        set a=a + a_range
+                    endif
+                
+                    set ox=GetUnitX(caster) + 80 * Cos(bj_DEGTORAD * a)
+                    set oy=GetUnitY(caster) + 80 * Sin(bj_DEGTORAD * a)
+                    set oz=GetPositionZ(ox , oy) + 60
+                    set px=GetUnitX(caster) + 2000 * Cos(bj_DEGTORAD * a)
+                    set py=GetUnitY(caster) + 2000 * Sin(bj_DEGTORAD * a)
+                    set pz=GetPositionZ(px , py) + 60
+                
+                    set u=CreateUnit(GetOwningPlayer(caster), ('o000'), ox, oy, a) // INLINED!!
+                    call UnitAddAbility(u, 'A0GH')
+                    set lt=AddLightningEx("TCLE", true, ox, oy, oz, px, py, pz)
+                    call SetLightningColor(lt, 0.00, 1, 0.00, 1)
+                    set grp1=CreateGroup()
+                    set grp2=CreateGroup()
+                    //==
+                    set t2=CreateTimer()
+                    set task2=GetHandleId(t2)
+                    call SaveTimerHandle(udg_ht, task2, 0, t2)
+                    call SaveUnitHandle(udg_ht, task2, 1, u)
+                    call SaveReal(udg_ht, task2, 2, a)
+                    call SaveReal(udg_ht, task2, 3, 2000) //射程
+                    call SaveLightningHandle(udg_ht, task2, 4, lt)
+                    call SaveGroupHandle(udg_ht, task2, 5, grp1)
+                    call SaveGroupHandle(udg_ht, task2, 6, grp2)
+                    call SaveReal(udg_ht, task2, 7, damage)
+                    //==
+                    call TimerStart(t2, 0.02, true, function Trig_Nitori02_Bullet)
+                    //第三管
+                    set a=LoadReal(udg_ht, task, 3) - a_origin
+                    if ( d < d_min ) then
+                        call DoNothing()
+                    elseif ( d < d_max ) then
+                        set a=a - a_range * ( ( d - d_min ) / ( d_max - d_min ) )
+                    else
+                        set a=a - a_range
+                    endif
+                
+                    set ox=GetUnitX(caster) + 80 * Cos(bj_DEGTORAD * a)
+                    set oy=GetUnitY(caster) + 80 * Sin(bj_DEGTORAD * a)
+                    set oz=GetPositionZ(ox , oy) + 60
+                    set px=GetUnitX(caster) + 2000 * Cos(bj_DEGTORAD * a)
+                    set py=GetUnitY(caster) + 2000 * Sin(bj_DEGTORAD * a)
+                    set pz=GetPositionZ(px , py) + 60
+                
+                    set u=CreateUnit(GetOwningPlayer(caster), ('o000'), ox, oy, a) // INLINED!!
+                    call UnitAddAbility(u, 'A0GH')
+                    set lt=AddLightningEx("TCLE", true, ox, oy, oz, px, py, pz)
+                    call SetLightningColor(lt, 0.00, 1, 0.00, 1)
+                    set grp1=CreateGroup()
+                    set grp2=CreateGroup()
+                    //==
+                    set t2=CreateTimer()
+                    set task2=GetHandleId(t2)
+                    call SaveTimerHandle(udg_ht, task2, 0, t2)
+                    call SaveUnitHandle(udg_ht, task2, 1, u)
+                    call SaveReal(udg_ht, task2, 2, a)
+                    call SaveReal(udg_ht, task2, 3, 2000) //射程
+                    call SaveLightningHandle(udg_ht, task2, 4, lt)
+                    call SaveGroupHandle(udg_ht, task2, 5, grp1)
+                    call SaveGroupHandle(udg_ht, task2, 6, grp2)
+                    call SaveReal(udg_ht, task2, 7, damage)
+                    //==
+                    call TimerStart(t2, 0.02, true, function Trig_Nitori02_Bullet)
+                endif
             endif
             call StopSound(gg_snd_GetPower, false, true)
         endif
@@ -30154,6 +30692,7 @@ function Trig_Nitori02_Actions takes nothing returns nothing
     local real oy= GetUnitY(caster)
     local real tx= GetSpellTargetX()
     local real ty= GetSpellTargetY()
+    local real d= SquareRoot(( tx - ox ) * ( tx - ox ) + ( ty - oy ) * ( ty - oy ))
     local real a= bj_RADTODEG * Atan2(ty - oy, tx - ox)
     local integer level= GetUnitAbilityLevel(caster, GetSpellAbilityId())
     local timer t= CreateTimer()
@@ -30177,6 +30716,7 @@ function Trig_Nitori02_Actions takes nothing returns nothing
     call SaveInteger(udg_ht, task, 2, level)
     call SaveReal(udg_ht, task, 3, a)
     call SaveInteger(udg_ht, task, 4, 0)
+    call SaveReal(udg_ht, task, 5, d)
     call TimerStart(t, 0.1, true, function Trig_Nitori02_Frame)
     //========
     set caster=null
@@ -30188,7 +30728,7 @@ endfunction
 //===========================================================================
 // Trigger: Nitori03
 //===========================================================================
-//TESH.scrollpos=18
+//TESH.scrollpos=48
 //TESH.alwaysfold=0
 function Trig_Nitori03_Conditions takes nothing returns boolean
     local integer j
@@ -30280,7 +30820,7 @@ endfunction
 //===========================================================================
 // Trigger: Nitori04
 //===========================================================================
-//TESH.scrollpos=209
+//TESH.scrollpos=205
 //TESH.alwaysfold=0
 function Trig_Nitori04_Conditions takes nothing returns boolean
     return GetSpellAbilityId() == 'A0LK'
@@ -30569,7 +31109,7 @@ endfunction//===================================================================
 // 03->不谈
 // 04->10级别制
 //===========================================================================
-//TESH.scrollpos=23
+//TESH.scrollpos=27
 //TESH.alwaysfold=0
 function Trig_Initial_Nitori_Actions takes nothing returns nothing
     local unit h= GetCharacterHandle('H00M')
@@ -34717,7 +35257,7 @@ endfunction
 //TESH.scrollpos=-1
 //TESH.alwaysfold=0
 function Trig_Remilia01_Conditions takes nothing returns boolean
-    return GetSpellAbilityId() == 'A0CD'
+    return GetSpellAbilityId() == 'A0CD' or GetSpellAbilityId() == 'A0ZZ'
 endfunction
 function Trig_Remilia01_Main takes nothing returns nothing
     local timer t= GetExpiredTimer()
@@ -34758,7 +35298,12 @@ function Trig_Remilia01_Main takes nothing returns nothing
                 call GroupAddUnit(m, v) //伤害过的单位增加到单位组 
                 if IsUnitType(v, UNIT_TYPE_HERO) then
                     call UnitMagicDamageTarget(caster , v , 80 + level * 130)
-                    set k=true
+                    call DestroyEffect(AddSpecialEffectTarget("sq.mdx", v, "origin"))
+                    if udg_PlayerMushroom[GetPlayerId(GetOwningPlayer(caster))] == true then
+                        set k=false
+                    else
+                        set k=true
+                    endif
                 else
                     call UnitMagicDamageTarget(caster , v , 20 + level * 45)
                 endif
@@ -34794,7 +35339,7 @@ function Trig_Remilia01_Actions takes nothing returns nothing
     local real tx= GetSpellTargetX()
     local real ty= GetSpellTargetY()
     local real a= Atan2(ty - oy, tx - ox)
-    local integer level= GetUnitAbilityLevel(caster, 'A0CD')
+    local integer level= GetUnitAbilityLevel(caster, GetSpellAbilityId())
     local group m= CreateGroup()
     local timer t= CreateTimer()
     local integer task= GetHandleId(t)
@@ -34822,7 +35367,11 @@ function Trig_Remilia01_Actions takes nothing returns nothing
     call SaveUnitHandle(udg_ht, task, 1, u)
     call SaveGroupHandle(udg_ht, task, 2, m)
     call SaveInteger(udg_ht, task, 0, level)
-    call SaveInteger(udg_ht, task, 1, 84) //射程：84*24.0 = 2016
+    if udg_PlayerMushroom[GetPlayerId(GetOwningPlayer(caster))] == true then
+        call SaveInteger(udg_ht, task, 1, 1680) //射程：1680*24.0 = 40320
+    else
+        call SaveInteger(udg_ht, task, 1, 84) //射程：84*24.0 = 2016
+    endif
     call SaveReal(udg_ht, task, 0, a)
     call SaveReal(udg_ht, task, 1, 24.0)
     call TimerStart(t, 0.02, true, function Trig_Remilia01_Main)
@@ -36870,6 +37419,9 @@ function Trig_Mystia03_Conditions takes nothing returns boolean
         return false
     endif
     if ( not ( GetSpellAbilityId() != 'A0N3' ) ) then
+        return false
+    endif
+    if ( not ( GetSpellAbilityId() != 'A0ZT' ) ) then
         return false
     endif
     set i=0
@@ -39451,8 +40003,10 @@ endfunction
 //===========================================================================
 // Trigger: SuwakoEx
 //===========================================================================
+//TESH.scrollpos=20
+//TESH.alwaysfold=0
 function Trig_SuwakoEx_Conditions takes nothing returns boolean
-    return GetSpellAbilityId() == 'A0TI'
+    return ( GetSpellAbilityId() == 'A0TI' ) or ( GetSpellAbilityId() == 'A0ZT' )
 endfunction
 function Trig_SuwakoEx_Main takes nothing returns nothing
     local timer t= GetExpiredTimer()
@@ -39529,7 +40083,11 @@ function Trig_SuwakoEx_Actions takes nothing returns nothing
     call SaveUnitHandle(udg_ht, task, 0, caster)
     call SaveUnitHandle(udg_ht, task, 1, u)
     call SaveGroupHandle(udg_ht, task, 2, m)
-    call SaveInteger(udg_ht, task, 3, 35)
+    if GetSpellAbilityId() == 'A0ZT' then
+        call SaveInteger(udg_ht, task, 3, 50)
+    else
+        call SaveInteger(udg_ht, task, 3, 35)
+    endif
     call SaveReal(udg_ht, task, 4, a)
     call SaveReal(udg_ht, task, 5, 20.0)
     call TimerStart(t, 0.02, true, function Trig_SuwakoEx_Main)
@@ -43610,7 +44168,7 @@ endfunction//===================================================================
 //TESH.scrollpos=-1
 //TESH.alwaysfold=0
 function Trig_Shizuha02_Conditions takes nothing returns boolean
-    return GetSpellAbilityId() == 'A0JC'
+    return GetSpellAbilityId() == 'A0JC' or GetSpellAbilityId() == 'A100'
 endfunction
 function Trig_Shizuha02_End takes nothing returns nothing
     local timer t= GetExpiredTimer()
@@ -43640,6 +44198,10 @@ function Trig_Shizuha02_Trace takes nothing returns nothing
     if i > 0 then
         if o and b then
             call SaveInteger(udg_ht, task, 1, i - 1)
+            if ( udg_PlayerMushroom[GetPlayerId(GetOwningPlayer(caster))] == true ) then
+                call SetUnitState(caster, UNIT_STATE_LIFE, GetUnitState(caster, UNIT_STATE_LIFE) + 80)
+                call SetUnitState(caster, UNIT_STATE_MANA, GetUnitState(caster, UNIT_STATE_MANA) + 30)
+            endif
         else
             call SetUnitTimeScale(caster, 1.0)
             call SetUnitAnimation(caster, "stand")
@@ -43677,6 +44239,9 @@ function Trig_Shizuha02_Actions takes nothing returns nothing
     local real abilitycooldownlv02= 60
     local real abilitycooldownlv03= 60
     local real abilitycooldownlv04= 60
+    if ( udg_PlayerMushroom[GetPlayerId(GetOwningPlayer(caster))] == true ) then
+        set s=6.9 / ( 10.0 - 1.0 * 6 )
+    endif
     if YDWEUnitHasItemOfTypeBJNull(caster , 'I00B') then
         if GetUnitAbilityLevel(caster, GetSpellAbilityId()) == 1 then
             call Item_HeroAbilityCoolDownReset(caster , GetSpellAbilityId() , abilitycooldownlv01)
@@ -43693,7 +44258,11 @@ function Trig_Shizuha02_Actions takes nothing returns nothing
     call IssueImmediateOrder(caster, "tranquility")
     call SaveUnitHandle(udg_ht, task, 0, caster)
     call SaveInteger(udg_ht, task, 0, level)
-    call SaveInteger(udg_ht, task, 1, 100 - 10 * level)
+    if ( udg_PlayerMushroom[GetPlayerId(GetOwningPlayer(caster))] == true ) then
+        call SaveInteger(udg_ht, task, 1, 10)
+    else
+        call SaveInteger(udg_ht, task, 1, 100 - 10 * level)
+    endif
     call SaveBoolean(udg_ht, task, 0, false)
     call TimerStart(t, 0.1, true, function Trig_Shizuha02_Trace)
     set caster=null
@@ -44202,6 +44771,47 @@ function Trig_Minoriko02_Actions takes nothing returns nothing
 endfunction
 //===========================================================================
 function InitTrig_Minoriko02 takes nothing returns nothing
+endfunction
+//===========================================================================
+// Trigger: Minoriko02MR
+//===========================================================================
+function Trig_Minoriko02MRConditions takes nothing returns boolean
+    return ( ( GetSpellAbilityId() == 'A102' ) )
+endfunction
+function Trig_Minoriko02MRFunc002T takes nothing returns nothing
+    if ( ( IsUnitAliveBJ(LoadUnitHandle(YDLOC, GetHandleId(GetExpiredTimer()), 0xC303079D)) == true ) ) then
+        call SaveReal(YDLOC, GetHandleId(GetExpiredTimer()), 0xA99320FA, GetUnitX(LoadUnitHandle(YDLOC, GetHandleId(GetExpiredTimer()), 0xC303079D)))
+        call SaveReal(YDLOC, GetHandleId(GetExpiredTimer()), 0xFDF65382, GetUnitY(LoadUnitHandle(YDLOC, GetHandleId(GetExpiredTimer()), 0xC303079D)))
+        call DestroyEffect(AddSpecialEffect("Abilities\\Spells\\Other\\Doom\\DoomDeath.mdl", LoadReal(YDLOC, GetHandleId(GetExpiredTimer()), 0xA99320FA), LoadReal(YDLOC, GetHandleId(GetExpiredTimer()), 0xFDF65382)))
+        call UnitMagicDamageArea(LoadUnitHandle(YDLOC, GetHandleId(GetExpiredTimer()), 0xC303079D) , LoadReal(YDLOC, GetHandleId(GetExpiredTimer()), 0xA99320FA) , LoadReal(YDLOC, GetHandleId(GetExpiredTimer()), 0xFDF65382) , 240 , 240)
+        call UnitStunArea(LoadUnitHandle(YDLOC, GetHandleId(GetExpiredTimer()), 0xC303079D) , 1.5 , LoadReal(YDLOC, GetHandleId(GetExpiredTimer()), 0xA99320FA) , LoadReal(YDLOC, GetHandleId(GetExpiredTimer()), 0xFDF65382) , 240 , 0 , 0)
+        call ExplodeUnitBJ(LoadUnitHandle(YDLOC, GetHandleId(GetExpiredTimer()), 0xC303079D))
+    else
+    endif
+    call FlushChildHashtable(YDLOC, GetHandleId(GetExpiredTimer()))
+    call DestroyTimer(GetExpiredTimer())
+endfunction
+function Trig_Minoriko02MRActions takes nothing returns nothing
+    local timer ydl_timer
+    local integer ydl_localvar_step= LoadInteger(YDLOC, GetHandleId(GetTriggeringTrigger()), 0xCFDE6C76)
+ set ydl_localvar_step=ydl_localvar_step + 3
+ call SaveInteger(YDLOC, GetHandleId(GetTriggeringTrigger()), 0xCFDE6C76, ydl_localvar_step)
+ call SaveInteger(YDLOC, GetHandleId(GetTriggeringTrigger()), 0xECE825E7, ydl_localvar_step)
+    call AddSpecialEffectTargetUnitBJ("origin", GetSpellAbilityUnit(), "Environment\\SmallBuildingFire\\SmallBuildingFire2.mdl")
+    set ydl_timer=CreateTimer()
+    call SaveUnitHandle(YDLOC, GetHandleId(ydl_timer), 0xC303079D, GetSpellAbilityUnit())
+    call SaveReal(YDLOC, GetHandleId(ydl_timer), 0xA99320FA, LoadReal(YDLOC, GetHandleId(GetTriggeringTrigger()) * ydl_localvar_step, 0xA99320FA))
+    call SaveReal(YDLOC, GetHandleId(ydl_timer), 0xFDF65382, LoadReal(YDLOC, GetHandleId(GetTriggeringTrigger()) * ydl_localvar_step, 0xFDF65382))
+    call TimerStart(ydl_timer, 2.00, false, function Trig_Minoriko02MRFunc002T)
+    call FlushChildHashtable(YDLOC, GetHandleId(GetTriggeringTrigger()) * ydl_localvar_step)
+    set ydl_timer=null
+endfunction
+//===========================================================================
+function InitTrig_Minoriko02MR takes nothing returns nothing
+    set gg_trg_Minoriko02MR=CreateTrigger()
+    call TriggerRegisterAnyUnitEventBJ(gg_trg_Minoriko02MR, EVENT_PLAYER_UNIT_SPELL_CHANNEL)
+    call TriggerAddCondition(gg_trg_Minoriko02MR, Condition(function Trig_Minoriko02MRConditions))
+    call TriggerAddAction(gg_trg_Minoriko02MR, function Trig_Minoriko02MRActions)
 endfunction
 //===========================================================================
 // Trigger: Minoriko03
@@ -54923,8 +55533,143 @@ function InitTrig_Initialization_ItemAbilities takes nothing returns nothing
     call TriggerAddAction(gg_trg_Initialization_ItemAbilities, function Trig_Initialization_ItemAbilities_Actions)
 endfunction
 //===========================================================================
+// Trigger: DoubleClick
+//===========================================================================
+//TESH.scrollpos=2
+//TESH.alwaysfold=0
+function Trig_DoubleClick_Conditions takes nothing returns boolean
+    return GetSpellAbilityId() == 'A02A' or GetSpellAbilityId() == 'A0ZR' or GetSpellAbilityId() == 'A0QR' or GetSpellAbilityId() == 'A02H'
+endfunction
+function Trig_DoubleClick_Order takes nothing returns nothing
+    local timer t= GetExpiredTimer()
+    local integer task= GetHandleId(t)
+    local unit u= LoadUnitHandle(udg_ht, task, 0)
+    local item it= LoadItemHandle(udg_ht, task, 1)
+    
+    call UnitUseItemTarget(u, it, u)
+    
+    call DestroyTimer(t)
+    call FlushChildHashtable(udg_ht, task)
+    set t=null
+    set u=null
+    set it=null
+endfunction
+function Trig_DoubleClick_Actions takes nothing returns nothing
+    local timer t
+    local integer task
+    local item it= GetSpellTargetItem()
+    local unit u= GetSpellAbilityUnit()
+    local integer abid= GetSpellAbilityId()
+    local integer itid= GetItemTypeId(it)
+    
+    if it != null then
+        call IssueImmediateOrderById(u, 851972)
+        if ( abid == 'A02A' and itid == 'I02S' ) or ( abid == 'A0ZR' and itid == 'I02T' ) or ( abid == 'A0QR' and itid == 'I00V' ) or ( abid == 'A02H' and itid == 'I02X' ) then
+            set t=CreateTimer()
+            set task=GetHandleId(t)
+            call SaveUnitHandle(udg_ht, task, 0, u)
+            call SaveItemHandle(udg_ht, task, 1, it)
+            call TimerStart(t, 0.01, false, function Trig_DoubleClick_Order)
+        endif
+    endif
+    
+    set t=null
+    set it=null
+    set u=null
+endfunction
+//===========================================================================
+function InitTrig_DoubleClick takes nothing returns nothing
+    set gg_trg_DoubleClick=CreateTrigger()
+    call TriggerRegisterAnyUnitEventBJ(gg_trg_DoubleClick, EVENT_PLAYER_UNIT_SPELL_CHANNEL)
+    call TriggerAddCondition(gg_trg_DoubleClick, Condition(function Trig_DoubleClick_Conditions))
+    call TriggerAddAction(gg_trg_DoubleClick, function Trig_DoubleClick_Actions)
+endfunction
+//===========================================================================
+// Trigger: OddMushroom
+//
+// 1加技能2小技能3天生技能4终极技能
+//===========================================================================
+function Trig_OddMushroomConditions takes nothing returns boolean
+    return ( ( GetSpellAbilityId() == 'A0ZS' ) )
+endfunction
+function Trig_OddMushroomActions takes nothing returns nothing
+    if ( ( IsUnitType(GetSpellAbilityUnit(), UNIT_TYPE_HERO) == false ) ) then
+        call UnitAddItem(GetSpellAbilityUnit(), CreateItem('I06Q', 14000.00, 14000.00))
+    else
+        if ( ( ( udg_PlayerMushroom[GetPlayerId(GetOwningPlayer(GetSpellAbilityUnit()))] == true ) or ( LoadInteger(udg_HeroDatabase, GetUnitTypeId(GetSpellAbilityUnit()), ( 'MUSH' + 0 )) == 0 ) ) ) then
+            call DisplayTextToPlayer(GetOwningPlayer(GetSpellAbilityUnit()), 0, 0, "TRIGSTR_9556")
+            call UnitAddItem(GetSpellAbilityUnit(), CreateItem('I06Q', 14000.00, 14000.00))
+        else
+            if ( ( LoadInteger(udg_HeroDatabase, GetUnitTypeId(GetSpellAbilityUnit()), ( 'MUSH' + 0 )) == 1 ) ) then
+                call UnitAddAbility(GetSpellAbilityUnit(), LoadInteger(udg_HeroDatabase, GetUnitTypeId(GetSpellAbilityUnit()), ( 'MUSH' + 2 )))
+                call UnitMakeAbilityPermanent(GetSpellAbilityUnit(), true, LoadInteger(udg_HeroDatabase, GetUnitTypeId(GetSpellAbilityUnit()), ( 'MUSH' + 2 )))
+                set udg_PlayerMushroom[GetPlayerId(GetOwningPlayer(GetSpellAbilityUnit()))]=true
+                call DestroyEffect(AddSpecialEffectTarget("Abilities\\Spells\\Human\\ManaFlare\\ManaFlareBoltImpact.mdl", GetSpellAbilityUnit(), "origin"))
+            else
+                if ( ( LoadInteger(udg_HeroDatabase, GetUnitTypeId(GetSpellAbilityUnit()), ( 'MUSH' + 0 )) == 2 ) ) then
+                    if ( ( GetUnitAbilityLevel(GetSpellAbilityUnit(), LoadInteger(udg_HeroDatabase, GetUnitTypeId(GetSpellAbilityUnit()), ( 'MUSH' + 1 ))) < 4 ) ) then
+                        call DisplayTextToPlayer(GetOwningPlayer(GetSpellAbilityUnit()), 0, 0, "TRIGSTR_9555")
+                        call UnitAddItem(GetSpellAbilityUnit(), CreateItem('I06Q', 14000.00, 14000.00))
+                    else
+                        if ( ( GetUnitTypeId(GetSpellAbilityUnit()) == 'H00M' ) ) then
+                            call UnitMakeAbilityPermanent(GetSpellAbilityUnit(), false, 'A03T')
+                            call UnitRemoveAbility(GetSpellAbilityUnit(), 'A03T')
+                            call SetPlayerAbilityAvailable(GetOwningPlayer(GetSpellAbilityUnit()), 'A03T', false)
+                            call UnitAddAbility(GetSpellAbilityUnit(), 'A0ZU')
+                            call UnitMakeAbilityPermanent(GetSpellAbilityUnit(), true, 'A0ZU')
+                        else
+                        endif
+                        call UnitMakeAbilityPermanent(GetSpellAbilityUnit(), false, LoadInteger(udg_HeroDatabase, GetUnitTypeId(GetSpellAbilityUnit()), ( 'MUSH' + 1 )))
+                        call UnitRemoveAbility(GetSpellAbilityUnit(), LoadInteger(udg_HeroDatabase, GetUnitTypeId(GetSpellAbilityUnit()), ( 'MUSH' + 1 )))
+                        call SetPlayerAbilityAvailable(GetOwningPlayer(GetSpellAbilityUnit()), LoadInteger(udg_HeroDatabase, GetUnitTypeId(GetSpellAbilityUnit()), ( 'MUSH' + 1 )), false)
+                        call UnitAddAbility(GetSpellAbilityUnit(), LoadInteger(udg_HeroDatabase, GetUnitTypeId(GetSpellAbilityUnit()), ( 'MUSH' + 2 )))
+                        call SetUnitAbilityLevel(GetSpellAbilityUnit(), LoadInteger(udg_HeroDatabase, GetUnitTypeId(GetSpellAbilityUnit()), ( 'MUSH' + 2 )), 4)
+                        call UnitMakeAbilityPermanent(GetSpellAbilityUnit(), true, LoadInteger(udg_HeroDatabase, GetUnitTypeId(GetSpellAbilityUnit()), ( 'MUSH' + 2 )))
+                        set udg_PlayerMushroom[GetPlayerId(GetOwningPlayer(GetSpellAbilityUnit()))]=true
+                        call DestroyEffect(AddSpecialEffectTarget("Abilities\\Spells\\Human\\ManaFlare\\ManaFlareBoltImpact.mdl", GetSpellAbilityUnit(), "origin"))
+                    endif
+                else
+                    if ( ( LoadInteger(udg_HeroDatabase, GetUnitTypeId(GetSpellAbilityUnit()), ( 'MUSH' + 0 )) == 3 ) ) then
+                        call UnitRemoveAbility(GetSpellAbilityUnit(), LoadInteger(udg_HeroDatabase, GetUnitTypeId(GetSpellAbilityUnit()), ( 'MUSH' + 1 )))
+                        call SetPlayerAbilityAvailable(GetOwningPlayer(GetSpellAbilityUnit()), LoadInteger(udg_HeroDatabase, GetUnitTypeId(GetSpellAbilityUnit()), ( 'MUSH' + 1 )), false)
+                        call UnitAddAbility(GetSpellAbilityUnit(), LoadInteger(udg_HeroDatabase, GetUnitTypeId(GetSpellAbilityUnit()), ( 'MUSH' + 2 )))
+                        call UnitMakeAbilityPermanent(GetSpellAbilityUnit(), true, LoadInteger(udg_HeroDatabase, GetUnitTypeId(GetSpellAbilityUnit()), ( 'MUSH' + 2 )))
+                        set udg_PlayerMushroom[GetPlayerId(GetOwningPlayer(GetSpellAbilityUnit()))]=true
+                        call DestroyEffect(AddSpecialEffectTarget("Abilities\\Spells\\Human\\ManaFlare\\ManaFlareBoltImpact.mdl", GetSpellAbilityUnit(), "origin"))
+                    else
+                        if ( ( LoadInteger(udg_HeroDatabase, GetUnitTypeId(GetSpellAbilityUnit()), ( 'MUSH' + 0 )) == 4 ) ) then
+                            if ( ( GetUnitAbilityLevel(GetSpellAbilityUnit(), LoadInteger(udg_HeroDatabase, GetUnitTypeId(GetSpellAbilityUnit()), ( 'MUSH' + 1 ))) < 3 ) ) then
+                                call DisplayTextToPlayer(GetOwningPlayer(GetSpellAbilityUnit()), 0, 0, "TRIGSTR_9553")
+                                call UnitAddItem(GetSpellAbilityUnit(), CreateItem('I06Q', 14000.00, 14000.00))
+                            else
+                                call UnitRemoveAbility(GetSpellAbilityUnit(), LoadInteger(udg_HeroDatabase, GetUnitTypeId(GetSpellAbilityUnit()), ( 'MUSH' + 1 )))
+                                call UnitAddAbility(GetSpellAbilityUnit(), LoadInteger(udg_HeroDatabase, GetUnitTypeId(GetSpellAbilityUnit()), ( 'MUSH' + 2 )))
+                                call UnitMakeAbilityPermanent(GetSpellAbilityUnit(), true, LoadInteger(udg_HeroDatabase, GetUnitTypeId(GetSpellAbilityUnit()), ( 'MUSH' + 2 )))
+                                set udg_PlayerMushroom[GetPlayerId(GetOwningPlayer(GetSpellAbilityUnit()))]=true
+                                call DestroyEffect(AddSpecialEffectTarget("Abilities\\Spells\\Human\\ManaFlare\\ManaFlareBoltImpact.mdl", GetSpellAbilityUnit(), "origin"))
+                            endif
+                        else
+                            call DisplayTextToPlayer(GetOwningPlayer(GetSpellAbilityUnit()), 0, 0, "TRIGSTR_9554")
+                            call UnitAddItem(GetSpellAbilityUnit(), CreateItem('I06Q', 14000.00, 14000.00))
+                        endif
+                    endif
+                endif
+            endif
+        endif
+    endif
+endfunction
+//===========================================================================
+function InitTrig_OddMushroom takes nothing returns nothing
+    set gg_trg_OddMushroom=CreateTrigger()
+    call TriggerRegisterAnyUnitEventBJ(gg_trg_OddMushroom, EVENT_PLAYER_UNIT_SPELL_EFFECT)
+    call TriggerAddCondition(gg_trg_OddMushroom, Condition(function Trig_OddMushroomConditions))
+    call TriggerAddAction(gg_trg_OddMushroom, function Trig_OddMushroomActions)
+endfunction
+//===========================================================================
 // Trigger: TeleportCancel
 //===========================================================================
+//TESH.scrollpos=9
+//TESH.alwaysfold=0
 function Trig_TeleportCancel_Conditions takes nothing returns boolean
     if GetSpellAbilityId() == 'A027' then
         return true
@@ -54955,6 +55700,8 @@ endfunction
 // 1->caster
 // 2->count
 //===========================================================================
+//TESH.scrollpos=28
+//TESH.alwaysfold=0
 function Trig_Star_Conditions takes nothing returns boolean
     if ( not ( GetSpellAbilityId() == 'A0UP' ) ) then
         return false
@@ -55740,7 +56487,7 @@ function InitTrig_BaGuaLu takes nothing returns nothing
 endfunction//===========================================================================
 // Trigger: TeleportScroll
 //===========================================================================
-//TESH.scrollpos=0
+//TESH.scrollpos=40
 //TESH.alwaysfold=0
 function Trig_TeleportScroll_Conditions takes nothing returns boolean
     return GetSpellAbilityId() == 'A027' or GetSpellAbilityId() == 'A00I'
@@ -55795,9 +56542,50 @@ endfunction
 //===========================================================================
 function InitTrig_TeleportScroll takes nothing returns nothing
     set gg_trg_TeleportScroll=CreateTrigger()
-    call TriggerRegisterAnyUnitEventBJ(gg_trg_TeleportScroll, EVENT_PLAYER_UNIT_SPELL_CAST)
+    call TriggerRegisterAnyUnitEventBJ(gg_trg_TeleportScroll, EVENT_PLAYER_UNIT_SPELL_CHANNEL)
     call TriggerAddCondition(gg_trg_TeleportScroll, Condition(function Trig_TeleportScroll_Conditions))
     call TriggerAddAction(gg_trg_TeleportScroll, function Trig_TeleportScroll_Actions)
+endfunction
+//===========================================================================
+// Trigger: Tea
+//===========================================================================
+function Trig_TeaConditions takes nothing returns boolean
+    return ( ( ( GetSpellAbilityId() == 'A0ZR' ) or ( GetSpellAbilityId() == 'A02A' ) ) )
+endfunction
+function Trig_TeaFunc002Conditions takes nothing returns nothing
+    if ( ( UnitHasBuffBJ(GetTriggerUnit(), 'BIrg') == false ) and ( UnitHasBuffBJ(GetTriggerUnit(), 'BIrm') == false ) and ( UnitHasBuffBJ(GetTriggerUnit(), 'BIrl') == false ) ) then
+        call FlushChildHashtable(YDLOC, GetHandleId(GetTriggeringTrigger()))
+        call DestroyTrigger(GetTriggeringTrigger())
+    else
+    endif
+    if ( ( ( GetOwningPlayer(GetEventDamageSource()) == Player(PLAYER_NEUTRAL_AGGRESSIVE) ) or ( ( ( GetOwningPlayer(GetEventDamageSource()) == udg_PlayerA[0] ) or ( GetOwningPlayer(GetEventDamageSource()) == udg_PlayerB[0] ) ) and ( GetUnitAbilityLevel(GetTriggerUnit(), 'A008') != 0 ) ) ) ) then
+    else
+        call UnitRemoveAbility(GetTriggerUnit(), 'BIrg')
+        call UnitRemoveAbility(GetTriggerUnit(), 'BIrm')
+        call UnitRemoveAbility(GetTriggerUnit(), 'BIrl')
+        call FlushChildHashtable(YDLOC, GetHandleId(GetTriggeringTrigger()))
+        call DestroyTrigger(GetTriggeringTrigger())
+    endif
+endfunction
+function Trig_TeaActions takes nothing returns nothing
+    local trigger ydl_trigger
+    local integer ydl_localvar_step= LoadInteger(YDLOC, GetHandleId(GetTriggeringTrigger()), 0xCFDE6C76)
+ set ydl_localvar_step=ydl_localvar_step + 3
+ call SaveInteger(YDLOC, GetHandleId(GetTriggeringTrigger()), 0xCFDE6C76, ydl_localvar_step)
+ call SaveInteger(YDLOC, GetHandleId(GetTriggeringTrigger()), 0xECE825E7, ydl_localvar_step)
+    call SaveUnitHandle(YDLOC, GetHandleId(GetTriggeringTrigger()) * ydl_localvar_step, 0xFC4D8276, GetSpellTargetUnit())
+    set ydl_trigger=CreateTrigger()
+    call TriggerRegisterUnitEvent(ydl_trigger, LoadUnitHandle(YDLOC, GetHandleId(GetTriggeringTrigger()) * ydl_localvar_step, 0xFC4D8276), EVENT_UNIT_DAMAGED)
+    call TriggerAddCondition(ydl_trigger, Condition(function Trig_TeaFunc002Conditions))
+    call FlushChildHashtable(YDLOC, GetHandleId(GetTriggeringTrigger()) * ydl_localvar_step)
+    set ydl_trigger=null
+endfunction
+//===========================================================================
+function InitTrig_Tea takes nothing returns nothing
+    set gg_trg_Tea=CreateTrigger()
+    call TriggerRegisterAnyUnitEventBJ(gg_trg_Tea, EVENT_PLAYER_UNIT_SPELL_EFFECT)
+    call TriggerAddCondition(gg_trg_Tea, Condition(function Trig_TeaConditions))
+    call TriggerAddAction(gg_trg_Tea, function Trig_TeaActions)
 endfunction
 //===========================================================================
 // Trigger: YukkuriUpgrade
@@ -55854,7 +56642,7 @@ endfunction
 //===========================================================================
 // Trigger: YukkuriTransport
 //===========================================================================
-//TESH.scrollpos=48
+//TESH.scrollpos=32
 //TESH.alwaysfold=0
 function Trig_YukkuriTransport_Conditions takes nothing returns boolean
     if GetSpellAbilityId() != 'A0ZF' then
@@ -55894,6 +56682,7 @@ function Trig_YukkuriTransport_Actions takes nothing returns nothing
             if mi != null then
                 call UnitAddItem(Shyoujo, mi)
                 call UnitRemoveItem(Manjyu, mi)
+                call TriggerSleepAction(0.01)
                 set j=5
             endif
             exitwhen j >= 5
@@ -57038,6 +57827,8 @@ endfunction
 //===========================================================================
 // Trigger: Profess
 //===========================================================================
+//TESH.scrollpos=16
+//TESH.alwaysfold=0
 function Trig_Profess_Conditions takes nothing returns boolean
     return GetSpellAbilityId() == 'A0C1'
 endfunction
@@ -57053,7 +57844,7 @@ function Trig_Profess_Actions takes nothing returns nothing
     set iff=(udg_FLIFF[GetPlayerId((GetOwningPlayer(caster)))]) // INLINED!!
     set tx=GetUnitX(caster)
     set ty=GetUnitY(caster)
-    call GroupEnumUnitsInRange(g, tx, ty, 300, iff)
+    call GroupEnumUnitsInRange(g, tx, ty, 400, iff)
     loop
         set v=FirstOfGroup(g)
         exitwhen v == null
@@ -59885,6 +60676,7 @@ function InitCustomTriggers takes nothing returns nothing
     call InitTrig_Neutral_System()
     call InitTrig_Neutral_Die()
     call InitTrig_ItemClear()
+    call InitTrig_ShoppingHint()
     call InitTrig_AllBuffClear()
     call InitTrig_Init_Abilities()
     call InitTrig_IceAndDeArmItem()
@@ -59943,6 +60735,7 @@ function InitCustomTriggers takes nothing returns nothing
     call InitTrig_Yuyuko04_Learn()
     call InitTrig_Init_Yuyuko()
     call InitTrig_AyaDS()
+    call InitTrig_AyaMR()
     call InitTrig_Aya01()
     call InitTrig_Aya02()
     call InitTrig_Aya02_Use()
@@ -60218,6 +61011,7 @@ function InitCustomTriggers takes nothing returns nothing
     call InitTrig_Minoriko_Harvest()
     call InitTrig_Minoriko01()
     call InitTrig_Minoriko02()
+    call InitTrig_Minoriko02MR()
     call InitTrig_Minoriko03()
     call InitTrig_Minoriko04()
     call InitTrig_Init_Minoriko()
@@ -60352,6 +61146,8 @@ function InitCustomTriggers takes nothing returns nothing
     call InitTrig_PachiliInitSpell()
     call InitTrig_Initialing_Pachili()
     call InitTrig_Initialization_ItemAbilities()
+    call InitTrig_DoubleClick()
+    call InitTrig_OddMushroom()
     call InitTrig_TeleportCancel()
     call InitTrig_Star()
     call InitTrig_Mashroom()
@@ -60369,6 +61165,7 @@ function InitCustomTriggers takes nothing returns nothing
     call InitTrig_XinHua()
     call InitTrig_BaGuaLu()
     call InitTrig_TeleportScroll()
+    call InitTrig_Tea()
     call InitTrig_YukkuriUpgrade()
     call InitTrig_YukkuriTransport()
     call InitTrig_YukkuriBackHome()
@@ -60674,6 +61471,8 @@ function main takes nothing returns nothing
     call CreateAllUnits()
     call InitBlizzard()
 
+call ExecuteFunc("YDTriggerSaveLoadSystem__Init")
+call ExecuteFunc("YDWETimerSystem___Init")
 
     call InitGlobals()
     call InitCustomTriggers()
@@ -60705,6 +61504,9 @@ function config takes nothing returns nothing
     call InitCustomTeams()
     call InitAllyPriorities()
 endfunction
+//===========================================================================
+//ϵͳ-TimerSystem
+//===========================================================================
 
 
 
