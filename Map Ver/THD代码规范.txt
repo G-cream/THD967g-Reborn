@@ -126,7 +126,7 @@ MISCNAME简述
 
 1. 使用方法
 MISCNAME = NAME [REMARK] [AVAILABILITY] "." FILEEXT
-模型名称由 名称 备注 废弃.mdx共三部分组成。
+杂项名称由 名称 备注 废弃.扩展名共三部分组成。
 可能的最大长度的命名：
 butterfly01_blue-obsolete.blp
 
