@@ -1,0 +1,230 @@
+GetLocalPlayer()​
+
+Introduction:
+
+What is GetLocalPlayer()?
+JASS:
+constant native GetLocalPlayer takes nothing returns player
+
+
+GetLocalPlayer is one of the most useful natives, but it is also one of the most dangerous. GetLocalPlayer is a native that retrieves the current player executing the code at that instance. If used correctly, you can perform an action for only one player, or even a group of players, so that the other players won't be affected.
+
+GetLocalPlayer and Desyncs:
+
+GetLocalPlayer is generally prone to desyncs. Desyncs occur when data becomes desynchronized between players in a way that affects gameplay. For example, if a unit has position A for player 1 and position B for player 2, Wc3 will realize the game is out of sync. As a result, Wc3 will simply disconnect one of the players. In this tutorial, you will learn how to use GetLocalPlayer() properly without causing desyncs.
+
+Players in JASS:
+
+Just a brief note for GUI users.
+
+In JASS, Player indexes range from 0-11 instead of 1-12.
+
+(0 = 1, 1 = 2, 2 = 3 ... 10 = 11, 11 = 12)
+
+So, you would do something like:
+JASS:
+if GetLocalPlayer() == Player(7) then
+// Player(7) refers to Player 8 (Pink)
+endif
+
+Then it would check if the current player executing the code is equal to Player 8 (Pink).
+
+Other common ones would be to use:
+JASS:
+GetTriggerPlayer()
+GetOwningPlayer(GetTriggerUnit())
+
+
+The first is the Triggering Player and the second is the owner of the triggering unit. You can use any player input that you want, but these are the most common ones, and useful for GUI users to know.
+
+GetLocalPlayer Basic Usage:
+
+GetLocalPlayer can be used to perform an action for a specific player, as stated previously. Now, let's look at a basic example of a GetLocalPlayer block:
+
+JASS:
+function Test takes nothing returns nothing
+    if GetLocalPlayer() == Player(0) then
+        //actions
+    endif
+endfunction
+
+
+Let's break the function down into parts, and show the definitions. Then we'll stitch the definitions together to get a basic concept of the function.
+
+function Test... = The function "Test" takes nothing and returns nothing. It simply performs some actions.
+if GetLocalPlayer() = If the player executing this code (local player==player currently executing this code)
+== Player(0) then = Is Equal to Player 1 (Red), then
+//actions = do these actions
+endif/endfunction = . (Period)
+
+So, now let's connect all those pieces.
+
+The function "Test" takes nothing and returns nothing. If the player running this trigger is equal to Player 1 (Red), then do these actions.
+
+So, this will perform the actions in that block if the player running the trigger is Player 1 (Red).
+
+Disconnections through Locally Creating/Destroying Agents:
+
+When you create or destroy agents within a local player block, it will cause a desync.
+
+First, let me show an example:
+
+JASS:
+function Test takes nothing returns nothing
+    if GetLocalPlayer() == Player(0) then
+        call AddSpecialEffect(&quot;none.mdl&quot;,0.,0.)
+        // Will this desync?
+    endif
+endfunction
+
+
+This will desync.
+JASS:
+native AddSpecialEffect takes string modelName, real x, real y returns effect
+
+
+This function returns effect.
+JASS:
+type effect extends agent
+
+
+Effect extends agent.
+
+So you are creating an agent. Creating agents locally for players will cause desyncs. Non-agent handles, however, will not desync when created locally for players (e.g. texttags, ubersplats, lightning, weathereffects, and anything else that has its own handle stack).
+
+Spoiler: Outdated
+In patch 1.24, Blizzard introduced the agent type. It refers to all reference-counted objects. These types are still handles, but they are all a part of a joint handle stack. If you use GetHandleId() on an agent, the handle ID returned will be greater than 0x100000 (0x denotes a hex number). However, non-agent handles have a stack that starts with an ID of 99 and goes down to 0. This limits those handles to only 100, but with GetLocalPlayer() you can create those handles locally. This means that the new limit is 100 per player, instead of 100 global handles.
+
+To see which types are agents and which aren't, see the common.j:
+http://wiki.thehelper.net/wc3/jass/common.j
+
+Manipulating the Editor's System:
+
+Say you want to create a special effect for a player. How would you do that?
+JASS:
+function Test takes nothing returns nothing
+    if GetLocalPlayer() == Player(0) then
+        call AddSpecialEffect(&quot;war3mapImported\\FX.mdl&quot;,0.,0.)
+    endif
+endfunction
+
+
+WRONG! You cannot create a special effect locally because it is an agent. This will surely disconnect the other players. So, how do you show an effect for just one player? In most cases, you would locally show/hide something for a player. But effects don't have a function for that. Have no fear, because there is an alternative! Special effects don't have a hide/display function, so this is what we'll do!
+
+JASS:
+function Test takes nothing returns nothing
+    local string s = &quot;&quot;
+    //So the path will be nothing, so it won't show at all
+    if GetLocalPlayer() == Player(0) then
+        set s = &quot;war3mapImported\\FX.mdl&quot;
+        //An actual path, so it <i>will</i> have a path for that player but not for
+        //the other players
+    endif
+    call DestroyEffect(AddSpecialEffect(s,0.,0.))
+endfunction
+
+
+Congratulations, you made it correctly!
+
+Spoiler: Rumor
+There is a rumor that the string table can become desynced if the first time you use a string is within a GetLocalPlayer() block.
+
+It will not cause an immediate disconnection, and it is unclear whether it has any future implications. Still, if you'd like to remain on the safe side, you may want to choose this method instead:
+JASS:
+function Test takes nothing returns nothing
+    local string s = &quot;war3mapImported\\FX.mdl&quot;
+    if GetLocalPlayer() != Player(0) then
+        set s = &quot;&quot;
+    endif
+    call DestroyEffect(AddSpecialEffect(s,0.,0.))
+endfunction
+
+
+This way, the string "s" will first be filled with "war3mapImported\\FX.mdl". If this is a new string, it'll be entered into the string table for all players. Then it checks if the local player is not player 1 (the player you'll show the effect to), and then it will set the string to "". Basically, if the player is not player 1, change the path to an empty model "". It is the same exact concept as above, just in reverse. However, it allows the string table to remain sync'd.
+
+Basic Usage:
+
+Let's say you have a multiboard, but you only want it for a player? Remember, you can't create it for a player. They have no path to manipulate, so what do you do? You can hide/show it locally for players!
+
+JASS:
+function Test takes multiboard mb returns nothing
+call MultiboardDisplay(mb,false)
+if GetLocalPlayer() == Player(0) then
+call MultiboardDisplay(mb, true)
+endif
+endfunction
+
+
+It will display it only for player 1!
+
+Other Causes of Desyncs:
+
+Note that creating and destroying handles are not the only way to cause a desync through a local block. Many things that affect gameplay in ways to affect things like pathing, positions, etc. can also cause desyncs. For example, hiding a unit won't desync immediately, but it will desync once they interact with something. Some other things that fall into this category are changing movement speed, locally moving positions, etc. Usually aesthetics won't cause desyncs, such as showing/hiding a multiboard, changing the vertex color of a unit, etc.
+
+It is unclear what exactly will desync and what will not. Be as safe as you can when dealing with local blocks. Even some things, such as setting a variable within a block, can cause desyncs later on if you use it in a condition, because it will later be considered true only for a specific player. Take these kinds of things into account before deciding how you want to approach your problem.
+
+Performing Functions For Forces
+
+Performing functions for forces, also has a technique. Instead of using GetLocalPlayer() over and over again, you can use a function called "IsPlayerInForce()". An example:
+JASS:
+function DisplayTextToForce takes force toForce, string message returns nothing
+if (IsPlayerInForce(GetLocalPlayer(), toForce))
+call DisplayTextToPlayer(GetLocalPlayer(), 0, 0, message)
+endif
+endfunction
+
+
+See this function? The "toForce" area is the force you will perform it for, and the message is the message to be displayed.
+
+IsPlayerInForce checks if a player (argument 1) is in a specified force (argument 2). Since GetLocalPlayer() returns a player, (the player performing the trigger at that moment), you can check if that player is in that force, then it will perform that function to that player. This trigger will run for all players, and those in the force will receive a message, and those outside the force, will receive nothing.
+
+Conclusion:
+
+Now you know how to show stuff for only the local player! In GUI, you can also just use custom scripts as blocks to perform things locally. Be careful though, as many GUI functions have hidden things you might not know about!
+
+Credits:
+
+SuperIKI and Peppar for H2I
+Earth-Fury for the "technical" side of GetLocalPlayer()
+weaaddar for a small H2I definition
+Enjoy! :)
+
+Some quotes that might help for some overall knowledge, thanks to phyrex and strilanc:
+
+
+phyrex1an said:
+Second, creating handles is not the only thing that can/will cause a desync. Lets see if I remember them all :):
+1. Creating or destroying a handle
+2. Use a string for the first time
+3. Change the game in any way that affects gameplay (eg, change the move speed of a unit).
+4. Assign a new random seed.
+5. Pretty much anything that have an effect that you can read later.
+6. TriggerSleepAction
+1. Creating or destroying an agent locally will cause a desync.
+2. Mentioned in the tutorial. However, it doesn't necessarily cause a disconnection in the map. The table might not be synchronized, but it isn't clear whether this will cause issues.
+3. Mentioned in the tutorial (pathing, move speed, etc.)
+4. Assigning a new random seed can be performed through this native:
+JASS:
+native SetRandomSeed takes integer seed returns nothing
+
+If you set a random seed locally, then in some situations where you perform if GetRandomInt() or GetRandomReal(), the results may be different and will perform the actions locally.
+5. Essentially the same as 3, except a bit more broad since there are probably things besides just tinkering with widgets that can cause a desync in a local player block.
+6. TriggerSleepAction() is equivalent to the "Wait" function in GUI. Using this in a local player block will desync.
+
+Strilanc said:
+Unlike almost all the other functions, GetLocalPlayer returns a different value for each player. On player 1's computer the function returns player 1, etc. That means you can do things like:
+JASS:
+if GetLocalPlayer() == Player(0) then //0 is the first player, player 1
+call CreateUnit(Player(0), 'hfoo', 0, 0, 0) //create a footman at the center
+endif
+
+which will create a footman for player 1, but only if you're player 1!
+
+Suppose the game allowed that. Player 1 orders the new footman to attack. All the other players' computers go "huh? order what footman to attack? there is no footman!". So they ignore the command to the non-existent footman and whatever the footman was attacking only dies for player 1. This effect (called desyncing) gets progressively worse as the effects of the footman spread. Eventually player 1 is looking at a game totally different from player 2, and nothing either of them does makes sense to the other.
+
+To avoid that whole song and dance, desynced players are just instantly removed from the game.
+** Update: March 5th and March 25th ** : I reformatted a bit of it for the 1.24 update since H2I no longer applies. I've also added "0x" to denote the hexadecimals (0x100000) since I forgot it. It is decently important since I don't want people to be misled into thinking that handles desync when over 100,000 instead of 0x100000. =P Well, usually handles will be either higher than 0x100000 or 0-99.
+
+Update: August 20, 2012: I updated some things to be a bit more factual and easier to read, as well as some updates for xenForo.
+
+Update: July 29, 2013: Updated to be more factual. A lot of the information was pre-1.24b, and now there is an easier way to determine what desyncs and what doesn't.
