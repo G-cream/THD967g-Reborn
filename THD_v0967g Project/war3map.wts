@@ -4267,7 +4267,7 @@ Dots 常用论坛及发布点：
 如遇到BUG，
 请於论坛建议及回报区回报。
 东方幻想乡DOTS制作组
-版本：THD_C01.02.02
+版本：THD_C02.01
 }
 
 STRING 612
@@ -18058,19 +18058,6 @@ STRING 2502
 暗符「月的暗面」
 }
 
-STRING 2503
-// 物品: I03N (|cffffcc00合成卷轴|r - 便携式塞钱箱), Ubertip (提示工具 - 扩展)
-{
-|cffff3300其它材料：|r
-天狗的护符 - 500|n|cffc0c0c0总价 - 1500|r
-
-|cffffcc00属性：|r
-攻击速度 +15%
-
-|cff00ccff香油钱：|r
-将一个敌方单位转换成点数。施法距离为650，冷却时间80秒。
-}
-
 STRING 2504
 // 技能: A0N2 (Twei01 - 狡兔「远古的骗术」), Ubertip (提示工具 - 普通 - 扩展)
 {
@@ -30543,7 +30530,7 @@ STRING 4252
 |cffffcc00梅露兰 普莉兹姆莉巴|r
 |cffaaaa00■|r坦克型　　 远程攻距 150 移动速度 300
 |cffffcc00● |r|cffff0033力量|r - 24 + 2.30     基础伤害 56~59
-|cffffcc00○ |r|cff00ff99敏捷|r - 17 + 2.10     基础护甲 0.40
+|cffffcc00○ |r|cff00ff99敏捷|r - 17 + 2.10     基础护甲 2.40
 |cffffcc00○ |r|cff0033ff智力|r - 19 + 1.60
 }
 
@@ -55881,6 +55868,12 @@ STRING 7643
 学习赎罪「荣华之孽」(|cffffcc00W|r) - [|cffffcc00等级 %d|r]
 }
 
+STRING 7644
+// 单位: E025 (梦幻馆女仆), Propernames (称谓)
+{
+梦月
+}
+
 STRING 7645
 // 技能: A0RY (Merlin04 - 管灵「激昂小号曲-第一乐章」), Hotkey (热键 - 普通)
 {
@@ -66844,7 +66837,7 @@ STRING 8945
 |cffffcc00河城 荷取|r
 |cffff0000■|r突袭型　　 近战攻距 128 移动速度 310
 |cffffcc00○ |r|cffff0033力量|r - 22 + 2.00     基础伤害 52~58
-|cffffcc00● |r|cff00ff99敏捷|r - 20 + 2.20     基础护甲 3.80
+|cffffcc00● |r|cff00ff99敏捷|r - 20 + 2.40     基础护甲 3.80
 |cffffcc00○ |r|cff0033ff智力|r - 18 + 1.80     |cffff00ff「高阶向角色」|r
 }
 
@@ -71599,7 +71592,7 @@ STRING 9423
 }
 
 STRING 9424
-// 单位: E025 (梦幻馆女仆), Propernames (称谓)
+// 单位: E025 (梦幻馆女仆), Tip (提示工具 - 基础)
 {
 梦月
 }
@@ -71617,25 +71610,25 @@ STRING 9426
 }
 
 STRING 9427
-// 单位: E025 (梦幻馆女仆), Tip (提示工具 - 基础)
-{
-梦月
-}
-
-STRING 9428
 // 单位: E025 (梦幻馆女仆), Awakentip (提示工具 -唤醒)
 {
 梦月
 }
 
-STRING 9429
+STRING 9428
 // 单位: E025 (梦幻馆女仆), Revivetip (提示工具 -重生)
 {
 梦月
 }
 
-STRING 9430
+STRING 9429
 // 单位: E025 (梦幻馆女仆), Ubertip (提示工具 - 扩展)
+{
+梦月
+}
+
+STRING 9430
+// 单位: E02F (梦幻馆女仆), Propernames (称谓)
 {
 梦月
 }
@@ -79283,6 +79276,18 @@ STRING 10173
 D
 }
 
+STRING 10174
+// 单位: E02F (梦幻馆女仆), Name (名字)
+{
+梦幻馆女仆
+}
+
+STRING 10175
+// 单位: E02F (梦幻馆女仆), Tip (提示工具 - 基础)
+{
+梦月
+}
+
 STRING 10176
 // 单位: E02C (夜雀), Propernames (称谓)
 {
@@ -79339,5 +79344,745 @@ STRING 10181
 // 物品: I06N (碎骨之笛), Ubertip (提示工具 - 扩展)
 {
 |cffffcc00属性：|r|n力量 +9|n敏捷 +9|n智力 +27|n攻击力 +8|n|n|cff00ff33夜鸣之鸟的消失：|r|n提升600范围友方单位55%移动速度，|n持续6秒，冷却时间60秒。
+}
+
+STRING 10182
+// 单位: E02F (梦幻馆女仆), Awakentip (提示工具 -唤醒)
+{
+梦月
+}
+
+STRING 10183
+// 单位: E02F (梦幻馆女仆), Revivetip (提示工具 -重生)
+{
+梦月
+}
+
+STRING 10184
+// 单位: E02F (梦幻馆女仆), Ubertip (提示工具 - 扩展)
+{
+梦月
+}
+
+STRING 10185
+// 单位: E02F (梦幻馆女仆), EditorSuffix (名字 - 编辑器后缀)
+{
+（原版）
+}
+
+STRING 10187
+// 技能: A103 (MugetsuNo201 - 梦符「惊梦」), Name (名字)
+{
+MugetsuNo201 - 梦符「惊梦」
+}
+
+STRING 10188
+// 技能: A103 (MugetsuNo201 - 梦符「惊梦」), Hotkey (热键 - 普通)
+{
+D
+}
+
+STRING 10189
+// 技能: A103 (MugetsuNo201 - 梦符「惊梦」), Researchhotkey (热键 - 学习)
+{
+D
+}
+
+STRING 10190
+// 技能: A103 (MugetsuNo201 - 梦符「惊梦」), Tip (提示工具 - 普通)
+{
+梦符「惊梦」(|cffffcc00D|r) - [|cffffcc00等级 1|r]
+}
+
+STRING 10191
+// 技能: A103 (MugetsuNo201 - 梦符「惊梦」), Tip (提示工具 - 普通)
+{
+梦符「惊梦」(|cffffcc00D|r) - [|cffffcc00等级 2|r]
+}
+
+STRING 10192
+// 技能: A103 (MugetsuNo201 - 梦符「惊梦」), Tip (提示工具 - 普通)
+{
+梦符「惊梦」(|cffffcc00D|r) - [|cffffcc00等级 3|r]
+}
+
+STRING 10193
+// 技能: A103 (MugetsuNo201 - 梦符「惊梦」), Tip (提示工具 - 普通)
+{
+梦符「惊梦」(|cffffcc00D|r) - [|cffffcc00等级 4|r]
+}
+
+STRING 10194
+// 技能: A103 (MugetsuNo201 - 梦符「惊梦」), Researchtip (提示工具 - 学习)
+{
+学习梦符「惊梦」(|cffffcc00D|r) - [|cffffcc00等级 %d|r]
+}
+
+STRING 10195
+// 技能: A103 (MugetsuNo201 - 梦符「惊梦」), Researchubertip (提示工具 - 学习 - 扩展)
+{
+梦月向前方投射一颗弹幕，
+对触碰到的敌人造成魔法伤害
+
+|cff00ffff魔法伤害|r：50/100/150/200
+|cff00ffff最大距离|r：1200
+|cff00ffff伤害范围|r：175
+|cff00ffff魔法消耗|r：50
+|cff00ffff冷却时间|r：7/6/4.5/3秒
+}
+
+STRING 10196
+// 技能: A103 (MugetsuNo201 - 梦符「惊梦」), Ubertip (提示工具 - 普通 - 扩展)
+{
+梦月向前方投射一颗弹幕，
+对触碰到的敌人造成魔法伤害
+
+|cff00ffff魔法伤害|r：50
+|cff00ffff最大距离|r：1200
+|cff00ffff伤害范围|r：175
+|cff00ffff魔法消耗|r：50
+|cff00ffff冷却时间|r：7秒
+}
+
+STRING 10197
+// 技能: A103 (MugetsuNo201 - 梦符「惊梦」), Ubertip (提示工具 - 普通 - 扩展)
+{
+梦月向前方投射一颗弹幕，
+对触碰到的敌人造成魔法伤害
+
+|cff00ffff魔法伤害|r：100/
+|cff00ffff最大距离|r：1200
+|cff00ffff伤害范围|r：175
+|cff00ffff魔法消耗|r：50
+|cff00ffff冷却时间|r：6秒
+}
+
+STRING 10198
+// 技能: A103 (MugetsuNo201 - 梦符「惊梦」), Ubertip (提示工具 - 普通 - 扩展)
+{
+梦月向前方投射一颗弹幕，
+对触碰到的敌人造成魔法伤害
+
+|cff00ffff魔法伤害|r：150
+|cff00ffff最大距离|r：1200
+|cff00ffff伤害范围|r：175
+|cff00ffff魔法消耗|r：50
+|cff00ffff冷却时间|r：4.5秒
+}
+
+STRING 10199
+// 技能: A103 (MugetsuNo201 - 梦符「惊梦」), Ubertip (提示工具 - 普通 - 扩展)
+{
+梦月向前方投射一颗弹幕，
+对触碰到的敌人造成魔法伤害
+
+|cff00ffff魔法伤害|r：200
+|cff00ffff最大距离|r：1200
+|cff00ffff伤害范围|r：175
+|cff00ffff魔法消耗|r：50
+|cff00ffff冷却时间|r：3秒
+}
+
+STRING 10200
+// 技能: A107 (MugetsuNo204 - 梦符「梦境现实」), Name (名字)
+{
+MugetsuNo204 - 梦符「梦境现实」
+}
+
+STRING 10201
+// 技能: A105 (MugetsuNo2Ex - 梦符「断梦」), Name (名字)
+{
+MugetsuNo2Ex - 梦符「断梦」
+}
+
+STRING 10202
+// 技能: A105 (MugetsuNo2Ex - 梦符「断梦」), Tip (提示工具 - 普通)
+{
+梦符「断梦」(|cffffcc00E|r) 
+}
+
+STRING 10203
+// 技能: A105 (MugetsuNo2Ex - 梦符「断梦」), Ubertip (提示工具 - 普通 - 扩展)
+{
+梦月立即移动到梦境弹幕处
+
+|cff00ffff最大距离|r：1200
+|cff00ffff捕捉范围|r：200
+|cff00ffff魔法消耗|r：50
+|cff00ffff冷却时间|r：1.7秒
+}
+
+STRING 10204
+// 技能: A105 (MugetsuNo2Ex - 梦符「断梦」), Hotkey (热键 - 普通)
+{
+E
+}
+
+STRING 10205
+// 技能: A105 (MugetsuNo2Ex - 梦符「断梦」), Researchhotkey (热键 - 学习)
+{
+E
+}
+
+STRING 10206
+// 技能: A107 (MugetsuNo204 - 梦符「梦境现实」), Hotkey (热键 - 普通)
+{
+W
+}
+
+STRING 10207
+// 技能: A107 (MugetsuNo204 - 梦符「梦境现实」), Researchhotkey (热键 - 学习)
+{
+W
+}
+
+STRING 10208
+// 技能: A104 (MugetsuNo2Al - 弹幕判定), Name (名字)
+{
+MugetsuNo2Al - 弹幕判定
+}
+
+STRING 10209
+// 技能: A106 (MugetsuNo203 - 梦符「释梦」), Name (名字)
+{
+MugetsuNo203 - 梦符「释梦」
+}
+
+STRING 10210
+// 技能: A106 (MugetsuNo203 - 梦符「释梦」), Researchtip (提示工具 - 学习)
+{
+学习梦符「释梦」(|cffffcc00R|r) - [|cffffcc00等级 %d|r]
+}
+
+STRING 10220
+// 技能: A106 (MugetsuNo203 - 梦符「释梦」), Hotkey (热键 - 普通)
+{
+R
+}
+
+STRING 10221
+// 技能: A107 (MugetsuNo204 - 梦符「梦境现实」), Tip (提示工具 - 普通)
+{
+梦符「梦境现实」(|cffffcc00W|r) - [|cffffcc00等级 1|r]
+}
+
+STRING 10222
+// 技能: A107 (MugetsuNo204 - 梦符「梦境现实」), Tip (提示工具 - 普通)
+{
+梦符「梦境现实」(|cffffcc00W|r) - [|cffffcc00等级 2|r]
+}
+
+STRING 10223
+// 技能: A107 (MugetsuNo204 - 梦符「梦境现实」), Tip (提示工具 - 普通)
+{
+梦符「梦境现实」(|cffffcc00W|r) - [|cffffcc00等级 3|r]
+}
+
+STRING 10224
+// 技能: A107 (MugetsuNo204 - 梦符「梦境现实」), Tip (提示工具 - 普通)
+{
+梦符「惊梦」(|cffffcc00D|r) - [|cffffcc00等级 4|r]
+}
+
+STRING 10225
+// 技能: A107 (MugetsuNo204 - 梦符「梦境现实」), Researchtip (提示工具 - 学习)
+{
+学习梦符「梦境现实」(|cffffcc00W|r) - [|cffffcc00等级 %d|r]
+}
+
+STRING 10227
+// 技能: A10B (MugetsuNo204 - 梦符「梦境现实」返回), Ubertip (提示工具 - 普通 - 扩展)
+{
+草
+}
+
+STRING 10228
+// 技能: A10B (MugetsuNo204 - 梦符「梦境现实」返回), Ubertip (提示工具 - 普通 - 扩展)
+{
+草
+}
+
+STRING 10230
+// 技能: A107 (MugetsuNo204 - 梦符「梦境现实」), Ubertip (提示工具 - 普通 - 扩展)
+{
+梦月向前方投射一颗弹幕，
+对触碰到的敌人造成魔法伤害
+
+|cff00ffff魔法伤害|r：200
+|cff00ffff最大距离|r：1200
+|cff00ffff伤害范围|r：175
+|cff00ffff魔法消耗|r：50
+|cff00ffff冷却时间|r：3秒
+}
+
+STRING 10231
+// 单位: e02G (MugetsuNo2 - 弹幕), Name (名字)
+{
+MugetsuNo2 - 弹幕
+}
+
+STRING 10232
+// 单位: e02H (MugetsuNo2 - 花), Name (名字)
+{
+MugetsuNo2 - 花
+}
+
+STRING 10233
+// 技能: A10B (MugetsuNo204 - 梦符「梦境现实」返回), Researchubertip (提示工具 - 学习 - 扩展)
+{
+1
+}
+
+STRING 10234
+// 技能: A108 (MugetsuNo202 - 梦符「入梦」), Name (名字)
+{
+MugetsuNo202 - 梦符「入梦」
+}
+
+STRING 10235
+// 技能: A108 (MugetsuNo202 - 梦符「入梦」), Hotkey (热键 - 普通)
+{
+F
+}
+
+STRING 10236
+// 技能: A108 (MugetsuNo202 - 梦符「入梦」), Researchhotkey (热键 - 学习)
+{
+F
+}
+
+STRING 10237
+// 技能: A108 (MugetsuNo202 - 梦符「入梦」), Tip (提示工具 - 普通)
+{
+梦符「入梦」(|cffffcc00D|r) - [|cffffcc00等级 1|r]
+}
+
+STRING 10238
+// 技能: A108 (MugetsuNo202 - 梦符「入梦」), Tip (提示工具 - 普通)
+{
+梦符「入梦」(|cffffcc00D|r) - [|cffffcc00等级 2|r]
+}
+
+STRING 10239
+// 技能: A108 (MugetsuNo202 - 梦符「入梦」), Tip (提示工具 - 普通)
+{
+梦符「入梦」(|cffffcc00D|r) - [|cffffcc00等级 3|r]
+}
+
+STRING 10240
+// 技能: A108 (MugetsuNo202 - 梦符「入梦」), Tip (提示工具 - 普通)
+{
+梦符「入梦」(|cffffcc00D|r) - [|cffffcc00等级 4|r]
+}
+
+STRING 10241
+// 技能: A108 (MugetsuNo202 - 梦符「入梦」), Researchtip (提示工具 - 学习)
+{
+学习梦符「入梦」(|cffffcc00F|r) - [|cffffcc00等级 %d|r]
+}
+
+STRING 10247
+// 技能: A106 (MugetsuNo203 - 梦符「释梦」), Researchhotkey (热键 - 学习)
+{
+R
+}
+
+STRING 10248
+// 技能: A106 (MugetsuNo203 - 梦符「释梦」), Tip (提示工具 - 普通)
+{
+梦符「释梦」(|cffffcc00D|r) - [|cffffcc00等级 1|r]
+}
+
+STRING 10249
+// 技能: A106 (MugetsuNo203 - 梦符「释梦」), Tip (提示工具 - 普通)
+{
+梦符「释梦」(|cffffcc00D|r) - [|cffffcc00等级 2|r]
+}
+
+STRING 10250
+// 技能: A106 (MugetsuNo203 - 梦符「释梦」), Tip (提示工具 - 普通)
+{
+梦符「释梦」(|cffffcc00D|r) - [|cffffcc00等级 3|r]
+}
+
+STRING 10251
+// 技能: A106 (MugetsuNo203 - 梦符「释梦」), Tip (提示工具 - 普通)
+{
+梦符「释梦」(|cffffcc00D|r) - [|cffffcc00等级 4|r]
+}
+
+STRING 10252
+// 技能: A106 (MugetsuNo203 - 梦符「释梦」), Researchubertip (提示工具 - 学习 - 扩展)
+{
+梦月向周围释放弹幕，并立即刷新「断梦」
+梦月释放「断梦」后，对出现位置周围的敌人造成伤害。
+
+|cff00ffff弹幕伤害|r：「惊梦」伤害的100%
+|cff00ffff断梦伤害|r：50/100/150/200
+
+|cff00ffff魔法消耗|r：80
+|cff00ffff冷却时间|r：15/14/13/13秒
+}
+
+STRING 10253
+// 技能: A106 (MugetsuNo203 - 梦符「释梦」), Ubertip (提示工具 - 普通 - 扩展)
+{
+梦月向周围释放弹幕，并立即刷新「断梦」
+梦月释放「断梦」后，对出现位置周围的敌人造成伤害。
+
+|cff00ffff弹幕伤害|r：「惊梦」伤害的100%
+|cff00ffff断梦伤害|r：50
+|cff00ffff魔法消耗|r：80
+|cff00ffff冷却时间|r：15秒
+}
+
+STRING 10254
+// 技能: A106 (MugetsuNo203 - 梦符「释梦」), Ubertip (提示工具 - 普通 - 扩展)
+{
+梦月向周围释放弹幕，并立即刷新「断梦」
+梦月释放「断梦」后，对出现位置周围的敌人造成伤害。
+
+|cff00ffff弹幕伤害|r：「惊梦」伤害的100%
+|cff00ffff断梦伤害|r：100
+|cff00ffff魔法消耗|r：80
+|cff00ffff冷却时间|r：14秒
+}
+
+STRING 10255
+// 技能: A106 (MugetsuNo203 - 梦符「释梦」), Ubertip (提示工具 - 普通 - 扩展)
+{
+梦月向周围释放弹幕，并立即刷新「断梦」
+梦月释放「断梦」后，对出现位置周围的敌人造成伤害。
+
+|cff00ffff弹幕伤害|r：「惊梦」伤害的100%
+|cff00ffff断梦伤害|r：150
+|cff00ffff魔法消耗|r：80
+|cff00ffff冷却时间|r：13秒
+}
+
+STRING 10256
+// 技能: A106 (MugetsuNo203 - 梦符「释梦」), Ubertip (提示工具 - 普通 - 扩展)
+{
+梦月向周围释放弹幕，并立即刷新「断梦」
+梦月释放「断梦」后，对出现位置周围的敌人造成伤害。
+
+|cff00ffff弹幕伤害|r：「惊梦」伤害的100%
+|cff00ffff断梦伤害|r：200
+|cff00ffff魔法消耗|r：80
+|cff00ffff冷却时间|r：13秒
+}
+
+STRING 10257
+// 技能: A109 (MugetsuNo202 - 减速), Name (名字)
+{
+MugetsuNo202 - 减速
+}
+
+STRING 10258
+// 魔法效果: B06G (MugetsuNo202 - 减速), EditorName (名字(编辑器))
+{
+MugetsuNo202 - 减速
+}
+
+STRING 10259
+// 魔法效果: B06G (MugetsuNo202 - 减速), Bufftip (工具提示)
+{
+入梦
+}
+
+STRING 10260
+// 魔法效果: B06G (MugetsuNo202 - 减速), Buffubertip (工具提示 - 扩展)
+{
+该单位昏昏欲睡，仿佛随时要倒下。
+}
+
+STRING 10261
+// 技能: A10A (MugetsuNo2Ex - 梦符「断梦」加强), Name (名字)
+{
+MugetsuNo2Ex - 梦符「断梦」加强
+}
+
+STRING 10264
+// 技能: A10A (MugetsuNo2Ex - 梦符「断梦」加强), Hotkey (热键 - 普通)
+{
+E
+}
+
+STRING 10265
+// 技能: A10A (MugetsuNo2Ex - 梦符「断梦」加强), Researchhotkey (热键 - 学习)
+{
+E
+}
+
+STRING 10266
+// 技能: A10B (MugetsuNo204 - 梦符「梦境现实」返回), Name (名字)
+{
+MugetsuNo204 - 梦符「梦境现实」返回
+}
+
+STRING 10267
+// 技能: A10B (MugetsuNo204 - 梦符「梦境现实」返回), Hotkey (热键 - 普通)
+{
+W
+}
+
+STRING 10268
+// 技能: A10B (MugetsuNo204 - 梦符「梦境现实」返回), Researchhotkey (热键 - 学习)
+{
+W
+}
+
+STRING 10269
+// 技能: A10B (MugetsuNo204 - 梦符「梦境现实」返回), Tip (提示工具 - 普通)
+{
+置换梦境与现实(|cffffcc00W|r)
+}
+
+STRING 10270
+// 技能: A10B (MugetsuNo204 - 梦符「梦境现实」返回), Tip (提示工具 - 普通)
+{
+梦符「梦境现实」(|cffffcc00W|r) - [|cffffcc00等级 2|r]
+}
+
+STRING 10271
+// 技能: A10B (MugetsuNo204 - 梦符「梦境现实」返回), Tip (提示工具 - 普通)
+{
+梦符「梦境现实」(|cffffcc00W|r) - [|cffffcc00等级 3|r]
+}
+
+STRING 10272
+// 技能: A10B (MugetsuNo204 - 梦符「梦境现实」返回), Tip (提示工具 - 普通)
+{
+梦符「惊梦」(|cffffcc00D|r) - [|cffffcc00等级 4|r]
+}
+
+STRING 10273
+// 技能: A10B (MugetsuNo204 - 梦符「梦境现实」返回), Researchtip (提示工具 - 学习)
+{
+学习梦符「梦境现实」(|cffffcc00W|r) - [|cffffcc00等级 %d|r]
+}
+
+STRING 10275
+// 技能: A10B (MugetsuNo204 - 梦符「梦境现实」返回), Ubertip (提示工具 - 普通 - 扩展)
+{
+使所有被影响的少女回到技能施放时
+}
+
+STRING 10278
+// 技能: A10B (MugetsuNo204 - 梦符「梦境现实」返回), Ubertip (提示工具 - 普通 - 扩展)
+{
+梦月向前方投射一颗弹幕，
+对触碰到的敌人造成魔法伤害
+
+|cff00ffff魔法伤害|r：200
+|cff00ffff最大距离|r：1200
+|cff00ffff伤害范围|r：175
+|cff00ffff魔法消耗|r：50
+|cff00ffff冷却时间|r：3秒
+}
+
+STRING 10282
+{
+|cff00ccff～梦幻馆女仆～|r
+|cffffcc00梦月|r
+|cffffaacc■|r突袭输出型 远程攻距 600 移动速度 290
+|cffffcc00○ |r|cffff0033力量|r - 18 + 1.70     基础伤害 43~55
+|cffffcc00○ |r|cff00ff99敏捷|r - 18 + 2.10     基础护甲 1.00
+|cffffcc00● |r|cff0033ff智力|r - 25 + 2.50     |cffff00ff「高阶向角色」|r
+}
+
+STRING 10283
+// 物品: I03N (|cffffcc00合成卷轴|r - 便携式塞钱箱), Ubertip (提示工具 - 扩展)
+{
+|cffff3300其它材料：|r
+天狗的护符 - 500|n|cffc0c0c0总价 - 1600|r
+
+|cffffcc00属性：|r
+攻击速度 +15%
+
+|cff00ccff香油钱：|r
+将一个敌方单位转换成点数。施法距离为650，冷却时间80秒。
+}
+
+STRING 10284
+// 技能: A107 (MugetsuNo204 - 梦符「梦境现实」), Researchubertip (提示工具 - 学习 - 扩展)
+{
+梦月用幻梦境替换现实。
+大幅度提升梦月的能力。
+记录当时所有少女的位置和生命值，
+当梦月受到致死伤害，或再次使用技能时，
+触发技能效果，使所有少女回到梦前。
+
+|cff00ffff持续时间|r：5/6/7秒
+|cff00ffff魔法消耗|r：200/300/400
+|cff00ffff冷却时间|r：120/111/102秒
+
+梦符「断梦」立即刷新，并且冷却降至0.5秒
+梦符「惊梦」移动速度增加一倍，最大距离增加两倍
+梦符「释梦」额外增加一段，并造成二次伤害
+
+人死不能复生
+}
+
+STRING 10285
+// 技能: A107 (MugetsuNo204 - 梦符「梦境现实」), Ubertip (提示工具 - 普通 - 扩展)
+{
+梦月用幻梦境替换现实。
+大幅度提升梦月的能力。
+记录当时所有少女的位置和生命值，
+当梦月受到致死伤害，或再次使用技能时，
+触发技能效果，使所有少女回到梦前。
+
+|cff00ffff持续时间|r：5秒
+|cff00ffff魔法消耗|r：200
+|cff00ffff冷却时间|r：120秒
+
+梦符「断梦」立即刷新，并且冷却降至0.5秒
+梦符「惊梦」移动速度增加一倍，最大距离增加两倍
+梦符「释梦」额外增加一段，并造成二次伤害
+
+人死不能复生
+}
+
+STRING 10286
+// 技能: A107 (MugetsuNo204 - 梦符「梦境现实」), Ubertip (提示工具 - 普通 - 扩展)
+{
+梦月用幻梦境替换现实。
+大幅度提升梦月的能力。
+记录当时所有少女的位置和生命值，
+当梦月受到致死伤害，或再次使用技能时，
+触发技能效果，使所有少女回到梦前。
+
+|cff00ffff持续时间|r：6秒
+|cff00ffff魔法消耗|r：300
+|cff00ffff冷却时间|r：111秒
+
+梦符「断梦」立即刷新，并且冷却降至0.5秒
+梦符「惊梦」移动速度增加一倍，最大距离增加两倍
+梦符「释梦」额外增加一段，并造成二次伤害
+
+人死不能复生
+}
+
+STRING 10287
+// 技能: A107 (MugetsuNo204 - 梦符「梦境现实」), Ubertip (提示工具 - 普通 - 扩展)
+{
+梦月用幻梦境替换现实。
+大幅度提升梦月的能力。
+记录当时所有少女的位置和生命值，
+当梦月受到致死伤害，或再次使用技能时，
+触发技能效果，使所有少女回到梦前。
+
+|cff00ffff持续时间|r：7秒
+|cff00ffff魔法消耗|r：400
+|cff00ffff冷却时间|r：102秒
+
+梦符「断梦」立即刷新，并且冷却降至0.5秒
+梦符「惊梦」移动速度增加一倍，最大距离增加两倍
+梦符「释梦」额外增加一段，并造成二次伤害
+
+人死不能复生
+}
+
+STRING 10288
+// 技能: A10A (MugetsuNo2Ex - 梦符「断梦」加强), Tip (提示工具 - 普通)
+{
+梦符「断梦」(|cffffcc00E|r)  强化
+}
+
+STRING 10289
+// 技能: A10A (MugetsuNo2Ex - 梦符「断梦」加强), Ubertip (提示工具 - 普通 - 扩展)
+{
+梦月立即移动到梦境弹幕处
+
+|cff00ffff最大距离|r：3600
+|cff00ffff捕捉范围|r：200
+|cff00ffff魔法消耗|r：50
+|cff00ffff冷却时间|r：0.5秒
+}
+
+STRING 10290
+// 技能: A108 (MugetsuNo202 - 梦符「入梦」), Researchubertip (提示工具 - 学习 - 扩展)
+{
+梦月将一名敌人拖入梦中，
+期间使其减速。
+若对象使用技能或物品，
+则效果结束，造成一次眩晕
+
+|cff00ffff魔法伤害|r：60/120/180/240
+|cff00ffff速度减少|r：40%/45%/50%/60%
+|cff00ffff持续时间|r：4秒
+|cff00ffff眩晕时间|r：1.50/1.75/2.00/2.25秒
+|cff00ffff施法距离|r：600
+|cff00ffff魔法消耗|r：100/125/150/170
+|cff00ffff冷却时间|r：21/20/19/18秒
+}
+
+STRING 10291
+// 技能: A108 (MugetsuNo202 - 梦符「入梦」), Ubertip (提示工具 - 普通 - 扩展)
+{
+梦月将一名敌人拖入梦中，
+期间使其减速。
+若对象使用技能或物品，
+则效果结束，造成一次眩晕
+
+|cff00ffff魔法伤害|r：60
+|cff00ffff速度减少|r：40%
+|cff00ffff持续时间|r：4秒
+|cff00ffff眩晕时间|r：1.50秒
+|cff00ffff施法距离|r：600
+|cff00ffff魔法消耗|r：100
+|cff00ffff冷却时间|r：21秒
+}
+
+STRING 10292
+// 技能: A108 (MugetsuNo202 - 梦符「入梦」), Ubertip (提示工具 - 普通 - 扩展)
+{
+梦月将一名敌人拖入梦中，
+期间使其减速。
+若对象使用技能或物品，
+则效果结束，造成一次眩晕
+
+|cff00ffff魔法伤害|r：120
+|cff00ffff速度减少|r：45%
+|cff00ffff持续时间|r：4秒
+|cff00ffff眩晕时间|r：1.75秒
+|cff00ffff施法距离|r：600
+|cff00ffff魔法消耗|r：125
+|cff00ffff冷却时间|r：20秒
+}
+
+STRING 10293
+// 技能: A108 (MugetsuNo202 - 梦符「入梦」), Ubertip (提示工具 - 普通 - 扩展)
+{
+梦月将一名敌人拖入梦中，
+期间使其减速。
+若对象使用技能或物品，
+则效果结束，造成一次眩晕
+
+|cff00ffff魔法伤害|r：180
+|cff00ffff速度减少|r：50%
+|cff00ffff持续时间|r：4秒
+|cff00ffff眩晕时间|r：2.00秒
+|cff00ffff施法距离|r：600
+|cff00ffff魔法消耗|r：150
+|cff00ffff冷却时间|r：18秒
+}
+
+STRING 10294
+// 技能: A108 (MugetsuNo202 - 梦符「入梦」), Ubertip (提示工具 - 普通 - 扩展)
+{
+梦月将一名敌人拖入梦中，
+期间使其减速。
+若对象使用技能或物品，
+则效果结束，造成一次眩晕
+
+|cff00ffff魔法伤害|r：240
+|cff00ffff速度减少|r：60%
+|cff00ffff持续时间|r：4秒
+|cff00ffff眩晕时间|r：2.25秒
+|cff00ffff施法距离|r：600
+|cff00ffff魔法消耗|r：170
+|cff00ffff冷却时间|r：18秒
 }
 
